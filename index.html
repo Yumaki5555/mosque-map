@@ -25,6 +25,17 @@
                     top: 0.0%;
                 }
                 .leaflet-container { font-size: 1rem; }
+                /* 吹き出し（ポップアップ）を大きく・読みやすく */
+                .leaflet-popup-content-wrapper { border-radius: 14px; }
+                .leaflet-popup-content { font-size: 17px; line-height: 1.8; margin: 16px 22px 16px 18px; }
+                .leaflet-popup-content b { font-size: 19px; }
+                .leaflet-popup-content a { display: inline-block; margin-top: 6px; padding: 6px 0; font-size: 17px; }
+                .leaflet-container a.leaflet-popup-close-button { width: 36px; height: 36px; font: 28px/36px Tahoma, Verdana, sans-serif; }
+                .leaflet-tooltip { font-size: 15px; padding: 6px 10px; }
+                @media (max-width: 600px) {
+                    .leaflet-popup-content { font-size: 18px; }
+                    .leaflet-popup-content b { font-size: 20px; }
+                }
             </style>
 
             <style>html, body {
@@ -9113,5 +9124,49 @@ Tobishima mosque
                 {}
             );
         
+
+    // ---- 見やすさ調整 ----
+    (function () {
+        var map = map_4393f0ea436bb86eddee067ede0dff11;
+        // ズームに合わせて●の大きさを変える（拡大するほど大きく）
+        function radiusFor(z) {
+            if (z <= 5) return 6;
+            if (z <= 7) return 7;
+            if (z <= 9) return 9;
+            if (z <= 12) return 11;
+            return 13;
+        }
+        var markers = [];
+        map.eachLayer(function (l) {
+            if (l instanceof L.FeatureGroup) {
+                l.eachLayer(function (m) { if (m instanceof L.CircleMarker) markers.push(m); });
+            }
+        });
+        function resize() {
+            var r = radiusFor(map.getZoom());
+            markers.forEach(function (m) { m.setRadius(r); m.setStyle({ weight: r > 8 ? 2.5 : 1.5 }); });
+        }
+        map.on("zoomend", resize);
+        resize();
+        // 吹き出しの幅を画面に合わせて広げる（開いた時点の地図の幅で計算）
+        markers.forEach(function (m) {
+            var p = m.getPopup();
+            if (!p) return;
+            m.on("popupopen", function () {
+                var mw = map.getContainer().clientWidth || document.documentElement.clientWidth;
+                var w = Math.max(200, Math.min(mw - 70, 420));
+                if (p.options.maxWidth !== w) {
+                    p.options.maxWidth = w;
+                    p.options.minWidth = Math.min(w, 260);
+                    p.update();
+                }
+            });
+        });
+        // スマホなど狭い画面では、右上の区分切り替えパネルを折りたたむ
+        if ((map.getContainer().clientWidth || document.documentElement.clientWidth) < 600) {
+            layer_control_79dcfe9c18579cced755d10273525654.collapse();
+            map.on("click", function () { layer_control_79dcfe9c18579cced755d10273525654.collapse(); });
+        }
+    })();
 </script>
 </html>
