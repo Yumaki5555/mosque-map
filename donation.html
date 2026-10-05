@@ -22,6 +22,12 @@ body{margin:0;background:var(--bg);color:var(--text);
 h1{font-size:1.6rem;margin:0 0 4px}
 .lead{color:var(--sub);margin:0 0 20px;font-size:.95rem}
 .lead a{color:var(--accent)}
+.top-row{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin:0 0 16px}
+.top-row .updated{flex:1 1 320px;margin:0}
+.map-btn{display:flex;align-items:center;justify-content:center;flex:0 1 auto;background:var(--accent);color:var(--card);
+  font-weight:800;font-size:1.1rem;text-decoration:none;padding:12px 22px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.map-btn:hover{filter:brightness(1.1)}
+.map-btn.bottom{margin-top:20px}
 .updated{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;background:var(--card);border:2px solid var(--accent);
   border-radius:12px;padding:12px 18px;margin:0 0 16px}
 .updated .k{font-size:1rem;font-weight:700;color:var(--accent)}
@@ -83,8 +89,11 @@ select{border:1px solid var(--line);background:var(--card);color:var(--text);bor
 <div class="wrap">
   <h1>日本のモスク建設・土葬墓地 寄付状況</h1>
   <p class="lead">インターネット上で公開されている寄付募集・団体発表・報道の数字を、出典付きで一覧にしています。
-    <a href="index.html">モスク区域区分マップはこちら</a></p>
-  <div class="updated"><span class="k">最終更新</span><span class="v">2026年10月5日 16:45</span></div>
+  </p>
+  <div class="top-row">
+    <div class="updated"><span class="k">最終更新</span><span class="v">2026年10月5日 16:53</span></div>
+    <a class="map-btn" href="index.html">← モスク区域区分マップに戻る</a>
+  </div>
 
   <div class="tiles" id="tiles"></div>
   <div class="bytype" id="bytype"></div>
@@ -114,6 +123,8 @@ select{border:1px solid var(--line);background:var(--card);color:var(--text);bor
     <p class="sec-sub">寄付を集めている・集めたとみられるものの、金額や時点などが確かめられていない情報です。わかっている範囲を出典付きで紹介しています。上の合計には含めていません。</p>
     <div class="list" id="list-pending"></div>
   </section>
+
+  <a class="map-btn bottom" href="index.html">← モスク区域区分マップに戻る</a>
 
   <div class="notice">
     <b>このページについて</b>
