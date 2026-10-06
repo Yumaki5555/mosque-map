@@ -131,18 +131,24 @@ details.sec.feature > summary .sum-sub{flex-basis:100%;font-size:.88rem;font-wei
 .toc a.open.big{background:var(--open-line)}
 .toc a.pend.big{background:var(--pend-line)}
 .toc a.big .n{color:var(--card);opacity:.9}
-/* 都道府県の見出し */
-.pref-h{display:flex;align-items:baseline;gap:8px;font-size:1.05rem;margin:18px 0 8px;padding:4px 0;border-bottom:2px solid var(--line)}
-.pref-h:first-child{margin-top:4px}
-/* 募集中・未確定はカードを詰めて並べる（段組み。県の見出しは最初のカードとくっつけて離れないようにする） */
-.packed{columns:320px;column-gap:12px}
+/* 都道府県ごとの折りたたみ（見出しを押すと開閉。中のカードは左から右へ並べる） */
+details.pref{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px}
+details.pref > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 14px;font-weight:700;font-size:1.1rem}
+details.pref > summary::-webkit-details-marker{display:none}
+details.pref > summary::before{content:"▶";font-size:.75rem;color:var(--sub);transition:transform .15s}
+details.pref[open] > summary::before{transform:rotate(90deg)}
+details.pref > summary .pn{font-size:.85rem;font-weight:400;color:var(--sub)}
+details.pref > .list{padding:0 12px 12px}
+details.sec.open details.pref{border-left:5px solid var(--open-line)}
+details.sec.pend details.pref{border-left:5px solid var(--pend-line)}
+.pref-tools{display:flex;gap:8px;margin:0 0 10px}
+.pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+/* カードの表に出すチラシ */
+.flyers{display:flex;gap:6px;flex-wrap:wrap}
+.flyers button{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;width:92px;position:relative}
+.flyers img{display:block;width:92px;height:116px;object-fit:cover;object-position:top}
+.flyers .lbl{font-size:.72rem;font-weight:700;color:var(--sub);width:100%}
 .tag.pref{background:var(--text);color:var(--card);font-weight:700}
-.packed > *{break-inside:avoid;margin:0 0 12px}
-.packed .pref-grp > .pref-h{margin:2px 0 8px}
-.packed .pref-grp > .card{margin:0}
-.pref-h .pn{font-size:.8rem;font-weight:400;color:var(--sub)}
-details.sec.open .pref-h{border-bottom-color:var(--open-line)}
-details.sec.pend .pref-h{border-bottom-color:var(--pend-line)}
 /* カードの「詳しい情報」 */
 details.more{border:1px solid var(--line);border-radius:10px;background:var(--bg)}
 details.more > summary{cursor:pointer;padding:6px 10px;font-size:.85rem;font-weight:700;color:var(--accent)}
@@ -176,7 +182,7 @@ details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:
   <p class="lead">インターネット上で公開されている寄付募集・団体発表・報道の数字を、出典付きで一覧にしています。
   </p>
   <div class="top-row">
-    <div class="updated"><span class="k">最終更新</span><span class="v">2026年10月6日 14:06</span></div>
+    <div class="updated"><span class="k">最終更新</span><span class="v">2026年10月6日 14:25</span></div>
     <a class="map-btn" href="index.html">← モスク区域区分マップに戻る</a>
   </div>
 
@@ -196,9 +202,9 @@ details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:
 
   <nav class="toc" aria-label="目次">
     <a class="open big" href="#sec-open">現在募集中<span class="n" id="toc-open"></span></a>
+    <a class="extra" href="#sec-extra">番外編<span class="n" id="toc-extra"></span></a>
     <a class="pend big" href="#sec-pend">未確定情報<span class="n" id="toc-pend"></span></a>
     <a class="done" href="#sec-done">終了したもの<span class="n" id="toc-done"></span></a>
-    <a class="extra" href="#sec-extra">番外編<span class="n" id="toc-extra"></span></a>
   </nav>
   <div class="sec-tools"><button type="button" id="sec-open-all">すべての区分を開く</button><button type="button" id="sec-close-all">すべて閉じる</button></div>
 
@@ -206,14 +212,23 @@ details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:
     <summary><h2 class="sec-h">現在募集中</h2><span class="count" id="count-open"></span><span class="sum-sub">いま寄付を募っているもの（北海道から都道府県順）</span></summary>
     <div class="body">
       <p class="sec-sub">各カードの「詳しい情報」を押すと、計画の中身・動画・チラシなどが見られます。</p>
-      <div class="packed" id="list-open"></div>
+      <div class="pref-tools"><button type="button" data-prefs="list-open" data-on="1">すべての県を開く</button><button type="button" data-prefs="list-open" data-on="0">すべての県を閉じる</button></div>
+      <div id="list-open"></div>
+    </div>
+  </details>
+  <details class="sec extra" id="sec-extra">
+    <summary><h2 class="sec-h">番外編</h2><span class="count" id="count-extra"></span></summary>
+    <div class="body">
+      <p class="sec-sub">モスクの建設・購入や墓地ではない寄付の募集（家賃などの運営費）や、モスクの閉鎖に関わる情報です。上の合計には含めていません。</p>
+      <div class="list" id="list-extra"></div>
     </div>
   </details>
   <details class="sec pend feature" id="sec-pend" open>
     <summary><h2 class="sec-h">未確定情報</h2><span class="count" id="count-pending"></span><span class="sum-sub">寄付を集めている・集めたとみられるが、金額や時点が確かめられていないもの（北海道から都道府県順）</span></summary>
     <div class="body">
       <p class="sec-sub">わかっている範囲を出典付きで紹介しています。上の合計には含めていません。</p>
-      <div class="packed" id="list-pending"></div>
+      <div class="pref-tools"><button type="button" data-prefs="list-pending" data-on="1">すべての県を開く</button><button type="button" data-prefs="list-pending" data-on="0">すべての県を閉じる</button></div>
+      <div id="list-pending"></div>
     </div>
   </details>
   <details class="sec done" id="sec-done">
@@ -222,13 +237,6 @@ details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:
       <p class="sec-sub">募集期間が終わったもの、完成・購入の報告があったもの、締切後の結果がわからないものです。年の見出しを押すと中身が開きます。</p>
       <div class="year-tools"><button type="button" id="open-all">すべての年を開く</button><button type="button" id="close-all">すべて閉じる</button></div>
       <div id="list-done"></div>
-    </div>
-  </details>
-  <details class="sec extra" id="sec-extra">
-    <summary><h2 class="sec-h">番外編</h2><span class="count" id="count-extra"></span></summary>
-    <div class="body">
-      <p class="sec-sub">モスクの建設・購入や墓地ではない寄付の募集（家賃などの運営費）や、モスクの閉鎖に関わる情報です。上の合計には含めていません。</p>
-      <div class="list" id="list-extra"></div>
     </div>
   </details>
   <div id="lb" role="dialog" aria-label="画像の拡大"><img alt=""><div class="cap"></div></div>
@@ -328,8 +336,18 @@ function chips(id, key, values) {
 
 // カードの「詳しい情報」（概要・画像・動画・リンク）。何もなければ出さない
 const IMGS = [];  // 拡大表示用（番号で呼ぶ）
+// チラシ・画像はカードの表に小さく並べる（押すと拡大）
+function flyers(d) {
+  const img = (d["詳細"] || []).filter(x => x.kind === "画像");
+  if (!img.length) return "";
+  return `<div class="flyers"><span class="lbl">チラシ・画像（押すと拡大）</span>${img.map(x => {
+    IMGS.push(x);
+    return `<button type="button" data-img="${IMGS.length - 1}" title="${esc(x.title)}"><img src="${IMAGES[x.img]}" alt="${esc(x.title)}" loading="lazy"></button>`;
+  }).join("")}</div>`;
+}
+
 function more(d) {
-  const L = d["詳細"] || [];
+  const L = (d["詳細"] || []).filter(x => x.kind !== "画像");
   if (!L.length) return "";
   const by = k => L.filter(x => x.kind === k);
   const txt = by("概要"), img = by("画像"), vid = by("動画"), lnk = by("リンク");
@@ -378,21 +396,26 @@ function card(d) {
     ${pct == null ? "" : `<div class="bar" title="達成率 ${pct}%"><i class="${pct > 100 ? "over" : ""}" style="width:${Math.min(pct, 100)}%"></i></div>
       <div class="meta">達成率 ${pct}%</div>`}
     <div class="meta">${d["支援者数"] != null ? "支援者 " + Math.round(d["支援者数"]).toLocaleString() + "人" : ""}${period ? "　期間 " + esc(period) : ""}</div>
+    ${flyers(d)}
     ${d["備考"] ? `<div class="note">${esc(d["備考"])}</div>` : ""}
     ${more(d)}
     <div class="meta">${d["出典URL"] ? `<a class="${d["出典の種類"] === "寄付ページ" ? "src-btn" : ""}" href="${esc(d["出典URL"])}" target="_blank" rel="noopener noreferrer">${(d["出典の種類"] || "寄付ページ") === "寄付ページ" ? "寄付ページを見る" : "出典（" + esc(d["出典の種類"]) + "）を見る"}</a>　` : ""}${mapLink(d)}確認日 ${esc(d["確認日"])}</div>
   </article>`;
 }
 
-// 都道府県順（北海道→沖縄）にまとめ、県ごとに見出しを付ける。県の中は集まった額の多い順
-function byPref(rows, render, inPref) {
+// 都道府県順（北海道→沖縄）にまとめ、県ごとに折りたためる箱にする。県の中は集まった額の多い順
+const closedPrefs = new Set();  // 閉じている県（区分の id + 県名）
+function byPref(rows, render, inPref, secId, withSum) {
   const prefs = [...new Set(rows.map(d => d["都道府県"] || "不明"))]
     .sort((a, b) => (PREF_ORDER.indexOf(a) + 1 || 99) - (PREF_ORDER.indexOf(b) + 1 || 99));
   return prefs.map(p => {
     let g = rows.filter(d => (d["都道府県"] || "不明") === p);
     if (inPref) g = g.slice().sort(inPref);
-    const [first, ...rest] = g.map(render);
-    return `<div class="pref-grp"><h3 class="pref-h">${esc(p)}<span class="pn">${g.length}件</span></h3>${first}</div>${rest.join("")}`;
+    const raised = withSum ? g.filter(d => d["集計"]).reduce((a, d) => a + (d["集まった額_円"] || 0), 0) : 0;
+    const key = secId + ":" + p;
+    return `<details class="pref" data-key="${esc(key)}"${closedPrefs.has(key) ? "" : " open"}>
+      <summary>${esc(p)}<span class="pn">${g.length}件${raised ? "　集まった額 " + yen(raised) : ""}</span></summary>
+      <div class="list">${g.map(render).join("")}</div></details>`;
   }).join("");
 }
 
@@ -417,7 +440,7 @@ function renderList() {
   document.getElementById("toc-open").textContent = `${open.length}件`;
   document.getElementById("toc-done").textContent = `${done.length}件`;
   document.getElementById("list-open").innerHTML = open.length
-    ? byPref(open, card, (a, b) => (b["集まった額_円"] ?? -1) - (a["集まった額_円"] ?? -1)) : empty;
+    ? byPref(open, card, (a, b) => (b["集まった額_円"] ?? -1) - (a["集まった額_円"] ?? -1), "open", true) : empty;
   const years = [...new Set(done.map(d => endYear(d) || "不明"))].sort((a, b) => b.localeCompare(a));
   document.getElementById("list-done").innerHTML = done.length ? years.map(y => {
     const g = done.filter(d => (endYear(d) || "不明") === y);
@@ -447,6 +470,7 @@ function pendCard(d) {
     <h2>${esc(d["名称"])}</h2>
     <div class="org">${esc(d["運営団体"])}${d["団体HP"] ? `<a href="${esc(d["団体HP"])}" target="_blank" rel="noopener noreferrer">${hpLabel(d["団体HP"])}</a>` : ""}</div>
     <div class="place">${esc(d["都道府県"])} ${esc(d["市区町村"])}</div>
+    ${flyers(d)}
     <div class="k">わかっていること</div><div class="t">${esc(d["わかっていること"])}</div>
     <div class="k">わかっていないこと</div><div class="t unk">${esc(d["わかっていないこと"])}</div>
     <div class="k">出典</div>
@@ -470,7 +494,7 @@ function renderPending() {
     (!state.pref || d["都道府県"] === state.pref));
   document.getElementById("count-pending").textContent = `${rows.length}件`;
   document.getElementById("toc-pend").textContent = `${rows.length}件`;
-  document.getElementById("list-pending").innerHTML = rows.length ? byPref(rows, pendCard)
+  document.getElementById("list-pending").innerHTML = rows.length ? byPref(rows, pendCard, null, "pend", false)
     : '<p class="empty">条件に当てはまるものはありません。</p>';
 }
 
@@ -489,6 +513,8 @@ function jumpToHash() {
   if (!el) return;
   const sec = el.closest("details.sec");
   if (sec && !sec.open) sec.open = true;
+  const pf = el.closest("details.pref");
+  if (pf && !pf.open) pf.open = true;
   const yr = el.closest("details.year");
   if (yr && !yr.open) { yr.open = true; openYears.add(yr.dataset.year); }
   document.querySelectorAll(".card.hl").forEach(c => c.classList.remove("hl"));
@@ -521,6 +547,14 @@ document.addEventListener("click", e => {
   } else if (e.target.closest("#lb")) lb.classList.remove("on");
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape") lb.classList.remove("on"); });
+
+// 県の開閉を覚えておく（絞り込みで描き直しても元に戻らないように）
+document.addEventListener("toggle", e => {
+  const t = e.target;
+  if (t.matches && t.matches("details.pref")) t.open ? closedPrefs.delete(t.dataset.key) : closedPrefs.add(t.dataset.key);
+}, true);
+document.querySelectorAll("[data-prefs]").forEach(b => b.onclick = () =>
+  document.querySelectorAll("#" + b.dataset.prefs + " details.pref").forEach(dt => dt.open = b.dataset.on === "1"));
 
 renderList();
 jumpToHash();
