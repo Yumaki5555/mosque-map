@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>地域別に見る｜モスク・関連施設・建設計画・寄付</title>
+<title>地域別に見る｜日本のモスク情報</title>
 <style>
 :root{
   --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
@@ -340,23 +340,62 @@ details.fp-more > .fp-list{margin-top:10px}
 .fp-table th:first-child,.fp-table td:first-child{text-align:left}
 .fp-table thead th{font-size:.78rem;color:var(--sub)}
 .fp-table a{color:var(--accent)}
+/* 入口のページ（index.html） */
+.home-lead{font-size:1rem;margin:4px 0 16px}
+.home-updated{margin:-8px 0 14px}
+.map-btn.home-map{display:inline-flex;margin:0 0 24px}
+.news{background:var(--card);border:2px solid var(--accent);border-radius:14px;padding:12px 18px 8px;margin:0 0 28px}
+.news-h{font-size:1.25rem;font-weight:800;margin:0;padding-bottom:6px;border-bottom:2px solid var(--accent-soft)}
+.news-item{padding:12px 0}
+.news-item + .news-item{border-top:1px dashed var(--line)}
+.news .new{display:inline-block;background:var(--accent);color:var(--card);font-weight:800;font-size:.75rem;padding:0 8px;border-radius:6px;margin-right:8px;letter-spacing:.05em}
+.news .date{font-size:.85rem;color:var(--sub)}
+.news .ttl{display:block;font-size:1.12rem;font-weight:800;margin-top:2px}
+.news .sub{display:block;font-size:.93rem}
+.go{display:inline-block;margin-top:8px;background:var(--accent);color:var(--card);font-weight:700;font-size:.92rem;padding:6px 18px;border-radius:999px;text-decoration:none}
+.go:hover{filter:brightness(1.1)}
+.news-past{border-top:1px dashed var(--line);padding:10px 0 6px}
+.news-past > summary{display:inline-block;list-style:none;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:4px 16px}
+.news-past > summary::-webkit-details-marker{display:none}
+.news-past > summary::before{content:"▶ ";font-size:.75rem}
+.news-past[open] > summary::before{content:"▼ "}
+.news-past .c,.news-past[open] .o{display:none}
+.news-past[open] .c{display:inline}
+.news-past > .news-item{border-top:1px dashed var(--line)}
+.news-past > .news-item:first-of-type{margin-top:8px}
+.home-h{font-size:1.25rem;margin:0 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
+.page-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px;margin:0 0 28px}
+.page-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.page-card h3{font-size:1.2rem;margin:0}
+.page-card p{margin:0;font-size:.93rem}
+.page-card .go{margin-top:auto;align-self:flex-start}
+.page-card p + .go{margin-top:8px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav class="site-nav" aria-label="ページの切り替え"><a href="index.html">地図</a><a href="area.html" aria-current=page>地域別</a><a href="mosque.html">モスク一覧</a><a href="donation.html">寄付</a><a href="funeral.html">葬儀・墓地</a></nav><style>
+  <nav class="site-nav" aria-label="ページの切り替え"><a class="home" href="index.html" aria-label="ホーム" title="ホーム（入口のページ）"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg><span>ホーム</span></a><a href="map.html">地図</a><a href="area.html" aria-current=page>地域別</a><a href="mosque.html">モスク一覧</a><a href="donation.html">寄付</a><a href="funeral.html">葬儀・墓地</a></nav><style>
 .site-nav { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 16px; padding: 5px; background: #1e3a5f;
             border-radius: 14px; font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .site-nav a { flex: 1 1 auto; text-align: center; white-space: nowrap; text-decoration: none; color: #fff;
               font-size: 15px; font-weight: 700; line-height: 1.4; padding: 8px 12px; border-radius: 10px; }
 .site-nav a:hover { background: rgba(255,255,255,.16); }
 .site-nav a[aria-current="page"] { background: #fff; color: #1e3a5f; }
-@media (max-width: 480px) { .site-nav a { font-size: 14px; padding: 7px 6px; } }
+.site-nav a.home { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+.site-nav a.home svg { flex: 0 0 auto; }
+/* スマホでは6つが1段に収まるよう、「ホーム」は家の絵だけにして、すき間も詰める */
+@media (max-width: 480px) {
+  .site-nav { gap: 2px; padding: 4px; }
+  .site-nav a { font-size: 14px; padding: 7px 4px; }
+  .site-nav a.home { padding: 7px 6px; }
+  .site-nav a.home span { display: none; }
+}
+@media (max-width: 370px) { .site-nav a { font-size: 13px; } }
 @media print { .site-nav { display: none; } }
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <p class="area-updated">最終更新 2026年10月7日 22:37</p>
+  <p class="area-updated">最終更新 2026年10月7日 22:59</p>
 
   <section class="region solo" id="region" aria-label="地域を選ぶ">
     <div class="rg-pick">
@@ -555,7 +594,7 @@ function rcard(p) {
     p.website ? `<a href="${esc(p.website)}" ${EXT}>公式サイト</a>` : "",
     p.source ? `<a href="${esc(p.source)}" ${EXT}>情報源${p.sourceLabel ? "（" + esc(p.sourceLabel) + "）" : ""}</a>` : "",
     p.source2 ? `<a href="${esc(p.source2)}" ${EXT}>情報源2</a>` : "",
-    p.mapId ? `<a href="index.html#${p.mapId}">地図を見る</a>` : "",
+    p.mapId ? `<a href="map.html#${p.mapId}">地図を見る</a>` : "",
     p.detail ? `<a href="mosque.html#${p.id}">モスクの詳しい情報</a>` : "",
   ].filter(Boolean).join("");
   return `<article class="card rcard" id="r-${p.id}">
@@ -651,7 +690,7 @@ function renderRegion() {
   // 地図では選んだ地域の印だけが出る（市区町村まで選んでいれば、その市区町村に寄せる）
   const onMap = R.pref && all.some(p => p.prefecture === R.pref && p.mapId);
   const cityOnMap = R.city && rows.some(p => p.mapId);
-  const mapHref = `index.html#pref=${encodeURIComponent(R.pref)}` + (cityOnMap ? `&city=${encodeURIComponent(R.city)}` : "");
+  const mapHref = `map.html#pref=${encodeURIComponent(R.pref)}` + (cityOnMap ? `&city=${encodeURIComponent(R.city)}` : "");
   $("rg-btns").innerHTML = (onMap ? `<a class="rg-btn map" href="${mapHref}">🗺️ ${esc(cityOnMap ? R.city : R.pref + "全体")}を地図で見る</a>` : "") +
     `<a class="rg-btn share" href="${esc(shareHref(rows))}" ${EXT}>${R.pref ? "この地域の情報を共有" : "このページを共有"}（X）</a>`;
 
