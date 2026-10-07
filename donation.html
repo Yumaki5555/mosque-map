@@ -319,7 +319,7 @@ details.ol-it[open] .ol-cr{display:none}  /* 開いたら下の大きな写真�
   </section>
 
   <div class="top-row">
-    <div class="updated"><span class="k">最終更新</span><span class="v">2026年10月7日 15:03</span></div>
+    <div class="updated"><span class="k">最終更新</span><span class="v">2026年10月7日 15:20</span></div>
     <a class="map-btn" href="index.html">← モスク区域区分マップに戻る</a>
   </div>
 
@@ -922,8 +922,11 @@ function renderRegion() {
   }
   $("rg-facts").innerHTML = facts.join("");
 
+  // 地図では選んだ地域の印だけが出る（市区町村まで選んでいれば、その市区町村に寄せる）
   const onMap = R.pref && all.some(p => p.prefecture === R.pref && p.mapId);
-  $("rg-btns").innerHTML = (onMap ? `<a class="rg-btn map" href="index.html#pref=${encodeURIComponent(R.pref)}">🗺️ ${esc(R.pref)}全体を地図で見る</a>` : "") +
+  const cityOnMap = R.city && rows.some(p => p.mapId);
+  const mapHref = `index.html#pref=${encodeURIComponent(R.pref)}` + (cityOnMap ? `&city=${encodeURIComponent(R.city)}` : "");
+  $("rg-btns").innerHTML = (onMap ? `<a class="rg-btn map" href="${mapHref}">🗺️ ${esc(cityOnMap ? R.city : R.pref + "全体")}を地図で見る</a>` : "") +
     `<a class="rg-btn share" href="${esc(shareHref(rows))}" ${EXT}>${R.pref ? "この地域の情報を共有" : "このページを共有"}（X）</a>`;
 
   // 最近の動き
