@@ -199,6 +199,8 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-tile.t-fund{border-left-color:var(--open-line)}
 .rg-tile.t-land{border-left-color:var(--pend-line)}
 .rg-small{font-size:.75rem;color:var(--sub);margin:6px 0 12px}
+.rg-break{font-size:.85rem;line-height:1.6;margin:8px 0 0}
+.rg-break:empty{display:none}
 .rg-facts{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
 .rg-fact{background:var(--open-bg);border-radius:10px;padding:10px 14px}
 .rg-fact .k{font-size:.82rem;font-weight:700;color:var(--sub)}
@@ -401,7 +403,7 @@ details.fp-more > .fp-list{margin-top:10px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月8日 05:26</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">282<small>か所</small></div><div class=s>地図・モスク一覧の271か所＋寄付募集などから確認したモスク・計画地6か所＋寄付の募集・計画の情報だけの場所5か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月8日 05:38</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">282<small>か所</small></div><div class=s>地図・モスク一覧の271か所＋寄付募集などから確認したモスク・計画地6か所＋寄付の募集・計画の情報だけの場所5か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -420,7 +422,8 @@ details.fp-more > .fp-list{margin-top:10px}
     </div>
     <div class="rg-area" id="rg-area"></div>
     <div class="rg-tiles" id="rg-tiles"></div>
-    <p class="rg-small">※1か所を2つ以上の項目に数えることがあるため、足しても全部の場所の数にはなりません（例：今あるモスクに建て替えの計画があれば、「既存施設」と「計画・建設中」の両方に数えます）。「計画・建設中」には土地・建物の取得や改修の途中のものも、「寄付募集中」には修理費や家賃などの募集（寄付のページでは「そのほかの寄付・情報」）をしている場所も含みます。</p>
+    <p class="rg-break" id="rg-break"></p>
+    <p class="rg-small">※<span id="rg-note-ex"></span>1か所を2つ以上の項目に数えることがあるため、足しても全部の場所の数にはなりません（例：今あるモスクに建て替えの計画があれば、「既存施設」と「計画・建設中」の両方に数えます）。「計画・建設中」には土地・建物の取得や改修の途中のものも、「寄付募集中」には修理費や家賃などの募集（寄付のページでは「そのほかの寄付・情報」）をしている場所も含みます。</p>
     <div class="rg-facts" id="rg-facts"></div>
     <div class="rg-btns" id="rg-btns"></div>
     <div class="rg-sec rg-ev" id="rg-events"></div>
@@ -683,6 +686,22 @@ function renderRegion() {
     const n = countOf(rows, x.test);
     return `<div class="rg-tile t-${x.k}"><div class="k">${x.label}</div><div class="v">${n}<small>か所</small></div>${R.pref ? `<div class="s">全国 ${countOf(all, x.test)}か所</div>` : ""}</div>`;
   }).join("");
+
+  // 札の下の内わけ（札の数を足しても場所の数にならない理由が分かるように）
+  const isEx = COUNTERS[0].test;
+  const nEx = countOf(rows, isEx), nBoth = countOf(rows, p => isEx(p) && isPlan(p));
+  const nPlanOnly = countOf(rows, p => isPlan(p) && !isEx(p));
+  const others = rows.filter(p => !isEx(p) && !isPlan(p));
+  const otherKinds = [others.some(p => hasSt(p, "closed")) && "閉鎖", others.some(p => hasSt(p, "unknown")) && "状況確認中",
+    others.some(p => !hasSt(p, "closed") && !hasSt(p, "unknown")) && "寄付の募集の情報だけの場所など"].filter(Boolean);
+  $("rg-break").textContent = rows.length ? `載っている${rows.length}か所のうち、` + [
+    `既存施設 ${nEx}か所` + (nBoth ? `（うち建て替え・改修などの計画もある場所 ${nBoth}か所）` : ""),
+    nPlanOnly && `計画・建設中だけ ${nPlanOnly}か所`,
+    others.length && `そのほか ${others.length}か所（${otherKinds.join("・")}）`].filter(Boolean).join("・") + "です。" : "";
+  const onList = rows.filter(p => p.kind === "mosque"), notEx = onList.filter(p => !isEx(p));
+  const nClosed = countOf(notEx, p => hasSt(p, "closed"));
+  const notExLabel = nClosed === notEx.length ? "閉鎖した" : nClosed ? "閉鎖・状況確認中の" : "状況確認中の";
+  $("rg-note-ex").textContent = notEx.length ? `地図・モスク一覧に載っている${onList.length}か所のうち、${notExLabel}${notEx.length}か所は「既存施設」に数えていません。` : "";
 
   // 集まった額（この地域の場所に結び付いた寄付の合計。合計対象・金額が分かるものだけ）と、全国の中での位置
   const refs = new Set();
