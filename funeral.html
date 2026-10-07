@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>葬儀・墓地について調べた結果</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
+  --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
+  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
+  --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
+  --warn:#b42318; --warn-soft:#fdecea;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171c; --card:#1d2128; --text:#e7eaf0; --sub:#9aa3b2; --line:#2e343e;
+    --accent:#8fb5dd; --accent-soft:#25313f; --bar:#6f9bc8; --bar-bg:#2b313b; --over:#b39ddb;
+    --open-bg:#18232f; --open-line:#6f9bc8; --done-bg:#1b1e23; --done-line:#8a93a2; --pend-bg:#2a2418; --pend-line:#d9a441; --extra-bg:#241f2e; --extra-line:#b39ddb;
+    --warn:#f2958c; --warn-soft:#3a1d1b;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.6rem;margin:0 0 4px}
+.lead{color:var(--sub);margin:0 0 20px;font-size:.95rem}
+.lead a{color:var(--accent)}
+.top-row{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin:0 0 16px}
+.top-row .updated{flex:1 1 320px;margin:0}
+.map-btn{display:flex;align-items:center;justify-content:center;flex:0 1 auto;background:var(--accent);color:var(--card);
+  font-weight:800;font-size:1.1rem;text-decoration:none;padding:12px 22px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.map-btn:hover{filter:brightness(1.1)}
+.map-btn.bottom{margin-top:20px}
+.updated{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;background:var(--card);border:2px solid var(--accent);
+  border-radius:12px;padding:12px 18px;margin:0 0 16px}
+.updated .k{font-size:1rem;font-weight:700;color:var(--accent)}
+.updated .v{font-size:1.9rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tile .k{font-size:.8rem;color:var(--sub)}
+.tile .v{font-size:1.6rem;font-weight:700;font-variant-numeric:tabular-nums}
+.tile .s{font-size:.78rem;color:var(--sub)}
+.bytype{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:20px}
+.bytype .tile .v{font-size:1.2rem}
+.filters{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:16px;
+  display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center}
+.fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fg .lbl{font-size:.8rem;color:var(--sub);margin-right:2px}
+button.chip{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;
+  padding:4px 12px;font-size:.85rem;cursor:pointer}
+button.chip.on{background:var(--accent);border-color:var(--accent);color:var(--card)}
+select{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:8px;padding:4px 8px;font-size:.85rem}
+.count{font-size:.85rem;font-weight:400;color:var(--sub)}
+.sec{margin-bottom:28px}
+.sec-h{font-size:1.2rem;margin:0 0 4px;padding-left:10px;border-left:4px solid var(--accent)}
+.sec-sub{font-size:.82rem;color:var(--sub);margin:0 0 10px}
+.sec .list{margin-top:10px}
+details.year{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px}
+details.year > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;
+  padding:12px 16px;font-weight:700;font-size:1.05rem}
+details.year > summary::-webkit-details-marker{display:none}
+details.year > summary::before{content:"▶";font-size:.8rem;color:var(--accent);transition:transform .15s}
+details.year[open] > summary::before{transform:rotate(90deg)}
+details.year > summary .ys{font-size:.85rem;font-weight:400;color:var(--sub)}
+details.year > .list{padding:0 12px 12px}
+.year-tools{display:flex;gap:8px;margin:0 0 10px}
+.year-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.endyear{display:inline-block;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:6px;background:var(--text);color:var(--card)}
+.deadline{display:inline-block;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+.org a{color:var(--accent);font-size:.8rem;margin-left:6px}
+.pend .k{font-size:.75rem;font-weight:700;color:var(--sub);margin-top:4px}
+.pend .t{font-size:.86rem}
+.pend .t.unk{color:var(--sub)}
+.pend ul{margin:2px 0 0;padding-left:1.2em;font-size:.85rem}
+.pend a{color:var(--accent)}
+.tag.pending{background:transparent;border:1px dashed var(--sub);color:var(--sub)}
+.tag.warn{background:var(--warn-soft);border:1px solid var(--warn);color:var(--warn);font-weight:700}
+.empty{font-size:.9rem;color:var(--sub);background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:14px 16px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:12px}
+.card.hl{outline:4px solid #d97706;outline-offset:2px;animation:hl 1.2s ease-in-out 3}
+@keyframes hl{50%{outline-color:transparent}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.72rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tag.plain{background:transparent;border:1px solid var(--line);color:var(--sub)}
+.card h2{font-size:1.05rem;margin:2px 0 0}
+.org,.place{font-size:.85rem;color:var(--sub)}
+.mosque{font-size:.85rem;color:var(--sub);margin-top:2px}
+.mosque a{color:var(--accent)}
+.amt{font-variant-numeric:tabular-nums}
+.amt b{font-size:1.15rem}
+.bar{height:8px;background:var(--bar-bg);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--bar)}
+.bar i.over{background:var(--over)}
+.meta{font-size:.8rem;color:var(--sub)}
+.note{font-size:.8rem;color:var(--sub);border-top:1px dashed var(--line);padding-top:6px}
+/* まとめたカードの中の寄付ページ一覧 */
+.pages{border:1px solid var(--line);border-radius:10px;padding:6px 10px;display:flex;flex-direction:column;gap:6px}
+.pages .h{font-size:.78rem;font-weight:700;color:var(--sub)}
+.pages .pg{border-top:1px dashed var(--line);padding-top:6px;font-size:.84rem}
+.pages .pg:first-of-type{border-top:0;padding-top:0}
+.pages .pg b{font-size:.9rem}
+.card a.map-link{display:inline-block;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
+.card a.src-btn{display:inline-block;font-weight:700;background:var(--accent-soft);padding:2px 10px;border-radius:999px;text-decoration:none}
+.card a{color:var(--accent);font-size:.85rem}
+/* 目次（3つの区分へ飛ぶ） */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.toc a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--text);font-weight:700;
+  padding:8px 16px;border-radius:10px;border:1px solid var(--line);border-left-width:6px}
+.toc a .n{font-weight:400;font-size:.85rem;color:var(--sub)}
+.toc a.open,details.sec.open{background:var(--open-bg);border-left-color:var(--open-line)}
+.toc a.done,details.sec.done{background:var(--done-bg);border-left-color:var(--done-line)}
+.toc a.pend,details.sec.pend{background:var(--pend-bg);border-left-color:var(--pend-line)}
+.toc a.extra,details.sec.extra{background:var(--extra-bg);border-left-color:var(--extra-line)}
+.sec-tools{display:flex;gap:8px;margin:0 0 12px}
+.sec-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+/* 区分の箱（見出しを押すと開閉） */
+details.sec{border:1px solid var(--line);border-left:6px solid;border-radius:14px;padding:0 14px;margin-bottom:18px}
+details.sec > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:14px 2px}
+details.sec > summary::-webkit-details-marker{display:none}
+details.sec > summary::before{content:"▶";font-size:.85rem;color:var(--sub);transition:transform .15s}
+details.sec[open] > summary::before{transform:rotate(90deg)}
+details.sec > summary .sec-h{border:0;padding:0;margin:0}
+details.sec > .body{padding:0 0 14px}
+details.sec.open .card{border-top:4px solid var(--open-line)}
+details.sec.done .card{border-top:4px solid var(--done-line)}
+details.sec.pend .card{border-top:4px solid var(--pend-line)}
+details.sec.extra .card{border-top:4px solid var(--extra-line)}
+/* 募集中・未確定は目立たせる：見出しを色の帯にして大きく */
+details.sec.feature{border-left-width:0;padding:0 14px 4px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+details.sec.feature > summary{margin:0 -14px 12px;padding:16px 18px;border-radius:14px 14px 0 0;color:var(--card)}
+details.sec.feature:not([open]) > summary{margin-bottom:4px;border-radius:14px}
+details.sec.open.feature > summary{background:var(--open-line)}
+details.sec.pend.feature > summary{background:var(--pend-line)}
+details.sec.feature > summary::before{color:var(--card)}
+details.sec.feature > summary .sec-h{font-size:1.55rem;color:var(--card)}
+details.sec.feature > summary .count{color:var(--card);font-size:1rem;font-weight:700;background:rgba(255,255,255,.22);padding:2px 12px;border-radius:999px}
+details.sec.feature > summary .sum-sub{flex-basis:100%;font-size:.88rem;font-weight:400;opacity:.95}
+.toc a.open.big,.toc a.pend.big{color:var(--card);font-size:1.08rem;padding:10px 20px;border-left-width:0}
+.toc a.open.big{background:var(--open-line)}
+.toc a.pend.big{background:var(--pend-line)}
+.toc a.big .n{color:var(--card);opacity:.9}
+/* 都道府県ごとの折りたたみ（見出しを押すと開閉。中のカードは左から右へ並べる） */
+details.pref{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px}
+details.pref > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 14px;font-weight:700;font-size:1.1rem}
+details.pref > summary::-webkit-details-marker{display:none}
+details.pref > summary::before{content:"▶";font-size:.75rem;color:var(--sub);transition:transform .15s}
+details.pref[open] > summary::before{transform:rotate(90deg)}
+details.pref > summary .pn{font-size:.85rem;font-weight:400;color:var(--sub)}
+details.pref > .list{padding:0 12px 12px}
+details.sec.open details.pref{border-left:5px solid var(--open-line)}
+details.sec.pend details.pref{border-left:5px solid var(--pend-line)}
+.pref-tools{display:flex;gap:8px;margin:0 0 10px}
+.pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+/* カードの表に出すチラシ */
+.flyers{display:flex;gap:6px;flex-wrap:wrap}
+.flyers button{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;width:92px;position:relative}
+.flyers img{display:block;width:92px;height:116px;object-fit:cover;object-position:top}
+.flyers .lbl{font-size:.72rem;font-weight:700;color:var(--sub);width:100%}
+.tag.pref{background:var(--text);color:var(--card);font-weight:700}
+/* カードの「詳しい情報」 */
+details.more{border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+details.more > summary{cursor:pointer;padding:6px 10px;font-size:.85rem;font-weight:700;color:var(--accent)}
+details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:8px}
+.more .blk .h{font-size:.78rem;font-weight:700;color:var(--sub)}
+.more .blk .x{font-size:.86rem}
+.more .blk .s{font-size:.72rem;color:var(--sub)}
+.more .thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.more .thumbs button{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;width:110px}
+.more .thumbs img{display:block;width:110px;height:140px;object-fit:cover;object-position:top}
+.more .thumbs span{display:block;font-size:.7rem;color:var(--sub);padding:2px 4px;text-align:left}
+.vid{display:flex;gap:10px;align-items:flex-start;text-decoration:none;color:var(--text) !important}
+.vid .th{position:relative;flex:0 0 128px;height:72px;border-radius:6px;overflow:hidden;background:#000}
+.vid .th img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.vid .th::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-shadow:0 0 6px #000}
+.vid .t{font-size:.84rem;font-weight:700;line-height:1.4}
+.vid .s{font-size:.72rem;color:var(--sub)}
+.more ul{margin:0;padding-left:1.2em;font-size:.85rem}
+/* 画像の拡大表示 */
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;padding:16px;cursor:zoom-out}
+#lb.on{display:flex}
+body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタンを隠す */
+#lb img{max-width:100%;max-height:92vh;border-radius:6px}
+#lb .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#fff;font-size:.85rem}
+.notice{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:.85rem;color:var(--sub)}
+.notice ul{margin:6px 0 0;padding-left:1.2em}
+/* ---- 地域別に見る（area.html） ---- */
+.region{background:var(--card);border:2px solid var(--accent);border-radius:16px;padding:16px;margin:0 0 24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.rg-h{font-size:1.45rem;margin:0 0 4px}
+.rg-lead{font-size:.88rem;color:var(--sub);margin:0 0 12px}
+.rg-pick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 14px}
+.rg-pick label{font-weight:800}
+.rg-pick select{flex:1 1 220px;max-width:100%;font-size:1.15rem;font-weight:700;padding:10px 12px;border:2px solid var(--accent);border-radius:10px}
+.rg-area{font-size:1.55rem;font-weight:800;margin:0 0 8px;line-height:1.3}
+.rg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.rg-tile{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--done-line);border-radius:10px;padding:8px 12px}
+.rg-tile .k{font-size:.82rem;font-weight:700;color:var(--sub)}
+.rg-tile .v{font-size:1.75rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+.rg-tile .v small{font-size:.85rem;margin-left:2px}
+.rg-tile .s{font-size:.72rem;color:var(--sub)}
+.rg-tile.t-existing{border-left-color:var(--accent)}
+.rg-tile.t-plan{border-left-color:var(--extra-line)}
+.rg-tile.t-fund{border-left-color:var(--open-line)}
+.rg-tile.t-land{border-left-color:var(--pend-line)}
+.rg-small{font-size:.75rem;color:var(--sub);margin:6px 0 12px}
+.rg-facts{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+.rg-fact{background:var(--open-bg);border-radius:10px;padding:10px 14px}
+.rg-fact .k{font-size:.82rem;font-weight:700;color:var(--sub)}
+.rg-fact .v{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.rg-fact .s{font-size:.72rem;color:var(--sub)}
+.rg-rank{font-size:.9rem}
+.rg-btns{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.rg-btn{flex:1 1 220px;display:flex;align-items:center;justify-content:center;text-align:center;gap:6px;padding:12px 14px;border-radius:12px;font-weight:800;text-decoration:none}
+.rg-btn.map{background:var(--accent);color:var(--card)}
+.rg-btn.share{background:var(--text);color:var(--card)}
+.rg-sec{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;margin-bottom:14px}
+.rg-sec > .h{font-size:1.08rem;font-weight:800;margin:0 0 2px}
+.rg-sec > .sub{font-size:.78rem;color:var(--sub);margin:0 0 8px}
+.rg-ev ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.rg-ev li{border-left:4px solid var(--line);padding:2px 0 2px 10px}
+.rg-ev li.asof{border-left-color:var(--open-line)}
+.rg-ev .d{font-size:.8rem;font-weight:800;color:var(--accent)}
+.rg-ev .x{font-size:.9rem}
+.rg-ev .x .loc{font-size:.78rem;color:var(--sub);margin-right:4px}
+.rg-ev .m{font-size:.75rem;color:var(--sub)}
+.rg-ev a,.rg-places a{color:var(--accent)}
+.rg-more{margin-top:8px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 16px;font-size:.85rem;cursor:pointer}
+.rg-places .btns{display:flex;flex-wrap:wrap;gap:6px}
+.rg-places button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 12px;font-size:.9rem;cursor:pointer}
+.rg-places button span{font-weight:800;margin-left:4px;color:var(--accent)}
+.rg-places button.on{background:var(--accent);border-color:var(--accent);color:var(--card)}
+.rg-places button.on span{color:var(--card)}
+.rg-places button.zero{opacity:.55}
+.rg-places details > summary{cursor:pointer;font-weight:700;color:var(--accent);margin-bottom:8px}
+.rg-find input{width:100%;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);margin:0 0 8px}
+.rg-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.rg-chips button.chip{padding:6px 12px}
+.rg-chips button.chip span{opacity:.8;margin-left:4px;font-size:.78rem}
+.rg-count{font-size:.85rem;color:var(--sub);margin:0 0 8px}
+.rg-wash:empty{display:none}
+.rg-wash{font-size:.85rem;margin:0 0 10px;padding:8px 12px;border-radius:10px;background:var(--accent-soft);border:1px solid var(--accent)}
+.ol-wash{align-self:flex-start;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:1px 8px;margin-top:2px}
+.rcard{overflow-wrap:anywhere}
+.rcard h3{font-size:1.08rem;margin:0}
+.rc-loc{font-size:.85rem;font-weight:800;color:var(--accent)}
+.rcard dl{display:grid;grid-template-columns:5.5em 1fr;gap:2px 8px;margin:0;font-size:.85rem}
+.rcard dt{color:var(--sub)}
+.rcard dd{margin:0}
+.rcard .tag.st-existing{background:var(--accent-soft);color:var(--accent)}
+.rcard .tag.st-fundraising{background:var(--open-bg);color:var(--open-line);border:1px solid var(--open-line)}
+.rcard .tag.st-plan{background:var(--extra-bg);color:var(--extra-line)}
+.rcard .tag.st-done{background:var(--done-bg);color:var(--done-line)}
+.rcard .tag.st-unknown{background:transparent;border:1px dashed var(--sub);color:var(--sub)}
+.rc-items{border:1px solid var(--line);border-radius:10px;padding:6px 10px;display:flex;flex-direction:column;gap:6px}
+.rc-items > .h{font-size:.78rem;font-weight:700;color:var(--sub)}
+.ri{border-top:1px dashed var(--line);padding-top:6px;font-size:.85rem;display:flex;flex-direction:column;gap:3px}
+.rc-items > .h + .ri{border-top:0;padding-top:0}
+.ri-past > summary{cursor:pointer;font-size:.82rem;font-weight:700;color:var(--accent)}
+.rc-links{display:flex;flex-wrap:wrap;gap:6px}
+.rc-links a{display:inline-block;padding:3px 12px;border-radius:999px;border:1px solid var(--accent);text-decoration:none;font-weight:700}
+.rc-old{color:var(--pend-line);font-weight:700}
+/* 一覧のアウトライン（都道府県 → 市区町村 → 1か所1行） */
+.ol-pref > h4{display:flex;align-items:baseline;gap:8px;font-size:1.1rem;margin:16px 0 4px;padding:6px 12px;border-radius:8px;background:var(--text);color:var(--card)}
+.ol-pref:first-child > h4{margin-top:4px}
+.ol-city > h5{display:flex;align-items:baseline;gap:8px;font-size:1rem;margin:12px 0 6px;padding:0 0 3px 2px;color:var(--accent);border-bottom:2px solid var(--accent-soft)}
+.ol-pref > h4 span,.ol-city > h5 span{font-size:.78rem;font-weight:400;opacity:.85}
+.ol-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:8px}
+details.ol-it{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+details.ol-it[open]{grid-column:1/-1;border-color:var(--accent)}
+details.ol-it > summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:8px 12px 8px 8px}
+details.ol-it > summary::-webkit-details-marker{display:none}
+details.ol-it > summary::after{content:"▼";margin-left:auto;padding-left:6px;font-size:.7rem;color:var(--sub);transition:transform .15s}
+details.ol-it[open] > summary::after{transform:rotate(180deg)}
+.ol-ph{flex:0 0 68px;width:68px;height:68px;border-radius:10px;object-fit:cover;background:var(--bg)}
+.ol-ph.none{display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;color:var(--sub);border:1px dashed var(--line)}
+.ol-tx{display:flex;flex-direction:column;gap:1px;min-width:0;overflow-wrap:anywhere}
+.ol-nm{font-weight:800;font-size:1rem;line-height:1.35}
+.ol-pl{font-size:.82rem;color:var(--sub)}
+.ol-cr{font-size:.66rem;color:var(--sub)}
+details.ol-it[open] .ol-cr{display:none}  /* 開いたら下の大きな写真に同じ表示が出る */
+.ol-body{padding:0 12px 12px}
+.ol-fig{margin:0 0 10px}
+.ol-fig img{display:block;width:100%;max-height:360px;object-fit:cover;border-radius:10px}
+.ol-fig figcaption{font-size:.72rem;color:var(--sub);margin-top:4px}
+.ol-fig a{color:var(--accent)}
+.ol-body .rcard{border:0;padding:0;background:transparent}
+.ol-body .rcard > h3,.ol-body .rc-loc{display:none}
+/* 葬儀・墓地（page_parts.py の FUNERAL_CSS） */
+.fu-sum{font-weight:400;color:var(--sub);margin-left:.6em;font-size:.8rem}
+
+.fu-sum { display: grid; gap: 6px; margin: 0 0 12px; }
+.fu-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 7px 12px; border-radius: 10px;
+          background: var(--bg, #f5f6f8); border: 1px solid var(--line, #e5e7eb); }
+.fu-row.fu-main { background: var(--accent-soft, #e3ecf5); border-color: var(--accent, #2f5d8a); }
+.fu-lab { font-weight: 700; min-width: 11em; }
+.fu-main .fu-lab { font-size: 1.05em; }
+.fu-chips { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.fu-chip { display: inline-block; font-size: 13px; font-weight: 700; line-height: 1.7; padding: 0 10px; border-radius: 999px;
+           border: 1px solid var(--line, #cfd4dc); background: var(--card, #fff); color: var(--text, #222); }
+.fu-chip.fu-yes { background: var(--accent, #2f5d8a); border-color: var(--accent, #2f5d8a); color: var(--card, #fff); }
+.fu-chip.fu-none { font-weight: 400; color: var(--sub, #666); border-style: dashed; }
+.fu-not { font-size: 13px; color: var(--sub, #777); }
+.fu-h { font-size: 13px; font-weight: 700; color: var(--sub, #555); margin: 0 0 4px; }
+.fu-notes { margin: 0 0 10px; padding-left: 1.2em; }
+.fu-notes li { margin: 0 0 8px; line-height: 1.7; overflow-wrap: anywhere; }
+.fu-notes b { margin-right: 6px; }
+.fu-src { display: block; font-size: 12px; color: var(--sub, #666); }
+.fu-read { font-size: 12px; line-height: 1.6; color: var(--sub, #666); margin: 0 0 6px; overflow-wrap: anywhere; }
+.fu-help summary { cursor: pointer; font-size: 12px; color: var(--accent, #2f5d8a); }
+.fu-help p { font-size: 12px; line-height: 1.7; color: var(--sub, #555); margin: 4px 0 0; }
+.fu .est { display: inline-block; font-size: 11px; font-weight: 700; color: #fff; background: #b45309; padding: 0 5px; border-radius: 4px; margin-right: 4px; }
+
+/* 地域別のページ（独立したページなので、枠を控えめに） */
+.region.solo{border-width:1px;box-shadow:none}
+.area-updated{font-size:.85rem;color:var(--sub);margin:-12px 0 14px}
+/* 葬儀・墓地のページ（funeral.html） */
+.fp-sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 18px}
+.fp-sec > h2{font-size:1.25rem;margin:0 0 4px;padding-left:10px;border-left:4px solid var(--accent)}
+.fp-sec > .sub{font-size:.85rem;color:var(--sub);margin:0 0 12px}
+.fp-h{font-size:1rem;font-weight:800;margin:16px 0 8px}
+.fp-h .n{font-size:.85rem;font-weight:400;color:var(--sub);margin-left:6px}
+.fp-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:10px}
+.fe{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere}
+.fe-h b{font-size:1.02rem;display:block;line-height:1.4}
+.fe-loc{font-size:.8rem;color:var(--sub)}
+.fe-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.fe-rows li{font-size:.88rem;line-height:1.7}
+.fe-rows .fu-chip{margin-right:6px}
+.fe-links{display:flex;flex-wrap:wrap;gap:6px}
+.fe-links a{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);padding:2px 10px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
+.fp-none{font-size:.88rem;color:var(--sub);background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:8px 0 0}
+details.fp-more{margin-top:12px}
+details.fp-more > summary{cursor:pointer;font-weight:700;color:var(--accent)}
+details.fp-more > .fp-list{margin-top:10px}
+.fp-note{font-size:.88rem;line-height:1.8}
+.fp-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
+.fp-table th,.fp-table td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.fp-table th:first-child,.fp-table td:first-child{text-align:left}
+.fp-table thead th{font-size:.78rem;color:var(--sub)}
+.fp-table a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="site-nav" aria-label="ページの切り替え"><a href="index.html">地図</a><a href="area.html">地域別</a><a href="mosque.html">モスク一覧</a><a href="donation.html">寄付</a><a href="funeral.html" aria-current=page>葬儀・墓地</a></nav><style>
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 16px; padding: 5px; background: #1e3a5f;
+            border-radius: 14px; font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
+.site-nav a { flex: 1 1 auto; text-align: center; white-space: nowrap; text-decoration: none; color: #fff;
+              font-size: 15px; font-weight: 700; line-height: 1.4; padding: 8px 12px; border-radius: 10px; }
+.site-nav a:hover { background: rgba(255,255,255,.16); }
+.site-nav a[aria-current="page"] { background: #fff; color: #1e3a5f; }
+@media (max-width: 480px) { .site-nav a { font-size: 14px; padding: 7px 6px; } }
+@media print { .site-nav { display: none; } }
+</style>
+  <h1>葬儀・墓地について調べた結果</h1>
+  <p class="lead">モスク（今の施設と、これから建てる・直す建物の計画）について、葬儀に関わる3つのこと
+  ――<b>遺体の洗浄施設</b>（亡くなった人の体を洗い清める部屋。安置する部屋も含む）、<b>モスクでの葬儀の礼拝</b>、<b>墓地</b>――
+  が、公式サイト・寄付ページ・報道などの公開情報にどう書かれているかを調べた結果です。
+  各モスクの結果は、<a href="mosque.html">モスク一覧</a>の詳しいページと、<a href="area.html">地域別のページ</a>の各カードにも出ています。</p>
+  <p class="area-updated">最終更新 2026年10月7日 21:31</p>
+
+  <div class="tiles"><div class='tile'><div class='k'>調べた場所</div><div class='v'>152か所</div><div class='s'>地域別のページの281か所のうち</div></div><div class='tile'><div class='k'>まだ調べていない場所</div><div class='v'>129か所</div><div class='s'>「ない」という意味ではありません</div></div><div class='tile'><div class='k'>遺体の洗浄施設が「ある」と書かれていた</div><div class='v'>1か所</div><div class='s'>今の施設。計画では4か所</div></div><div class='tile'><div class='k'>最後に調べた日</div><div class='v'>2026年10月7日</div><div class='s'>公式サイト・寄付ページ・報道など</div></div></div>
+  
+
+  <section class="fp-sec">
+    <h2>この結果の見方</h2>
+    <p class="fp-note">公式サイト・寄付ページ・報道などに書かれていたことだけを載せています。「遺体の洗浄施設」には、遺体を安置する部屋も含めています。「計画」は、これから建てる・直す建物の計画です。「見つかりませんでした」は、調べた資料に書かれていなかったという意味で、施設や活動が「ない」と確かめたものではありません。「手配・紹介など」は、葬儀の手配や外の施設・墓地の紹介などで、モスクの中で遺体を扱うとは書かれていないものです。イスラム教の葬儀では、亡くなった人の体を洗い清め（日本の湯灌に近い習わし）、布で包み、葬儀の礼拝（ふつう遺体を前にして行います）をしてから土葬します。墓地を開くには、墓地、埋葬等に関する法律にもとづいて、都道府県知事（市によっては市長）の許可が要ります。</p>
+  </section>
+
+  <nav class="toc" aria-label="目次">
+    <a href="#wash">遺体の洗浄施設</a><a href="#prayer">葬儀の礼拝（モスクで）</a><a href="#grave">墓地</a><a href="#by-pref">都道府県ごとの調べた状況</a>
+  </nav>
+
+  <section class="fp-sec" id="wash">
+    <h2>遺体の洗浄施設</h2>
+    <p class="sub">亡くなった人の体を洗い清める部屋（遺体を安置する部屋を含む）が「ある」「作る計画がある」と書かれていたか。</p>
+    <h3 class='fp-h'>「ある」と書かれていた（今の施設）<span class='n'>1か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>八潮マスジド</b><span class='fe-loc'>📍 埼玉県 八潮市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：あり</span>「八潮マスジドには、遺体を洗い、布で包み、葬儀の礼拝をする用意がある（前もって連絡してほしい）」と説明（英語・ウルドゥー語）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://yashiomasjid.com/services/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-bcf67eae'>モスクの詳しい情報</a><a href='area.html?pref=%E5%9F%BC%E7%8E%89%E7%9C%8C&amp;city=%E5%85%AB%E6%BD%AE%E5%B8%82#r-m-bcf67eae'>地域別のページで見る</a></div></article></div>
+    <h3 class='fp-h'>「作る計画がある」と書かれていた（これから建てる・直す建物）<span class='n'>4か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>Sakai Machi Jame Masjid</b><span class='fe-loc'>📍 茨城県 境町</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>建てる予定の施設の一覧に「Dead Body Shower Room（遺体を洗う部屋）」がある（土地は2024年1月に購入済み。2026年7月の写真ではまだ建物はない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://sakaimachijamemasjid.com/aboutus/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-d8cfd472'>モスクの詳しい情報</a><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E5%A2%83%E7%94%BA#r-m-d8cfd472'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>アッサラームファンデーション</b><span class='fe-loc'>📍 東京都 台東区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>新しい東京中央マスジド（第2段階）の計画に「Janaza washing（遺体を洗う）専用の場所を作る」とある（2025年の完成予定と書かれていた）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='http://assalaamfoundation.jp/new-project/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-45d87679'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%8F%B0%E6%9D%B1%E5%8C%BA#r-m-45d87679'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Machida Central Mosque</b><span class='fe-loc'>📍 東京都 町田市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>計画中の施設の一覧に「結婚・入信・葬儀の準備（埋葬前に遺体を洗うことを含む）のための設備」がある（今は土地を買う段階。建物は第2段階で2028年12月までが目標）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://ticec.org/cause-detail.html' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-102059f5'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E7%94%BA%E7%94%B0%E5%B8%82#r-m-102059f5'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Future Minakamo Islamic Center</b><span class='fe-loc'>📍 岐阜県 美濃加茂市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>建物の改修計画で「Janazah Preparation Room（遺体の準備室）」を設け、イスラムの習わしに沿って亡くなった人を整え世話をする専用の場所にすると説明<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.minokamoislamiccenter.com/layanan/community-services/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-c7147f4a'>モスクの詳しい情報</a><a href='area.html?pref=%E5%B2%90%E9%98%9C%E7%9C%8C&amp;city=%E7%BE%8E%E6%BF%83%E5%8A%A0%E8%8C%82%E5%B8%82#r-m-c7147f4a'>地域別のページで見る</a></div></article></div>
+    <h3 class='fp-h'>運営団体が「モスクの中では洗わない」と説明していた<span class='n'>1か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>錦糸町モスク</b><span class='fe-loc'>📍 東京都 墨田区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-no'>今の施設：しないと説明</span>今のモスク（江東橋4丁目のビル2階）は、設備の都合で中では遺体を洗っておらず、許可のある外の施設を紹介していると説明<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://kinshichomasjid.com/funeral/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-d7302314'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%A2%A8%E7%94%B0%E5%8C%BA#r-m-d7302314'>地域別のページで見る</a></div></article></div>
+    <h3 class='fp-h'>洗う手配・紹介だけが書かれていた（モスクの中にあるとは書かれていない）<span class='n'>2か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>マスジド大塚</b><span class='fe-loc'>📍 東京都 豊島区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>運営団体（日本イスラーム文化センター）は、運営する各マスジドで、グスル（遺体を洗い清めること）とカファン（布で包むこと）の手配を受け付けると説明。どこで遺体を洗うか、マスジド大塚の中に遺体を洗う部屋があるかは書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://islam.or.jp/services/janazza-funeral-ceremony/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-720d1e11'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E8%B1%8A%E5%B3%B6%E5%8C%BA#r-m-720d1e11'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>神戸ムスリムモスク</b><span class='fe-loc'>📍 兵庫県 神戸市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>葬儀支援サービスで「経験のあるチームが、グスル（遺体を洗うこと）・カファン（布で包むこと）・葬儀の礼拝を行う」と説明。どこで遺体を洗うかは書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.kobemosque.com/ja/services/janazah-services/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-b1b846a2'>モスクの詳しい情報</a><a href='area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C&amp;city=%E7%A5%9E%E6%88%B8%E5%B8%82#r-m-b1b846a2'>地域別のページで見る</a></div></article></div>
+    <p class='fp-none'>このほか139か所は、調べた資料に遺体の洗浄施設のことが書かれていませんでした（「ない」と確かめたものではありません）。</p>
+    <p class="fp-none"><a href="area.html?f=wash">地域別のページで「遺体の洗浄施設あり」を地域ごとに見る →</a></p>
+  </section>
+
+  <section class="fp-sec" id="prayer">
+    <h2>葬儀の礼拝（モスクで）</h2>
+    <p class="sub">葬儀の礼拝（ふつう遺体を前にして行います）を、そのモスクで行うと書かれていたか。</p>
+    <h3 class='fp-h'>モスクで行うと書かれていた<span class='n'>3か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>八潮マスジド</b><span class='fe-loc'>📍 埼玉県 八潮市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：モスクで行う</span>同じ説明。葬儀のページには、葬儀の礼拝のやり方も載っている<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://yashiomasjid.com/janazah-funeral/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-bcf67eae'>モスクの詳しい情報</a><a href='area.html?pref=%E5%9F%BC%E7%8E%89%E7%9C%8C&amp;city=%E5%85%AB%E6%BD%AE%E5%B8%82#r-m-bcf67eae'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>錦糸町モスク</b><span class='fe-loc'>📍 東京都 墨田区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：モスクで行う</span>葬儀の礼拝は「状況に応じて、モスクか屋外の決まった場所で行える」と説明。死亡届や埋葬許可などの手続きの相談にものる<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://kinshichomasjid.com/funeral/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-d7302314'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%A2%A8%E7%94%B0%E5%8C%BA#r-m-d7302314'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>マディーナマスジド東京</b><span class='fe-loc'>📍 東京都 北区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：モスクで行う</span>礼拝時刻の案内サイト（Mawaqit）のモスク紹介で、設備・サービスの一覧に「Salât al-Janaza（葬儀の礼拝）」がある<span class='fu-src'>出どころ：Mawaqitのモスク紹介　確認日 2026年10月7日　<a href='https://mawaqit.net/en/m/madina-masjid-tokyo-mateina-masuzido-kita-city-tokyo' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-06dd5786'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%8C%97%E5%8C%BA#r-m-06dd5786'>地域別のページで見る</a></div></article></div>
+    
+    <details class='fp-more'><summary>葬儀の手配・紹介など（どこで行うかは書かれていない、など）：16か所（押すと開きます）</summary><div class='fp-list'><article class='fe'><div class='fe-h'><b>札幌マスジド</b><span class='fe-loc'>📍 北海道 札幌市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>公式サイトの活動の一覧に「Janazza (Funeral)」の見出しがあるが、説明は見本の文（Lorem ipsum）のままで、中身は書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://sapporomasjid.or.jp/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-4958c589'>モスクの詳しい情報</a><a href='area.html?pref=%E5%8C%97%E6%B5%B7%E9%81%93&amp;city=%E6%9C%AD%E5%B9%8C%E5%B8%82#r-m-4958c589'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>つくばモスク</b><span class='fe-loc'>📍 茨城県 つくば市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>公式サイトの「サービス」の一覧に「Janazah（葬儀）」があるが、説明のページには中身が書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://tsukuba-islamic-assoc.com/services/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-7c426b89'>モスクの詳しい情報</a><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E3%81%A4%E3%81%8F%E3%81%B0%E5%B8%82#r-m-7c426b89'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Sakai Machi Jame Masjid</b><span class='fe-loc'>📍 茨城県 境町</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>同じ一覧に「Muslim Funeral Services（ムスリムの葬儀の手伝い）」がある。モスクで葬儀の礼拝をするかは書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://sakaimachijamemasjid.com/aboutus/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-d8cfd472'>モスクの詳しい情報</a><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E5%A2%83%E7%94%BA#r-m-d8cfd472'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Chiba Mosque / Masjid Juma Prayer 12:30</b><span class='fe-loc'>📍 千葉県 千葉市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>LaunchGoodの寄付ページ（終了）に、マスジドで行う活動として「Funeral related activities（葬儀に関わる活動）」がある。中身は書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.launchgood.com/v4/campaign/support_for_muslims_in_japan_to_complete_their_masjid_in_chiba_japan_3' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-338ac382'>モスクの詳しい情報</a><a href='area.html?pref=%E5%8D%83%E8%91%89%E7%9C%8C&amp;city=%E5%8D%83%E8%91%89%E5%B8%82#r-m-338ac382'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>アッサラームファンデーション</b><span class='fe-loc'>📍 東京都 台東区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>アッサラームマスジドに集う信徒のために「葬儀を上げ、埋葬の手配を行っています」と説明（どこで行うかは書かれていない）。活動の一覧にも「葬儀の設備と埋葬の手伝いを提供」とある<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='http://assalaamfoundation.jp/ja/funeral/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-45d87679'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%8F%B0%E6%9D%B1%E5%8C%BA#r-m-45d87679'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>東京ジャーミイ･ディヤーナト トルコ文化センター</b><span class='fe-loc'>📍 東京都 渋谷区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>葬儀（ジャナーザ）は、問い合わせフォームか電話で相談するよう案内している（中身は書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://tokyocamii.org/ja/support/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-87b0e480'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E6%B8%8B%E8%B0%B7%E5%8C%BA#r-m-87b0e480'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>マスジド大塚</b><span class='fe-loc'>📍 東京都 豊島区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>葬儀の礼拝から土葬までの一通りの手配を受け付けると説明（どこで葬儀の礼拝をするかは書かれていない）。遺体を母国へ送る場合の手伝いもする<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://islam.or.jp/services/janazza-funeral-ceremony/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-720d1e11'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E8%B1%8A%E5%B3%B6%E5%8C%BA#r-m-720d1e11'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>新小岩マスジド</b><span class='fe-loc'>📍 東京都 江戸川区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>LaunchGoodの寄付ページ（第1弾・終了）に、マスジドで行う活動として「Funeral related activities（葬儀に関わる活動）」がある。中身は書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.launchgood.com/v4/campaign/lets_buy_a_house_in_paradise_shinkoiwa_masjid_complex_construction_is_the_opportunity' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-3afc355e'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E6%B1%9F%E6%88%B8%E5%B7%9D%E5%8C%BA#r-m-3afc355e'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Haijima Masjid</b><span class='fe-loc'>📍 東京都 福生市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>活動の紹介に「Janazah (Funeral)」があり、「葬儀の時に支える」と書かれている。モスクで葬儀の礼拝をするか、遺体を扱うかは書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://haijimamosque.com/activities' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-fe102b8a'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E7%A6%8F%E7%94%9F%E5%B8%82#r-m-fe102b8a'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Darut Tauhid Masjid</b><span class='fe-loc'>📍 神奈川県 横浜市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>新しいマスジドの計画の目的に「イスラムの習わしに沿った葬儀のサービス」を挙げている（中身は書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://dticc.jp/mosque-project/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-882ed44f'>モスクの詳しい情報</a><a href='area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C&amp;city=%E6%A8%AA%E6%B5%9C%E5%B8%82#r-m-882ed44f'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Masjid Nusantara Tsubame, Niigata</b><span class='fe-loc'>📍 新潟県 燕市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>2026年9月6日、このマスジドで、亡くなった人を洗って布で包む方法を学ぶ研修会を開いた（13人参加。講義・道具の準備・洗い方と包み方の実習）<span class='fu-src'>出どころ：運営団体と関係団体（NU日本支部の記事）　確認日 2026年10月7日　<a href='https://pcinujepang.org/warga-muslim-niigata-ikuti-pelatihan-pemulasaran-jenazah-sesuai-syariat-islam/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-d000fe5b'>モスクの詳しい情報</a><a href='area.html?pref=%E6%96%B0%E6%BD%9F%E7%9C%8C&amp;city=%E7%87%95%E5%B8%82#r-m-d000fe5b'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>マスジドインドネシア名古屋</b><span class='fe-loc'>📍 愛知県 名古屋市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>サービスの一覧に「Pengurusan Jenazah（葬儀総務）」がある。中身は書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://masjidmina.wixsite.com/minagoya/layanan' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-679d2ddd'>モスクの詳しい情報</a><a href='area.html?pref=%E6%84%9B%E7%9F%A5%E7%9C%8C&amp;city=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82#r-m-679d2ddd'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Masjid UMMI(仮)</b><span class='fe-loc'>📍 三重県 鈴鹿市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>公式サイトに「近日」の催しとして、亡くなった人の扱い方（遺体の清めと布で包むこと）を学ぶ研修（Pelatihan Pemulasaraan Jenazah）が載っている<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://masjid.ummi.jp/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-0a2b0f6a'>モスクの詳しい情報</a><a href='area.html?pref=%E4%B8%89%E9%87%8D%E7%9C%8C&amp;city=%E9%88%B4%E9%B9%BF%E5%B8%82#r-m-0a2b0f6a'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>兵庫マスジド</b><span class='fe-loc'>📍 兵庫県 神戸市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>運営団体のJAN Foundationは、葬儀のための車を無料で出すと説明（どこで葬儀の礼拝をするかは書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://janfoundation.jp/funerals.php' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-04a6c7b2'>モスクの詳しい情報</a><a href='area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C&amp;city=%E7%A5%9E%E6%88%B8%E5%B8%82#r-m-04a6c7b2'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>神戸ムスリムモスク</b><span class='fe-loc'>📍 兵庫県 神戸市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>葬儀支援サービス（申込書あり）。寄付で、高齢者・けが人・亡くなった人を運ぶ車を用意したと案内している。葬儀の礼拝をどこで行うかは書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.kobemosque.com/ja/services/janazah-services/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-b1b846a2'>モスクの詳しい情報</a><a href='area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C&amp;city=%E7%A5%9E%E6%88%B8%E5%B8%82#r-m-b1b846a2'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>MASJID INDONESIA KURASHIKI</b><span class='fe-loc'>📍 岡山県 倉敷市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>LaunchGoodの寄付ページ（改修・終了）に、マスジドで行う予定の活動として「Jenazah procedure（亡くなった人の手続き）」がある。中身は書かれていない<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.launchgood.com/v4/campaign/support_muslims_in_kurashiki_okayama_japan_in_their_masjid_renovation_project' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-13d2fd4f'>モスクの詳しい情報</a><a href='area.html?pref=%E5%B2%A1%E5%B1%B1%E7%9C%8C&amp;city=%E5%80%89%E6%95%B7%E5%B8%82#r-m-13d2fd4f'>地域別のページで見る</a></div></article></div></details>
+    <p class='fp-none'>このほか128か所は、調べた資料に葬儀のことが書かれていませんでした（「ない」と確かめたものではありません）。</p>
+  </section>
+
+  <section class="fp-sec" id="grave">
+    <h2>墓地</h2>
+    <p class="sub">モスクや運営団体が、土葬の墓地を持っている・運営している・作る計画があると書かれていたか。
+      墓地を開くには、墓地、埋葬等に関する法律にもとづいて、都道府県知事（市によっては市長）の許可が要ります。</p>
+    <h3 class='fp-h'>墓地がある・運営していると書かれていた<span class='n'>5か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>谷和原ムスリム墓地（茨城県常総市）</b><span class='fe-loc'>📍 茨城県 常総市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：あり</span>日本イスラーム文化センター（マスジド大塚）が運営する土葬の墓地。2013年8月に、墓440基・1人12万円で埋葬できる墓地を作ったと発表（サウジアラビアの支援）。今も運営団体の葬儀のページで、この墓地での土葬を手配すると案内している<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://islam.or.jp/services/janazza-funeral-ceremony/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E5%B8%B8%E7%B7%8F%E5%B8%82#r-p-8d8a2a3c'>地域別のページで見る</a><a href='donation.html#d-f88c1fe2'>寄付の詳しい情報</a></div></article><article class='fe'><div class='fe-h'><b>日本ムスリム協会</b><span class='fe-loc'>📍 東京都 品川区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：あり</span>山梨県甲州市塩山にあるイスラーム霊園を管理・運営していると説明（霊園の規約あり。毎年、会員で草刈りと清掃をしている）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.muslim.or.jp/aboutus' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-0409549f'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%93%81%E5%B7%9D%E5%8C%BA#r-m-0409549f'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>マスジド大塚</b><span class='fe-loc'>📍 東京都 豊島区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：あり</span>運営団体が茨城県常総市の「谷和原（やわら）イスラーム墓地」を運営し、そこでの土葬を手配すると説明。2013年8月に、墓440基・1人12万円で埋葬できる墓地を作ったと発表していた<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://islam.or.jp/services/janazza-funeral-ceremony/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-720d1e11'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E8%B1%8A%E5%B3%B6%E5%8C%BA#r-m-720d1e11'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>大阪マスジド</b><span class='fe-loc'>📍 大阪府 大阪市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：あり</span>公式サイトの寄付ページに「大阪マスジドの墓地（Graveyard）」の部門があり、寄付は埋葬と維持管理だけに使うと説明（墓地の場所は書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://osakamasjid.org/donation/14' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-b6caf4c0'>モスクの詳しい情報</a><a href='area.html?pref=%E5%A4%A7%E9%98%AA%E5%BA%9C&amp;city=%E5%A4%A7%E9%98%AA%E5%B8%82#r-m-b6caf4c0'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>大阪イスラミックセンター 橋本（霊園）</b><span class='fe-loc'>📍 和歌山県 橋本市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>今の施設：あり</span>Googleマップ上の名前は「大阪イスラミックセンター 橋本（霊園）」。同じ地区（和歌山県橋本市彦谷）に一般社団法人HASHIMOTO MUSLIM GRAVEYARDが登録されている（2020年7月）。研究者の調査（店田廣文、2022年）にも「橋本霊園」とある<span class='fu-src'>出どころ：法人の登録・研究者の調査　確認日 2026年10月7日　<a href='https://www.houjin-bangou.nta.go.jp/henkorireki-johoto.html?selHouzinNo=3170005006832' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-37b0b842'>モスクの詳しい情報</a><a href='area.html?pref=%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C&amp;city=%E6%A9%8B%E6%9C%AC%E5%B8%82#r-m-37b0b842'>地域別のページで見る</a></div></article></div>
+    <h3 class='fp-h'>墓地を作る計画が書かれていた<span class='n'>3か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>ムスリム墓地（茨城県桜川市の計画）</b><span class='fe-loc'>📍 茨城県 桜川市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>千葉イスラーム文化センターが、桜川市で寺が許可を得た土葬の墓地（約3000㎡）の永代使用権を得て、関東で最大のムスリム墓地にする計画だった（土地代・整備費1億5000万円）。2024年3月1日、地元の反対の声と請願を理由に土地の持ち主が使えないとし、新しい土地を探すと告知した<span class='fu-src'>出どころ：寄付ページの主催者　確認日 2026年10月7日　<a href='https://www.launchgood.com/v4/campaign/build_muslim_graveyard_in_japan' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E6%A1%9C%E5%B7%9D%E5%B8%82#r-p-fba5e3a6'>地域別のページで見る</a><a href='donation.html#d-89ecbd0b'>寄付の詳しい情報</a></div></article><article class='fe'><div class='fe-h'><b>本庄ムスリム墓地（区画の利用権）</b><span class='fe-loc'>📍 埼玉県 本庄市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>KMII Jepang（在日インドネシア・イスラーム家族会）が、埼玉県本庄市の土葬の墓地の区画の利用権を、ワクフ（寄進）として集めている。第1期は10区画（約300㎡・120人分）。2026年8月22日に手付金200万円を払い、残りを2027年3月31日までに払う計画<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://waqaf-makam.web.app/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='area.html?pref=%E5%9F%BC%E7%8E%89%E7%9C%8C&amp;city=%E6%9C%AC%E5%BA%84%E5%B8%82#r-p-3b70a91b'>地域別のページで見る</a><a href='donation.html#d-f025585a'>寄付の詳しい情報</a></div></article><article class='fe'><div class='fe-h'><b>富山モスク</b><span class='fe-loc'>📍 富山県 射水市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-yes'>計画：あり</span>モスクの代表が、土葬できる墓地を作るため10〜20人の地主と土地の買い取りを交渉してきたが、地域の住民の反対で計画は進んでいないと話している。富山県にも霊園の整備を頼んでいるという（同じ記事）<span class='fu-src'>出どころ：報道（モスクの代表の話）　確認日 2026年10月7日　<a href='https://gendai.media/articles/-/148285?page=2' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-a9c2ebc4'>モスクの詳しい情報</a><a href='area.html?pref=%E5%AF%8C%E5%B1%B1%E7%9C%8C&amp;city=%E5%B0%84%E6%B0%B4%E5%B8%82#r-m-a9c2ebc4'>地域別のページで見る</a></div></article></div>
+    <h3 class='fp-h'>計画地では「土葬はしない」と説明していた<span class='n'>1か所</span></h3><div class='fp-list'><article class='fe'><div class='fe-h'><b>藤沢マスジド（計画）</b><span class='fe-loc'>📍 神奈川県 藤沢市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-no'>計画：しないと説明</span>公式サイトのQ&amp;Aで「建設予定地と隣の駐車場用地は土葬墓地の基準を満たせないことが確認されており、この場所で土葬はしない。当地で墓地を設ける計画は一切ない」と説明。埋葬は、すでにある霊園（埼玉県本庄市・山梨県甲州市の土葬墓地）を使う考えとしている<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://sites.google.com/view/fujisawa-masjid/%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%81%94%E8%B3%AA%E5%95%8Fqa' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C&amp;city=%E8%97%A4%E6%B2%A2%E5%B8%82#r-n-843ee149'>地域別のページで見る</a><a href='donation.html#d-e430cbcb'>寄付の詳しい情報</a></div></article></div>
+    <details class='fp-more'><summary>墓地の紹介・埋葬の手配など：8か所（押すと開きます）</summary><div class='fp-list'><article class='fe'><div class='fe-h'><b>つくばモスク</b><span class='fe-loc'>📍 茨城県 つくば市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>2024年2月、茨城県桜川市のムスリム墓地の計画への募金（目標500万円）を呼びかけた（自分たちの墓地については書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://tsukuba-islamic-assoc.com/category/news/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-7c426b89'>モスクの詳しい情報</a><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E3%81%A4%E3%81%8F%E3%81%B0%E5%B8%82#r-m-7c426b89'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>アッサラームファンデーション</b><span class='fe-loc'>📍 東京都 台東区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>埋葬の手配をしていると説明（自分たちの墓地については書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='http://assalaamfoundation.jp/ja/funeral/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-45d87679'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%8F%B0%E6%9D%B1%E5%8C%BA#r-m-45d87679'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>錦糸町モスク</b><span class='fe-loc'>📍 東京都 墨田区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>東京やその近くのムスリム墓地との連絡・埋葬の手配を手伝うと説明（自分たちの墓地については書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://kinshichomasjid.com/funeral/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-d7302314'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E5%A2%A8%E7%94%B0%E5%8C%BA#r-m-d7302314'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>新小岩マスジド</b><span class='fe-loc'>📍 東京都 江戸川区</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>寄付ページの更新（2024年3月）で、ムスリム墓地の計画（茨城県桜川市）への寄付を呼びかけていた（自分たちの墓地については書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.launchgood.com/v4/campaign/lets_buy_a_house_in_paradise_shinkoiwa_masjid_complex_construction_is_the_opportunity' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-3afc355e'>モスクの詳しい情報</a><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD&amp;city=%E6%B1%9F%E6%88%B8%E5%B7%9D%E5%8C%BA#r-m-3afc355e'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>富山モスク</b><span class='fe-loc'>📍 富山県 射水市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>モスクの代表が「北陸には土葬できる墓地がなく、今は山梨県甲州市のイスラム霊園か、埼玉県本庄市の本庄児玉聖地霊園まで遺体を運んで土葬している」と話している（週刊現代、2025年3月）<span class='fu-src'>出どころ：報道（モスクの代表の話）　確認日 2026年10月7日　<a href='https://gendai.media/articles/-/148285?page=2' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-a9c2ebc4'>モスクの詳しい情報</a><a href='area.html?pref=%E5%AF%8C%E5%B1%B1%E7%9C%8C&amp;city=%E5%B0%84%E6%B0%B4%E5%B8%82#r-m-a9c2ebc4'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>兵庫マスジド</b><span class='fe-loc'>📍 兵庫県 神戸市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>JAN Foundationが「日本で墓の場所を無料で用意する」と説明（どこの墓地かは書かれていない）<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://janfoundation.jp/funerals.php' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-04a6c7b2'>モスクの詳しい情報</a><a href='area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C&amp;city=%E7%A5%9E%E6%88%B8%E5%B8%82#r-m-04a6c7b2'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>神戸ムスリムモスク</b><span class='fe-loc'>📍 兵庫県 神戸市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>今の施設：手配・紹介など</span>関西のムスリムの墓地として、神戸市立外国人墓地と、大阪イスラミックセンターの橋本墓地（和歌山県橋本市）を案内している<span class='fu-src'>出どころ：運営団体　確認日 2026年10月7日　<a href='https://www.kobemosque.com/ja/services/janazah-services/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-b1b846a2'>モスクの詳しい情報</a><a href='area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C&amp;city=%E7%A5%9E%E6%88%B8%E5%B8%82#r-m-b1b846a2'>地域別のページで見る</a></div></article><article class='fe'><div class='fe-h'><b>Masjid Al-Fatih Prefektur Kochi</b><span class='fe-loc'>📍 高知県 高知市</span></div><ul class='fe-rows'><li><span class='fu-chip fu-arr'>計画：手配・紹介など</span>寄付ページに、このマスジドは「ムスリムの埋葬（pemakaman）の取り扱い」の設備も用意する予定と書かれている。墓地を持つのか、埋葬の手配をするのかは書かれていない<span class='fu-src'>出どころ：寄付の募集団体（SolusiPeduli）　確認日 2026年10月7日　<a href='https://solusipeduli.org/campaign/masjidalfatihkochi/' target='_blank' rel='noopener'>出典を見る</a></span></li></ul><div class=fe-links><a href='mosque.html#m-95f0ae32'>モスクの詳しい情報</a><a href='area.html?pref=%E9%AB%98%E7%9F%A5%E7%9C%8C&amp;city=%E9%AB%98%E7%9F%A5%E5%B8%82#r-m-95f0ae32'>地域別のページで見る</a></div></article></div></details>
+    <p class='fp-none'>このほか136か所は、調べた資料に墓地のことが書かれていませんでした（「ない」と確かめたものではありません）。</p>
+    <h3 class='fp-h'>寄付の募集・計画の情報がある土葬墓地<span class='n'>4か所</span></h3><p class='sub'>寄付のページの「土葬墓地」に載っているものと同じです（モスクの墓地の調べた結果とは別に、寄付の情報から分かったもの）。</p><div class='fp-list'><article class='fe'><div class='fe-h'><b>谷和原ムスリム墓地（茨城県常総市）</b><span class=fe-loc>📍 茨城県 常総市</span></div><div class='fe-loc'>状況：完了　寄付：過去にあり</div><div class='fe-links'><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E5%B8%B8%E7%B7%8F%E5%B8%82#r-p-8d8a2a3c'>地域別のページで見る</a><a href='donation.html#d-f88c1fe2'>寄付の詳しい情報</a></div></article><article class='fe'><div class='fe-h'><b>ムスリム墓地（茨城県桜川市の計画）</b><span class=fe-loc>📍 茨城県 桜川市</span></div><div class='fe-loc'>状況：状況確認中　寄付：過去にあり</div><div class='fe-links'><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C&amp;city=%E6%A1%9C%E5%B7%9D%E5%B8%82#r-p-fba5e3a6'>地域別のページで見る</a><a href='donation.html#d-89ecbd0b'>寄付の詳しい情報</a></div></article><article class='fe'><div class='fe-h'><b>本庄ムスリム墓地（区画の利用権）</b><span class=fe-loc>📍 埼玉県 本庄市</span></div><div class='fe-loc'>状況：寄付募集中　寄付：募集中</div><div class='fe-links'><a href='area.html?pref=%E5%9F%BC%E7%8E%89%E7%9C%8C&amp;city=%E6%9C%AC%E5%BA%84%E5%B8%82#r-p-3b70a91b'>地域別のページで見る</a><a href='donation.html#d-f025585a'>寄付の詳しい情報</a></div></article><article class='fe'><div class='fe-h'><b>大阪イスラミックセンター 橋本（霊園）</b><span class=fe-loc>📍 和歌山県 橋本市</span></div><div class='fe-loc'>状況：既存　寄付：なし</div><div class='fe-links'><a href='area.html?pref=%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C&amp;city=%E6%A9%8B%E6%9C%AC%E5%B8%82#r-m-37b0b842'>地域別のページで見る</a></div></article></div>
+  </section>
+
+  <section class="fp-sec" id="by-pref">
+    <h2>都道府県ごとの調べた状況</h2>
+    <p class="sub">「場所」は地域別のページの場所の数（今あるモスク・計画地など）です。都道府県の名前を押すと、地域別のページでその都道府県が開きます。</p>
+    <details class="fp-more"><summary>表を開く</summary>
+      <table class="fp-table">
+        <thead><tr><th>都道府県</th><th>場所</th><th>調べた</th><th>まだ</th><th>洗浄施設「あり」（今）</th><th>同（計画）</th></tr></thead>
+        <tbody><tr><td><a href='area.html?pref=%E5%8C%97%E6%B5%B7%E9%81%93'>北海道</a></td><td>7</td><td>5</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%9D%92%E6%A3%AE%E7%9C%8C'>青森県</a></td><td>1</td><td>0</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%B2%A9%E6%89%8B%E7%9C%8C'>岩手県</a></td><td>2</td><td>1</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%AE%AE%E5%9F%8E%E7%9C%8C'>宮城県</a></td><td>7</td><td>2</td><td>5</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%B1%B1%E5%BD%A2%E7%9C%8C'>山形県</a></td><td>2</td><td>0</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E7%A6%8F%E5%B3%B6%E7%9C%8C'>福島県</a></td><td>4</td><td>2</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C'>茨城県</a></td><td>28</td><td>17</td><td>11</td><td>—</td><td>1</td></tr><tr><td><a href='area.html?pref=%E6%A0%83%E6%9C%A8%E7%9C%8C'>栃木県</a></td><td>12</td><td>6</td><td>6</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E7%BE%A4%E9%A6%AC%E7%9C%8C'>群馬県</a></td><td>13</td><td>5</td><td>8</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%9F%BC%E7%8E%89%E7%9C%8C'>埼玉県</a></td><td>30</td><td>17</td><td>13</td><td>1</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%8D%83%E8%91%89%E7%9C%8C'>千葉県</a></td><td>24</td><td>10</td><td>14</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD'>東京都</a></td><td>28</td><td>26</td><td>2</td><td>—</td><td>2</td></tr><tr><td><a href='area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C'>神奈川県</a></td><td>14</td><td>6</td><td>8</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E6%96%B0%E6%BD%9F%E7%9C%8C'>新潟県</a></td><td>5</td><td>4</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%AF%8C%E5%B1%B1%E7%9C%8C'>富山県</a></td><td>3</td><td>2</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E7%9F%B3%E5%B7%9D%E7%9C%8C'>石川県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E7%A6%8F%E4%BA%95%E7%9C%8C'>福井県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%B1%B1%E6%A2%A8%E7%9C%8C'>山梨県</a></td><td>2</td><td>1</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%95%B7%E9%87%8E%E7%9C%8C'>長野県</a></td><td>6</td><td>1</td><td>5</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%B2%90%E9%98%9C%E7%9C%8C'>岐阜県</a></td><td>7</td><td>3</td><td>4</td><td>—</td><td>1</td></tr><tr><td><a href='area.html?pref=%E9%9D%99%E5%B2%A1%E7%9C%8C'>静岡県</a></td><td>5</td><td>2</td><td>3</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E6%84%9B%E7%9F%A5%E7%9C%8C'>愛知県</a></td><td>21</td><td>11</td><td>10</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E4%B8%89%E9%87%8D%E7%9C%8C'>三重県</a></td><td>3</td><td>1</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E6%BB%8B%E8%B3%80%E7%9C%8C'>滋賀県</a></td><td>2</td><td>1</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E4%BA%AC%E9%83%BD%E5%BA%9C'>京都府</a></td><td>5</td><td>3</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%A4%A7%E9%98%AA%E5%BA%9C'>大阪府</a></td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C'>兵庫県</a></td><td>4</td><td>3</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%A5%88%E8%89%AF%E7%9C%8C'>奈良県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C'>和歌山県</a></td><td>3</td><td>2</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%B3%A5%E5%8F%96%E7%9C%8C'>鳥取県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%B3%B6%E6%A0%B9%E7%9C%8C'>島根県</a></td><td>2</td><td>0</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%B2%A1%E5%B1%B1%E7%9C%8C'>岡山県</a></td><td>5</td><td>2</td><td>3</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%BA%83%E5%B3%B6%E7%9C%8C'>広島県</a></td><td>3</td><td>0</td><td>3</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%BE%B3%E5%B3%B6%E7%9C%8C'>徳島県</a></td><td>2</td><td>1</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%A6%99%E5%B7%9D%E7%9C%8C'>香川県</a></td><td>2</td><td>0</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E6%84%9B%E5%AA%9B%E7%9C%8C'>愛媛県</a></td><td>2</td><td>2</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%AB%98%E7%9F%A5%E7%9C%8C'>高知県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E7%A6%8F%E5%B2%A1%E7%9C%8C'>福岡県</a></td><td>4</td><td>2</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E4%BD%90%E8%B3%80%E7%9C%8C'>佐賀県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%95%B7%E5%B4%8E%E7%9C%8C'>長崎県</a></td><td>1</td><td>0</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E7%86%8A%E6%9C%AC%E7%9C%8C'>熊本県</a></td><td>1</td><td>1</td><td>0</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%A4%A7%E5%88%86%E7%9C%8C'>大分県</a></td><td>2</td><td>1</td><td>1</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E5%AE%AE%E5%B4%8E%E7%9C%8C'>宮崎県</a></td><td>2</td><td>0</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C'>鹿児島県</a></td><td>2</td><td>0</td><td>2</td><td>—</td><td>—</td></tr><tr><td><a href='area.html?pref=%E6%B2%96%E7%B8%84%E7%9C%8C'>沖縄県</a></td><td>3</td><td>2</td><td>1</td><td>—</td><td>—</td></tr></tbody>
+      </table>
+    </details>
+  </section>
+
+  <div class="notice">
+    <b>このページについて</b>
+    <ul>
+      <li>載せているのは、出典で確かめられたものだけです（推定は載せていません）。それぞれの「出典を見る」から元の資料を確認できます。</li>
+      <li>「調べた範囲では見つかりませんでした」「まだ調べていません」は、施設や活動が「ない」という意味ではありません。</li>
+      <li>このページは、特定の人や団体への抗議・迷惑行為のために作ったものではありません。</li>
+      <li>誤りのご指摘・削除のご希望・情報提供は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ4DvW3eASTXY2OnMTZaSNuvdp4npMC5MoNbLxKNSCL1-jQ/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお寄せください。</li>
+    </ul>
+  </div>
+</div>
+
+<button type="button" id="to-top" aria-label="ページの上に戻る">↑<span>上へ</span></button>
+<style>
+  #to-top { position: fixed; right: 16px; bottom: 20px; z-index: 1100; width: 58px; height: 58px; padding: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border: 2px solid #fff; border-radius: 50%; background: #2f5d8a; color: #fff; cursor: pointer;
+            font: 700 22px/1 sans-serif; box-shadow: 0 2px 10px rgba(0,0,0,.35);
+            opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; }
+  #to-top span { font-size: 11px; margin-top: 3px; }
+  #to-top.show { opacity: .95; visibility: visible; }
+  #to-top:hover { background: #1e3a5f; }
+  @media print { #to-top { display: none; } }
+</style>
+<script>
+(function () {
+  var b = document.getElementById("to-top");
+  function update() { b.classList.toggle("show", window.scrollY > 400); }
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+  b.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+})();
+</script>
+
+</body>
+</html>
