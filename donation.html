@@ -196,7 +196,10 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-pick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 14px}
 .rg-pick label{font-weight:800}
 .rg-pick select{flex:1 1 220px;max-width:100%;font-size:1.15rem;font-weight:700;padding:10px 12px;border:2px solid var(--accent);border-radius:10px}
-.rg-area{font-size:1.55rem;font-weight:800;margin:0 0 8px;line-height:1.3}
+.rg-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 8px}
+.rg-area{font-size:1.55rem;font-weight:800;margin:0;line-height:1.3}
+.rg-prefbtn:empty{display:none}
+.rg-prefbtn .rg-btn{padding:8px 14px;font-size:.92rem}
 .rg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
 .rg-tile{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--done-line);border-radius:10px;padding:8px 12px}
 .rg-tile .k{font-size:.82rem;font-weight:700;color:var(--sub)}
@@ -486,7 +489,7 @@ details.fp-more > .fp-list{margin-top:10px}
   <p class="lead">インターネット上で公開されている寄付募集・団体発表・報道の数字を、出典付きで一覧にしています。
   地域ごとのまとめ（今あるモスク・建設計画・寄付）は<a href="area.html">地域別のページ</a>、葬儀・墓地の調べた結果は<a href="funeral.html">葬儀・墓地のページ</a>にあります。</p>
 
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 00:38</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている寄付の募集</div><div class="v">82<small>件</small></div><div class=s>いま募集中 30件・終了したもの 52件。このほか、未確定情報 16件・そのほかの寄付・情報 2件（どちらも合計の額には含めていません）</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 01:03</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている寄付の募集</div><div class="v">82<small>件</small></div><div class=s>いま募集中 30件・終了したもの 52件。このほか、未確定情報 16件・そのほかの寄付・情報 2件（どちらも合計の額には含めていません）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
