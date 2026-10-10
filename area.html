@@ -228,6 +228,7 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-btn{flex:1 1 220px;display:flex;align-items:center;justify-content:center;text-align:center;gap:6px;padding:12px 14px;border-radius:12px;font-weight:800;text-decoration:none}
 .rg-btn.map{background:var(--accent);color:var(--card)}
 .rg-btn.share{background:var(--text);color:var(--card)}
+.rg-btn.pref{background:var(--card);color:var(--accent);border:2px solid var(--accent)}
 .rg-sec{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;margin-bottom:14px}
 .rg-sec > .h{font-size:1.08rem;font-weight:800;margin:0 0 2px}
 .rg-sec > .sub{font-size:.78rem;color:var(--sub);margin:0 0 8px}
@@ -477,7 +478,7 @@ details.fp-more > .fp-list{margin-top:10px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 00:04</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">283<small>か所</small></div><div class=s>地図・モスク一覧の269か所＋寄付募集などから確認したモスク・計画地5か所＋追加した施設3か所＋寄付の募集・計画の情報だけの場所6か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 00:08</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">283<small>か所</small></div><div class=s>地図・モスク一覧の269か所＋寄付募集などから確認したモスク・計画地5か所＋追加した施設3か所＋寄付の募集・計画の情報だけの場所6か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -591,6 +592,7 @@ const STATUS_JA = {"existing": "既存", "planned": "計画中", "under_construc
 const CATEGORY_JA = {"mosque": "モスク", "prayer_space": "礼拝所", "islamic_center": "イスラムセンター", "cemetery": "土葬墓地", "land": "土地取得", "school": "学校", "community_center": "コミュニティ施設", "other": "その他"};
 const VERIF_JA = {"confirmed": "確認済み", "probable": "複数情報あり", "unconfirmed": "未確認情報あり"};
 const PUBLIC_URL = "https://yumaki5555.github.io/mosque-map/area.html";
+const PREF_PAGES = {"栃木県": "pref-tochigi.html"};  // {都道府県: 県のくわしいページ}
 const DON_TEXT = {open: "寄付募集中", past: "寄付募集なし（過去に募集あり）", unconfirmed: "寄付の未確定情報あり", none: "寄付募集なし"};
 const PURPOSE_JA = {land_acquisition: "土地取得", building_acquisition: "建物取得", renovation: "改修", under_construction: "建設", planned: "建設・拡張など"};
 const ST_ICON = {existing: "🕌", fundraising: "💰", planned: "🏗️", under_construction: "🏗️"};
@@ -900,7 +902,9 @@ function renderRegion() {
   const onMap = R.pref && all.some(p => p.prefecture === R.pref && p.mapId);
   const cityOnMap = R.city && rows.some(p => p.mapId);
   const mapHref = `map.html#pref=${encodeURIComponent(R.pref)}` + (cityOnMap ? `&city=${encodeURIComponent(R.city)}` : "");
-  $("rg-btns").innerHTML = onMap ? `<a class="rg-btn map" href="${mapHref}">🗺️ ${esc(cityOnMap ? R.city : R.pref + "全体")}を地図のページで見る</a>` : "";
+  const prefPage = R.pref && PREF_PAGES[R.pref];  // 県のくわしいページ（人口・国籍・モスクの特徴。make_pref_pages.py が作る）
+  $("rg-btns").innerHTML = (onMap ? `<a class="rg-btn map" href="${mapHref}">🗺️ ${esc(cityOnMap ? R.city : R.pref + "全体")}を地図のページで見る</a>` : "") +
+    (prefPage ? `<a class="rg-btn pref" href="${esc(prefPage)}">📊 ${esc(R.pref)}のくわしいページ（人口・国籍・モスクの特徴）</a>` : "");
   $("rg-share").href = shareHref(rows);
   $("rg-share").textContent = (R.pref ? "この地域の情報を共有" : "このページを共有") + "（X）";
 
