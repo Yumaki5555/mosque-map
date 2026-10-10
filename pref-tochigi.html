@@ -19,6 +19,18 @@ h1 { font-size: 28px; line-height: 1.35; margin: 4px 0 8px; color: var(--navy); 
 h2 { font-size: 20px; margin: 36px 0 12px; color: var(--navy); border-bottom: 2px solid var(--navy); padding-bottom: 4px; }
 h3 { font-size: 16px; margin: 0 0 4px; }
 .lead { font-size: 16px; max-width: 62em; margin: 0 0 6px; }
+.summary { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--navy); border-radius: 12px; padding: 12px 18px; margin: 14px 0 10px; }
+.summary h2 { font-size: 18px; margin: 0 0 6px; border: 0; padding: 0; }
+.summary p { font-size: 15.5px; max-width: 62em; margin: 0 0 8px; }
+.summary p.sum-lead { font-size: 16.5px; color: var(--navy); }
+.summary .note { margin: 4px 0 0; }
+.summary ul { margin: 0 0 6px; padding-left: 1.3em; max-width: 62em; }
+.summary li { margin-bottom: 3px; }
+.sum-table { overflow-x: auto; margin: 2px 0 10px; }
+.sum-table table { width: auto; font-size: 14px; border: 1px solid var(--line); }
+.sum-table th { position: static; }
+.sum-table td:first-child { min-width: 8.5em; }
+@media (min-width: 561px) { .sum-table td:nth-child(n+2) { white-space: nowrap; } }
 .meta, .note { font-size: 13px; color: var(--muted); margin: 0; }
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
 .tile { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 12px; padding: 10px 14px; min-width: 0; }
@@ -94,7 +106,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 </style>
 <p class="back"><a href="area.html?pref=栃木県">← 地域別のページ（栃木県）にもどる</a></p>
 <h1>栃木県のモスクと人口</h1>
-<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 00:08</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">10<small>か所</small></div><div class=s>地図・モスク一覧に載っている栃木県の場所（全国で多い順に8番目）</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">9,166<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国14位）</div></div></div><style>
+<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 00:40</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">10<small>か所</small></div><div class=s>地図・モスク一覧に載っている栃木県の場所（全国で多い順に8番目）</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">9,166<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国14位）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -105,7 +117,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 .pstat .v.t { font-size: 21px; padding-top: 4px; }
 .pstat .s { font-size: 13px; color: #555; line-height: 1.6; margin-top: 3px; }
 </style>
-<p class="lead">栃木県のモスクは<b>10か所</b>で、47都道府県の中で多い順に8番目です。中心になっている国籍でいちばん多いのは<b>パキスタン</b>（6か所）です。住んでいる外国人のうちパキスタンの人の割合は全国1位です。主なイスラムの国の人でいちばん多いのはインドネシアの人（5,174人）で、インドネシア系のモスクは1か所です。</p>
+<section class="summary"><h2>栃木県のモスクの特徴（まとめ）</h2><p class="sum-lead"><b>ムスリムでいちばん多いのはインドネシアの人なのに、モスクはパキスタン系が中心。県南に集まり、ここ数年で急に増えている県です。</b></p><div class="sum-table"><table><thead><tr><th>項目</th><th>栃木</th><th>全国の順位</th></tr></thead><tbody><tr><td>モスクの数</td><td>10か所</td><td>8位</td></tr><tr><td>ムスリムの人数（研究者の推計）</td><td>約11,900人</td><td>14位</td></tr><tr><td>パキスタンの人の割合※</td><td>26%</td><td><b>1位</b>（全国は9%）</td></tr><tr><td>インドネシアの人</td><td>5,174人（56%※）</td><td>17位</td></tr></tbody></table></div><p class="note">※ 割合は、主なイスラムの国10か国の人を100%としたときのもの。</p><ul><li><b>人数のわりにモスクが多い</b>：ムスリムの人数は14位、モスクの数は8位。</li><li><b>パキスタン系が10か所のうち6か所</b>：インドネシア系は佐野市の1か所だけ。</li><li><b>県南に集まる</b>：小山・野木・栃木・佐野・足利に6か所。</li><li><b>ここ数年で急に増えた</b>：半分の5か所が2023年ごろから。</li><li><b>宗派</b>：確かめられた4か所は、すべてスンニ派。</li><li><b>運営</b>：ICOJ（イスラミック・サークル・オブ・ジャパン）の3か所（小山・鹿沼・那須塩原）がいちばん大きなつながり。</li><li><b>葬儀・墓地</b>：遺体を洗う設備があるのは小山市の大きなモスクだけ。ムスリムの墓地は、調べた範囲では県内に見つかっていない。</li></ul><p class="note">2026年10月11日時点のまとめです。数字の出典はページの下にまとめています。</p></section>
 <p class="meta">人口は国の在留外国人統計（2025年12月末）・県や市の統計、モスクはモスクリスト（地図・モスク一覧と同じもの）による。出典はページの下にまとめています。</p>
 
 <h2>全国の中の栃木県</h2>
@@ -229,6 +241,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
   </div>
   <div class="card"><h3>モスクの一覧</h3><p class="note">名前を押すと、モスクごとのくわしいページが開きます。国籍・宗派・運営は、確かめられたものだけを載せています（確かめられていないものは「不明」）。</p>
     <div class="tablewrap"><table><thead><tr><th>モスク</th><th>市区町村</th><th>中心の国籍</th><th>宗派</th><th>運営</th><th>施設の形態</th><th>開いた時期</th><th>区域</th></tr></thead><tbody><tr><td><a href="mosque.html#m-6c67045b">足利マスジド</a></td><td>足利市</td><td>スリランカ（ほかにパキスタン・インドネシア・インドなど）</td><td>スンニ派（タブリーギー・ジャマーアトの活動あり）</td><td>宗教法人日本イスラーム文化センター（足利支部）</td><td>小規模モスク</td><td>2000年</td><td>市街化区域</td></tr><tr><td><a href="mosque.html#m-dc7a586a">Iqra Mosque (Kanuma Mosque)</a></td><td>鹿沼市</td><td>パキスタン系が中心</td><td>不明</td><td>イスラミック・サークル・オブ・ジャパン（ICOJ）／一般社団法人ISLAMIC CIRCLE OF JAPAN WAQF</td><td>小規模モスク</td><td>2004年</td><td>市街化調整区域</td></tr><tr><td><a href="mosque.html#m-e9ec0b2e">バーブ・ル・イスラーム・マスジド（小山マスジド）</a></td><td>小山市</td><td>パキスタン系が中心（ほかにバングラデシュ・スリランカ・インドネシアなど）</td><td>不明</td><td>一般社団法人ISLAMIC CIRCLE OF JAPAN WAQF（イスラミック・サークル・オブ・ジャパン）（ICOJ）</td><td>大規模モスク</td><td>2005年3月</td><td>市街化区域</td></tr><tr><td><a href="mosque.html#m-1457b865">リヤードル・ジャンナ・マスジド</a></td><td>那須塩原市</td><td>パキスタン系が中心（アフガニスタン出身の人も）</td><td>不明</td><td>一般社団法人ISLAMIC CIRCLE OF JAPAN WAQF（イスラミック・サークル・オブ・ジャパン）（ICOJ）</td><td>小規模モスク</td><td>遅くとも2015年</td><td>区域区分なし（非線引き）</td></tr><tr><td><a href="mosque.html#m-1ecfebef">Sano Masjid</a></td><td>佐野市</td><td>インドネシア</td><td>スンニ派（シャーフィイー学派）</td><td>宗教法人ダル・ウッサラーム（佐野支部）。ふだんの運営はインドネシア人の運営委員会（DKM Sano）</td><td>大規模モスク</td><td>2017年5月26日</td><td>市街化区域</td></tr><tr><td><a href="mosque.html#m-adb69943">SUFI ISLAMIC CENTER (Masjid Zain-ul-Abideen)NOGI, TOCHIGI.</a></td><td>野木町</td><td>パキスタン</td><td>スンニ派（スーフィー系）</td><td>スーフィー・イスラミック・センター（SUFI ISLAMIC CENTER・法人の登録は見当たらない）</td><td>小規模モスク</td><td>遅くとも2023年7月</td><td>市街化調整区域</td></tr><tr><td><a href="mosque.html#m-1bb3724d">OHIRA NUR MASJID</a></td><td>栃木市</td><td>バングラデシュ（パキスタン・ミャンマーなどの人も来る）</td><td>不明</td><td>一般社団法人OHIRA NUR MASJID</td><td>小規模モスク</td><td>2024年2月25日</td><td>市街化区域</td></tr><tr><td><a href="mosque.html#m-cd2b45f6">Oyama Mosque Tochigi</a></td><td>小山市</td><td>パキスタン</td><td>スンニ派（ダアワテ・イスラーミー系）</td><td>ダアワテ・イスラーミー（Dawat-e-Islami。パキスタン・カラチに本部がある団体）</td><td>小規模モスク</td><td>遅くとも2024年8月</td><td>市街化調整区域</td></tr><tr><td><a href="mosque.html#m-19b4119b">Pak japan masjid</a></td><td>那須烏山市</td><td>パキスタン</td><td>不明</td><td>不明</td><td>小規模モスク</td><td>遅くとも2025年12月</td><td>区域区分なし（非線引き）</td></tr><tr><td><a href="mosque.html#m-85d94579">Utsunomiya Masjid(UICC)</a></td><td>宇都宮市</td><td>多国籍（バングラデシュ・インドネシアなど）</td><td>不明</td><td>一般社団法人UTSUNOMIYA ISLAMIC CULTURAL CENTER</td><td>小規模モスク</td><td>2026年初め</td><td>市街化区域</td></tr></tbody></table></div>
+    
   </div>
 </div>
 
