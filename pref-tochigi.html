@@ -39,9 +39,9 @@ h3 { font-size: 16px; margin: 0 0 4px; }
 .tile .v small { font-size: 15px; font-weight: 700; margin-left: 2px; }
 .tile .s { font-size: 13px; color: var(--muted); }
 .tile .s b { color: var(--ink); font-size: 15px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 12px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-.brow { display: grid; grid-template-columns: minmax(84px, 30%) 1fr auto; gap: 8px; align-items: center; font-size: 13px; padding: 2px 0; }
+.brow { max-width: 860px; display: grid; grid-template-columns: minmax(84px, 30%) 1fr auto; gap: 8px; align-items: center; font-size: 13px; padding: 2px 0; }
 .blab { overflow-wrap: anywhere; line-height: 1.35; }
 .btrack { background: #eef1f5; border-radius: 4px; height: 12px; overflow: hidden; min-width: 0; }
 .bar { display: block; height: 100%; background: var(--jp); border-radius: 4px; }
@@ -49,10 +49,6 @@ h3 { font-size: 16px; margin: 0 0 4px; }
 .brow.hl .blab, .brow.hl .bval { font-weight: 800; color: var(--navy); }
 .brow.ref .bar { background: var(--ref); }
 .bval { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; min-width: 4em; text-align: right; }
-.brow.pair { grid-template-columns: minmax(84px, 30%) 1fr; }
-.pairs { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.prow { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
-.prow .btrack { height: 8px; }
 .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); }
 .sw { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
 .tablewrap { overflow: auto; max-height: 520px; border: 1px solid var(--line); border-radius: 8px; }
@@ -61,13 +57,18 @@ th { position: sticky; top: 0; background: #eef2f7; text-align: left; padding: 6
 td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 td.num, th.num { text-align: right; white-space: nowrap; }
 tr.has td { background: var(--hl); }
+tr.sum td { font-weight: 700; border-top: 2px solid var(--navy); }
+tr.ref td { color: var(--muted); }
+tr.ref td:first-child { color: var(--ink); }
+tr.refhead td { background: #f3f5f8; font-size: 12px; color: var(--muted); padding: 4px 8px; }
+.tablewrap.short { max-height: none; }
 .cell { display: inline-flex; align-items: center; gap: 6px; justify-content: flex-end; }
 .cbar { display: inline-block; height: 10px; border-radius: 3px; min-width: 2px; background: var(--jp); }
 .cbar.tg { background: var(--tg); }
 .chart-svg text { fill: var(--muted); font-size: 12px; font-family: inherit; }
 .chart-svg text.end { font-weight: 700; font-size: 12.5px; }
 .chart-svg .grid { stroke: #e3e7ec; stroke-width: 1; }
-.tl { display: grid; grid-template-columns: minmax(120px, 42%) 1fr; gap: 4px 10px; align-items: center; font-size: 13px; }
+.tl { display: grid; grid-template-columns: minmax(120px, min(42%, 360px)) 1fr; gap: 4px 10px; align-items: center; font-size: 13px; }
 .tl-lab { overflow-wrap: anywhere; line-height: 1.35; }
 .tl-track { position: relative; height: 30px; border-left: 1px solid #b8c1cc; }
 .tl-track::after { content: ""; position: absolute; left: 0; right: 0; top: 10px; border-top: 1px solid #e3e7ec; }
@@ -106,7 +107,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 </style>
 <p class="back"><a href="area.html?pref=栃木県">← 地域別のページ（栃木県）にもどる</a></p>
 <h1>栃木県のモスクと人口</h1>
-<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 01:03</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">10<small>か所</small></div><div class=s>地図・モスク一覧に載っている栃木県の場所（全国で多い順に8番目）</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">9,166<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国14位）</div></div></div><style>
+<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 01:56</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">10<small>か所</small></div><div class=s>地図・モスク一覧に載っている栃木県の場所（全国で多い順に8番目）</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">9,166<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国14位）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -134,8 +135,8 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <h2>国籍の特徴</h2>
 <div class="grid">
   <div class="card"><h3>外国人のうちパキスタンの人の割合（上位の都道府県）</h3><p class="note">在留外国人統計 2025年12月末。いちばん下は全国の平均。</p><div class="brow hl" title="パキスタン 2,414人／外国人 61,878人"><span class="blab">栃木県</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">3.9%</span></div><div class="brow " title="パキスタン 4,065人／外国人 111,808人"><span class="blab">茨城県</span><span class="btrack"><span class="bar" style="width:93.2%"></span></span><span class="bval">3.6%</span></div><div class="brow " title="パキスタン 918人／外国人 26,296人"><span class="blab">富山県</span><span class="btrack"><span class="bar" style="width:89.5%"></span></span><span class="bval">3.5%</span></div><div class="brow " title="パキスタン 1,755人／外国人 89,670人"><span class="blab">群馬県</span><span class="btrack"><span class="bar" style="width:50.2%"></span></span><span class="bval">2.0%</span></div><div class="brow " title="パキスタン 502人／外国人 26,724人"><span class="blab">新潟県</span><span class="btrack"><span class="bar" style="width:48.2%"></span></span><span class="bval">1.9%</span></div><div class="brow " title="パキスタン 601人／外国人 32,903人"><span class="blab">宮城県</span><span class="btrack"><span class="bar" style="width:46.8%"></span></span><span class="bval">1.8%</span></div><div class="brow " title="パキスタン 4,577人／外国人 290,937人"><span class="blab">埼玉県</span><span class="btrack"><span class="bar" style="width:40.3%"></span></span><span class="bval">1.6%</span></div><div class="brow " title="パキスタン 144人／外国人 9,419人"><span class="blab">青森県</span><span class="btrack"><span class="bar" style="width:39.2%"></span></span><span class="bval">1.5%</span></div><div class="brow " title="パキスタン 291人／外国人 21,598人"><span class="blab">福島県</span><span class="btrack"><span class="bar" style="width:34.5%"></span></span><span class="bval">1.3%</span></div><div class="brow " title="パキスタン 1,026人／外国人 77,401人"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:34.0%"></span></span><span class="bval">1.3%</span></div><div class="brow ref" title="パキスタン 34,911人／外国人 4,125,395人"><span class="blab">全国</span><span class="btrack"><span class="bar" style="width:21.7%"></span></span><span class="bval">0.8%</span></div></div>
-  <div class="card"><h3>主なイスラムの国10か国の内わけ（栃木県と全国）</h3><p class="note">10か国の人を合わせて100%としたときの割合。在留外国人統計 2025年12月末。</p>
-    <div class="legend"><span><i class="sw" style="background:var(--tg)"></i>栃木県</span><span><i class="sw" style="background:var(--jp)"></i>全国</span></div><div class="brow pair" title="栃木県 5,174人／全国 266,037人"><span class="blab">インドネシア</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:83.2%"></span></span><span class="bval">56.4%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">67.8%</span></span></span></div><div class="brow pair" title="栃木県 2,414人／全国 34,911人"><span class="blab">パキスタン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:38.8%"></span></span><span class="bval">26.3%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:13.1%"></span></span><span class="bval">8.9%</span></span></span></div><div class="brow pair" title="栃木県 903人／全国 44,938人"><span class="blab">バングラデシュ</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:14.5%"></span></span><span class="bval">9.9%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:16.9%"></span></span><span class="bval">11.5%</span></span></span></div><div class="brow pair" title="栃木県 190人／全国 6,887人"><span class="blab">アフガニスタン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:3.1%"></span></span><span class="bval">2.1%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:2.6%"></span></span><span class="bval">1.8%</span></span></span></div><div class="brow pair" title="栃木県 144人／全国 4,431人"><span class="blab">イラン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:2.3%"></span></span><span class="bval">1.6%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:1.7%"></span></span><span class="bval">1.1%</span></span></span></div><div class="brow pair" title="栃木県 208人／全国 12,266人"><span class="blab">マレーシア</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:3.3%"></span></span><span class="bval">2.3%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:4.6%"></span></span><span class="bval">3.1%</span></span></span></div><div class="brow pair" title="栃木県 29人／全国 7,919人"><span class="blab">トルコ</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.5%"></span></span><span class="bval">0.3%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:3.0%"></span></span><span class="bval">2.0%</span></span></span></div><div class="brow pair" title="栃木県 36人／全国 7,362人"><span class="blab">ウズベキスタン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.6%"></span></span><span class="bval">0.4%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:2.8%"></span></span><span class="bval">1.9%</span></span></span></div><div class="brow pair" title="栃木県 17人／全国 2,601人"><span class="blab">エジプト</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.3%"></span></span><span class="bval">0.2%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:1.0%"></span></span><span class="bval">0.7%</span></span></span></div><div class="brow pair" title="栃木県 51人／全国 4,807人"><span class="blab">ナイジェリア</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.8%"></span></span><span class="bval">0.6%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:1.8%"></span></span><span class="bval">1.2%</span></span></span></div></div>
+  <div class="card"><h3>主なイスラムの国10か国の内わけ（栃木県と全国）</h3><p class="note">在留外国人統計 2025年12月末。割合は、10か国の人を合わせて100%としたときの割合。順位は、人数が栃木県より多い都道府県の数に1を足したもの。アフリカの国（合計）は、統計の地域の区分「アフリカ」の54か国の合計です（エジプト・ナイジェリアも入っています。ムスリムが少ない国も入っています）。</p>
+    <div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">県内の人数</th><th class="num">割合（栃木県）</th><th class="num">割合（全国）</th><th class="num">人数の全国順位</th></tr></thead><tbody><tr><td>インドネシア</td><td class="num">5,174</td><td class="num"><span class="cell"><span class="cbar tg" style="width:4.16rem"></span>56.4%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:5.00rem"></span>67.8%</span></td><td class="num">17位</td></tr><tr><td>パキスタン</td><td class="num">2,414</td><td class="num"><span class="cell"><span class="cbar tg" style="width:1.94rem"></span>26.3%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.66rem"></span>8.9%</span></td><td class="num">5位</td></tr><tr><td>バングラデシュ</td><td class="num">903</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.73rem"></span>9.9%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.84rem"></span>11.5%</span></td><td class="num">11位</td></tr><tr><td>マレーシア</td><td class="num">208</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.17rem"></span>2.3%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.23rem"></span>3.1%</span></td><td class="num">12位</td></tr><tr><td>アフガニスタン</td><td class="num">190</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.15rem"></span>2.1%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.13rem"></span>1.8%</span></td><td class="num">7位</td></tr><tr><td>イラン</td><td class="num">144</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.12rem"></span>1.6%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.08rem"></span>1.1%</span></td><td class="num">9位</td></tr><tr><td>ナイジェリア</td><td class="num">51</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.04rem"></span>0.6%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.09rem"></span>1.2%</span></td><td class="num">14位</td></tr><tr><td>ウズベキスタン</td><td class="num">36</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.03rem"></span>0.4%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.14rem"></span>1.9%</span></td><td class="num">17位</td></tr><tr><td>トルコ</td><td class="num">29</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.02rem"></span>0.3%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.15rem"></span>2.0%</span></td><td class="num">18位</td></tr><tr><td>エジプト</td><td class="num">17</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.01rem"></span>0.2%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.05rem"></span>0.7%</span></td><td class="num">24位</td></tr><tr class="sum"><td>10か国の合計</td><td class="num">9,166</td><td class="num">100%</td><td class="num">100%</td><td class="num">14位</td></tr><tr class="refhead"><td colspan="5">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">3,817</td><td class="num">—</td><td class="num">—</td><td class="num">7位</td></tr><tr class="ref"><td>アフリカの国（合計）</td><td class="num">308</td><td class="num">—</td><td class="num">—</td><td class="num">13位</td></tr></tbody></table></div></div>
 </div>
 
 <h2>モスクの国籍と、住んでいる人の国籍</h2>
@@ -153,85 +154,163 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
   </div>
   <div class="card"><h3>小山市の国籍別の人数（上位10）</h3><p class="note">小山市の国籍別外国人登録者数、2026年9月1日現在（いちばん新しい月）。パキスタンの人は1,182人で、市内の外国人の12.6%、国籍別で1番目に多い国籍です。</p><div class="brow hl" title="1,182人"><span class="blab">パキスタン</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">1,182人</span></div><div class="brow " title="1,062人"><span class="blab">ベトナム</span><span class="btrack"><span class="bar" style="width:89.8%"></span></span><span class="bval">1,062人</span></div><div class="brow " title="944人"><span class="blab">ネパール</span><span class="btrack"><span class="bar" style="width:79.9%"></span></span><span class="bval">944人</span></div><div class="brow " title="919人"><span class="blab">ブラジル</span><span class="btrack"><span class="bar" style="width:77.7%"></span></span><span class="bval">919人</span></div><div class="brow " title="913人"><span class="blab">フィリピン</span><span class="btrack"><span class="bar" style="width:77.2%"></span></span><span class="bval">913人</span></div><div class="brow " title="841人"><span class="blab">ペルー</span><span class="btrack"><span class="bar" style="width:71.2%"></span></span><span class="bval">841人</span></div><div class="brow " title="645人"><span class="blab">中国</span><span class="btrack"><span class="bar" style="width:54.6%"></span></span><span class="bval">645人</span></div><div class="brow " title="443人"><span class="blab">スリランカ</span><span class="btrack"><span class="bar" style="width:37.5%"></span></span><span class="bval">443人</span></div><div class="brow " title="430人"><span class="blab">インドネシア</span><span class="btrack"><span class="bar" style="width:36.4%"></span></span><span class="bval">430人</span></div><div class="brow " title="400人"><span class="blab">韓国</span><span class="btrack"><span class="bar" style="width:33.8%"></span></span><span class="bval">400人</span></div></div>
 </div>
-<h2>増え方</h2><div class="card"><h3>栃木県に住む人の推移（国籍別、各年12月31日）</h3><p class="note">栃木県の外国人住民数調査（住民基本台帳による）。国の在留外国人統計とは数え方が違うので、数が少し違います。</p><div class="legend"><span><i class="sw" style="background:#1e3a5f"></i>インドネシア</span><span><i class="sw" style="background:#c0712f"></i>スリランカ</span><span><i class="sw" style="background:#2f8a6b"></i>パキスタン</span><span><i class="sw" style="background:#8a5cb8"></i>バングラデシュ</span><span><i class="sw" style="background:#b8476b"></i>アフガニスタン</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移">
-<line x1="56" x2="570" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
-<line x1="56" x2="570" y1="245.3" y2="245.3" class="grid"/><text x="48" y="245.3" dy="0.32em" text-anchor="end">1,000</text>
-<line x1="56" x2="570" y1="198.7" y2="198.7" class="grid"/><text x="48" y="198.7" dy="0.32em" text-anchor="end">2,000</text>
-<line x1="56" x2="570" y1="152.0" y2="152.0" class="grid"/><text x="48" y="152.0" dy="0.32em" text-anchor="end">3,000</text>
-<line x1="56" x2="570" y1="105.3" y2="105.3" class="grid"/><text x="48" y="105.3" dy="0.32em" text-anchor="end">4,000</text>
-<line x1="56" x2="570" y1="58.7" y2="58.7" class="grid"/><text x="48" y="58.7" dy="0.32em" text-anchor="end">5,000</text>
-<line x1="56" x2="570" y1="12.0" y2="12.0" class="grid"/><text x="48" y="12.0" dy="0.32em" text-anchor="end">6,000</text>
+<h2>増え方</h2><div class="grid"><div class="card"><h3>県内に住む主なイスラムの国の人の推移（国籍別、各年12月末）</h3><p class="note">国の在留外国人統計（2016〜2025年の各年12月末）。グラフは2025年の人数が多い5つ（10か国・スリランカ・アフリカの国（合計）の中から）。全部の数は下の表にあります。</p><div class="legend"><span><i class="sw" style="background:#1e3a5f"></i>インドネシア</span><span><i class="sw" style="background:#c0712f"></i>スリランカ</span><span><i class="sw" style="background:#2f8a6b"></i>パキスタン</span><span><i class="sw" style="background:#8a5cb8"></i>バングラデシュ</span><span><i class="sw" style="background:#b8476b"></i>アフリカの国（合計）</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移">
+<line x1="56" x2="545" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
+<line x1="56" x2="545" y1="245.3" y2="245.3" class="grid"/><text x="48" y="245.3" dy="0.32em" text-anchor="end">1,000</text>
+<line x1="56" x2="545" y1="198.7" y2="198.7" class="grid"/><text x="48" y="198.7" dy="0.32em" text-anchor="end">2,000</text>
+<line x1="56" x2="545" y1="152.0" y2="152.0" class="grid"/><text x="48" y="152.0" dy="0.32em" text-anchor="end">3,000</text>
+<line x1="56" x2="545" y1="105.3" y2="105.3" class="grid"/><text x="48" y="105.3" dy="0.32em" text-anchor="end">4,000</text>
+<line x1="56" x2="545" y1="58.7" y2="58.7" class="grid"/><text x="48" y="58.7" dy="0.32em" text-anchor="end">5,000</text>
+<line x1="56" x2="545" y1="12.0" y2="12.0" class="grid"/><text x="48" y="12.0" dy="0.32em" text-anchor="end">6,000</text>
 <text x="56.0" y="312" text-anchor="middle">2016</text>
-<text x="113.1" y="312" text-anchor="middle">2017</text>
-<text x="170.2" y="312" text-anchor="middle">2018</text>
-<text x="227.3" y="312" text-anchor="middle">2019</text>
-<text x="284.4" y="312" text-anchor="middle">2020</text>
-<text x="341.6" y="312" text-anchor="middle">2021</text>
-<text x="398.7" y="312" text-anchor="middle">2022</text>
-<text x="455.8" y="312" text-anchor="middle">2023</text>
-<text x="512.9" y="312" text-anchor="middle">2024</text>
-<text x="570.0" y="312" text-anchor="middle">2025</text>
-<polyline points="56.0,256.6 113.1,244.6 170.2,243.5 227.3,233.3 284.4,235.0 341.6,242.1 398.7,212.7 455.8,151.1 512.9,110.9 570.0,54.2" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="110.3" y="312" text-anchor="middle">2017</text>
+<text x="164.7" y="312" text-anchor="middle">2018</text>
+<text x="219.0" y="312" text-anchor="middle">2019</text>
+<text x="273.3" y="312" text-anchor="middle">2020</text>
+<text x="327.7" y="312" text-anchor="middle">2021</text>
+<text x="382.0" y="312" text-anchor="middle">2022</text>
+<text x="436.3" y="312" text-anchor="middle">2023</text>
+<text x="490.7" y="312" text-anchor="middle">2024</text>
+<text x="545.0" y="312" text-anchor="middle">2025</text>
+<polyline points="56.0,255.6 110.3,244.9 164.7,243.4 219.0,233.9 273.3,234.1 327.7,241.6 382.0,210.4 436.3,148.0 490.7,109.6 545.0,50.5" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="255.6" r="3" fill="#1e3a5f"><title>2016年 インドネシア 779人</title></circle>
+<circle cx="110.3" cy="244.9" r="3" fill="#1e3a5f"><title>2017年 インドネシア 1,010人</title></circle>
+<circle cx="164.7" cy="243.4" r="3" fill="#1e3a5f"><title>2018年 インドネシア 1,042人</title></circle>
+<circle cx="219.0" cy="233.9" r="3" fill="#1e3a5f"><title>2019年 インドネシア 1,244人</title></circle>
+<circle cx="273.3" cy="234.1" r="3" fill="#1e3a5f"><title>2020年 インドネシア 1,241人</title></circle>
+<circle cx="327.7" cy="241.6" r="3" fill="#1e3a5f"><title>2021年 インドネシア 1,081人</title></circle>
+<circle cx="382.0" cy="210.4" r="3" fill="#1e3a5f"><title>2022年 インドネシア 1,748人</title></circle>
+<circle cx="436.3" cy="148.0" r="3" fill="#1e3a5f"><title>2023年 インドネシア 3,085人</title></circle>
+<circle cx="490.7" cy="109.6" r="3" fill="#1e3a5f"><title>2024年 インドネシア 3,908人</title></circle>
+<circle cx="545.0" cy="50.5" r="3" fill="#1e3a5f"><title>2025年 インドネシア 5,174人</title></circle>
+<polyline points="56.0,247.2 110.3,229.7 164.7,226.1 219.0,217.5 273.3,209.9 327.7,212.8 382.0,203.2 436.3,191.7 490.7,142.9 545.0,113.9" fill="none" stroke="#c0712f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="247.2" r="3" fill="#c0712f"><title>2016年 スリランカ 960人</title></circle>
+<circle cx="110.3" cy="229.7" r="3" fill="#c0712f"><title>2017年 スリランカ 1,335人</title></circle>
+<circle cx="164.7" cy="226.1" r="3" fill="#c0712f"><title>2018年 スリランカ 1,413人</title></circle>
+<circle cx="219.0" cy="217.5" r="3" fill="#c0712f"><title>2019年 スリランカ 1,596人</title></circle>
+<circle cx="273.3" cy="209.9" r="3" fill="#c0712f"><title>2020年 スリランカ 1,759人</title></circle>
+<circle cx="327.7" cy="212.8" r="3" fill="#c0712f"><title>2021年 スリランカ 1,697人</title></circle>
+<circle cx="382.0" cy="203.2" r="3" fill="#c0712f"><title>2022年 スリランカ 1,902人</title></circle>
+<circle cx="436.3" cy="191.7" r="3" fill="#c0712f"><title>2023年 スリランカ 2,150人</title></circle>
+<circle cx="490.7" cy="142.9" r="3" fill="#c0712f"><title>2024年 スリランカ 3,194人</title></circle>
+<circle cx="545.0" cy="113.9" r="3" fill="#c0712f"><title>2025年 スリランカ 3,817人</title></circle>
+<polyline points="56.0,258.2 110.3,255.1 164.7,251.4 219.0,242.8 273.3,232.4 327.7,230.7 382.0,224.1 436.3,211.4 490.7,195.0 545.0,179.3" fill="none" stroke="#2f8a6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="258.2" r="3" fill="#2f8a6b"><title>2016年 パキスタン 724人</title></circle>
+<circle cx="110.3" cy="255.1" r="3" fill="#2f8a6b"><title>2017年 パキスタン 791人</title></circle>
+<circle cx="164.7" cy="251.4" r="3" fill="#2f8a6b"><title>2018年 パキスタン 870人</title></circle>
+<circle cx="219.0" cy="242.8" r="3" fill="#2f8a6b"><title>2019年 パキスタン 1,055人</title></circle>
+<circle cx="273.3" cy="232.4" r="3" fill="#2f8a6b"><title>2020年 パキスタン 1,278人</title></circle>
+<circle cx="327.7" cy="230.7" r="3" fill="#2f8a6b"><title>2021年 パキスタン 1,314人</title></circle>
+<circle cx="382.0" cy="224.1" r="3" fill="#2f8a6b"><title>2022年 パキスタン 1,456人</title></circle>
+<circle cx="436.3" cy="211.4" r="3" fill="#2f8a6b"><title>2023年 パキスタン 1,728人</title></circle>
+<circle cx="490.7" cy="195.0" r="3" fill="#2f8a6b"><title>2024年 パキスタン 2,078人</title></circle>
+<circle cx="545.0" cy="179.3" r="3" fill="#2f8a6b"><title>2025年 パキスタン 2,414人</title></circle>
+<polyline points="56.0,273.1 110.3,271.0 164.7,271.4 219.0,269.1 273.3,266.5 327.7,264.3 382.0,261.9 436.3,257.7 490.7,255.5 545.0,249.9" fill="none" stroke="#8a5cb8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="273.1" r="3" fill="#8a5cb8"><title>2016年 バングラデシュ 404人</title></circle>
+<circle cx="110.3" cy="271.0" r="3" fill="#8a5cb8"><title>2017年 バングラデシュ 450人</title></circle>
+<circle cx="164.7" cy="271.4" r="3" fill="#8a5cb8"><title>2018年 バングラデシュ 442人</title></circle>
+<circle cx="219.0" cy="269.1" r="3" fill="#8a5cb8"><title>2019年 バングラデシュ 490人</title></circle>
+<circle cx="273.3" cy="266.5" r="3" fill="#8a5cb8"><title>2020年 バングラデシュ 546人</title></circle>
+<circle cx="327.7" cy="264.3" r="3" fill="#8a5cb8"><title>2021年 バングラデシュ 593人</title></circle>
+<circle cx="382.0" cy="261.9" r="3" fill="#8a5cb8"><title>2022年 バングラデシュ 645人</title></circle>
+<circle cx="436.3" cy="257.7" r="3" fill="#8a5cb8"><title>2023年 バングラデシュ 736人</title></circle>
+<circle cx="490.7" cy="255.5" r="3" fill="#8a5cb8"><title>2024年 バングラデシュ 782人</title></circle>
+<circle cx="545.0" cy="249.9" r="3" fill="#8a5cb8"><title>2025年 バングラデシュ 903人</title></circle>
+<polyline points="56.0,282.6 110.3,281.6 164.7,282.3 219.0,281.8 273.3,281.5 327.7,281.4 382.0,281.1 436.3,280.1 490.7,279.2 545.0,277.6" fill="none" stroke="#b8476b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="282.6" r="3" fill="#b8476b"><title>2016年 アフリカの国（合計） 202人</title></circle>
+<circle cx="110.3" cy="281.6" r="3" fill="#b8476b"><title>2017年 アフリカの国（合計） 222人</title></circle>
+<circle cx="164.7" cy="282.3" r="3" fill="#b8476b"><title>2018年 アフリカの国（合計） 208人</title></circle>
+<circle cx="219.0" cy="281.8" r="3" fill="#b8476b"><title>2019年 アフリカの国（合計） 219人</title></circle>
+<circle cx="273.3" cy="281.5" r="3" fill="#b8476b"><title>2020年 アフリカの国（合計） 225人</title></circle>
+<circle cx="327.7" cy="281.4" r="3" fill="#b8476b"><title>2021年 アフリカの国（合計） 227人</title></circle>
+<circle cx="382.0" cy="281.1" r="3" fill="#b8476b"><title>2022年 アフリカの国（合計） 234人</title></circle>
+<circle cx="436.3" cy="280.1" r="3" fill="#b8476b"><title>2023年 アフリカの国（合計） 254人</title></circle>
+<circle cx="490.7" cy="279.2" r="3" fill="#b8476b"><title>2024年 アフリカの国（合計） 274人</title></circle>
+<circle cx="545.0" cy="277.6" r="3" fill="#b8476b"><title>2025年 アフリカの国（合計） 308人</title></circle>
+<text x="555.0" y="50.5" dy="0.32em" class="end" fill="#1e3a5f">インドネシア 5,174</text>
+<text x="555.0" y="113.9" dy="0.32em" class="end" fill="#c0712f">スリランカ 3,817</text>
+<text x="555.0" y="179.3" dy="0.32em" class="end" fill="#2f8a6b">パキスタン 2,414</text>
+<text x="555.0" y="249.9" dy="0.32em" class="end" fill="#8a5cb8">バングラデシュ 903</text>
+<text x="555.0" y="277.6" dy="0.32em" class="end" fill="#b8476b">アフリカの国（合計） 308</text>
+</svg></div><div class="card"><h3>国籍別の人数（各年12月末）</h3><p class="note">国の在留外国人統計。「何倍」は2016年の人数が30人より少ないときは出していません。</p><div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">2016</th><th class="num">2017</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2016年から増えた人数</th><th class="num">何倍</th></tr></thead><tbody><tr class=""><td>インドネシア</td><td class="num">779</td><td class="num">1,010</td><td class="num">1,042</td><td class="num">1,244</td><td class="num">1,241</td><td class="num">1,081</td><td class="num">1,748</td><td class="num">3,085</td><td class="num">3,908</td><td class="num">5,174</td><td class="num">+4,395</td><td class="num">6.6倍</td></tr><tr class=""><td>パキスタン</td><td class="num">724</td><td class="num">791</td><td class="num">870</td><td class="num">1,055</td><td class="num">1,278</td><td class="num">1,314</td><td class="num">1,456</td><td class="num">1,728</td><td class="num">2,078</td><td class="num">2,414</td><td class="num">+1,690</td><td class="num">3.3倍</td></tr><tr class=""><td>バングラデシュ</td><td class="num">404</td><td class="num">450</td><td class="num">442</td><td class="num">490</td><td class="num">546</td><td class="num">593</td><td class="num">645</td><td class="num">736</td><td class="num">782</td><td class="num">903</td><td class="num">+499</td><td class="num">2.2倍</td></tr><tr class=""><td>マレーシア</td><td class="num">154</td><td class="num">158</td><td class="num">169</td><td class="num">173</td><td class="num">170</td><td class="num">181</td><td class="num">197</td><td class="num">205</td><td class="num">209</td><td class="num">208</td><td class="num">+54</td><td class="num">1.4倍</td></tr><tr class=""><td>アフガニスタン</td><td class="num">49</td><td class="num">58</td><td class="num">69</td><td class="num">73</td><td class="num">76</td><td class="num">76</td><td class="num">169</td><td class="num">172</td><td class="num">178</td><td class="num">190</td><td class="num">+141</td><td class="num">3.9倍</td></tr><tr class=""><td>イラン</td><td class="num">138</td><td class="num">135</td><td class="num">141</td><td class="num">143</td><td class="num">145</td><td class="num">143</td><td class="num">138</td><td class="num">138</td><td class="num">141</td><td class="num">144</td><td class="num">+6</td><td class="num">1.0倍</td></tr><tr class=""><td>ナイジェリア</td><td class="num">44</td><td class="num">40</td><td class="num">36</td><td class="num">40</td><td class="num">38</td><td class="num">45</td><td class="num">48</td><td class="num">54</td><td class="num">49</td><td class="num">51</td><td class="num">+7</td><td class="num">1.2倍</td></tr><tr class=""><td>ウズベキスタン</td><td class="num">11</td><td class="num">15</td><td class="num">17</td><td class="num">19</td><td class="num">29</td><td class="num">38</td><td class="num">34</td><td class="num">48</td><td class="num">49</td><td class="num">36</td><td class="num">+25</td><td class="num">—</td></tr><tr class=""><td>トルコ</td><td class="num">38</td><td class="num">44</td><td class="num">38</td><td class="num">29</td><td class="num">34</td><td class="num">27</td><td class="num">25</td><td class="num">39</td><td class="num">39</td><td class="num">29</td><td class="num">-9</td><td class="num">0.8倍</td></tr><tr class=""><td>エジプト</td><td class="num">8</td><td class="num">7</td><td class="num">6</td><td class="num">7</td><td class="num">10</td><td class="num">11</td><td class="num">11</td><td class="num">14</td><td class="num">10</td><td class="num">17</td><td class="num">+9</td><td class="num">—</td></tr><tr class="sum"><td>10か国の合計</td><td class="num">2,349</td><td class="num">2,708</td><td class="num">2,830</td><td class="num">3,273</td><td class="num">3,567</td><td class="num">3,509</td><td class="num">4,471</td><td class="num">6,219</td><td class="num">7,443</td><td class="num">9,166</td><td class="num">+6,817</td><td class="num">3.9倍</td></tr><tr class="refhead"><td colspan="13">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">960</td><td class="num">1,335</td><td class="num">1,413</td><td class="num">1,596</td><td class="num">1,759</td><td class="num">1,697</td><td class="num">1,902</td><td class="num">2,150</td><td class="num">3,194</td><td class="num">3,817</td><td class="num">+2,857</td><td class="num">4.0倍</td></tr><tr class="ref"><td>アフリカの国（合計）</td><td class="num">202</td><td class="num">222</td><td class="num">208</td><td class="num">219</td><td class="num">225</td><td class="num">227</td><td class="num">234</td><td class="num">254</td><td class="num">274</td><td class="num">308</td><td class="num">+106</td><td class="num">1.5倍</td></tr><tr class="ref"><td>外国人全体</td><td class="num">36,654</td><td class="num">39,896</td><td class="num">41,648</td><td class="num">43,732</td><td class="num">43,647</td><td class="num">42,430</td><td class="num">45,918</td><td class="num">51,073</td><td class="num">56,983</td><td class="num">61,878</td><td class="num">+25,224</td><td class="num">1.7倍</td></tr></tbody></table></div></div><div class="card"><h3>栃木県に住む人の推移（国籍別、各年12月31日）</h3><p class="note">栃木県の外国人住民数調査（住民基本台帳による）。国の在留外国人統計とは数え方が違うので、数が少し違います。</p><div class="legend"><span><i class="sw" style="background:#1e3a5f"></i>インドネシア</span><span><i class="sw" style="background:#c0712f"></i>スリランカ</span><span><i class="sw" style="background:#2f8a6b"></i>パキスタン</span><span><i class="sw" style="background:#8a5cb8"></i>バングラデシュ</span><span><i class="sw" style="background:#b8476b"></i>アフガニスタン</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移">
+<line x1="56" x2="545" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
+<line x1="56" x2="545" y1="245.3" y2="245.3" class="grid"/><text x="48" y="245.3" dy="0.32em" text-anchor="end">1,000</text>
+<line x1="56" x2="545" y1="198.7" y2="198.7" class="grid"/><text x="48" y="198.7" dy="0.32em" text-anchor="end">2,000</text>
+<line x1="56" x2="545" y1="152.0" y2="152.0" class="grid"/><text x="48" y="152.0" dy="0.32em" text-anchor="end">3,000</text>
+<line x1="56" x2="545" y1="105.3" y2="105.3" class="grid"/><text x="48" y="105.3" dy="0.32em" text-anchor="end">4,000</text>
+<line x1="56" x2="545" y1="58.7" y2="58.7" class="grid"/><text x="48" y="58.7" dy="0.32em" text-anchor="end">5,000</text>
+<line x1="56" x2="545" y1="12.0" y2="12.0" class="grid"/><text x="48" y="12.0" dy="0.32em" text-anchor="end">6,000</text>
+<text x="56.0" y="312" text-anchor="middle">2016</text>
+<text x="110.3" y="312" text-anchor="middle">2017</text>
+<text x="164.7" y="312" text-anchor="middle">2018</text>
+<text x="219.0" y="312" text-anchor="middle">2019</text>
+<text x="273.3" y="312" text-anchor="middle">2020</text>
+<text x="327.7" y="312" text-anchor="middle">2021</text>
+<text x="382.0" y="312" text-anchor="middle">2022</text>
+<text x="436.3" y="312" text-anchor="middle">2023</text>
+<text x="490.7" y="312" text-anchor="middle">2024</text>
+<text x="545.0" y="312" text-anchor="middle">2025</text>
+<polyline points="56.0,256.6 110.3,244.6 164.7,243.5 219.0,233.3 273.3,235.0 327.7,242.1 382.0,212.7 436.3,151.1 490.7,110.9 545.0,54.2" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="56.0" cy="256.6" r="3" fill="#1e3a5f"><title>2016年 インドネシア 758人</title></circle>
-<circle cx="113.1" cy="244.6" r="3" fill="#1e3a5f"><title>2017年 インドネシア 1,015人</title></circle>
-<circle cx="170.2" cy="243.5" r="3" fill="#1e3a5f"><title>2018年 インドネシア 1,040人</title></circle>
-<circle cx="227.3" cy="233.3" r="3" fill="#1e3a5f"><title>2019年 インドネシア 1,257人</title></circle>
-<circle cx="284.4" cy="235.0" r="3" fill="#1e3a5f"><title>2020年 インドネシア 1,222人</title></circle>
-<circle cx="341.6" cy="242.1" r="3" fill="#1e3a5f"><title>2021年 インドネシア 1,069人</title></circle>
-<circle cx="398.7" cy="212.7" r="3" fill="#1e3a5f"><title>2022年 インドネシア 1,699人</title></circle>
-<circle cx="455.8" cy="151.1" r="3" fill="#1e3a5f"><title>2023年 インドネシア 3,019人</title></circle>
-<circle cx="512.9" cy="110.9" r="3" fill="#1e3a5f"><title>2024年 インドネシア 3,880人</title></circle>
-<circle cx="570.0" cy="54.2" r="3" fill="#1e3a5f"><title>2025年 インドネシア 5,095人</title></circle>
-<polyline points="56.0,248.1 113.1,230.4 170.2,226.6 227.3,217.9 284.4,210.6 341.6,213.2 398.7,203.8 455.8,192.8 512.9,144.4 570.0,114.0" fill="none" stroke="#c0712f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="110.3" cy="244.6" r="3" fill="#1e3a5f"><title>2017年 インドネシア 1,015人</title></circle>
+<circle cx="164.7" cy="243.5" r="3" fill="#1e3a5f"><title>2018年 インドネシア 1,040人</title></circle>
+<circle cx="219.0" cy="233.3" r="3" fill="#1e3a5f"><title>2019年 インドネシア 1,257人</title></circle>
+<circle cx="273.3" cy="235.0" r="3" fill="#1e3a5f"><title>2020年 インドネシア 1,222人</title></circle>
+<circle cx="327.7" cy="242.1" r="3" fill="#1e3a5f"><title>2021年 インドネシア 1,069人</title></circle>
+<circle cx="382.0" cy="212.7" r="3" fill="#1e3a5f"><title>2022年 インドネシア 1,699人</title></circle>
+<circle cx="436.3" cy="151.1" r="3" fill="#1e3a5f"><title>2023年 インドネシア 3,019人</title></circle>
+<circle cx="490.7" cy="110.9" r="3" fill="#1e3a5f"><title>2024年 インドネシア 3,880人</title></circle>
+<circle cx="545.0" cy="54.2" r="3" fill="#1e3a5f"><title>2025年 インドネシア 5,095人</title></circle>
+<polyline points="56.0,248.1 110.3,230.4 164.7,226.6 219.0,217.9 273.3,210.6 327.7,213.2 382.0,203.8 436.3,192.8 490.7,144.4 545.0,114.0" fill="none" stroke="#c0712f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="56.0" cy="248.1" r="3" fill="#c0712f"><title>2016年 スリランカ 941人</title></circle>
-<circle cx="113.1" cy="230.4" r="3" fill="#c0712f"><title>2017年 スリランカ 1,321人</title></circle>
-<circle cx="170.2" cy="226.6" r="3" fill="#c0712f"><title>2018年 スリランカ 1,402人</title></circle>
-<circle cx="227.3" cy="217.9" r="3" fill="#c0712f"><title>2019年 スリランカ 1,587人</title></circle>
-<circle cx="284.4" cy="210.6" r="3" fill="#c0712f"><title>2020年 スリランカ 1,744人</title></circle>
-<circle cx="341.6" cy="213.2" r="3" fill="#c0712f"><title>2021年 スリランカ 1,688人</title></circle>
-<circle cx="398.7" cy="203.8" r="3" fill="#c0712f"><title>2022年 スリランカ 1,890人</title></circle>
-<circle cx="455.8" cy="192.8" r="3" fill="#c0712f"><title>2023年 スリランカ 2,126人</title></circle>
-<circle cx="512.9" cy="144.4" r="3" fill="#c0712f"><title>2024年 スリランカ 3,163人</title></circle>
-<circle cx="570.0" cy="114.0" r="3" fill="#c0712f"><title>2025年 スリランカ 3,814人</title></circle>
-<polyline points="56.0,258.8 113.1,255.7 170.2,252.1 227.3,242.6 284.4,232.8 341.6,231.0 398.7,224.4 455.8,211.6 512.9,196.0 570.0,180.1" fill="none" stroke="#2f8a6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="110.3" cy="230.4" r="3" fill="#c0712f"><title>2017年 スリランカ 1,321人</title></circle>
+<circle cx="164.7" cy="226.6" r="3" fill="#c0712f"><title>2018年 スリランカ 1,402人</title></circle>
+<circle cx="219.0" cy="217.9" r="3" fill="#c0712f"><title>2019年 スリランカ 1,587人</title></circle>
+<circle cx="273.3" cy="210.6" r="3" fill="#c0712f"><title>2020年 スリランカ 1,744人</title></circle>
+<circle cx="327.7" cy="213.2" r="3" fill="#c0712f"><title>2021年 スリランカ 1,688人</title></circle>
+<circle cx="382.0" cy="203.8" r="3" fill="#c0712f"><title>2022年 スリランカ 1,890人</title></circle>
+<circle cx="436.3" cy="192.8" r="3" fill="#c0712f"><title>2023年 スリランカ 2,126人</title></circle>
+<circle cx="490.7" cy="144.4" r="3" fill="#c0712f"><title>2024年 スリランカ 3,163人</title></circle>
+<circle cx="545.0" cy="114.0" r="3" fill="#c0712f"><title>2025年 スリランカ 3,814人</title></circle>
+<polyline points="56.0,258.8 110.3,255.7 164.7,252.1 219.0,242.6 273.3,232.8 327.7,231.0 382.0,224.4 436.3,211.6 490.7,196.0 545.0,180.1" fill="none" stroke="#2f8a6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="56.0" cy="258.8" r="3" fill="#2f8a6b"><title>2016年 パキスタン 712人</title></circle>
-<circle cx="113.1" cy="255.7" r="3" fill="#2f8a6b"><title>2017年 パキスタン 777人</title></circle>
-<circle cx="170.2" cy="252.1" r="3" fill="#2f8a6b"><title>2018年 パキスタン 854人</title></circle>
-<circle cx="227.3" cy="242.6" r="3" fill="#2f8a6b"><title>2019年 パキスタン 1,059人</title></circle>
-<circle cx="284.4" cy="232.8" r="3" fill="#2f8a6b"><title>2020年 パキスタン 1,269人</title></circle>
-<circle cx="341.6" cy="231.0" r="3" fill="#2f8a6b"><title>2021年 パキスタン 1,308人</title></circle>
-<circle cx="398.7" cy="224.4" r="3" fill="#2f8a6b"><title>2022年 パキスタン 1,448人</title></circle>
-<circle cx="455.8" cy="211.6" r="3" fill="#2f8a6b"><title>2023年 パキスタン 1,722人</title></circle>
-<circle cx="512.9" cy="196.0" r="3" fill="#2f8a6b"><title>2024年 パキスタン 2,058人</title></circle>
-<circle cx="570.0" cy="180.1" r="3" fill="#2f8a6b"><title>2025年 パキスタン 2,397人</title></circle>
-<polyline points="56.0,273.2 113.1,271.3 170.2,271.7 227.3,269.0 284.4,266.7 341.6,264.6 398.7,262.0 455.8,257.9 512.9,256.1 570.0,250.1" fill="none" stroke="#8a5cb8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="110.3" cy="255.7" r="3" fill="#2f8a6b"><title>2017年 パキスタン 777人</title></circle>
+<circle cx="164.7" cy="252.1" r="3" fill="#2f8a6b"><title>2018年 パキスタン 854人</title></circle>
+<circle cx="219.0" cy="242.6" r="3" fill="#2f8a6b"><title>2019年 パキスタン 1,059人</title></circle>
+<circle cx="273.3" cy="232.8" r="3" fill="#2f8a6b"><title>2020年 パキスタン 1,269人</title></circle>
+<circle cx="327.7" cy="231.0" r="3" fill="#2f8a6b"><title>2021年 パキスタン 1,308人</title></circle>
+<circle cx="382.0" cy="224.4" r="3" fill="#2f8a6b"><title>2022年 パキスタン 1,448人</title></circle>
+<circle cx="436.3" cy="211.6" r="3" fill="#2f8a6b"><title>2023年 パキスタン 1,722人</title></circle>
+<circle cx="490.7" cy="196.0" r="3" fill="#2f8a6b"><title>2024年 パキスタン 2,058人</title></circle>
+<circle cx="545.0" cy="180.1" r="3" fill="#2f8a6b"><title>2025年 パキスタン 2,397人</title></circle>
+<polyline points="56.0,273.2 110.3,271.3 164.7,271.7 219.0,269.0 273.3,266.7 327.7,264.6 382.0,262.0 436.3,257.9 490.7,256.1 545.0,250.1" fill="none" stroke="#8a5cb8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="56.0" cy="273.2" r="3" fill="#8a5cb8"><title>2016年 バングラデシュ 402人</title></circle>
-<circle cx="113.1" cy="271.3" r="3" fill="#8a5cb8"><title>2017年 バングラデシュ 443人</title></circle>
-<circle cx="170.2" cy="271.7" r="3" fill="#8a5cb8"><title>2018年 バングラデシュ 435人</title></circle>
-<circle cx="227.3" cy="269.0" r="3" fill="#8a5cb8"><title>2019年 バングラデシュ 492人</title></circle>
-<circle cx="284.4" cy="266.7" r="3" fill="#8a5cb8"><title>2020年 バングラデシュ 542人</title></circle>
-<circle cx="341.6" cy="264.6" r="3" fill="#8a5cb8"><title>2021年 バングラデシュ 587人</title></circle>
-<circle cx="398.7" cy="262.0" r="3" fill="#8a5cb8"><title>2022年 バングラデシュ 642人</title></circle>
-<circle cx="455.8" cy="257.9" r="3" fill="#8a5cb8"><title>2023年 バングラデシュ 730人</title></circle>
-<circle cx="512.9" cy="256.1" r="3" fill="#8a5cb8"><title>2024年 バングラデシュ 770人</title></circle>
-<circle cx="570.0" cy="250.1" r="3" fill="#8a5cb8"><title>2025年 バングラデシュ 898人</title></circle>
-<polyline points="56.0,289.7 113.1,289.3 170.2,288.8 227.3,288.6 284.4,288.5 341.6,288.5 398.7,284.1 455.8,284.4 512.9,284.1 570.0,283.6" fill="none" stroke="#b8476b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="110.3" cy="271.3" r="3" fill="#8a5cb8"><title>2017年 バングラデシュ 443人</title></circle>
+<circle cx="164.7" cy="271.7" r="3" fill="#8a5cb8"><title>2018年 バングラデシュ 435人</title></circle>
+<circle cx="219.0" cy="269.0" r="3" fill="#8a5cb8"><title>2019年 バングラデシュ 492人</title></circle>
+<circle cx="273.3" cy="266.7" r="3" fill="#8a5cb8"><title>2020年 バングラデシュ 542人</title></circle>
+<circle cx="327.7" cy="264.6" r="3" fill="#8a5cb8"><title>2021年 バングラデシュ 587人</title></circle>
+<circle cx="382.0" cy="262.0" r="3" fill="#8a5cb8"><title>2022年 バングラデシュ 642人</title></circle>
+<circle cx="436.3" cy="257.9" r="3" fill="#8a5cb8"><title>2023年 バングラデシュ 730人</title></circle>
+<circle cx="490.7" cy="256.1" r="3" fill="#8a5cb8"><title>2024年 バングラデシュ 770人</title></circle>
+<circle cx="545.0" cy="250.1" r="3" fill="#8a5cb8"><title>2025年 バングラデシュ 898人</title></circle>
+<polyline points="56.0,289.7 110.3,289.3 164.7,288.8 219.0,288.6 273.3,288.5 327.7,288.5 382.0,284.1 436.3,284.4 490.7,284.1 545.0,283.6" fill="none" stroke="#b8476b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="56.0" cy="289.7" r="3" fill="#b8476b"><title>2016年 アフガニスタン 49人</title></circle>
-<circle cx="113.1" cy="289.3" r="3" fill="#b8476b"><title>2017年 アフガニスタン 58人</title></circle>
-<circle cx="170.2" cy="288.8" r="3" fill="#b8476b"><title>2018年 アフガニスタン 69人</title></circle>
-<circle cx="227.3" cy="288.6" r="3" fill="#b8476b"><title>2019年 アフガニスタン 73人</title></circle>
-<circle cx="284.4" cy="288.5" r="3" fill="#b8476b"><title>2020年 アフガニスタン 76人</title></circle>
-<circle cx="341.6" cy="288.5" r="3" fill="#b8476b"><title>2021年 アフガニスタン 76人</title></circle>
-<circle cx="398.7" cy="284.1" r="3" fill="#b8476b"><title>2022年 アフガニスタン 169人</title></circle>
-<circle cx="455.8" cy="284.4" r="3" fill="#b8476b"><title>2023年 アフガニスタン 162人</title></circle>
-<circle cx="512.9" cy="284.1" r="3" fill="#b8476b"><title>2024年 アフガニスタン 169人</title></circle>
-<circle cx="570.0" cy="283.6" r="3" fill="#b8476b"><title>2025年 アフガニスタン 179人</title></circle>
-<text x="580.0" y="54.2" dy="0.32em" class="end" fill="#1e3a5f">インドネシア 5,095</text>
-<text x="580.0" y="114.0" dy="0.32em" class="end" fill="#c0712f">スリランカ 3,814</text>
-<text x="580.0" y="180.1" dy="0.32em" class="end" fill="#2f8a6b">パキスタン 2,397</text>
-<text x="580.0" y="250.1" dy="0.32em" class="end" fill="#8a5cb8">バングラデシュ 898</text>
-<text x="580.0" y="283.6" dy="0.32em" class="end" fill="#b8476b">アフガニスタン 179</text>
-</svg></div>
+<circle cx="110.3" cy="289.3" r="3" fill="#b8476b"><title>2017年 アフガニスタン 58人</title></circle>
+<circle cx="164.7" cy="288.8" r="3" fill="#b8476b"><title>2018年 アフガニスタン 69人</title></circle>
+<circle cx="219.0" cy="288.6" r="3" fill="#b8476b"><title>2019年 アフガニスタン 73人</title></circle>
+<circle cx="273.3" cy="288.5" r="3" fill="#b8476b"><title>2020年 アフガニスタン 76人</title></circle>
+<circle cx="327.7" cy="288.5" r="3" fill="#b8476b"><title>2021年 アフガニスタン 76人</title></circle>
+<circle cx="382.0" cy="284.1" r="3" fill="#b8476b"><title>2022年 アフガニスタン 169人</title></circle>
+<circle cx="436.3" cy="284.4" r="3" fill="#b8476b"><title>2023年 アフガニスタン 162人</title></circle>
+<circle cx="490.7" cy="284.1" r="3" fill="#b8476b"><title>2024年 アフガニスタン 169人</title></circle>
+<circle cx="545.0" cy="283.6" r="3" fill="#b8476b"><title>2025年 アフガニスタン 179人</title></circle>
+<text x="555.0" y="54.2" dy="0.32em" class="end" fill="#1e3a5f">インドネシア 5,095</text>
+<text x="555.0" y="114.0" dy="0.32em" class="end" fill="#c0712f">スリランカ 3,814</text>
+<text x="555.0" y="180.1" dy="0.32em" class="end" fill="#2f8a6b">パキスタン 2,397</text>
+<text x="555.0" y="250.1" dy="0.32em" class="end" fill="#8a5cb8">バングラデシュ 898</text>
+<text x="555.0" y="283.6" dy="0.32em" class="end" fill="#b8476b">アフガニスタン 179</text>
+</svg></div></div>
 
 <h2>栃木県のモスク</h2>
 <div class="grid">
@@ -249,6 +328,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <div class="card">
 <ol class="src">
   <li>出入国在留管理庁「在留外国人統計」2025年12月末（e-Stat で2026年7月10日公開の「在留外国人統計テーブルデータ（国籍・地域別 在留資格別 市区町村別）」）。都道府県別の数は、この表を都道府県ごとに足したものです（全国の合計は公表値の4,125,395人と一致）。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
+  <li>出入国在留管理庁「在留外国人統計」2016〜2025年の各年12月末（e-Stat。2016〜2020年は第4表「都道府県別 国籍・地域別 在留外国人」、2021〜2025年は「在留外国人統計テーブルデータ」を都道府県ごとに足したもの）。「アフリカの国（合計）」は、統計の地域の区分「アフリカ」の54か国の合計です。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
   <li>栃木県「栃木県外国人住民数現況調査結果（令和7（2025）年12月31日現在）」2026年3月27日発表、資料編（国籍・地域別外国人住民数の推移）。<a href="https://www.pref.tochigi.lg.jp/c01/houdou/gaikokujinchousa2025.html" target="_blank" rel="noopener">出典のページ</a></li><li>小山市「小山市国籍別外国人登録者数（令和8年）」各月1日現在のうち2026年9月1日の列（ページの更新日は2026年9月14日）。<a href="https://www.city.oyama.tochigi.jp/shisei/gyouzaisei/toukei/jinkou/page003131.html" target="_blank" rel="noopener">出典のページ</a></li>
   <li>店田廣文「日本のムスリム人口 2026年」Research Papers: Muslims in Japan No.31、多民族多世代社会研究所、2026年9月。表3「都道府県別・滞日ムスリム人口の推計」（在留外国人統計2025年12月末の主要10か国の人数による推計）。<a href="https://www.imemgs.com/wp-content/uploads/2026/09/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%A0%E3%82%B9%E3%83%AA%E3%83%A0%E4%BA%BA%E5%8F%A3-%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%96%E5%B9%B4-1.pdf" target="_blank" rel="noopener">PDF</a></li>
   <li>モスクの数・国籍・宗派・運営・開いた時期は、このサイトのモスクリスト（地図・モスク一覧と同じもの）と、モスクごとに調べた内容によります（最終更新の時点）。</li>

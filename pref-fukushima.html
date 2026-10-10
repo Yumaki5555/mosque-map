@@ -39,9 +39,9 @@ h3 { font-size: 16px; margin: 0 0 4px; }
 .tile .v small { font-size: 15px; font-weight: 700; margin-left: 2px; }
 .tile .s { font-size: 13px; color: var(--muted); }
 .tile .s b { color: var(--ink); font-size: 15px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 12px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-.brow { display: grid; grid-template-columns: minmax(84px, 30%) 1fr auto; gap: 8px; align-items: center; font-size: 13px; padding: 2px 0; }
+.brow { max-width: 860px; display: grid; grid-template-columns: minmax(84px, 30%) 1fr auto; gap: 8px; align-items: center; font-size: 13px; padding: 2px 0; }
 .blab { overflow-wrap: anywhere; line-height: 1.35; }
 .btrack { background: #eef1f5; border-radius: 4px; height: 12px; overflow: hidden; min-width: 0; }
 .bar { display: block; height: 100%; background: var(--jp); border-radius: 4px; }
@@ -49,10 +49,6 @@ h3 { font-size: 16px; margin: 0 0 4px; }
 .brow.hl .blab, .brow.hl .bval { font-weight: 800; color: var(--navy); }
 .brow.ref .bar { background: var(--ref); }
 .bval { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; min-width: 4em; text-align: right; }
-.brow.pair { grid-template-columns: minmax(84px, 30%) 1fr; }
-.pairs { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.prow { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
-.prow .btrack { height: 8px; }
 .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); }
 .sw { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
 .tablewrap { overflow: auto; max-height: 520px; border: 1px solid var(--line); border-radius: 8px; }
@@ -61,13 +57,18 @@ th { position: sticky; top: 0; background: #eef2f7; text-align: left; padding: 6
 td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 td.num, th.num { text-align: right; white-space: nowrap; }
 tr.has td { background: var(--hl); }
+tr.sum td { font-weight: 700; border-top: 2px solid var(--navy); }
+tr.ref td { color: var(--muted); }
+tr.ref td:first-child { color: var(--ink); }
+tr.refhead td { background: #f3f5f8; font-size: 12px; color: var(--muted); padding: 4px 8px; }
+.tablewrap.short { max-height: none; }
 .cell { display: inline-flex; align-items: center; gap: 6px; justify-content: flex-end; }
 .cbar { display: inline-block; height: 10px; border-radius: 3px; min-width: 2px; background: var(--jp); }
 .cbar.tg { background: var(--tg); }
 .chart-svg text { fill: var(--muted); font-size: 12px; font-family: inherit; }
 .chart-svg text.end { font-weight: 700; font-size: 12.5px; }
 .chart-svg .grid { stroke: #e3e7ec; stroke-width: 1; }
-.tl { display: grid; grid-template-columns: minmax(120px, 42%) 1fr; gap: 4px 10px; align-items: center; font-size: 13px; }
+.tl { display: grid; grid-template-columns: minmax(120px, min(42%, 360px)) 1fr; gap: 4px 10px; align-items: center; font-size: 13px; }
 .tl-lab { overflow-wrap: anywhere; line-height: 1.35; }
 .tl-track { position: relative; height: 30px; border-left: 1px solid #b8c1cc; }
 .tl-track::after { content: ""; position: absolute; left: 0; right: 0; top: 10px; border-top: 1px solid #e3e7ec; }
@@ -106,7 +107,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 </style>
 <p class="back"><a href="area.html?pref=福島県">← 地域別のページ（福島県）にもどる</a></p>
 <h1>福島県のモスクと人口</h1>
-<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 01:03</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">4<small>か所</small></div><div class=s>地図・モスク一覧に載っている福島県の場所（全国で多い順に17番目）</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">2,877<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国34位）</div></div></div><style>
+<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月11日 01:56</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">4<small>か所</small></div><div class=s>地図・モスク一覧に載っている福島県の場所（全国で多い順に17番目）</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">2,877<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国34位）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -134,8 +135,8 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <h2>国籍の特徴</h2>
 <div class="grid">
   <div class="card"><h3>外国人のうちパキスタンの人の割合（上位の都道府県）</h3><p class="note">在留外国人統計 2025年12月末。いちばん下は全国の平均。</p><div class="brow " title="パキスタン 2,414人／外国人 61,878人"><span class="blab">栃木県</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">3.9%</span></div><div class="brow " title="パキスタン 4,065人／外国人 111,808人"><span class="blab">茨城県</span><span class="btrack"><span class="bar" style="width:93.2%"></span></span><span class="bval">3.6%</span></div><div class="brow " title="パキスタン 918人／外国人 26,296人"><span class="blab">富山県</span><span class="btrack"><span class="bar" style="width:89.5%"></span></span><span class="bval">3.5%</span></div><div class="brow " title="パキスタン 1,755人／外国人 89,670人"><span class="blab">群馬県</span><span class="btrack"><span class="bar" style="width:50.2%"></span></span><span class="bval">2.0%</span></div><div class="brow " title="パキスタン 502人／外国人 26,724人"><span class="blab">新潟県</span><span class="btrack"><span class="bar" style="width:48.2%"></span></span><span class="bval">1.9%</span></div><div class="brow " title="パキスタン 601人／外国人 32,903人"><span class="blab">宮城県</span><span class="btrack"><span class="bar" style="width:46.8%"></span></span><span class="bval">1.8%</span></div><div class="brow " title="パキスタン 4,577人／外国人 290,937人"><span class="blab">埼玉県</span><span class="btrack"><span class="bar" style="width:40.3%"></span></span><span class="bval">1.6%</span></div><div class="brow " title="パキスタン 144人／外国人 9,419人"><span class="blab">青森県</span><span class="btrack"><span class="bar" style="width:39.2%"></span></span><span class="bval">1.5%</span></div><div class="brow hl" title="パキスタン 291人／外国人 21,598人"><span class="blab">福島県</span><span class="btrack"><span class="bar" style="width:34.5%"></span></span><span class="bval">1.3%</span></div><div class="brow " title="パキスタン 1,026人／外国人 77,401人"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:34.0%"></span></span><span class="bval">1.3%</span></div><div class="brow ref" title="パキスタン 34,911人／外国人 4,125,395人"><span class="blab">全国</span><span class="btrack"><span class="bar" style="width:21.7%"></span></span><span class="bval">0.8%</span></div></div>
-  <div class="card"><h3>主なイスラムの国10か国の内わけ（福島県と全国）</h3><p class="note">10か国の人を合わせて100%としたときの割合。在留外国人統計 2025年12月末。</p>
-    <div class="legend"><span><i class="sw" style="background:var(--tg)"></i>福島県</span><span><i class="sw" style="background:var(--jp)"></i>全国</span></div><div class="brow pair" title="福島県 2,241人／全国 266,037人"><span class="blab">インドネシア</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:100.0%"></span></span><span class="bval">77.9%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:87.1%"></span></span><span class="bval">67.8%</span></span></span></div><div class="brow pair" title="福島県 291人／全国 34,911人"><span class="blab">パキスタン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:13.0%"></span></span><span class="bval">10.1%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:11.4%"></span></span><span class="bval">8.9%</span></span></span></div><div class="brow pair" title="福島県 187人／全国 44,938人"><span class="blab">バングラデシュ</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:8.3%"></span></span><span class="bval">6.5%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:14.7%"></span></span><span class="bval">11.5%</span></span></span></div><div class="brow pair" title="福島県 33人／全国 6,887人"><span class="blab">アフガニスタン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:1.5%"></span></span><span class="bval">1.1%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:2.3%"></span></span><span class="bval">1.8%</span></span></span></div><div class="brow pair" title="福島県 11人／全国 4,431人"><span class="blab">イラン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.5%"></span></span><span class="bval">0.4%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:1.5%"></span></span><span class="bval">1.1%</span></span></span></div><div class="brow pair" title="福島県 63人／全国 12,266人"><span class="blab">マレーシア</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:2.8%"></span></span><span class="bval">2.2%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:4.0%"></span></span><span class="bval">3.1%</span></span></span></div><div class="brow pair" title="福島県 12人／全国 7,919人"><span class="blab">トルコ</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.5%"></span></span><span class="bval">0.4%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:2.6%"></span></span><span class="bval">2.0%</span></span></span></div><div class="brow pair" title="福島県 5人／全国 7,362人"><span class="blab">ウズベキスタン</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.2%"></span></span><span class="bval">0.2%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:2.4%"></span></span><span class="bval">1.9%</span></span></span></div><div class="brow pair" title="福島県 5人／全国 2,601人"><span class="blab">エジプト</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:0.2%"></span></span><span class="bval">0.2%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:0.9%"></span></span><span class="bval">0.7%</span></span></span></div><div class="brow pair" title="福島県 29人／全国 4,807人"><span class="blab">ナイジェリア</span><span class="pairs"><span class="prow"><span class="btrack"><span class="bar tg" style="width:1.3%"></span></span><span class="bval">1.0%</span></span><span class="prow"><span class="btrack"><span class="bar" style="width:1.6%"></span></span><span class="bval">1.2%</span></span></span></div></div>
+  <div class="card"><h3>主なイスラムの国10か国の内わけ（福島県と全国）</h3><p class="note">在留外国人統計 2025年12月末。割合は、10か国の人を合わせて100%としたときの割合。順位は、人数が福島県より多い都道府県の数に1を足したもの。アフリカの国（合計）は、統計の地域の区分「アフリカ」の54か国の合計です（エジプト・ナイジェリアも入っています。ムスリムが少ない国も入っています）。</p>
+    <div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">県内の人数</th><th class="num">割合（福島県）</th><th class="num">割合（全国）</th><th class="num">人数の全国順位</th></tr></thead><tbody><tr><td>インドネシア</td><td class="num">2,241</td><td class="num"><span class="cell"><span class="cbar tg" style="width:5.00rem"></span>77.9%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:4.35rem"></span>67.8%</span></td><td class="num">35位</td></tr><tr><td>パキスタン</td><td class="num">291</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.65rem"></span>10.1%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.57rem"></span>8.9%</span></td><td class="num">22位</td></tr><tr><td>バングラデシュ</td><td class="num">187</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.42rem"></span>6.5%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.74rem"></span>11.5%</span></td><td class="num">30位</td></tr><tr><td>マレーシア</td><td class="num">63</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.14rem"></span>2.2%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.20rem"></span>3.1%</span></td><td class="num">29位</td></tr><tr><td>アフガニスタン</td><td class="num">33</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.07rem"></span>1.1%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.11rem"></span>1.8%</span></td><td class="num">23位</td></tr><tr><td>ナイジェリア</td><td class="num">29</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.06rem"></span>1.0%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.08rem"></span>1.2%</span></td><td class="num">22位</td></tr><tr><td>トルコ</td><td class="num">12</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.03rem"></span>0.4%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.13rem"></span>2.0%</span></td><td class="num">27位</td></tr><tr><td>イラン</td><td class="num">11</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.02rem"></span>0.4%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.07rem"></span>1.1%</span></td><td class="num">26位</td></tr><tr><td>ウズベキスタン</td><td class="num">5</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.01rem"></span>0.2%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.12rem"></span>1.9%</span></td><td class="num">37位</td></tr><tr><td>エジプト</td><td class="num">5</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.01rem"></span>0.2%</span></td><td class="num"><span class="cell"><span class="cbar " style="width:0.04rem"></span>0.7%</span></td><td class="num">35位</td></tr><tr class="sum"><td>10か国の合計</td><td class="num">2,877</td><td class="num">100%</td><td class="num">100%</td><td class="num">34位</td></tr><tr class="refhead"><td colspan="5">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">280</td><td class="num">—</td><td class="num">—</td><td class="num">26位</td></tr><tr class="ref"><td>アフリカの国（合計）</td><td class="num">114</td><td class="num">—</td><td class="num">—</td><td class="num">30位</td></tr></tbody></table></div></div>
 </div>
 
 <h2>モスクの国籍と、住んでいる人の国籍</h2>
@@ -153,7 +154,84 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
   </div>
   
 </div>
-
+<h2>増え方</h2><div class="grid"><div class="card"><h3>県内に住む主なイスラムの国の人の推移（国籍別、各年12月末）</h3><p class="note">国の在留外国人統計（2016〜2025年の各年12月末）。グラフは2025年の人数が多い5つ（10か国・スリランカ・アフリカの国（合計）の中から）。全部の数は下の表にあります。</p><div class="legend"><span><i class="sw" style="background:#1e3a5f"></i>インドネシア</span><span><i class="sw" style="background:#c0712f"></i>パキスタン</span><span><i class="sw" style="background:#2f8a6b"></i>スリランカ</span><span><i class="sw" style="background:#8a5cb8"></i>バングラデシュ</span><span><i class="sw" style="background:#b8476b"></i>アフリカの国（合計）</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移">
+<line x1="56" x2="545" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
+<line x1="56" x2="545" y1="236.0" y2="236.0" class="grid"/><text x="48" y="236.0" dy="0.32em" text-anchor="end">500</text>
+<line x1="56" x2="545" y1="180.0" y2="180.0" class="grid"/><text x="48" y="180.0" dy="0.32em" text-anchor="end">1,000</text>
+<line x1="56" x2="545" y1="124.0" y2="124.0" class="grid"/><text x="48" y="124.0" dy="0.32em" text-anchor="end">1,500</text>
+<line x1="56" x2="545" y1="68.0" y2="68.0" class="grid"/><text x="48" y="68.0" dy="0.32em" text-anchor="end">2,000</text>
+<line x1="56" x2="545" y1="12.0" y2="12.0" class="grid"/><text x="48" y="12.0" dy="0.32em" text-anchor="end">2,500</text>
+<text x="56.0" y="312" text-anchor="middle">2016</text>
+<text x="110.3" y="312" text-anchor="middle">2017</text>
+<text x="164.7" y="312" text-anchor="middle">2018</text>
+<text x="219.0" y="312" text-anchor="middle">2019</text>
+<text x="273.3" y="312" text-anchor="middle">2020</text>
+<text x="327.7" y="312" text-anchor="middle">2021</text>
+<text x="382.0" y="312" text-anchor="middle">2022</text>
+<text x="436.3" y="312" text-anchor="middle">2023</text>
+<text x="490.7" y="312" text-anchor="middle">2024</text>
+<text x="545.0" y="312" text-anchor="middle">2025</text>
+<polyline points="56.0,263.8 110.3,262.5 164.7,252.4 219.0,234.3 273.3,237.7 327.7,249.9 382.0,214.9 436.3,156.5 490.7,101.8 545.0,41.0" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="263.8" r="3" fill="#1e3a5f"><title>2016年 インドネシア 252人</title></circle>
+<circle cx="110.3" cy="262.5" r="3" fill="#1e3a5f"><title>2017年 インドネシア 263人</title></circle>
+<circle cx="164.7" cy="252.4" r="3" fill="#1e3a5f"><title>2018年 インドネシア 354人</title></circle>
+<circle cx="219.0" cy="234.3" r="3" fill="#1e3a5f"><title>2019年 インドネシア 515人</title></circle>
+<circle cx="273.3" cy="237.7" r="3" fill="#1e3a5f"><title>2020年 インドネシア 485人</title></circle>
+<circle cx="327.7" cy="249.9" r="3" fill="#1e3a5f"><title>2021年 インドネシア 376人</title></circle>
+<circle cx="382.0" cy="214.9" r="3" fill="#1e3a5f"><title>2022年 インドネシア 688人</title></circle>
+<circle cx="436.3" cy="156.5" r="3" fill="#1e3a5f"><title>2023年 インドネシア 1,210人</title></circle>
+<circle cx="490.7" cy="101.8" r="3" fill="#1e3a5f"><title>2024年 インドネシア 1,698人</title></circle>
+<circle cx="545.0" cy="41.0" r="3" fill="#1e3a5f"><title>2025年 インドネシア 2,241人</title></circle>
+<polyline points="56.0,280.7 110.3,277.6 164.7,276.4 219.0,277.4 273.3,277.6 327.7,277.0 382.0,270.8 436.3,266.8 490.7,264.0 545.0,259.4" fill="none" stroke="#c0712f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="280.7" r="3" fill="#c0712f"><title>2016年 パキスタン 101人</title></circle>
+<circle cx="110.3" cy="277.6" r="3" fill="#c0712f"><title>2017年 パキスタン 129人</title></circle>
+<circle cx="164.7" cy="276.4" r="3" fill="#c0712f"><title>2018年 パキスタン 139人</title></circle>
+<circle cx="219.0" cy="277.4" r="3" fill="#c0712f"><title>2019年 パキスタン 130人</title></circle>
+<circle cx="273.3" cy="277.6" r="3" fill="#c0712f"><title>2020年 パキスタン 129人</title></circle>
+<circle cx="327.7" cy="277.0" r="3" fill="#c0712f"><title>2021年 パキスタン 134人</title></circle>
+<circle cx="382.0" cy="270.8" r="3" fill="#c0712f"><title>2022年 パキスタン 189人</title></circle>
+<circle cx="436.3" cy="266.8" r="3" fill="#c0712f"><title>2023年 パキスタン 225人</title></circle>
+<circle cx="490.7" cy="264.0" r="3" fill="#c0712f"><title>2024年 パキスタン 250人</title></circle>
+<circle cx="545.0" cy="259.4" r="3" fill="#c0712f"><title>2025年 パキスタン 291人</title></circle>
+<polyline points="56.0,287.6 110.3,286.6 164.7,283.6 219.0,280.1 273.3,280.2 327.7,281.0 382.0,279.6 436.3,276.4 490.7,262.1 545.0,260.6" fill="none" stroke="#2f8a6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="287.6" r="3" fill="#2f8a6b"><title>2016年 スリランカ 39人</title></circle>
+<circle cx="110.3" cy="286.6" r="3" fill="#2f8a6b"><title>2017年 スリランカ 48人</title></circle>
+<circle cx="164.7" cy="283.6" r="3" fill="#2f8a6b"><title>2018年 スリランカ 75人</title></circle>
+<circle cx="219.0" cy="280.1" r="3" fill="#2f8a6b"><title>2019年 スリランカ 106人</title></circle>
+<circle cx="273.3" cy="280.2" r="3" fill="#2f8a6b"><title>2020年 スリランカ 105人</title></circle>
+<circle cx="327.7" cy="281.0" r="3" fill="#2f8a6b"><title>2021年 スリランカ 98人</title></circle>
+<circle cx="382.0" cy="279.6" r="3" fill="#2f8a6b"><title>2022年 スリランカ 111人</title></circle>
+<circle cx="436.3" cy="276.4" r="3" fill="#2f8a6b"><title>2023年 スリランカ 139人</title></circle>
+<circle cx="490.7" cy="262.1" r="3" fill="#2f8a6b"><title>2024年 スリランカ 267人</title></circle>
+<circle cx="545.0" cy="260.6" r="3" fill="#2f8a6b"><title>2025年 スリランカ 280人</title></circle>
+<polyline points="56.0,287.5 110.3,284.9 164.7,282.1 219.0,282.0 273.3,282.3 327.7,281.5 382.0,278.0 436.3,274.9 490.7,273.0 545.0,271.1" fill="none" stroke="#8a5cb8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="287.5" r="3" fill="#8a5cb8"><title>2016年 バングラデシュ 40人</title></circle>
+<circle cx="110.3" cy="284.9" r="3" fill="#8a5cb8"><title>2017年 バングラデシュ 63人</title></circle>
+<circle cx="164.7" cy="282.1" r="3" fill="#8a5cb8"><title>2018年 バングラデシュ 88人</title></circle>
+<circle cx="219.0" cy="282.0" r="3" fill="#8a5cb8"><title>2019年 バングラデシュ 89人</title></circle>
+<circle cx="273.3" cy="282.3" r="3" fill="#8a5cb8"><title>2020年 バングラデシュ 87人</title></circle>
+<circle cx="327.7" cy="281.5" r="3" fill="#8a5cb8"><title>2021年 バングラデシュ 94人</title></circle>
+<circle cx="382.0" cy="278.0" r="3" fill="#8a5cb8"><title>2022年 バングラデシュ 125人</title></circle>
+<circle cx="436.3" cy="274.9" r="3" fill="#8a5cb8"><title>2023年 バングラデシュ 153人</title></circle>
+<circle cx="490.7" cy="273.0" r="3" fill="#8a5cb8"><title>2024年 バングラデシュ 170人</title></circle>
+<circle cx="545.0" cy="271.1" r="3" fill="#8a5cb8"><title>2025年 バングラデシュ 187人</title></circle>
+<polyline points="56.0,286.3 110.3,285.6 164.7,285.1 219.0,284.2 273.3,284.3 327.7,284.8 382.0,282.8 436.3,282.8 490.7,280.8 545.0,279.2" fill="none" stroke="#b8476b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="286.3" r="3" fill="#b8476b"><title>2016年 アフリカの国（合計） 51人</title></circle>
+<circle cx="110.3" cy="285.6" r="3" fill="#b8476b"><title>2017年 アフリカの国（合計） 57人</title></circle>
+<circle cx="164.7" cy="285.1" r="3" fill="#b8476b"><title>2018年 アフリカの国（合計） 62人</title></circle>
+<circle cx="219.0" cy="284.2" r="3" fill="#b8476b"><title>2019年 アフリカの国（合計） 70人</title></circle>
+<circle cx="273.3" cy="284.3" r="3" fill="#b8476b"><title>2020年 アフリカの国（合計） 69人</title></circle>
+<circle cx="327.7" cy="284.8" r="3" fill="#b8476b"><title>2021年 アフリカの国（合計） 64人</title></circle>
+<circle cx="382.0" cy="282.8" r="3" fill="#b8476b"><title>2022年 アフリカの国（合計） 82人</title></circle>
+<circle cx="436.3" cy="282.8" r="3" fill="#b8476b"><title>2023年 アフリカの国（合計） 82人</title></circle>
+<circle cx="490.7" cy="280.8" r="3" fill="#b8476b"><title>2024年 アフリカの国（合計） 100人</title></circle>
+<circle cx="545.0" cy="279.2" r="3" fill="#b8476b"><title>2025年 アフリカの国（合計） 114人</title></circle>
+<text x="555.0" y="41.0" dy="0.32em" class="end" fill="#1e3a5f">インドネシア 2,241</text>
+<text x="555.0" y="243.0" dy="0.32em" class="end" fill="#c0712f">パキスタン 291</text>
+<text x="555.0" y="258.0" dy="0.32em" class="end" fill="#2f8a6b">スリランカ 280</text>
+<text x="555.0" y="273.0" dy="0.32em" class="end" fill="#8a5cb8">バングラデシュ 187</text>
+<text x="555.0" y="288.0" dy="0.32em" class="end" fill="#b8476b">アフリカの国（合計） 114</text>
+</svg></div><div class="card"><h3>国籍別の人数（各年12月末）</h3><p class="note">国の在留外国人統計。「何倍」は2016年の人数が30人より少ないときは出していません。</p><div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">2016</th><th class="num">2017</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2016年から増えた人数</th><th class="num">何倍</th></tr></thead><tbody><tr class=""><td>インドネシア</td><td class="num">252</td><td class="num">263</td><td class="num">354</td><td class="num">515</td><td class="num">485</td><td class="num">376</td><td class="num">688</td><td class="num">1,210</td><td class="num">1,698</td><td class="num">2,241</td><td class="num">+1,989</td><td class="num">8.9倍</td></tr><tr class=""><td>パキスタン</td><td class="num">101</td><td class="num">129</td><td class="num">139</td><td class="num">130</td><td class="num">129</td><td class="num">134</td><td class="num">189</td><td class="num">225</td><td class="num">250</td><td class="num">291</td><td class="num">+190</td><td class="num">2.9倍</td></tr><tr class=""><td>バングラデシュ</td><td class="num">40</td><td class="num">63</td><td class="num">88</td><td class="num">89</td><td class="num">87</td><td class="num">94</td><td class="num">125</td><td class="num">153</td><td class="num">170</td><td class="num">187</td><td class="num">+147</td><td class="num">4.7倍</td></tr><tr class=""><td>マレーシア</td><td class="num">30</td><td class="num">33</td><td class="num">41</td><td class="num">39</td><td class="num">40</td><td class="num">48</td><td class="num">55</td><td class="num">65</td><td class="num">68</td><td class="num">63</td><td class="num">+33</td><td class="num">2.1倍</td></tr><tr class=""><td>アフガニスタン</td><td class="num">22</td><td class="num">28</td><td class="num">30</td><td class="num">31</td><td class="num">26</td><td class="num">25</td><td class="num">34</td><td class="num">39</td><td class="num">35</td><td class="num">33</td><td class="num">+11</td><td class="num">—</td></tr><tr class=""><td>ナイジェリア</td><td class="num">19</td><td class="num">19</td><td class="num">18</td><td class="num">24</td><td class="num">25</td><td class="num">18</td><td class="num">17</td><td class="num">19</td><td class="num">22</td><td class="num">29</td><td class="num">+10</td><td class="num">—</td></tr><tr class=""><td>トルコ</td><td class="num">3</td><td class="num">10</td><td class="num">8</td><td class="num">7</td><td class="num">8</td><td class="num">7</td><td class="num">5</td><td class="num">6</td><td class="num">12</td><td class="num">12</td><td class="num">+9</td><td class="num">—</td></tr><tr class=""><td>イラン</td><td class="num">7</td><td class="num">8</td><td class="num">8</td><td class="num">10</td><td class="num">12</td><td class="num">11</td><td class="num">8</td><td class="num">8</td><td class="num">10</td><td class="num">11</td><td class="num">+4</td><td class="num">—</td></tr><tr class=""><td>ウズベキスタン</td><td class="num">5</td><td class="num">6</td><td class="num">8</td><td class="num">43</td><td class="num">43</td><td class="num">16</td><td class="num">18</td><td class="num">19</td><td class="num">6</td><td class="num">5</td><td class="num">0</td><td class="num">—</td></tr><tr class=""><td>エジプト</td><td class="num">7</td><td class="num">7</td><td class="num">9</td><td class="num">7</td><td class="num">7</td><td class="num">8</td><td class="num">7</td><td class="num">7</td><td class="num">6</td><td class="num">5</td><td class="num">-2</td><td class="num">—</td></tr><tr class="sum"><td>10か国の合計</td><td class="num">486</td><td class="num">566</td><td class="num">703</td><td class="num">895</td><td class="num">862</td><td class="num">737</td><td class="num">1,146</td><td class="num">1,751</td><td class="num">2,277</td><td class="num">2,877</td><td class="num">+2,391</td><td class="num">5.9倍</td></tr><tr class="refhead"><td colspan="13">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">39</td><td class="num">48</td><td class="num">75</td><td class="num">106</td><td class="num">105</td><td class="num">98</td><td class="num">111</td><td class="num">139</td><td class="num">267</td><td class="num">280</td><td class="num">+241</td><td class="num">7.2倍</td></tr><tr class="ref"><td>アフリカの国（合計）</td><td class="num">51</td><td class="num">57</td><td class="num">62</td><td class="num">70</td><td class="num">69</td><td class="num">64</td><td class="num">82</td><td class="num">82</td><td class="num">100</td><td class="num">114</td><td class="num">+63</td><td class="num">2.2倍</td></tr><tr class="ref"><td>外国人全体</td><td class="num">12,068</td><td class="num">12,977</td><td class="num">14,191</td><td class="num">15,559</td><td class="num">15,043</td><td class="num">14,120</td><td class="num">15,858</td><td class="num">18,038</td><td class="num">20,022</td><td class="num">21,598</td><td class="num">+9,530</td><td class="num">1.8倍</td></tr></tbody></table></div></div></div>
 
 <h2>福島県のモスク</h2>
 <div class="grid">
@@ -171,6 +249,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <div class="card">
 <ol class="src">
   <li>出入国在留管理庁「在留外国人統計」2025年12月末（e-Stat で2026年7月10日公開の「在留外国人統計テーブルデータ（国籍・地域別 在留資格別 市区町村別）」）。都道府県別の数は、この表を都道府県ごとに足したものです（全国の合計は公表値の4,125,395人と一致）。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
+  <li>出入国在留管理庁「在留外国人統計」2016〜2025年の各年12月末（e-Stat。2016〜2020年は第4表「都道府県別 国籍・地域別 在留外国人」、2021〜2025年は「在留外国人統計テーブルデータ」を都道府県ごとに足したもの）。「アフリカの国（合計）」は、統計の地域の区分「アフリカ」の54か国の合計です。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
   
   <li>店田廣文「日本のムスリム人口 2026年」Research Papers: Muslims in Japan No.31、多民族多世代社会研究所、2026年9月。表3「都道府県別・滞日ムスリム人口の推計」（在留外国人統計2025年12月末の主要10か国の人数による推計）。<a href="https://www.imemgs.com/wp-content/uploads/2026/09/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%A0%E3%82%B9%E3%83%AA%E3%83%A0%E4%BA%BA%E5%8F%A3-%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%96%E5%B9%B4-1.pdf" target="_blank" rel="noopener">PDF</a></li>
   <li>モスクの数・国籍・宗派・運営・開いた時期は、このサイトのモスクリスト（地図・モスク一覧と同じもの）と、モスクごとに調べた内容によります（最終更新の時点）。</li>
