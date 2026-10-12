@@ -486,7 +486,7 @@ details.fp-more > .fp-list{margin-top:10px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月12日 15:11</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">291<small>か所</small></div><div class=s>地図・モスク一覧の275か所＋寄付募集などから確認したモスク・計画地5か所＋追加した施設5か所＋寄付の募集・計画の情報だけの場所6か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月12日 15:32</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">291<small>か所</small></div><div class=s>地図・モスク一覧の275か所＋寄付募集などから確認したモスク・計画地5か所＋追加した施設5か所＋寄付の募集・計画の情報だけの場所6か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -898,10 +898,22 @@ function renderRegion() {
     `既存施設 ${nEx}か所` + (nBoth ? `（うち建て替え・改修などの計画もある場所 ${nBoth}か所）` : ""),
     nPlanOnly && `計画・建設中だけ ${nPlanOnly}か所`,
     others.length && `そのほか ${others.length}か所（${otherKinds.join("・")}）`].filter(Boolean).join("・") + "です。" : "";
+  // 「既存施設」の数＝地図・モスク一覧の数から閉鎖・状況確認中を除き、一覧に載っていない学校などを足した数（県のくわしいページの数と違う理由）
   const onList = rows.filter(p => p.kind === "mosque"), notEx = onList.filter(p => !isEx(p));
+  const offEx = rows.filter(p => p.kind !== "mosque" && isEx(p));
   const nClosed = countOf(notEx, p => hasSt(p, "closed"));
   const notExLabel = nClosed === notEx.length ? "閉鎖した" : nClosed ? "閉鎖・状況確認中の" : "状況確認中の";
-  $("rg-note-ex").textContent = notEx.length ? `地図・モスク一覧に載っている${onList.length}か所のうち、${notExLabel}${notEx.length}か所は「既存施設」に数えていません。` : "";
+  const offCats = {};
+  offEx.forEach(p => { const c = CATEGORY_JA[p.category] || "施設"; offCats[c] = (offCats[c] || 0) + 1; });
+  const offKeys = Object.keys(offCats);
+  const ofList = `地図・モスク一覧に載っている${onList.length}か所`, minus = `${notExLabel}${notEx.length}か所`;
+  const plus = "一覧に載っていない" + (offKeys.length === 1 ? `${offKeys[0]}${offEx.length}か所`
+    : `${offEx.length}か所（${offKeys.map(c => `${c}${offCats[c]}か所`).join("・")}）`);
+  $("rg-note-ex").textContent =
+    notEx.length && offEx.length ? `「既存施設」の${nEx}か所は、${ofList}から${minus}を除き、${plus}を足した数です。` :
+    notEx.length ? `「既存施設」の${nEx}か所は、${ofList}から${minus}を除いた数です。` :
+    offEx.length && onList.length ? `「既存施設」の${nEx}か所は、${ofList}に、${plus}を足した数です。` :
+    offEx.length ? `「既存施設」の${nEx}か所は、地図・モスク${plus}です。` : "";
 
   // 集まった額（この地域の場所に結び付いた寄付の合計。合計対象・金額が分かるものだけ）と、全国の中での位置
   const refs = new Set();
