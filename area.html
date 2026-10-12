@@ -508,7 +508,7 @@ details.fp-more > .fp-list{margin-top:10px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月12日 23:47</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">298<small>か所</small></div><div class=s>モスク・礼拝所 265か所、計画・建設中 5か所、状況確認中 9か所、閉鎖・移転 4か所、学校 6か所、墓地 4か所、寄付・計画の情報だけの場所 5か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月13日 00:11</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">298<small>か所</small></div><div class=s>モスク・礼拝所 265か所、計画・建設中 5か所、状況確認中 9か所、閉鎖・移転 4か所、学校 6か所、墓地 4か所、寄付・計画の情報だけの場所 5か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -697,7 +697,7 @@ function shareHref(rows) {
   // 数は確認できたモスク・礼拝所だけ（県全体のときは47都道府県の中の順位も）。そのあとに県の特徴を「・」で1行ずつ
   // （県全体を選んだときで、県のまとめ/〇〇県.txt に「ひとこと:」の行がある県だけ。上から順に）
   const n = countOf(rows, COUNTERS[0].test), rk = R.pref && !R.city ? rankText(prefRank(R.pref, COUNTERS[0].test)) : "";
-  const make = feats => `📍 ${R.pref ? R.pref + R.city : "全国"}のモスク・関連施設\n（2026年10月12日時点）\n\n` +
+  const make = feats => `📍 ${R.pref ? R.pref + R.city : "全国"}のモスク・関連施設\n（2026年10月13日時点）\n\n` +
     `🕌 モスク・礼拝所 ${n}か所${rk ? `（全国${rk}）` : ""}\n\n` +
     (feats.length ? feats.map(f => "・" + f + "\n").join("") + "\n" : "") +
     `出典付きの地図・詳しい情報はこちら👇`;

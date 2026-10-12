@@ -65,6 +65,7 @@ tr.refhead td { background: #f3f5f8; font-size: 12px; color: var(--muted); paddi
 .cell { display: inline-flex; align-items: center; gap: 6px; justify-content: flex-end; }
 .cbar { display: inline-block; height: 10px; border-radius: 3px; min-width: 2px; background: var(--jp); }
 .cbar.tg { background: var(--tg); }
+.nw { white-space: nowrap; }
 .chart-svg text { fill: var(--muted); font-size: 12px; font-family: inherit; }
 .chart-svg text.end { font-weight: 700; font-size: 12.5px; }
 .chart-svg .grid { stroke: #e3e7ec; stroke-width: 1; }
@@ -111,8 +112,8 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 </style>
 <p class="back"><a href="area.html?pref=青森県">← 地域別のページ（青森県）にもどる</a></p>
 <div class="title-row"><h1>青森県のモスクと人口</h1>
-  <a class="xbtn" href="https://twitter.com/intent/tweet?text=%F0%9F%93%8A%20%E9%9D%92%E6%A3%AE%E7%9C%8C%E3%81%AE%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%A8%E4%BA%BA%E5%8F%A3%0A%EF%BC%882026%E5%B9%B410%E6%9C%8812%E6%97%A5%E6%99%82%E7%82%B9%EF%BC%89%0A%0A%F0%9F%95%8C%20%E3%83%A2%E3%82%B9%E3%82%AF%E3%83%BB%E7%A4%BC%E6%8B%9D%E6%89%80%201%E3%81%8B%E6%89%80%EF%BC%88%E5%85%A8%E5%9B%BD%E5%90%8C%E7%8E%8737%E4%BD%8D%EF%BC%89%0A%0A%E3%83%BB%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%AF%E5%85%AD%E6%88%B8%E7%94%BA%E3%81%A0%E3%81%91%0A%E3%83%BB%E3%82%A4%E3%83%B3%E3%83%89%E3%83%8D%E3%82%B7%E3%82%A2%E3%81%AE%E4%BA%BA%E3%81%8C%E7%9C%8C%E5%86%85%E3%81%AE%E5%90%84%E5%9C%B0%E3%81%AB%0A%E3%83%BB%E5%85%AD%E6%88%B8%E7%94%BA%E3%81%AB%E3%81%AF%E3%82%A2%E3%83%95%E3%82%AC%E3%83%8B%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E4%BA%BA%E3%82%82%0A%E3%83%BB%E5%85%AB%E6%88%B8%E5%B8%82%E3%81%AA%E3%81%A9%E3%81%AB%E3%81%AF%E8%A6%8B%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%0A%0A%E4%BA%BA%E5%8F%A3%E3%83%BB%E5%9B%BD%E7%B1%8D%E3%81%A8%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%AE%E7%89%B9%E5%BE%B4%E3%82%92%E5%87%BA%E5%85%B8%E4%BB%98%E3%81%8D%E3%81%A7%F0%9F%91%87&amp;url=https%3A%2F%2Fyumaki5555.github.io%2Fmosque-map%2Fpref-aomori.html" target="_blank" rel="noopener noreferrer" title="青森県の特徴とこのページへのリンクが入った投稿の画面が開きます">このページを共有（X）</a></div>
-<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月12日 23:47</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">1<small>か所</small></div><div class=s>いま使われていると確認できた青森県の場所（全国で多い順に37番目。このほか状況確認中 1か所（数に入れていません））</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">1,711<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国41位）</div></div><div><div class="k">ハラール食材店</div><div class="v">0<small>店</small></div><div class=s>Googleマップで調べた青森県の店（2026年10月12日）</div></div></div><style>
+  <a class="xbtn" href="https://twitter.com/intent/tweet?text=%F0%9F%93%8A%20%E9%9D%92%E6%A3%AE%E7%9C%8C%E3%81%AE%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%A8%E4%BA%BA%E5%8F%A3%0A%EF%BC%882026%E5%B9%B410%E6%9C%8813%E6%97%A5%E6%99%82%E7%82%B9%EF%BC%89%0A%0A%F0%9F%95%8C%20%E3%83%A2%E3%82%B9%E3%82%AF%E3%83%BB%E7%A4%BC%E6%8B%9D%E6%89%80%201%E3%81%8B%E6%89%80%EF%BC%88%E5%85%A8%E5%9B%BD%E5%90%8C%E7%8E%8737%E4%BD%8D%EF%BC%89%0A%0A%E3%83%BB%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%AF%E5%85%AD%E6%88%B8%E7%94%BA%E3%81%A0%E3%81%91%0A%E3%83%BB%E3%82%A4%E3%83%B3%E3%83%89%E3%83%8D%E3%82%B7%E3%82%A2%E3%81%AE%E4%BA%BA%E3%81%8C%E7%9C%8C%E5%86%85%E3%81%AE%E5%90%84%E5%9C%B0%E3%81%AB%0A%E3%83%BB%E5%85%AD%E6%88%B8%E7%94%BA%E3%81%AB%E3%81%AF%E3%82%A2%E3%83%95%E3%82%AC%E3%83%8B%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E4%BA%BA%E3%82%82%0A%E3%83%BB%E5%85%AB%E6%88%B8%E5%B8%82%E3%81%AA%E3%81%A9%E3%81%AB%E3%81%AF%E8%A6%8B%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%0A%0A%E4%BA%BA%E5%8F%A3%E3%83%BB%E5%9B%BD%E7%B1%8D%E3%81%A8%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%AE%E7%89%B9%E5%BE%B4%E3%82%92%E5%87%BA%E5%85%B8%E4%BB%98%E3%81%8D%E3%81%A7%F0%9F%91%87&amp;url=https%3A%2F%2Fyumaki5555.github.io%2Fmosque-map%2Fpref-aomori.html" target="_blank" rel="noopener noreferrer" title="青森県の特徴とこのページへのリンクが入った投稿の画面が開きます">このページを共有（X）</a></div>
+<div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月13日 00:11</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">モスク・礼拝所</div><div class="v">1<small>か所</small></div><div class=s>いま使われていると確認できた青森県の場所（全国で多い順に37番目。このほか状況確認中 1か所（数に入れていません））</div></div><div><div class="k">主なイスラムの国の人</div><div class="v">1,711<small>人</small></div><div class=s>在留外国人統計 2025年12月末（全国41位）</div></div><div><div class="k">ハラール食材店</div><div class="v">0<small>店</small></div><div class=s>Googleマップで調べた青森県の店（2026年10月12日）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -147,7 +148,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <h2>モスクの国籍と、住んでいる人の国籍</h2>
 <div class="card">
   <h3>中心になっている国籍ごとのモスクの数と、青森県に住む人</h3>
-  <p class="note">モスクの国籍は、このサイトで確かめたもの（確かめられていないものは「不明」）。住む人は在留外国人統計 2025年12月末の人数です。国籍はムスリムかどうかを表しません（スリランカやインドは、ムスリムが少数派の国です）。</p>
+  <p class="note">モスクの国籍は、このサイトで確かめたもの（確かめられていないものは「不明」）。住む人は在留外国人統計 2025年12月末の、その国籍の人全体の数で、ムスリムだけの数ではありません。住む人の欄の「—」は、人数を出せないという印です。「不明」は、国籍を確かめられていません。</p>
   <div class="tablewrap"><table><thead><tr><th>中心の国籍</th><th class="num">モスクの数</th><th class="num">青森県に住む人</th></tr></thead><tbody><tr><td>不明</td><td class="num"><span class="cell"><span class="cbar tg" style="width:6.00rem"></span>1</span></td><td class="num"><span class="cell">—</span></td></tr></tbody></table></div>
 </div>
 
@@ -243,7 +244,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
     <div class="tl"><span class="tl-lab">Madina Mosque মদিনা মসজিদ マディーナモスク（六戸町）</span><span class="tl-track"><span class="tl-dot" style="left:62.1%;background:#8a8f98" title="遅くとも2016年7月・不明"></span><span class="tl-yr" style="left:62.1%">遅くとも2016年7月</span></span><span></span><span class="tl-axis"><span style="left:6.9%">2000</span><span style="left:24.1%">2005</span><span style="left:41.4%">2010</span><span style="left:58.6%">2015</span><span style="left:75.9%">2020</span><span style="left:93.1%">2025</span></span></div>
   </div>
   <div class="card"><h3>モスクの一覧</h3><p class="note">名前を押すと、モスクごとのくわしいページが開きます。国籍・宗派・運営は、確かめられたものだけを載せています（確かめられていないものは「不明」）。</p>
-    <div class="tablewrap"><table><thead><tr><th>モスク</th><th>市区町村</th><th>中心の国籍</th><th>宗派</th><th>運営</th><th>施設の形態</th><th>開いた時期</th><th>区域</th></tr></thead><tbody><tr><td><a href="mosque.html#m-b9426a99">Madina Mosque মদিনা মসজিদ マディーナモスク</a></td><td>六戸町</td><td>不明</td><td>不明</td><td>不明（法人の登録は見当たらない）</td><td>小規模モスク</td><td>遅くとも2016年7月</td><td>区域区分なし（非線引き）</td></tr></tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>モスク</th><th>市区町村</th><th>中心の国籍</th><th>宗派</th><th>運営</th><th>施設の形態</th><th>開いた時期</th><th>区域</th></tr></thead><tbody><tr><td><a href="mosque.html#m-b9426a99">Madina Mosque মদিনা মসজিদ マディーナモスク</a></td><td>六戸町</td><td>不明</td><td>不明</td><td>不明（法人の登録は見当たらない）</td><td>小規模モスク</td><td>遅くとも2016年7月</td><td><span class="nw">区域区分なし</span><span class="nw">（非線引き）</span></td></tr></tbody></table></div>
     
     <p class="note">※ モスク・礼拝所の数に入れていない場所（地図・モスク一覧には、それぞれ別の印・まとまりで載せています）：状況確認中 1か所（三戸町の<a href="mosque.html#a-e675c1af">Sannohe Al-Kafi Mosque</a>）</p>
   </div>
