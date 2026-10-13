@@ -437,12 +437,18 @@ details.fp-more > .fp-list{margin-top:10px}
 .fp-sort button{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);
   border-radius:999px;padding:3px 12px;cursor:pointer}
 .fp-sort button[aria-pressed="true"]{background:var(--accent);color:var(--card)}
-/* 目次（「1.」〜「5.」は見出しと同じ文字で書く。数も添える） */
-.fp-toc{list-style:none;margin:0 0 6px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:8px}
-.fp-toc a{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;height:100%;text-decoration:none;color:var(--text);background:var(--card);
-  border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:8px 14px}
-.fp-toc a span{font-size:.82rem;color:var(--sub)}
-.fp-toc a:hover{background:var(--accent-soft)}
+/* 目次（アウトライン。大項目「1.」〜「5.」の下に小見出し「1-1」…を入れ子で並べる。見出しと同じ文字・数を添える） */
+.fp-toc{list-style:none;margin:0 0 6px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:8px}
+.fp-toc > li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:8px 14px}
+.fp-toc a{text-decoration:none;color:var(--text)}
+.fp-toc a:hover{color:var(--accent);text-decoration:underline}
+.fp-toc a.fp-toc-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
+.fp-toc a.fp-toc-h span{font-size:.82rem;color:var(--sub)}
+.fp-toc-sub{list-style:none;margin:6px 0 2px 2px;padding:0 0 0 12px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.fp-toc-sub a{display:block;font-size:.88rem;line-height:1.55}
+.fp-toc-sub .n{font-size:.8rem;color:var(--sub);margin-left:6px}
+/* 小見出しの番号（本文の H3 と目次で同じ形） */
+.fp-no{display:inline-block;min-width:2.3em;margin-right:6px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
 /* 冒頭の「この結果を読むときの注意」 */
 .fp-caution{font-size:.85rem;line-height:1.7;color:var(--text);background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pend-line);
   border-radius:10px;padding:10px 14px;margin:0 0 14px}
@@ -567,7 +573,7 @@ details.fe-more > .fe-rows{margin-top:6px}
   <p class="lead">インターネット上で公開されている寄付募集・団体発表・報道の数字を、出典付きで一覧にしています。
   地域ごとのまとめ（今あるモスク・建設計画・寄付）は<a href="area.html">地域別のページ</a>、葬儀・墓地の調べた結果は<a href="funeral.html">葬儀・墓地のページ</a>にあります。</p>
 
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 01:49</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている寄付の募集</div><div class="v">121<small>件</small></div><div class=s>いま募集中 41件・終了したもの 80件。このほか、未確定情報 23件・そのほかの寄付・情報 5件（どちらも合計の額には含めていません）</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 01:58</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている寄付の募集</div><div class="v">121<small>件</small></div><div class=s>いま募集中 41件・終了したもの 80件。このほか、未確定情報 23件・そのほかの寄付・情報 5件（どちらも合計の額には含めていません）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
