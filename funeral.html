@@ -229,7 +229,7 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-legend i.yen.grave{border-radius:3px}
 .rg-legend .tip{flex-basis:100%;margin-top:2px}
 @media (max-width:600px){#rg-map{height:300px}}
-/* 地図の中の印と「表示の切り替え」（地図のページ map.html と同じ形・同じ色。make_outputs.py の EXTRA_CSS） */
+/* 地図の中の印と「地図に表示する情報」（地図のページ map.html と同じ形・同じ色・同じ名前。make_outputs.py の EXTRA_CSS） */
 #rg-map .don-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 sans-serif;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
 #rg-map .don-grave{border-radius:5px;font-size:12px}
 #rg-map .don-open{background:#d97706}
@@ -238,9 +238,9 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 #rg-map .halal-icon{width:10px;height:10px;background:#db2777;border:2px solid #fff;border-radius:2px;box-shadow:0 0 0 1px #9d174d}
 #rg-map .don-badge{display:inline-block;font-size:12px;font-weight:700;padding:0 6px;border-radius:4px;margin-right:4px;color:#fff}
 #rg-map .leaflet-control-layers-toggle{width:auto;height:36px;padding:0 10px 0 36px;background-position:6px 50%;text-decoration:none;color:#1e3a5f;font:700 13px/36px sans-serif}
-#rg-map .leaflet-control-layers-toggle::after{content:"表示の切り替え"}
+#rg-map .leaflet-control-layers-toggle::after{content:"地図に表示する情報"}
 #rg-map .layer-title{font-size:13px;font-weight:700;color:#1e3a5f;margin:0 0 4px;padding-bottom:4px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:8px}
-#rg-map .layer-title button{margin-left:auto;font-size:13px;font-weight:700;color:#fff;background:#2f5d8a;border:0;border-radius:999px;padding:3px 10px;cursor:pointer}
+#rg-map .layer-title button{flex:none;white-space:nowrap;margin-left:auto;font-size:13px;font-weight:700;color:#fff;background:#2f5d8a;border:0;border-radius:999px;padding:3px 10px;cursor:pointer}
 #rg-map .leaflet-control-layers-overlays label{margin:2px 0;font-size:12.5px}
 .rg-btns{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .rg-btns:empty{display:none}
@@ -576,7 +576,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1 id="page-title">葬儀・墓地について調べた結果</h1>
   <p class="lead">全国のモスク・礼拝所などについて、<b>遺体の洗い清め（グスル）</b>、<b>葬儀の礼拝（ジャナーザ）</b>、<b>土葬墓地</b>に関する情報を公開資料から調べ、その結果をまとめたページです。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 02:14</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">299<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く299か所すべてです（モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、墓地 6か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 02:24</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">299<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く299か所すべてです（モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、墓地 6か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;

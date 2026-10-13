@@ -58,7 +58,7 @@
         /* 吹き出し（ポップアップ）を大きく・読みやすく。地図に収まらない長さのときは、吹き出しの中だけを動かす */
         .leaflet-popup-content-wrapper { border-radius: 14px; }
         .leaflet-popup-content { font-size: 17px; line-height: 1.8; margin: 16px 22px 16px 18px;
-                                 max-height: calc(var(--map-h) - 130px); overflow-y: auto; overflow-wrap: anywhere; }
+                                 max-height: calc(var(--map-h) - 160px); overflow-y: auto; overflow-wrap: anywhere; }
         .leaflet-popup-content b { font-size: 19px; }
         .leaflet-popup-content a { display: inline-block; margin-top: 6px; padding: 6px 0; font-size: 17px; }
         .leaflet-container a.leaflet-popup-close-button { width: 36px; height: 36px; font: 28px/36px Tahoma, Verdana, sans-serif; }
@@ -106,12 +106,12 @@
         /* 開いた一覧の見出しと「閉じる」ボタン、まとまりごとの小見出し */
         .layer-title { font-size: 14px; font-weight: 700; color: #1e3a5f; margin: 0 0 4px; padding-bottom: 4px;
                        border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 8px; }
-        .layer-title button { margin-left: auto; font-size: 14px; font-weight: 700; color: #fff; background: #2f5d8a;
-                              border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+        .layer-title button { flex: none; margin-left: auto; white-space: nowrap; font-size: 14px; font-weight: 700; color: #fff;
+                              background: #2f5d8a; border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
         .lc-sec { font-size: 12px; font-weight: 700; color: #5b6474; margin: 8px 0 2px; padding-top: 5px;
                   border-top: 1px dashed #d5dbe3; line-height: 1.5; }
         .leaflet-control-layers-overlays label { margin: 3px 0; font-size: 13px; }
-        /* 左上の「全国表示」ボタン（条件はそのままで、地図だけを日本全体に戻す） */
+        /* 左下の「全国表示」ボタン（条件はそのままで、地図だけを日本全体に戻す） */
         .mp-home-ctl { display: block; background: #fff; border: 2px solid rgba(0,0,0,.2); border-radius: 6px;
                        font: 700 13px/1.3 sans-serif; color: #1e3a5f; padding: 7px 9px; cursor: pointer; }
         .mp-home-ctl:hover { background: #eef4fb; }
@@ -144,8 +144,9 @@
         .mp-counts .main .k { font-size: 17px; font-weight: 800; color: #1e3a5f; }
         .mp-counts .main .s { font-size: 13px; color: #5b6474; }
         .mp-cnt { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 8px 0 0; padding: 0; }
-        .mp-cnt li { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; line-height: 1.5;
-                     background: #f6f7f9; border: 1px solid #dfe3ea; border-radius: 999px; padding: 3px 12px; }
+        .mp-cnt li { display: inline-block; font-size: 14px; line-height: 1.5; background: #f6f7f9;
+                     border: 1px solid #dfe3ea; border-radius: 999px; padding: 3px 12px; }
+        .mp-cnt li .mk { margin-right: 5px; }
         .mp-cnt li b { font-size: 16px; font-variant-numeric: tabular-nums; }
         details.mp-more { margin-top: 8px; }
         details.mp-more > summary { cursor: pointer; font-size: 14px; font-weight: 700; color: #2f5d8a; }
@@ -156,13 +157,14 @@
         /* 1. 施設を探す */
         .mp-find { background: #eef4fb; border: 2px solid #2f5d8a; border-radius: 14px; padding: 14px 16px; }
         .mp-find label { display: block; font-size: 15px; font-weight: 800; color: #1e3a5f; margin: 0 0 4px; }
-        .mp-find input[type=search], .mp-find select { display: block; width: 100%; max-width: 100%; min-width: 0;
+        .mp-find input[type=search], .mp-find select { display: block; width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box;
                 font-size: 16px; font-family: inherit; padding: 9px 12px; border: 2px solid #2f5d8a; border-radius: 10px;
                 background: #fff; color: #1d2330; }
         .mp-find select:disabled { border-color: #b8c4d3; color: #6b7280; background: #f3f5f8; }
         .f-help { font-size: 13px; color: #44516a; margin: 4px 0 0; line-height: 1.6; }
         .f-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; margin-top: 12px; }
-        @media (max-width: 760px) { .f-row { grid-template-columns: minmax(0, 1fr); } }
+        @media (max-width: 760px) { .f-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+                                    .f-row > div:last-child { grid-column: 1 / -1; } }
         .f-and { font-size: 13px; color: #44516a; margin: 8px 0 0; line-height: 1.6; }
         .f-state { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 12px; padding-top: 10px;
                    border-top: 1px solid #c9d6e6; }
@@ -269,6 +271,8 @@
             .mp-lead { font-size: 15px; }
             .mp-h2 { font-size: 19px; }
             .mp-find { padding: 12px; }
+            .mp-cnt li { font-size: 13px; padding: 2px 10px; }
+            .mp-counts .main .s, .f-help, .f-and { font-size: 12.5px; }
         }
     </style>
 <title>全国モスク・礼拝所マップ｜日本のモスク情報</title>
@@ -300,11 +304,11 @@
       
       <h1>全国モスク・礼拝所マップ</h1>
       <p class="mp-lead">全国のモスク・礼拝所の所在地と、都市計画の区域区分を地図で確認できます。施設名・地域・運営団体などで検索でき、寄付情報や関連施設も表示しています。</p>
-      <p class="mp-upd">最終更新 <b>2026年10月14日 02:13</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年10月14日 02:21</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">264<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。</span></div>
-        <ul class="mp-cnt"><li><span class='mk' style='background:#7c3aed'></span>計画・建設中 <b>8</b>か所</li><li><span class='mk dash' style='background:#ffffff;border-color:#475569'></span>状況確認中 <b>12</b>か所</li><li><span class='mk' style='background:#111827'></span>閉鎖・移転 <b>5</b>か所（はじめは隠しています）</li><li><span class='mk' style='background:#0f766e'></span>学校 <b>6</b>か所</li><li><span class='mk' style='background:#92400e'></span>墓地 <b>6</b>か所</li><li><span class='mk yen' style='background:#d97706;color:#fff;'>¥</span>寄付の札 <b>105</b>か所（うち募集中あり 40か所）</li><li><span class='mk sq' style='background:#db2777;box-shadow:0 0 0 1px #9d174d'></span>ハラール食材店 <b>484</b>店（調べた22都道県のみ・はじめは隠しています）</li></ul>
+        <ul class="mp-cnt"><li><span class='mk' style='background:#7c3aed'></span>計画・建設中 <b>8</b>か所</li><li><span class='mk dash' style='background:#ffffff;border-color:#475569'></span>状況確認中 <b>12</b>か所</li><li><span class='mk' style='background:#111827'></span>閉鎖・移転 <b>5</b>か所</li><li><span class='mk' style='background:#0f766e'></span>学校 <b>6</b>か所</li><li><span class='mk' style='background:#92400e'></span>墓地 <b>6</b>か所</li><li><span class='mk yen' style='background:#d97706;color:#fff;'>¥</span>寄付の札 <b>105</b>か所（募集中あり40か所）</li><li><span class='mk sq' style='background:#db2777;box-shadow:0 0 0 1px #9d174d'></span>ハラール食材店 <b>484</b>店（調べた22都道県）</li></ul>
         <details class="mp-more"><summary>数え方と、区域区分の内わけ</summary>
           <ul>
             <li>1か所は「モスク・礼拝所」「計画・建設中」「状況確認中」「閉鎖・移転」「学校」「墓地」のどれか1つにだけ数えています。重なりはないので、合わせると<b>301か所</b>です（「4. 施設一覧」の数と同じです）。このほか、寄付・計画の情報だけの場所が4か所あり、地図には「¥」「墓」の札だけで出しています。</li>
@@ -322,13 +326,13 @@
         <div class="mp-find" role="search">
           <label for="kw-input">施設名・キーワード</label>
           <input id="kw-input" type="search" autocomplete="off" enterkeyhint="search" placeholder="例: 名古屋、マスジド、インドネシア、宗教法人">
-          <p class="f-help">名前のほか、市区町村・運営団体・系統・国籍・宗派・区域区分・寄付でも探せます。言葉を空白で区切って並べると、そのすべてを含む施設だけに絞り込みます（例:「名古屋 トルコ」）。</p>
+          <p class="f-help">名前のほか、市区町村・運営団体・系統・国籍・宗派・区域区分・寄付でも探せます。空白で区切ると、すべてを含む施設に絞り込みます（例:「名古屋 トルコ」）。</p>
           <div class="f-row">
             <div><label for="pref-select">都道府県</label><select id="pref-select"><option value="">全国（すべて）</option><option value="北海道">北海道 モスク6・寄付4(募集中1)</option><option value="青森県">青森県 モスク1</option><option value="岩手県">岩手県 モスク2・寄付1(募集中0)</option><option value="宮城県">宮城県 モスク7・寄付1(募集中0)</option><option value="山形県">山形県 モスク2</option><option value="福島県">福島県 モスク3</option><option value="茨城県">茨城県 モスク24・寄付12(募集中4)</option><option value="栃木県">栃木県 モスク10・寄付1(募集中0)</option><option value="群馬県">群馬県 モスク13・寄付5(募集中2)</option><option value="埼玉県">埼玉県 モスク29・寄付7(募集中3)</option><option value="千葉県">千葉県 モスク22・寄付8(募集中3)</option><option value="東京都">東京都 モスク26・寄付19(募集中8)</option><option value="神奈川県">神奈川県 モスク13・寄付6(募集中1)</option><option value="新潟県">新潟県 モスク5・寄付3(募集中0)</option><option value="富山県">富山県 モスク4・寄付1(募集中0)</option><option value="石川県">石川県 モスク1・寄付1(募集中1)</option><option value="福井県">福井県 モスク1・寄付1(募集中0)</option><option value="山梨県">山梨県 モスク2・寄付2(募集中1)</option><option value="長野県">長野県 モスク6・寄付1(募集中0)</option><option value="岐阜県">岐阜県 モスク6・寄付5(募集中2)</option><option value="静岡県">静岡県 モスク4・寄付3(募集中3)</option><option value="愛知県">愛知県 モスク21・寄付9(募集中5)</option><option value="三重県">三重県 モスク3・寄付2(募集中1)</option><option value="滋賀県">滋賀県 モスク2</option><option value="京都府">京都府 モスク5・寄付1(募集中0)</option><option value="大阪府">大阪府 モスク6・寄付2(募集中0)</option><option value="兵庫県">兵庫県 モスク4</option><option value="奈良県">奈良県 モスク1</option><option value="和歌山県">和歌山県 モスク2・寄付1(募集中1)</option><option value="鳥取県">鳥取県 モスク1・寄付1(募集中1)</option><option value="島根県">島根県 モスク2</option><option value="岡山県">岡山県 モスク5・寄付2(募集中1)</option><option value="広島県">広島県 モスク3</option><option value="徳島県">徳島県 モスク2・寄付1(募集中1)</option><option value="香川県">香川県 モスク2</option><option value="愛媛県">愛媛県 モスク2</option><option value="高知県">高知県 モスク1・寄付1(募集中1)</option><option value="福岡県">福岡県 モスク3・寄付1(募集中0)</option><option value="佐賀県">佐賀県 モスク1・寄付1(募集中0)</option><option value="長崎県">長崎県 モスク1</option><option value="熊本県">熊本県 モスク1</option><option value="大分県">大分県 モスク2・寄付1(募集中0)</option><option value="宮崎県">宮崎県 モスク2</option><option value="鹿児島県">鹿児島県 モスク2</option><option value="沖縄県">沖縄県 モスク3・寄付1(募集中0)</option></select></div>
             <div><label for="city-select">市区町村</label><select id="city-select" disabled><option value="">都道府県を選ぶと選べます</option></select></div>
             <div><label for="net-select">関連施設を強調表示（系統）</label><select id="net-select"><option value="">選ばない</option><option value="ICOJ">ICOJ（12か所）</option><option value="DARUS">ダル・ウッサラーム（11か所）</option><option value="JIT">日本イスラーム文化センター（7か所）</option><option value="ICF">ICF Japan（4か所）</option><option value="NUJ">NU日本特別支部（3か所）</option><option value="PCINU">PCINU Jepang（3か所）</option><option value="TOYAMA">富山モスク（3か所）</option><option value="JAN">JAN Foundation（3か所）</option><option value="MINHAJ">ミンハージュ（3か所）</option><option value="KMII">KMII Jepang（3か所）</option><option value="NAGOYA">名古屋イスラミックセンター（2か所）</option><option value="JDC">ジャパンダアワセンター（2か所）</option><option value="TAWHEED">Masjid Al Tawheed（盛岡・北上）（2か所）</option><option value="TMC">一般社団法人TMC（富山ムスリムセンター）（2か所）</option><option value="HASANATH">アル・ハサナス・イスラミック・ユニティー（豊田・瀬戸）（2か所）</option></select></div>
           </div>
-          <p class="f-and">言葉・都道府県・市区町村は、組み合わせると<b>すべてに当てはまる施設だけ</b>を地図と一覧に出します（AND検索）。系統は施設を絞り込まず、同じ団体が運営する施設を紫の太い輪で強調します。</p>
+          <p class="f-and">言葉・都道府県・市区町村を組み合わせると、<b>すべてに当てはまる施設だけ</b>を地図と一覧に出します（AND検索）。系統は絞り込まず、同じ団体の施設を紫の太い輪で強調します。</p>
           <div class="f-state">
             <div class="f-chips" id="f-chips"><span class="lbl">選んでいる条件：</span><span>なし（全国のすべての施設を表示中）</span></div>
             <button type="button" class="f-clear" id="f-clear" disabled>条件をすべてクリア</button>
@@ -340,7 +344,7 @@
       <div class="mp-layout" id="mp-layout">
         <section class="mp-map-sec" aria-labelledby="map-h">
           <h2 class="mp-h2" id="map-h">2. 全国の施設マップ</h2>
-          <p class="mp-maptip">印を押すと、施設名・所在地・区域区分と、詳しい情報へのリンクが出ます。地図に出す印は、右上の<b>「地図に表示する情報」</b>で選べます。<button type="button" class="f-go" id="open-layers">地図に表示する情報を開く</button><br>左上の<b>「全国表示」</b>は、選んだ条件はそのままで、地図だけを日本全体の表示に戻します（条件を外すのは「条件をすべてクリア」です）。</p>
+          <p class="mp-maptip">印を押すと、施設名・所在地・区域区分と、詳しい情報へのリンクが出ます。出す印は右上の<b>「地図に表示する情報」</b>で選べます。<button type="button" class="f-go" id="open-layers">地図に表示する情報を開く</button><br>左下の<b>「全国表示」</b>は、条件はそのままで地図だけを日本全体に戻します（条件を外すのは「条件をすべてクリア」）。</p>
     
     
     
@@ -38043,15 +38047,16 @@ Tobishima mosque（市街化調整区域）
         }
         map.on("zoomend", resize);
         resize();
-        // 吹き出しの幅を画面に合わせて広げる（開いた時点の地図の幅で計算。スマホでは地図の幅に収める）
+        // 吹き出しの幅を画面に合わせて広げる（開いた時点の地図の幅で計算。スマホでは地図の幅に収める）。
+        // 地図の上の端のボタン（左上の＋−・右上の「地図に表示する情報」）に隠れないよう、上は広めに空けて地図を動かす
         map.on("popupopen", function (e) {
             var p = e.popup, mw = map.getContainer().clientWidth || document.documentElement.clientWidth;
             var w = Math.max(200, Math.min(mw - 70, 420));
-            if (p.options.maxWidth !== w) {
-                p.options.maxWidth = w;
-                p.options.minWidth = Math.min(w, 260);
-                p.update();
-            }
+            p.options.maxWidth = w;
+            p.options.minWidth = Math.min(w, 260);
+            p.options.autoPanPaddingTopLeft = L.point(10, 74);
+            p.options.autoPanPaddingBottomRight = L.point(10, 10);
+            p.update();
         });
         // 右上の「地図に表示する情報」: 一覧の上に見出しと「閉じる」ボタンを付ける
         var title = L.DomUtil.create("div", "layer-title");
@@ -38211,8 +38216,7 @@ Tobishima mosque（市街化調整区域）
                 h = (active() ? "条件に合う施設：" : "掲載しているすべての施設：") + "<b class='n'>" + fs.length + "</b>か所" +
                     "<button type='button' class='f-go' data-go='map'>地図で見る ↓</button>" +
                     "<button type='button' class='f-go' data-go='list'>一覧で見る ↓</button>" +
-                    (off ? "<span class='sub'>このうち" + off + "か所は、地図で隠している種類です" +
-                           "（地図の右上の「地図に表示する情報」でチェックを入れると出ます。一覧では「地図で非表示」と書いています）。</span>" : "");
+                    (off ? "<span class='sub'>このうち" + off + "か所は、地図で隠している種類です（地図の右上の「地図に表示する情報」で出せます）。</span>" : "");
             }
             if (active()) {
                 var don = 0, shop = 0;
@@ -38228,9 +38232,10 @@ Tobishima mosque（市街化調整区域）
             var d = NET[st.net];
             if (d) {
                 var n = d.ids.filter(function (id) { var x = byFk[id]; return x && onMap(x); }).length;
-                h += "<span class='sub net'>紫の輪：" + esc(d.short) + "の施設" + d.ids.length + "か所のうち、" +
-                     (n === d.ids.length ? "すべて" : n + "か所") + "を地図で強調しています" +
-                     (n < d.ids.length ? "（ほかは、今の条件か「地図に表示する情報」で隠れています）" : "") + "。</span>";
+                h += "<span class='sub net'>" + (!n ? "紫の輪：今の条件では、" + esc(d.short) + "の施設（" + d.ids.length + "か所）は地図に出ていません。" +
+                     "条件を外すと、紫の輪で強調して出します。" :
+                     "紫の輪：" + esc(d.short) + "の施設" + d.ids.length + "か所のうち、" + (n === d.ids.length ? "すべて" : n + "か所") +
+                     "を地図で強調しています" + (n < d.ids.length ? "（ほかは、今の条件か「地図に表示する情報」で隠れています）" : "") + "。") + "</span>";
             }
             result.innerHTML = h;
             tog.querySelector(".t").textContent = (listOpen ? "施設一覧をたたむ" : "施設一覧を表示") + "（" + fs.length + "か所）";
@@ -38434,13 +38439,15 @@ Tobishima mosque（市街化調整区域）
             if (!listOpen) setList(true);
             $("list-h").scrollIntoView({ behavior: "smooth", block: "start" });
         });
-        // 「地図に表示する情報」で種類を出し入れしたとき（「墓」の札のチェックは、札を出し入れする）
+        // 「地図に表示する情報」で種類を出し入れしたとき（「墓」の札のチェックは、札を出し入れする）。
+        // 外した層は、この知らせのあとで地図から外れきるので、少し待ってから描き直す（待たないと、外した層に描いた輪が地図に残る）
         map.on("overlayadd overlayremove", function (e) {
-            if (graveLayer && e.layer === graveLayer) apply(); else redraw();
+            setTimeout(function () { if (graveLayer && e.layer === graveLayer) apply(); else redraw(); }, 0);
         });
-        // 左上の「全国表示」ボタン（条件はそのままで、地図だけを日本全体に戻す。「条件をすべてクリア」とは別）
+        // 左下の「全国表示」ボタン（条件はそのままで、地図だけを日本全体に戻す。「条件をすべてクリア」とは別）。
+        // 左上に置くと、開いた吹き出しが隠れやすいので左下
         var Home = L.Control.extend({
-            options: { position: "topleft" },
+            options: { position: "bottomleft" },
             onAdd: function () {
                 var b = L.DomUtil.create("button", "mp-home-ctl");
                 b.type = "button";
@@ -38493,8 +38500,12 @@ Tobishima mosque（市街化調整区域）
             if (!map.hasLayer(x.group)) map.addLayer(x.group);  // 最初は隠している種類（閉鎖・移転、終了した寄付など）でも表示する
             var r = map.getContainer().getBoundingClientRect();
             if (r.top < 0 || r.bottom > window.innerHeight) map.getContainer().scrollIntoView({ block: "center" });
-            map.setView(x.mk.getLatLng(), Math.max(map.getZoom(), 14));
-            setTimeout(function () { x.mk.openPopup(); }, 400);
+            // ほかの動き（条件を変えたときの拡大・縮小）の途中なら、終わってから寄せる（途中で寄せると、あとから上書きされる）
+            function show() {
+                map.setView(x.mk.getLatLng(), Math.max(map.getZoom(), 14), { animate: false });
+                setTimeout(function () { x.mk.openPopup(); }, 300);
+            }
+            if (map._animatingZoom) map.once("zoomend", show); else show();
         }
         window.addEventListener("hashchange", jump);
         // 吹き出し・一覧の「詳しい情報」を押したら、この地図のURLにその施設を覚えさせておく
