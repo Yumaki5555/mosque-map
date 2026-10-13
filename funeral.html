@@ -192,8 +192,17 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-pick select{flex:1 1 220px;max-width:100%;font-size:1.15rem;font-weight:700;padding:10px 12px;border:2px solid var(--accent);border-radius:10px}
 .rg-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 8px}
 .rg-area{font-size:1.55rem;font-weight:800;margin:0;line-height:1.3}
-.rg-prefbtn:empty{display:none}
-.rg-prefbtn .rg-btn{padding:8px 14px;font-size:.92rem}
+/* 県を選んだときの2つの入口（この地域の施設一覧／県の人口・国籍・モスク統計）。県のくわしいページがない県は1つだけ */
+.rg-entry{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.rg-entry:empty{display:none}
+.rg-go{flex:1 1 260px;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:12px;text-decoration:none;line-height:1.4;border:2px solid var(--accent)}
+.rg-go b{font-size:1rem}
+.rg-go span{font-size:.8rem}
+.rg-go.list{background:var(--accent);color:var(--card)}
+.rg-go.stat{background:var(--card);color:var(--accent)}
+.rg-go.stat span{color:var(--sub)}
+.rg-go:hover{filter:brightness(1.08)}
+#list{scroll-margin-top:8px}
 .rg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
 .rg-tile{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--done-line);border-radius:10px;padding:8px 12px}
 .rg-tile .k{font-size:.82rem;font-weight:700;color:var(--sub)}
@@ -579,7 +588,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1 id="page-title">葬儀・墓地について調べた結果</h1>
   <p class="lead">全国のモスク・礼拝所などについて、<b>遺体の洗い清め（グスル）</b>、<b>葬儀の礼拝（ジャナーザ）</b>、<b>土葬墓地</b>に関する情報を公開資料から調べ、その結果をまとめたページです。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 02:50</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">299<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く299か所すべてです（モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、墓地 6か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 03:13</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">299<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く299か所すべてです（モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、墓地 6か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
