@@ -292,6 +292,11 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rg-chips svg.zsh,.rcard svg.zsh{margin-right:5px;vertical-align:-1px}
 .rg-legend svg.zsh{margin-right:4px}
 #rg-map .leaflet-control-layers-overlays svg.lci{margin:0 2px 0 3px;vertical-align:-1px}
+#rg-map .lc-grp{margin:6px 0 0;padding:4px 8px 5px;border:1px solid #d5dbe3;border-left-width:5px;border-radius:8px}
+#rg-map .lc-grp.g0{background:#f3f7fc;border-left-color:#1e3a5f}
+#rg-map .lc-grp.g1{background:#fff8ee;border-left-color:#d97706}
+#rg-map .lc-grp.g2{background:#f6f7f9;border-left-color:#6b7280}
+#rg-map .lc-grp-h{font-size:12px;font-weight:800;color:#1e3a5f;line-height:1.5}
 .rg-moref{margin:0 0 10px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .rg-moref > summary{cursor:pointer;font-weight:700;color:var(--accent);padding:8px 12px;font-size:.92rem}
 .rg-fx{padding:0 12px 4px}
@@ -588,7 +593,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 03:13</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 03:28</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -1055,7 +1060,7 @@ function drawMap(rows) {
     ...Object.keys(MK.clsName).map(c => [c, MK.clsName[c], MK.cls[c].badge, "か所"]),
     ...Object.entries(MK.don).map(([k, v]) => [k, v[0], v[1], "か所"]),
     ["halal", "■ " + HALAL_INFO.label, HALAL_INFO.color, "店"]];
-  const overlays = {}, colors = {}, icons = {};
+  const overlays = {}, colors = {}, icons = {}, secs = {};
   MAP_GROUPS = [];
   order.forEach(([k, name, color, unit]) => {
     if (!G[k]) return;
@@ -1064,6 +1069,7 @@ function drawMap(rows) {
     const label = `${name} (${G[k].length}${unit}${k === "halal" && !R.pref ? "・調べた" + HALAL_INFO.kinds + "のみ" : ""})`;
     overlays[label] = g; colors[label] = color;
     const c = MK.cls[k], z = MK.zones.find(x => x[0] === k);
+    secs[label] = z || c ? "モスク・施設の種類" : MK.don[k] ? "寄付情報" : "その他の表示";  // まとまり（地図のページと同じ3つ）
     if (z || c) icons[label] = z ? shapeIcon("circle", color, "", false, "lci", 12) : shapeIcon(c.shape, c.fill, c.dash ? c.badge : "", !!c.dash, "lci", 12);
     if (MAP_SHOW[k] !== false) g.addTo(MAP);
     MAP_GROUPS.push([k, g]);
@@ -1077,7 +1083,28 @@ function drawMap(rows) {
     const label = addItem.call(this, obj), box = label.querySelector("input");
     if (box && colors[obj.name]) box.style.accentColor = colors[obj.name];
     if (box && icons[obj.name]) box.insertAdjacentHTML("afterend", icons[obj.name]);
+    label.setAttribute("data-sec", secs[obj.name] || "");
     return label;
+  };
+  // 同じまとまりの行を枠で囲み、見出しを付ける（チェックの働きは Leaflet のまま）
+  const update = MAP_LC._update;
+  MAP_LC._update = function () {
+    const r = update.apply(this, arguments), list = this._overlaysList;
+    let grp = null, last = "", n = 0;
+    if (list) [...list.children].forEach(lb => {
+      const s = lb.getAttribute("data-sec");
+      if (!s) return;
+      if (s !== last) {
+        grp = document.createElement("div");
+        grp.className = "lc-grp g" + (n++ % 3);
+        grp.innerHTML = "<div class='lc-grp-h'></div>";
+        grp.firstChild.textContent = s;
+        list.insertBefore(grp, lb);
+        last = s;
+      }
+      grp.appendChild(lb);
+    });
+    return r;
   };
   MAP_LC._update();
   MAP_LC.collapse();  // 地図が隠れないよう、はじめはたたんで「表示の切り替え」ボタンにしておく
@@ -1213,7 +1240,7 @@ function renderRegion() {
   const FNOTE = {
     lf: `運営する団体の名前（法人の登録名）から分けています。${esc(areaName())}の${rows.length}か所のうち、分かっているのは${nLf}か所です。` +
         "「法人の登録は見当たらない」は、国税庁の法人番号公表サイトなどを調べた範囲で、法人の登録が見つからなかったものです。",
-    net: `同じ団体が運営する、または団体の公式の一覧に載っている、複数のモスクのまとまりです。${esc(areaName())}で系統が分かっているのは${nNet}か所です（どの系統にも入っていないモスクも多くあります）。`,
+    net: `系統は、同じ団体が運営している、団体の公式サイトの管理モスク一覧に載っている、支部である、名前や連絡先が同じ、など、公開資料でつながりを確かめた複数の施設のまとまりです。つながりの中身は系統ごとに違い、すべての施設を同じ団体が運営しているとは限りません。${esc(areaName())}で系統が分かっているのは${nNet}か所です（どの系統にも入っていないモスクも多くあります）。`,
     zk: "●の色は地図と同じです。地図・モスク一覧に載っている場所だけを、国土交通省「都市計画決定GISデータ」（令和7年度）と照らし合わせた結果です（計画地などは調べていません）。" +
         "市街化調整区域にあるからといって、違法とは限りません。",
   };
