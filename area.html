@@ -619,7 +619,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:26</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:30</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -1231,7 +1231,7 @@ if (window.ResizeObserver) new ResizeObserver(() => { if (MAP && MAP_FIT) fitMap
 function renderRegion() {
   const rows = PLACES.filter(inArea);
   const all = PLACES;
-  // 1. 地域を選ぶ：市区町村の選ぶ欄は、選んだ都道府県の市区町村（数の書き方は地図のページと同じ「川口市（モスク5）」。多い順）
+  // 1. 地域を選ぶ：市区町村の選ぶ欄は、選んだ都道府県の市区町村（数の書き方は地図のページと同じ「さいたま市（モスク3）」。多い順）
   $("rg-pref").value = R.pref;
   const cs = R.pref ? Object.entries((PREF_ROWS[R.pref] || []).reduce((o, p) => ((o[cityOf(p)] = o[cityOf(p)] || []).push(p), o), {}))
     .sort((a, b) => countOf(b[1], isMosque) - countOf(a[1], isMosque) || b[1].length - a[1].length || (a[0] === NO_CITY) - (b[0] === NO_CITY) || a[0].localeCompare(b[0], "ja")) : [];
