@@ -433,8 +433,23 @@ details.fp-fold > summary{list-style:none;cursor:pointer;display:flex;align-item
 details.fp-fold > summary::-webkit-details-marker{display:none}
 details.fp-fold > summary::before{content:"";flex:none;width:0;height:0;border-left:8px solid var(--accent);border-top:6px solid transparent;border-bottom:6px solid transparent;transition:transform .15s}
 details.fp-fold[open] > summary::before{transform:rotate(90deg)}
-details.fp-fold > summary > h2,details.fp-fold > summary > h3{flex:1;min-width:0}
-details.fp-fold > summary:hover h2,details.fp-fold > summary:hover h3{color:var(--accent)}
+details.fp-fold > summary > h2,details.fp-fold > summary > h3,details.fp-fold > summary > h4{flex:1;min-width:0}
+details.fp-fold > summary:hover h2,details.fp-fold > summary:hover h3,details.fp-fold > summary:hover h4{color:var(--accent)}
+/* 「3. 調査結果の一覧」の中の項目（H3：遺体の洗い清め・葬儀の礼拝・土葬墓地）と、絞り込みの結果の行 */
+.fp-sec > h2{margin-bottom:10px}
+.fp-topic{border-top:1px solid var(--line);margin-top:16px;padding-top:12px}
+.fp-th{font-size:1.15rem;font-weight:800}
+.fp-th .n{font-size:.8rem}
+details.fp-mid[open] > summary{margin-bottom:8px}
+.fp-res{font-size:.9rem;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 4px}
+.fp-res b.n{font-size:1.2rem}
+.fp-clear{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);border-radius:10px;padding:2px 12px;cursor:pointer;margin-left:4px}
+.fp-sec .rg-chips{margin-bottom:6px}
+.fp-toc-sub3{list-style:none;margin:2px 0 4px 2.6em;padding:0;display:flex;flex-wrap:wrap;gap:0 14px}
+.fp-toc-sub3 a{display:inline;font-size:.8rem}
+.fp-toc-sub3 .fp-no{min-width:0;font-weight:400}
+/* スマホでは目次の区分（3-1-1 など）を出さない（目次が長くなり「1. 地域・項目を選ぶ」が遠くなるため。区分は一覧の見出しで開ける） */
+@media (max-width:600px){.fp-toc-sub3{display:none}}
 details.fp-top[open] > summary{margin-bottom:10px}
 details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px solid var(--line)}
 .fp-foldbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 0;font-size:.82rem;color:var(--sub)}
@@ -631,7 +646,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 13:01</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 13:06</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
