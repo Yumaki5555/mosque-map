@@ -340,7 +340,7 @@ a{color:var(--accent)}
 </head>
 <body>
     <div class="mp-page">
-      <nav class="site-nav" aria-label="ページの切り替え"><a class="home" href="index.html" aria-label="ホーム" title="ホーム（入口のページ）"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg><span>ホーム</span></a><a href="map.html" aria-current=page>地図</a><a href="area.html">地域別</a><a href="mosque.html">モスク一覧</a><a href="donation.html">寄付</a><a href="funeral.html">葬儀・墓地</a></nav><style>
+      <nav class="site-nav" aria-label="ページの切り替え"><a class="home" href="index.html" aria-label="ホーム" title="ホーム（入口のページ）"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg><span>ホーム</span></a><a href="map.html" aria-current=page>地図</a><a href="area.html">地域別</a><a href="mosque.html" class="long"><span>モスク・</span><span>施設を探す</span></a><a href="donation.html">寄付</a><a href="funeral.html" class="split"><span>葬儀・</span><span>墓地</span></a></nav><style>
 .site-nav { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 16px; padding: 5px; background: #1e3a5f;
             border-radius: 14px; font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .site-nav a { flex: 1 1 auto; text-align: center; white-space: nowrap; text-decoration: none; color: #fff;
@@ -357,12 +357,24 @@ a{color:var(--accent)}
   .site-nav a.home span { display: none; }
 }
 @media (max-width: 370px) { .site-nav a { font-size: 13px; } }
+/* 「・」の入った名前は、幅が狭いときだけ「・」の後ろで2行にして、メニューを1段に収める
+   （長い「モスク・施設を探す」は600px以下で、「葬儀・墓地」はさらに狭い370px以下で） */
+.site-nav a.long span, .site-nav a.split span { white-space: nowrap; }
+@media (min-width: 481px) and (max-width: 600px) { .site-nav a { padding: 8px 8px; } }
+@media (max-width: 600px) {
+  .site-nav a.long { flex: 1 1 0; white-space: normal; line-height: 1.25; display: flex; flex-wrap: wrap; align-items: center;
+                     justify-content: center; align-content: center; }
+}
+@media (max-width: 370px) {
+  .site-nav a.split { flex: 1 1 0; white-space: normal; line-height: 1.25; display: flex; flex-wrap: wrap; align-items: center;
+                      justify-content: center; align-content: center; }
+}
 @media print { .site-nav { display: none; } }
 </style>
       
       <h1>全国モスク・礼拝所マップ</h1>
       <p class="mp-lead">全国のモスク・礼拝所の所在地と、都市計画の区域区分を地図で確認できます。施設名・地域・運営団体などで検索でき、寄付情報や関連施設も表示しています。</p>
-      <p class="mp-upd">最終更新 <b>2026年10月14日 12:03</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年10月14日 13:01</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">264<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>

@@ -598,7 +598,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </head>
 <body>
 <div class="wrap">
-  <nav class="site-nav" aria-label="ページの切り替え"><a class="home" href="index.html" aria-label="ホーム" title="ホーム（入口のページ）"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg><span>ホーム</span></a><a href="map.html">地図</a><a href="area.html" aria-current=page>地域別</a><a href="mosque.html">モスク一覧</a><a href="donation.html">寄付</a><a href="funeral.html">葬儀・墓地</a></nav><style>
+  <nav class="site-nav" aria-label="ページの切り替え"><a class="home" href="index.html" aria-label="ホーム" title="ホーム（入口のページ）"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg><span>ホーム</span></a><a href="map.html">地図</a><a href="area.html" aria-current=page>地域別</a><a href="mosque.html" class="long"><span>モスク・</span><span>施設を探す</span></a><a href="donation.html">寄付</a><a href="funeral.html" class="split"><span>葬儀・</span><span>墓地</span></a></nav><style>
 .site-nav { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 16px; padding: 5px; background: #1e3a5f;
             border-radius: 14px; font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .site-nav a { flex: 1 1 auto; text-align: center; white-space: nowrap; text-decoration: none; color: #fff;
@@ -615,11 +615,23 @@ details.fe-more > .fe-rows{margin-top:6px}
   .site-nav a.home span { display: none; }
 }
 @media (max-width: 370px) { .site-nav a { font-size: 13px; } }
+/* 「・」の入った名前は、幅が狭いときだけ「・」の後ろで2行にして、メニューを1段に収める
+   （長い「モスク・施設を探す」は600px以下で、「葬儀・墓地」はさらに狭い370px以下で） */
+.site-nav a.long span, .site-nav a.split span { white-space: nowrap; }
+@media (min-width: 481px) and (max-width: 600px) { .site-nav a { padding: 8px 8px; } }
+@media (max-width: 600px) {
+  .site-nav a.long { flex: 1 1 0; white-space: normal; line-height: 1.25; display: flex; flex-wrap: wrap; align-items: center;
+                     justify-content: center; align-content: center; }
+}
+@media (max-width: 370px) {
+  .site-nav a.split { flex: 1 1 0; white-space: normal; line-height: 1.25; display: flex; flex-wrap: wrap; align-items: center;
+                      justify-content: center; align-content: center; }
+}
 @media print { .site-nav { display: none; } }
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:45</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 13:01</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -987,7 +999,7 @@ function rcard(p) {
     p.source ? `<a href="${esc(p.source)}" ${EXT}>${esc(p.sourceLabel === "Googleマップ" ? "Googleマップで見る" : (p.sourceLabel || "出典") + "を見る")}</a>` : "",
     p.source2 ? `<a href="${esc(p.source2)}" ${EXT}>補足の出典を見る</a>` : "",
     p.mapId ? `<a href="map.html#${p.mapId}">地図を見る</a>` : "",
-    p.detail ? `<a href="mosque.html#${p.id}">${p.cls === "mosque" ? "モスクの詳しい情報" : "詳しい情報（モスク一覧）"}</a>` : "",
+    p.detail ? `<a href="mosque.html#${p.id}">${p.cls === "mosque" ? "モスクの詳しい情報" : "詳しい情報（モスク・施設を探す）"}</a>` : "",
   ].filter(Boolean).join("");
   return `<article class="card rcard" id="r-${p.id}">
     <div class="rc-loc">📍 ${esc(loc || "場所の詳細は不明")}</div>
@@ -1368,7 +1380,7 @@ function renderRegion() {
     lf: `運営する団体の名前（法人の登録名）から分けています。${esc(areaName())}の${rows.length}か所のうち、分かっているのは${nLf}か所です。` +
         "「法人の登録は見当たらない」は、国税庁の法人番号公表サイトなどを調べた範囲で、法人の登録が見つからなかったものです。",
     net: `系統は、同じ団体が運営している、団体の公式サイトの管理モスク一覧に載っている、支部である、名前や連絡先が同じ、など、公開資料でつながりを確かめた複数の施設のまとまりです。つながりの中身は系統ごとに違い、すべての施設を同じ団体が運営しているとは限りません。${esc(areaName())}で系統が分かっているのは${nNet}か所です（どの系統にも入っていないモスクも多くあります）。`,
-    zk: "●の色は地図と同じです。地図・モスク一覧に載っている場所だけを、国土交通省「都市計画決定GISデータ」（令和7年度）と照らし合わせた結果です（計画地などは調べていません）。" +
+    zk: "●の色は地図と同じです。地図・「モスク・施設を探す」に載っている場所だけを、国土交通省「都市計画決定GISデータ」（令和7年度）と照らし合わせた結果です（計画地などは調べていません）。" +
         "市街化調整区域にあるからといって、違法とは限りません。",
   };
   $("rg-fx").innerHTML = GROUPS.slice(1).map(G => `<div class="rg-fl">${esc(G.label)}</div><div class="rg-chips">${chipRow(G)}</div><p class="rg-fn">${FNOTE[G.g]}</p>`).join("") +
