@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -249,6 +249,11 @@ a{color:var(--accent)}
         .mp-map-sec .folium-map { height: var(--map-h) !important; border: 1px solid var(--line); border-radius: 10px; }
         .mp-maptip { font-size: 14px; color: var(--sub); margin: -4px 0 8px; line-height: 1.7; }
         .mp-maptip button { margin-left: 4px; }
+        /* 地図のすぐ上の「表示中の条件と数」 */
+        .mp-now { font-size: 14px; line-height: 1.7; margin: 0 0 8px; padding: 6px 12px; background: var(--blue-soft);
+                  border: 1px solid var(--line); border-radius: 10px; }
+        .mp-now b.n { font-size: 17px; }
+        .mp-now .mp-now-a { font-weight: 700; white-space: nowrap; margin-left: 4px; }
         /* 3. 地図の色・記号の見方 */
         .lg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
         @media (max-width: 700px) { .lg-grid { grid-template-columns: minmax(0, 1fr); } }
@@ -308,12 +313,16 @@ a{color:var(--accent)}
         .ab-important .key { font-weight: 800; font-size: 16px; margin: 0 0 6px; }
         .ab-important ul { margin: 0; padding-left: 1.3em; }
         details.ab { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 0 0 8px; }
-        details.ab > summary { cursor: pointer; list-style: none; padding: 11px 40px 11px 14px; position: relative; }
-        details.ab > summary::-webkit-details-marker { display: none; }
+        details.ab > summary { cursor: pointer; list-style: none; padding: 11px 14px; position: relative; }
         details.ab > summary h3 { display: inline; font-size: 15.5px; margin: 0; color: var(--navy); }
-        details.ab > summary::after { content: "▼"; position: absolute; right: 14px; top: 14px; font-size: 11px;
-                                      color: var(--sub); transition: transform .15s; }
-        details.ab[open] > summary::after { transform: rotate(180deg); }
+        /* 押すと開く見出しの印は、ほかのページと同じ「左の ▶ が、開くと下向き」（2026-10-14 サイト全体の見直し。前は右の ▼） */
+        details.ab > summary::-webkit-details-marker, details.mp-more > summary::-webkit-details-marker,
+        details.lg-more > summary::-webkit-details-marker { display: none; }
+        details.mp-more > summary, details.lg-more > summary { list-style: none; }
+        details.ab > summary::before, details.mp-more > summary::before, details.lg-more > summary::before {
+            content: "▶"; display: inline-block; margin-right: 7px; font-size: 11px; color: var(--accent); transition: transform .15s; }
+        details.ab[open] > summary::before, details.mp-more[open] > summary::before, details.lg-more[open] > summary::before {
+            transform: rotate(90deg); }
         details.ab .in { padding: 0 16px 12px; font-size: 14.5px; line-height: 1.8; }
         details.ab .in p { margin: 0 0 8px; }
         details.ab .in ol, details.ab .in ul { margin: 0 0 8px; padding-left: 1.4em; }
@@ -334,6 +343,18 @@ a{color:var(--accent)}
         }
     </style>
 <title>全国モスク・礼拝所マップ｜日本のモスク情報</title>
+<meta name="description" content="全国のモスク・礼拝所の場所を地図で見られます。施設名・地域・系統で探せ、都市計画の区域区分や寄付の情報、計画・建設中の場所なども印で示しています。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="日本のモスク情報">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="全国モスク・礼拝所マップ｜日本のモスク情報">
+<meta property="og:description" content="全国のモスク・礼拝所の場所を地図で見られます。施設名・地域・系統で探せ、都市計画の区域区分や寄付の情報、計画・建設中の場所なども印で示しています。">
+<meta property="og:url" content="https://yumaki5555.github.io/mosque-map/map.html">
+<meta property="og:image" content="https://yumaki5555.github.io/mosque-map/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="日本のモスク情報（公開資料をもとに出典付きでまとめたサイト）">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACJElEQVR4nGNgQAMyVvHBcpZxu+Ws4n8A8X9qYFnLuG+yVvE7ZS3i/dDtgwNR7VAeoMWbqWUpTsdYxW8U14vlxmb5WVINM/GI/a/lGEeOI47LWIZywh0AtHw1qYY0VYb9764PIz80LONXQeLcPNaLVM1+EdH/3+z1+69qR7rvkbGMRZwng6xV3D5SNbZWh/2/v9Wf8jRhGb+HQY6M1J6fF/H/00G//wFRUZQlSGDuYCBHoyYw4V1ZF/D/7mb//0mpkf8NXGP/mwITJDlmkeUAENYHWjqxOfT/1llB//ubQv/rudDZASDcMX3V/66ZayiKBrIcoGKf/H/J+n3/YWDxun3/le2S6OMAp8iK/xev3fuPDkBiDhHltHOAkm0SOLh//PyFYTkMfP/x63/n9NX/FW0TqesAkM8u33yA02J0cPnG/f/24WXUcUBSWf//b99/EG05DID0JJT0UeaAxNL+/z9//SbZchgA6SXkCJwOMPbJ+//h01eyLYeBDx+//DfwyiHdAXNW7KTYchiYsWQr6Q649+g51Rxw58Ez0h1ASdyjA1DWpbgcoBXGcMDURVuo5nN00D5tFfUccPrirf/xRb3gcuLS9fv0dcC7D5//a7qkw/Xoe2b///qNcGFFNQfsP34Jw6Azl2+T7YAfpDpg79ELGAadunCTZAeAm2TojVJ6OgDcKEVvltPTAeBmObkdE4oxrGNCSdeMXIzRNRvwzulAds8B7oUNIyzbY/YAAAAASUVORK5CYII=">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjMWUzYTVmIi8+CjxwYXRoIGQ9Ik0zMyA1LjVhNiA2IDAgMSAwIDQuNiA5LjlhNC42IDQuNiAwIDEgMS00LjYtOS45eiIgZmlsbD0iI2YyYzE0ZSIvPgo8cGF0aCBkPSJNMzIgMThDMjUgMjYgMTIgMjggMTIgNDBoNDBjMC0xMi0xMy0xNC0yMC0yMnoiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTkgNDJoNDZ2MTRIOXoiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTI3LjUgNTZ2LTdhNC41IDQuNSAwIDAgMSA5IDB2N3oiIGZpbGw9IiMxZTNhNWYiLz4KPC9zdmc+">
 <link rel="apple-touch-icon" href="data:image/png;base64,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">
@@ -374,7 +395,7 @@ a{color:var(--accent)}
       
       <h1>全国モスク・礼拝所マップ</h1>
       <p class="mp-lead">全国のモスク・礼拝所の所在地と、都市計画の区域区分を地図で確認できます。施設名・地域・運営団体などで検索でき、寄付情報や関連施設も表示しています。</p>
-      <p class="mp-upd">最終更新 <b>2026年10月14日 16:10</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年10月14日 16:56</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">265<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>
@@ -418,6 +439,7 @@ a{color:var(--accent)}
         <section class="mp-map-sec" aria-labelledby="map-h">
           <h2 class="mp-h2" id="map-h">2. 全国の施設マップ</h2>
           <p class="mp-maptip">印を押すと、施設名・所在地・区域区分と、詳しい情報へのリンクが出ます。出す印は右上の<b>「地図に表示する情報」</b>で選べます。<button type="button" class="f-go" id="open-layers">地図に表示する情報を開く</button><br>左下の<b>「全国表示」</b>は、条件はそのままで地図だけを日本全体に戻します（条件を外すのは「条件をすべてクリア」）。</p>
+          <p class="mp-now" id="mp-now"></p>
     
     
     
@@ -16513,7 +16535,7 @@ function textHit(ix, t) {
         var box = $("kw-input"), sel = $("pref-select"), csel = $("city-select"), nsel = $("net-select"),
             chips = $("f-chips"), clearBtn = $("f-clear"), result = $("f-result"),
             tog = $("fl-toggle"), wrap = $("fl-wrap"), listBox = $("fl-box"), layout = $("mp-layout"),
-            onlyBox = $("net-only");
+            onlyBox = $("net-only"), mapNow = $("mp-now");
         if (!box || !sel) return;
         // 全角・半角、大文字・小文字、ひらがな・カタカナ、空白や「・」の違いは気にせず探す
         function norm(s) {
@@ -16617,13 +16639,18 @@ function textHit(ix, t) {
             });
         }
 
-        // 選んでいる条件の札（×で、その条件だけを外せる）
-        function renderChips() {
+        // 選んでいる条件（[目印, 文]）。下の札と、地図のすぐ上の「表示中の条件」の1行で使う
+        function chosenList() {
             var c = [];
             if (st.terms.length) c.push(["kw", "キーワード「" + st.kw.trim() + "」"]);
             if (st.pref) c.push(["pref", st.pref]);
             if (st.city) c.push(["city", st.city]);
             if (NET[st.net]) c.push(["net", netOnly() ? "系統：" + NET[st.net].short + "だけ" : "強調：" + NET[st.net].short]);
+            return c;
+        }
+        // 選んでいる条件の札（×で、その条件だけを外せる）
+        function renderChips() {
+            var c = chosenList();
             chips.innerHTML = "<span class='lbl'>選んでいる条件：</span>" + (c.length ? c.map(function (x) {
                 return "<button type='button' class='f-chip" + (x[0] === "net" ? " net" : "") + "' data-k='" + x[0] + "' title='この条件を外す'>" +
                        esc(x[1]) + "<span class='x' aria-hidden='true'>×</span><span hidden>（この条件を外す）</span></button>";
@@ -16675,6 +16702,14 @@ function textHit(ix, t) {
                 if (d.desc) h += "<span class='sub about'>この系統について：" + esc(d.desc) + "（各施設の根拠は「詳しい情報」の「系統」の欄）</span>";
             }
             result.innerHTML = h;
+            // 地図のすぐ上の「表示中の条件と数」（地図までスクロールしても、いまの条件と数が分かるように 2026-10-14 サイト全体の見直し）
+            if (mapNow) {
+                var cs = chosenList();
+                mapNow.innerHTML = (cs.length ? "表示中の条件：" + cs.map(function (x) { return "<b>" + esc(x[1]) + "</b>"; }).join("・") +
+                                                "　当てはまる施設 <b class='n'>" + fs.length + "</b>か所"
+                                              : "表示中：掲載しているすべての施設 <b class='n'>" + fs.length + "</b>か所") +
+                    " <a href='#find' class='mp-now-a'>" + (cs.length ? "条件を変える・クリアする ↑" : "条件で絞り込む ↑") + "</a>";
+            }
             tog.querySelector(".t").textContent = (listOpen ? "施設一覧をたたむ" : "施設一覧を表示") + "（" + fs.length + "か所）";
         }
 
