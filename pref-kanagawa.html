@@ -9,182 +9,214 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjMWUzYTVmIi8+CjxwYXRoIGQ9Ik0zMyA1LjVhNiA2IDAgMSAwIDQuNiA5LjlhNC42IDQuNiAwIDEgMS00LjYtOS45eiIgZmlsbD0iI2YyYzE0ZSIvPgo8cGF0aCBkPSJNMzIgMThDMjUgMjYgMTIgMjggMTIgNDBoNDBjMC0xMi0xMy0xNC0yMC0yMnoiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTkgNDJoNDZ2MTRIOXoiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTI3LjUgNTZ2LTdhNC41IDQuNSAwIDAgMSA5IDB2N3oiIGZpbGw9IiMxZTNhNWYiLz4KPC9zdmc+">
 <link rel="apple-touch-icon" href="data:image/png;base64,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">
 <style>
-:root { --navy: #1e3a5f; --navy-2: #2f5d8a; --ink: #1d2430; --muted: #5a6474; --line: #d5dbe3; --panel: #ffffff; --bg: #f5f6f8;
-        --tg: #1e3a5f; --jp: #b9c3cf; --ref: #8a8f98; --hl: #e3ecf5; --soft: #eef2f7; }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; font-size: 15px; line-height: 1.7; }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 16px 16px 48px; }
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
+  --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
+  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
+  --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
+  --warn:#b42318; --warn-soft:#fdecea;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171c; --card:#1d2128; --text:#e7eaf0; --sub:#9aa3b2; --line:#2e343e;
+    --accent:#8fb5dd; --accent-soft:#25313f; --bar:#6f9bc8; --bar-bg:#2b313b; --over:#b39ddb;
+    --open-bg:#18232f; --open-line:#6f9bc8; --done-bg:#1b1e23; --done-line:#8a93a2; --pend-bg:#2a2418; --pend-line:#d9a441; --extra-bg:#241f2e; --extra-line:#b39ddb;
+    --warn:#f2958c; --warn-soft:#3a1d1b;
+  }
+}
+
+/* 県のページだけの色。--tg＝この県・強調の棒、--jp＝ほかの棒、--ref＝全国・参考、--pick＝地域別から選んで来た行、--th＝表の見出し、--c0〜7＝国籍などの色 */
+:root{
+  --tg:#1e3a5f; --jp:#b9c3cf; --ref:#8a8f98; --pick:#fff3c4; --th:#eef2f7;
+  --c0:#2a78d6; --c1:#eb6834; --c2:#1baf7a; --c3:#eda100; --c4:#e87ba4; --c5:#008300; --c6:#4a3aa7; --c7:#e34948; --cg:#8a8f98;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --tg:#8fb5dd; --jp:#4b5563; --ref:#6b7280; --pick:#3d3416; --th:#252b34;
+    --c0:#3987e5; --c1:#d95926; --c2:#199e70; --c3:#c98500; --c4:#d55181; --c5:#008300; --c6:#9085e9; --c7:#e66767; --cg:#8a93a2;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 48px}
+a{color:var(--accent);overflow-wrap:anywhere}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 /* ページの上：地域別に戻る ＞ 〇〇県の施設一覧 */
-.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; font-size: 14px; margin: 0 0 6px; }
-.crumbs .sep { color: var(--muted); }
-.crumbs .here { color: var(--muted); }
-h1 { font-size: 28px; line-height: 1.35; margin: 4px 0 8px; color: var(--navy); text-wrap: balance; }
-.lead { font-size: 15.5px; max-width: 62em; margin: 0 0 10px; }
-.title-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin: 4px 0 6px; }
-.title-row h1 { margin: 0; }
-.xbtn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 12px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 800; text-decoration: none; white-space: nowrap; }
-.xbtn:hover { background: var(--navy); }
-/* 地域別・地図・このページの一覧へのボタン */
-.golinks { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
-.go { flex: 1 1 220px; display: flex; flex-direction: column; gap: 1px; padding: 9px 14px; border-radius: 12px; border: 2px solid var(--navy-2);
-      background: var(--panel); color: var(--navy); text-decoration: none; line-height: 1.4; }
-.go b { font-size: 15px; }
-.go span { font-size: 12.5px; color: var(--muted); }
-.go:hover { background: var(--hl); }
-.go.main { background: var(--navy-2); }
-.go.main b, .go.main span { color: #fff; }
-.go.main:hover { background: var(--navy); }
-/* 主な数のカード（どれにも、何を数えたか・いつの数か・資料を書く） */
-.updbar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--ref);
-          border-radius: 10px; padding: 6px 14px; margin: 0 0 10px; }
-.updbar b { color: var(--navy); font-size: 14px; }
-.updbar .t { font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.updbar .s { font-size: 12.5px; color: var(--muted); }
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 10px; margin: 0 0 8px; }
-.kpi { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 12px; padding: 10px 14px; min-width: 0; }
-.kpi.upd { border-top-color: var(--ref); }
-.kpi .k { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.45; }
-.kpi .v { font-size: 28px; font-weight: 800; color: #111; line-height: 1.3; font-variant-numeric: tabular-nums; }
-.kpi .v small { font-size: 15px; font-weight: 700; margin-left: 2px; }
-.kpi .v.t { font-size: 20px; padding-top: 4px; }
-.kpi .r { font-size: 13.5px; font-weight: 700; color: var(--navy); margin: 0 0 4px; }
-.kpi dl { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.55; display: grid; grid-template-columns: auto 1fr; gap: 1px 6px; }
-.kpi dt { font-weight: 700; white-space: nowrap; }
-.kpi dd { margin: 0; overflow-wrap: anywhere; }
-.kpi .s { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
-.kpi-note { font-size: 13px; color: var(--muted); margin: 0 0 14px; max-width: 62em; }
-/* 目次 */
-.toc { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px 6px; margin: 0 0 8px; }
-.toc > summary { cursor: pointer; list-style: none; display: block; font-weight: 800; font-size: 15px; color: var(--navy); padding: 4px 0 6px; }
-.toc > summary::-webkit-details-marker { display: none; }
-.toc > summary:focus-visible { outline: 2px solid var(--navy-2); outline-offset: 2px; border-radius: 6px; }
-.toc .tc-o, .toc[open] .tc-c { display: none; }
-.toc[open] .tc-o { display: inline; }
-.toc ol { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2px 18px; }
-.toc li { padding: 4px 0 6px; border-top: 1px solid var(--soft); }
-.toc li > a { font-weight: 800; font-size: 15px; text-decoration: none; }
-.toc li > a:hover { text-decoration: underline; }
-.toc .subs { display: block; font-size: 12.5px; color: var(--muted); }
-.toc .subs a { color: var(--muted); }
-/* 章（h2）と節（h3） */
-section.sec { scroll-margin-top: 8px; }
-h2 { font-size: 21px; margin: 40px 0 12px; color: var(--navy); border-bottom: 3px solid var(--navy); padding-bottom: 4px; scroll-margin-top: 8px; }
-h2 .no { margin-right: 6px; }
-h3 { font-size: 17px; margin: 22px 0 8px; padding-left: 10px; border-left: 5px solid var(--navy-2); color: var(--ink); line-height: 1.45; scroll-margin-top: 8px; }
-h4 { font-size: 15.5px; margin: 0; line-height: 1.45; }
-.totop { text-align: right; font-size: 13px; margin: 10px 0 0; }
-.summary { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--navy); border-radius: 12px; padding: 12px 18px; }
-.summary p { font-size: 15.5px; max-width: 62em; margin: 0 0 8px; }
-.summary p.sum-lead { font-size: 16.5px; color: var(--navy); }
-.summary .note { margin: 4px 0 0; }
-.summary ul { margin: 0 0 6px; padding-left: 1.3em; max-width: 62em; }
-.summary li { margin-bottom: 3px; }
-.sum-table { overflow-x: auto; margin: 2px 0 10px; }
-.sum-table table { width: auto; font-size: 14px; border: 1px solid var(--line); }
-.sum-table th { position: static; }
-.sum-table td:first-child { min-width: 8.5em; }
-@media (min-width: 561px) { .sum-table td:nth-child(n+2) { white-space: nowrap; } }
-.meta, .note { font-size: 13px; color: var(--muted); margin: 0; }
-.note b { color: var(--ink); }
-.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-@media (max-width: 700px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.dist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.dist li { display: grid; grid-template-columns: 4.5em 1fr; gap: 8px; align-items: baseline; font-size: 14px; }
-.dist li b { color: var(--navy); white-space: nowrap; }
-.dist .bx { display: inline-block; height: 10px; background: var(--tg); border-radius: 0 3px 3px 0; margin-right: 6px; vertical-align: 0; }
-.tile { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 12px; padding: 10px 14px; min-width: 0; }
-.tile .k { font-size: 13px; font-weight: 700; color: var(--navy); }
-.tile .v { font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.3; }
-.tile .v small { font-size: 15px; font-weight: 700; margin-left: 2px; }
-.tile .s { font-size: 13px; color: var(--muted); }
-.tile .s b { color: var(--ink); font-size: 15px; }
-.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-.bars { display: flex; flex-direction: column; gap: 2px; }
-.brow { max-width: 860px; display: grid; grid-template-columns: minmax(84px, 30%) 1fr auto; gap: 8px; align-items: center; font-size: 13px; padding: 2px 0; }
-.blab { overflow-wrap: anywhere; line-height: 1.35; }
-.btrack { background: #eef1f5; border-radius: 4px; height: 12px; overflow: hidden; min-width: 0; }
-.bar { display: block; height: 100%; background: var(--jp); border-radius: 0 4px 4px 0; }
-.brow.hl .bar, .bar.tg { background: var(--tg); }
-.brow.hl .blab, .brow.hl .bval { font-weight: 800; color: var(--navy); }
-.brow.ref .bar { background: var(--ref); }
-.bval { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; min-width: 4em; text-align: right; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
-.sw { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
-.chart-meta { font-size: 12.5px; color: var(--muted); margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0 8px; }
-.chart-meta dt { font-weight: 700; white-space: nowrap; }
-.chart-meta dd { margin: 0; }
-.tablewrap { overflow: auto; max-height: 560px; border: 1px solid var(--line); border-radius: 8px; }
-.tablewrap.short { max-height: none; }
-.tablewrap td:first-child, .tablewrap th:first-child { min-width: 7.5em; }  /* スマホで国籍・市区町村の名前が1字ずつ折り返されないように */
-table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
-th { position: sticky; top: 0; z-index: 1; background: #eef2f7; text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; color: var(--navy); }
-td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-td.num, th.num { text-align: right; white-space: nowrap; }
-tr.has td { background: var(--hl); }
-tr.pick td { background: #fff3c4; }
-tr.sum td { font-weight: 700; border-top: 2px solid var(--navy); }
-tr.ref td { color: var(--muted); }
-tr.ref td:first-child { color: var(--ink); }
-tr.refhead td { background: #f3f5f8; font-size: 12px; color: var(--muted); padding: 4px 8px; }
-.cell { display: inline-flex; align-items: center; gap: 6px; justify-content: flex-end; }
-.cbar { display: inline-block; height: 10px; border-radius: 0 3px 3px 0; min-width: 2px; background: var(--jp); }
-.cbar.tg { background: var(--tg); }
-.nw { white-space: nowrap; }
-.mlinks { display: block; font-size: 12px; white-space: nowrap; }
-.mlinks a { margin-right: 8px; }
-/* 表の上の操作（検索・並べ替え・絞り込み・列の選択） */
-.tctl { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 14px; }
-.tctl input[type=search] { flex: 1 1 220px; max-width: 360px; font-size: 15px; padding: 7px 10px; border: 1px solid #9aa6b5; border-radius: 8px; }
-.tctl select { font-size: 14px; padding: 6px 8px; border: 1px solid #9aa6b5; border-radius: 8px; max-width: 100%; }
-.tctl label { display: inline-flex; align-items: center; gap: 6px; }
-.tctl input[type=checkbox] { width: 18px; height: 18px; }
-.colpick { font-size: 13.5px; }
-.colpick summary { cursor: pointer; color: var(--navy-2); font-weight: 700; }
-.colpick .boxes { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 6px 2px 2px; }
-.colpick label { display: inline-flex; align-items: center; gap: 5px; }
-.tcount { font-size: 13px; color: var(--muted); margin: 0; }
-.sortbtns { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; }
-.sortbtns button, .hchips button { font: inherit; font-size: 13px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--navy-2); background: var(--panel); color: var(--navy); cursor: pointer; }
-.sortbtns button[aria-pressed=true], .hchips button[aria-pressed=true] { background: var(--navy-2); color: #fff; }
-.hchips { display: flex; flex-wrap: wrap; gap: 6px; }
-.hchips button span { margin-left: 6px; font-variant-numeric: tabular-nums; opacity: .8; }
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:.88rem;margin:0 0 8px}
+.crumbs .sep,.crumbs .here{color:var(--sub)}
+h1{font-size:1.6rem;line-height:1.35;margin:0 0 4px}
+.lead{color:var(--sub);margin:0 0 16px;font-size:.95rem;max-width:62em}
+.title-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:0 0 6px}
+.title-row h1{margin:0}
+/* X の共有ボタン（地域別のページの「この地域の情報を共有（X）」と同じ色） */
+.xbtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:12px;background:var(--text);color:var(--card);font-size:.9rem;font-weight:800;text-decoration:none;white-space:nowrap}
+.xbtn:hover{filter:brightness(1.15)}
+/* 地域別・地図・このページの一覧へのボタン（地域別のページで県を選んだときの2つの入口と同じ形） */
+.golinks{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.go{flex:1 1 220px;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:12px;text-decoration:none;line-height:1.4;border:2px solid var(--accent);background:var(--card);color:var(--accent)}
+.go b{font-size:1rem}
+.go span{font-size:.8rem;color:var(--sub)}
+.go.main{background:var(--accent);color:var(--card)}
+.go.main span{color:var(--card)}
+.go:hover{filter:brightness(1.08)}
+/* 最終更新の帯と、主な数のカード（入口・地域別などの上の札と同じ形） */
+.updbar{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--ref);border-radius:12px;padding:6px 14px;margin:0 0 10px}
+.updbar b{color:var(--accent);font-size:.88rem}
+.updbar .t{font-size:1.05rem;font-weight:800;font-variant-numeric:tabular-nums}
+.updbar .s{font-size:.8rem;color:var(--sub)}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 8px}  /* 4枚：広い画面は4つ、中くらいは2つずつ、スマホは1つずつ */
+@media (min-width:1000px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:560px){.kpis{grid-template-columns:minmax(0,1fr)}}
+.kpi{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--tg);border-radius:12px;padding:10px 14px;min-width:0}
+.kpi .k{font-size:.88rem;font-weight:700;color:var(--accent);line-height:1.45}
+.kpi .v{font-size:1.75rem;font-weight:800;line-height:1.3;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:.95rem;font-weight:700;margin-left:2px}
+.kpi .v.t{font-size:1.25rem;padding-top:4px}
+.kpi .r{font-size:.85rem;font-weight:700;color:var(--accent);margin:0 0 4px}
+.kpi dl{margin:0;font-size:.78rem;color:var(--sub);line-height:1.55;display:grid;grid-template-columns:auto 1fr;gap:1px 6px}
+.kpi dt{font-weight:700;white-space:nowrap}
+.kpi dd{margin:0;overflow-wrap:anywhere}
+.kpi-note{font-size:.82rem;color:var(--sub);margin:0 0 14px;max-width:62em}
+.kpi-note b{color:var(--text)}
+/* 目次（はじめは閉じる。開閉の印は文字の ▶／▼） */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 16px;margin:0 0 8px}
+.toc > summary{cursor:pointer;list-style:none;display:block;font-weight:800;font-size:1rem;color:var(--accent);padding:12px 0}
+.toc > summary::-webkit-details-marker{display:none}
+.toc .tc-o,.toc[open] .tc-c{display:none}
+.toc[open] .tc-o{display:inline}
+.toc ol{list-style:none;margin:0 0 10px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2px 18px}
+.toc li{padding:4px 0 6px;border-top:1px solid var(--line)}
+.toc li > a{font-weight:800;text-decoration:none}
+.toc li > a:hover{text-decoration:underline}
+.toc .subs{display:block;font-size:.8rem;color:var(--sub)}
+.toc .subs a{color:var(--sub)}
+/* ほかの折りたたみ（詳しい数値を見る・表示する国籍・項目を選ぶ・店の一覧を見る）も同じ ▶／▼ の印。はじめに開くか閉じるかはそれぞれのまま */
+details.more > summary,.colpick > summary{cursor:pointer;list-style:none;display:block;font-weight:700;font-size:.92rem;color:var(--accent);padding:6px 0}
+details.more > summary::-webkit-details-marker,.colpick > summary::-webkit-details-marker{display:none}
+details.more > summary::before,.colpick > summary::before{content:"▶ ";font-size:.8em}
+details.more[open] > summary::before,.colpick[open] > summary::before{content:"▼ "}
+details.more[open] > summary{margin-bottom:6px}
+/* 章（h2）と節（h3）。葬儀・墓地のページの章の見出しと同じ形 */
+section.sec{margin-top:36px;scroll-margin-top:12px}
+h2{font-size:1.35rem;font-weight:800;line-height:1.4;margin:0 0 12px;padding:2px 0 2px 12px;border-left:5px solid var(--accent);scroll-margin-top:12px}
+h2 .no{margin-right:6px}
+h3{font-size:1.08rem;font-weight:800;line-height:1.45;margin:22px 0 8px;padding:0 0 5px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+h4{font-size:1rem;margin:0;line-height:1.45}
+.totop{text-align:right;font-size:.82rem;margin:10px 0 0}
+.summary{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:12px 18px}
+.summary p{max-width:62em;margin:0 0 8px}
+.summary p.sum-lead{font-size:1.05rem;color:var(--accent)}
+.summary .note{margin:4px 0 0}
+.summary ul{margin:0 0 6px;padding-left:1.3em;max-width:62em}
+.summary li{margin-bottom:3px}
+.sum-table{overflow-x:auto;margin:2px 0 10px}
+.sum-table table{width:auto;font-size:.88rem;border:1px solid var(--line)}
+.sum-table th{position:static}
+.sum-table td:first-child{min-width:8.5em}
+@media (min-width:561px){.sum-table td:nth-child(n+2){white-space:nowrap}}
+.meta,.note{font-size:.82rem;color:var(--sub);margin:0}
+.note b{color:var(--text)}
+/* 全国順位の札（地域別のページの札と同じ形。3つずつ並べる） */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:700px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.tile .k{font-size:.8rem;font-weight:700;color:var(--sub)}
+.tile .v{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.3}
+.tile .v small{font-size:.9rem;font-weight:700;margin-left:2px}
+.tile .s{font-size:.8rem;color:var(--sub)}
+.tile .s b{color:var(--text);font-size:.95rem}
+.dist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dist li{display:grid;grid-template-columns:4.5em 1fr;gap:8px;align-items:baseline;font-size:.92rem}
+.dist li b{color:var(--accent);white-space:nowrap}
+.dist .bx{display:inline-block;height:10px;background:var(--tg);border-radius:0 3px 3px 0;margin-right:6px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:8px}
+/* 横棒のグラフ */
+.bars{display:flex;flex-direction:column;gap:2px}
+.brow{max-width:860px;display:grid;grid-template-columns:minmax(84px,30%) 1fr auto;gap:8px;align-items:center;font-size:.82rem;padding:2px 0}
+.blab{overflow-wrap:anywhere;line-height:1.35}
+.btrack{background:var(--bar-bg);border-radius:4px;height:12px;overflow:hidden;min-width:0}
+.bar{display:block;height:100%;background:var(--jp);border-radius:0 4px 4px 0}
+.brow.hl .bar,.bar.tg{background:var(--tg)}
+.brow.hl .blab,.brow.hl .bval{font-weight:800;color:var(--accent)}
+.brow.ref .bar{background:var(--ref)}
+.bval{font-variant-numeric:tabular-nums;color:var(--sub);white-space:nowrap;min-width:4em;text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--sub)}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.chart-meta{font-size:.78rem;color:var(--sub);margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 8px}
+.chart-meta dt{font-weight:700;white-space:nowrap}
+.chart-meta dd{margin:0}
+.chart-svg text{fill:var(--sub);font-size:12px;font-family:inherit}
+.chart-svg text.end{font-weight:700;font-size:12.5px;fill:var(--text)}
+.chart-svg line.grid{stroke:var(--line);stroke-width:1}
+/* 表（見出しの文字は地域別のページの表と同じ小さめの灰色） */
+.tablewrap{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:10px}
+.tablewrap.short{max-height:none}
+.tablewrap td:first-child,.tablewrap th:first-child{min-width:7.5em}  /* スマホで国籍・市区町村の名前が1字ずつ折り返されないように */
+table{border-collapse:collapse;width:100%;font-size:.82rem;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;z-index:1;background:var(--th);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--sub);font-size:.78rem;font-weight:700}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr.has td{background:var(--accent-soft)}
+tr.pick td{background:var(--pick)}
+tr.sum td{font-weight:700;border-top:2px solid var(--accent)}
+tr.ref td{color:var(--sub)}
+tr.ref td:first-child{color:var(--text)}
+tr.refhead td{background:var(--bg);font-size:.75rem;color:var(--sub);padding:4px 8px}
+.cell{display:inline-flex;align-items:center;gap:6px;justify-content:flex-end}
+.cbar{display:inline-block;height:10px;border-radius:0 3px 3px 0;min-width:2px;background:var(--jp)}
+.cbar.tg{background:var(--tg)}
+.nw{white-space:nowrap}
+.mlinks{display:block;font-size:.75rem;white-space:nowrap}
+.mlinks a{margin-right:8px}
+/* 表の上の操作（検索・並べ替え・絞り込み・列の選択）。ボタンは地域別のページの絞り込みボタンと同じ形 */
+.tctl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.88rem}
+.tctl input[type=search]{flex:1 1 220px;max-width:360px;font-size:.95rem;padding:7px 10px;border:1px solid var(--sub);border-radius:8px;background:var(--card);color:var(--text)}
+.tctl select{font-size:.88rem;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);max-width:100%}
+.tctl label{display:inline-flex;align-items:center;gap:6px}
+.tctl input[type=checkbox],.colpick input{width:18px;height:18px;accent-color:var(--accent)}
+.colpick{font-size:.85rem}
+.colpick .boxes{display:flex;flex-wrap:wrap;gap:4px 14px;padding:2px 2px 4px}
+.colpick label{display:inline-flex;align-items:center;gap:5px}
+.tcount{font-size:.8rem;color:var(--sub);margin:0}
+.sortbtns{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem}
+.sortbtns button,.hchips button{font:inherit;font-size:.85rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer}
+.sortbtns button[aria-pressed=true],.hchips button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--card)}
+.hchips{display:flex;flex-wrap:wrap;gap:6px}
+.hchips button span{margin-left:6px;font-variant-numeric:tabular-nums;opacity:.8}
 /* 市区町村の表：いちばん左の列はスマホで横に動かしても見えるように */
-.muni th:first-child, .muni td:first-child { position: sticky; left: 0; background: var(--panel); z-index: 1; box-shadow: 1px 0 0 var(--line); }
-.muni th:first-child { z-index: 2; background: #eef2f7; }
-.muni tr.has td:first-child { background: var(--hl); }
-.muni tr.pick td:first-child { background: #fff3c4; }
-details.more > summary { cursor: pointer; color: var(--navy-2); font-weight: 700; font-size: 14px; padding: 4px 0; }
-details.more[open] > summary { margin-bottom: 6px; }
+.muni th:first-child,.muni td:first-child{position:sticky;left:0;background:var(--card);z-index:1;box-shadow:1px 0 0 var(--line)}
+.muni th:first-child{z-index:2;background:var(--th)}
+.muni tr.has td:first-child{background:var(--accent-soft)}
+.muni tr.pick td:first-child{background:var(--pick)}
 /* 開設時期の年表 */
-.tl { display: grid; grid-template-columns: minmax(120px, min(42%, 360px)) 1fr; gap: 4px 10px; align-items: center; font-size: 13px; }
-.tl-lab { overflow-wrap: anywhere; line-height: 1.35; }
-.tl-track { position: relative; height: 30px; border-left: 1px solid #b8c1cc; }
-.tl-track::after { content: ""; position: absolute; left: 0; right: 0; top: 10px; border-top: 1px solid #e3e7ec; }
-.tl-dot { position: absolute; top: 10px; width: 12px; height: 12px; border-radius: 50%; transform: translate(-50%, -50%); z-index: 1; border: 2px solid #fff; box-shadow: 0 0 0 1px #7b8794; }
-.tl-dot.early { background: #fff !important; border: 3px solid var(--c); box-shadow: none; width: 13px; height: 13px; }
-.tl-dot.approx { border: 2px dashed #1d2430; box-shadow: none; }
-.tl-yr { position: absolute; top: 15px; transform: translateX(-50%); font-size: 11px; color: var(--muted); white-space: nowrap; }
-.tl-axis { position: relative; height: 18px; font-size: 12px; color: var(--muted); }
-.tl-axis span { position: absolute; transform: translateX(-50%); }
-.kinds { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; color: var(--muted); }
-.kinds i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; background: #5a6474; }
-.kinds i.early { background: #fff; border: 3px solid #5a6474; }
-.kinds i.approx { border: 2px dashed #1d2430; }
-.facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-.facts li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: 14px; }
-.facts li b.h { display: block; color: var(--navy); font-size: 14.5px; }
-.chart-svg text { fill: var(--muted); font-size: 12px; font-family: inherit; }
-.chart-svg text.end { font-weight: 700; font-size: 12.5px; fill: var(--ink); }
-.chart-svg .grid { stroke: #e3e7ec; stroke-width: 1; }
-.src { margin: 0; padding-left: 1.4em; font-size: 13.5px; }
-.src li { margin-bottom: 6px; }
-.plain { margin: 0; padding-left: 1.3em; font-size: 14px; }
-.plain li { margin-bottom: 4px; }
-a { color: var(--navy-2); overflow-wrap: anywhere; }
-@media (max-width: 560px) { .tl-yr { display: none; } h1 { font-size: 24px; } h2 { font-size: 19px; } .kpi .v { font-size: 26px; }
-  .golinks { gap: 6px; } .go { padding: 7px 12px; } .go:not(.main) span { display: none; } }
+.tl{display:grid;grid-template-columns:minmax(120px,min(42%,360px)) 1fr;gap:4px 10px;align-items:center;font-size:.82rem}
+.tl-lab{overflow-wrap:anywhere;line-height:1.35}
+.tl-track{position:relative;height:30px;border-left:1px solid var(--sub)}
+.tl-track::after{content:"";position:absolute;left:0;right:0;top:10px;border-top:1px solid var(--line)}
+.tl-dot{position:absolute;top:10px;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);z-index:1;border:2px solid var(--card);box-shadow:0 0 0 1px var(--sub)}
+.tl-dot.early{background:var(--card)!important;border:3px solid var(--c);box-shadow:none;width:13px;height:13px}
+.tl-dot.approx{border:2px dashed var(--text);box-shadow:none}
+.tl-yr{position:absolute;top:15px;transform:translateX(-50%);font-size:.7rem;color:var(--sub);white-space:nowrap}
+.tl-axis{position:relative;height:18px;font-size:.75rem;color:var(--sub)}
+.tl-axis span{position:absolute;transform:translateX(-50%)}
+.kinds{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.82rem;color:var(--sub)}
+.kinds i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:var(--sub)}
+.kinds i.early{background:var(--card);border:3px solid var(--sub)}
+.kinds i.approx{border:2px dashed var(--text)}
+.facts{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.facts li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:.9rem}
+.facts li b.h{display:block;color:var(--accent);font-size:.95rem}
+/* 出典・調査方法（地域別のページの「このページについて」と同じ大きさ） */
+.src{margin:0;padding-left:1.4em;font-size:.85rem}
+.src li{margin-bottom:6px}
+.plain{margin:0;padding-left:1.3em;font-size:.88rem}
+.plain li{margin-bottom:4px}
+@media (max-width:560px){
+  .tl-yr{display:none} h1{font-size:1.45rem} h2{font-size:1.2rem} .kpi .v{font-size:1.6rem}
+  .golinks{gap:6px} .go{padding:7px 12px} .go:not(.main) span{display:none}
+}
 </style>
 <style>#muni.h-shop [data-c="shop"] { display: none; }#muni.h-ten [data-c="ten"] { display: none; }#muni.h-c0 [data-c="c0"] { display: none; }#muni.h-c1 [data-c="c1"] { display: none; }#muni.h-c2 [data-c="c2"] { display: none; }#muni.h-c3 [data-c="c3"] { display: none; }#muni.h-c4 [data-c="c4"] { display: none; }#muni.h-c5 [data-c="c5"] { display: none; }#muni.h-c6 [data-c="c6"] { display: none; }#muni.h-c7 [data-c="c7"] { display: none; }#muni.h-c8 [data-c="c8"] { display: none; }#muni.h-c9 [data-c="c9"] { display: none; }#muni.h-c10 [data-c="c10"] { display: none; }#muni.h-all [data-c="all"] { display: none; }</style>
 </head>
@@ -218,7 +250,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
   <a class="go" href="map.html#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C"><b>🗺️ 県内のモスクを地図で見る</b><span>地図のページで神奈川県に寄せて表示</span></a>
   <a class="go" href="#s4-2"><b>📋 このページのモスク・礼拝所一覧</b><span>名前から、モスクごとの詳しい情報へ</span></a>
 </div>
-<p class="updbar"><b>最終更新</b><span class="t">2026年10月14日 03:34</span><span class="s">このページの中身が変わった日時です。施設の数はこの時点の掲載数、人口は2025年12月末の統計です（時点が違います）。</span></p><div class="kpis"><div class="kpi"><div class="k">モスク・礼拝所</div><div class="v">13<small>か所</small></div><div class="r">当サイトの掲載数で全国同率6位</div><dl><dt>対象</dt><dd>いま使われていると確認できた県内の場所（状況確認中 1か所は別に数えています）</dd><dt>時点</dt><dd>2026年10月14日時点の掲載数（県内の未掲載の施設探し：2026年10月12日）</dd><dt>資料</dt><dd>このサイトの地図・モスク一覧・地域別のページ（同じデータ）</dd></dl></div><div class="kpi"><div class="k">ムスリム人口（研究者推計）</div><div class="v">29,872<small>人</small></div><div class="r">全国5位</div><dl><dt>対象</dt><dd>神奈川県に住むムスリムの数を、研究者が推計したもの</dd><dt>時点</dt><dd>2025年12月末の統計による推計（2026年9月発表）</dd><dt>資料</dt><dd>店田廣文「日本のムスリム人口 2026年」</dd></dl></div><div class="kpi"><div class="k">対象10か国の在留外国人数</div><div class="v">22,972<small>人</small></div><div class="r">全国5位</div><dl><dt>対象</dt><dd>ムスリムが多い10か国の国籍の人の合計（宗教は問わない）</dd><dt>時点</dt><dd>2025年12月末</dd><dt>資料</dt><dd>出入国在留管理庁「在留外国人統計」</dd></dl></div><div class="kpi"><div class="k">ハラール食材店</div><div class="v">52<small>店</small></div><div class="r">4位（調べた22都道府県の中）</div><dl><dt>対象</dt><dd>Googleマップに登録された、名前か種類に「ハラール」が入る食材店（認証の確認ではない）</dd><dt>時点</dt><dd>2026年10月12日に確認</dd><dt>資料</dt><dd>Googleマップ</dd></dl></div></div>
+<p class="updbar"><b>最終更新</b><span class="t">2026年10月14日 10:45</span><span class="s">このページの中身が変わった日時です。施設の数はこの時点の掲載数、人口は2025年12月末の統計です（時点が違います）。</span></p><div class="kpis"><div class="kpi"><div class="k">モスク・礼拝所</div><div class="v">13<small>か所</small></div><div class="r">当サイトの掲載数で全国同率6位</div><dl><dt>対象</dt><dd>いま使われていると確認できた県内の場所（状況確認中 1か所は別に数えています）</dd><dt>時点</dt><dd>2026年10月14日時点の掲載数（県内の未掲載の施設探し：2026年10月12日）</dd><dt>資料</dt><dd>このサイトの地図・モスク一覧・地域別のページ（同じデータ）</dd></dl></div><div class="kpi"><div class="k">ムスリム人口（研究者推計）</div><div class="v">29,872<small>人</small></div><div class="r">全国5位</div><dl><dt>対象</dt><dd>神奈川県に住むムスリムの数を、研究者が推計したもの</dd><dt>時点</dt><dd>2025年12月末の統計による推計（2026年9月発表）</dd><dt>資料</dt><dd>店田廣文「日本のムスリム人口 2026年」</dd></dl></div><div class="kpi"><div class="k">対象10か国の在留外国人数</div><div class="v">22,972<small>人</small></div><div class="r">全国5位</div><dl><dt>対象</dt><dd>ムスリムが多い10か国の国籍の人の合計（宗教は問わない）</dd><dt>時点</dt><dd>2025年12月末</dd><dt>資料</dt><dd>出入国在留管理庁「在留外国人統計」</dd></dl></div><div class="kpi"><div class="k">ハラール食材店</div><div class="v">52<small>店</small></div><div class="r">4位（調べた22都道府県の中）</div><dl><dt>対象</dt><dd>Googleマップに登録された、名前か種類に「ハラール」が入る食材店（認証の確認ではない）</dd><dt>時点</dt><dd>2026年10月12日に確認</dd><dt>資料</dt><dd>Googleマップ</dd></dl></div></div>
 <p class="kpi-note"><b>「ムスリム人口（研究者推計）」と「対象10か国の在留外国人数」は、別々の統計です。</b>前者は研究者がムスリムの人数を推計した数、後者は国籍で数えた人数で、一人ひとりがムスリムかどうかは分かりません。「対象10か国」は、研究者が推計に使うインドネシア・パキスタン・バングラデシュ・アフガニスタン・イラン・マレーシア・トルコ・ウズベキスタン・エジプト・ナイジェリアです。くわしくは「5. 出典・調査方法」。</p>
 <details class="toc" id="toc"><summary><span class="tc-c">▶ このページの目次（全5章）</span><span class="tc-o">▼ このページの目次（閉じる）</span></summary><nav aria-label="このページの目次"><ol><li><a href="#s1">1. 神奈川県の特徴</a><span class="subs"><a href="#s1-1">主要な調査結果</a>・<a href="#s1-2">全国順位と他県との比較</a>・<a href="#s1-3">モスクの分布と特徴</a></span></li><li><a href="#s2">2. 人口・国籍別統計</a><span class="subs"><a href="#s2-1">国籍別の人数と割合</a>・<a href="#s2-2">全国との比較</a>・<a href="#s2-3">2016〜2025年の推移</a></span></li><li><a href="#s3">3. 市区町村別の状況</a><span class="subs"><a href="#s3-1">市区町村別の人口と施設数</a>・<a href="#s3-2">市区町村の比較</a></span></li><li><a href="#s4">4. モスク・関連施設</a><span class="subs"><a href="#s4-1">モスクの開設時期</a>・<a href="#s4-2">モスク・礼拝所一覧</a>・<a href="#s4-3">運営団体・国籍・宗派・区域区分</a>・<a href="#s4-4">ハラール食材店一覧</a></span></li><li><a href="#s5">5. 出典・調査方法</a><span class="subs"><a href="#s5-1">統計資料と出典</a>・<a href="#s5-2">施設・店舗の調査方法</a>・<a href="#s5-3">集計基準と注意事項</a>・<a href="#s5-4">情報提供・訂正依頼</a></span></li></ol></nav></details>
 <section class="sec" id="s1"><h2><span class="no">1.</span>神奈川県の特徴</h2><h3 id="s1-1">主要な調査結果</h3><div class="summary"><p class="sum-lead"><b>当サイトに掲載しているモスクは13か所で全国6位、ムスリム人口（研究者推計）は全国5位。モスクは横浜市と県の真ん中あたり（相模原・海老名・厚木・愛川）に集まり、多国籍とスリランカ系のモスクが多いのが特徴です。</b></p><div class="sum-table"><table><thead><tr><th>項目</th><th>神奈川</th><th>全国の順位</th></tr></thead><tbody><tr><td>モスク・礼拝所（当サイトの掲載数）</td><td>13か所</td><td>6位</td></tr><tr><td>ハラール食材店</td><td>52店</td><td>4位（調べた22都道府県の中）</td></tr><tr><td>ムスリム人口（研究者推計）</td><td>約29,900人</td><td>5位</td></tr><tr><td>マレーシアの人の割合※</td><td>0.5%</td><td><b>2位</b>（全国は0.3%）</td></tr><tr><td>インドネシアの人</td><td>14,242人</td><td>5位</td></tr><tr><td>スリランカの人</td><td>8,995人</td><td><b>2位</b></td></tr></tbody></table></div><p class="note">※ 割合は、県内に住む外国人全体を100%としたときのもの。スリランカはムスリムが少数派の国で、国籍はその人がムスリムかどうかを表しません。</p><ul><li><b>人数とモスクの数</b>：ムスリム人口（研究者推計）は5位、モスクの掲載数は6位。1か所あたり約2,300人で、全国平均（約1,930人）より多い。</li><li><b>場所のかたより</b>：13か所は6つの市町にあり、横浜市に5か所、相模原市に3か所、海老名市に2か所、厚木市・秦野市・愛川町に1か所ずつ。対象10か国の在留外国人が県内で2番目に多い川崎市（3,844人）では、調べた範囲でモスクは見つかっていない。</li><li><b>中心の国籍</b>：確かめられたのは、多国籍が4か所、スリランカ系が3か所、インドネシア系とバングラデシュ系が2か所ずつ、パキスタン系が1か所。</li><li><b>古いモスクと新しいモスク</b>：いちばん古いのは海老名マスジド（1998年）。13か所のうち6か所は2022年から（「遅くとも」の年を含む）。2026年4月には横浜市旭区にインドネシア系の大きなモスク（Masjid As-Sholihin）が開いた。</li><li><b>宗派と運営</b>：宗派が確かめられた8か所は、どれもスンニ派。8か所は法人（宗教法人1・一般社団法人7）、4か所は法人の登録のない礼拝者の会が運営している。形が大規模モスクなのは4か所（海老名マスジド・ジャーメ・マスジド横浜・マスジド トゥバー・Masjid As-Sholihin）。</li><li><b>区域</b>：10か所は市街化区域、3か所（相模原市の2か所・海老名市の1か所）は市街化調整区域にある。</li><li><b>増え方</b>：インドネシアの人は2016年の2,584人から2025年の14,242人へ5.5倍に、スリランカの人も4.0倍になった。</li><li><b>葬儀・墓地</b>：遺体を洗い、葬儀の礼拝をすることが確かめられたのは海老名マスジドの1か所。県内のムスリムの墓地は、調べた範囲では見つかっていない。</li></ul><p class="note">2026年10月12日時点のまとめです。数字の出典は「5. 出典・調査方法」にまとめています。</p></div><h3 id="s1-2">全国順位と他県との比較</h3><div class="tiles">
@@ -248,7 +280,7 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
   <p class="note">出典：出入国在留管理庁「在留外国人統計」2025年12月末。</p>
 </div><h3 id="s2-2">全国との比較</h3><div class="card"><h4>外国人のうちマレーシアの人の割合（上位の都道府県と全国）</h4>
   <p class="note">在留外国人統計 2025年12月末。マレーシアは、神奈川県で外国人に占める割合の全国順位がいちばん高い国（対象10か国の中で）です。いちばん下は全国の平均。10か国それぞれの全国の割合は、上の表の「割合（全国）」の列にあります。</p>
-  <div class="bars"><div class="brow " title="マレーシア 48人／外国人 6,333人"><span class="blab">秋田県</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">0.8%</span></div><div class="brow hl" title="マレーシア 1,505人／外国人 317,353人"><span class="blab">神奈川県</span><span class="btrack"><span class="bar" style="width:62.6%"></span></span><span class="bval">0.5%</span></div><div class="brow " title="マレーシア 3,779人／外国人 801,438人"><span class="blab">東京都</span><span class="btrack"><span class="bar" style="width:62.2%"></span></span><span class="bval">0.5%</span></div><div class="brow " title="マレーシア 359人／外国人 77,401人"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:61.2%"></span></span><span class="bval">0.5%</span></div><div class="brow " title="マレーシア 93人／外国人 25,313人"><span class="blab">山梨県</span><span class="btrack"><span class="bar" style="width:48.5%"></span></span><span class="bval">0.4%</span></div><div class="brow " title="マレーシア 925人／外国人 259,663人"><span class="blab">千葉県</span><span class="btrack"><span class="bar" style="width:47.0%"></span></span><span class="bval">0.4%</span></div><div class="brow " title="マレーシア 38人／外国人 11,111人"><span class="blab">山形県</span><span class="btrack"><span class="bar" style="width:45.1%"></span></span><span class="bval">0.3%</span></div><div class="brow " title="マレーシア 39人／外国人 11,529人"><span class="blab">和歌山県</span><span class="btrack"><span class="bar" style="width:44.6%"></span></span><span class="bval">0.3%</span></div><div class="brow " title="マレーシア 208人／外国人 61,878人"><span class="blab">栃木県</span><span class="btrack"><span class="bar" style="width:44.4%"></span></span><span class="bval">0.3%</span></div><div class="brow " title="マレーシア 307人／外国人 92,563人"><span class="blab">京都府</span><span class="btrack"><span class="bar" style="width:43.8%"></span></span><span class="bval">0.3%</span></div><div class="brow ref" title="マレーシア 12,266人／外国人 4,125,395人"><span class="blab">全国</span><span class="btrack"><span class="bar" style="width:39.2%"></span></span><span class="bval">0.3%</span></div></div></div><h3 id="s2-3">2016〜2025年の推移</h3><div class="grid"><div class="card"><h4>神奈川県に住む人の推移（国籍別、各年12月末）</h4><dl class="chart-meta"><dt>対象</dt><dd>2025年に神奈川県で人数が多い5つ（対象10か国・スリランカ・アフリカの国（合計）の中から）</dd><dt>期間</dt><dd>2016〜2025年の各年12月末</dd><dt>出典</dt><dd>出入国在留管理庁「在留外国人統計」（くわしくは「5. 出典・調査方法」）</dd></dl><div class="legend"><span><i class="sw" style="background:#2a78d6"></i>インドネシア</span><span><i class="sw" style="background:#eb6834"></i>スリランカ</span><span><i class="sw" style="background:#1baf7a"></i>アフリカの国（合計）</span><span><i class="sw" style="background:#eda100"></i>バングラデシュ</span><span><i class="sw" style="background:#e87ba4"></i>パキスタン</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移の線グラフ">
+  <div class="bars"><div class="brow " title="マレーシア 48人／外国人 6,333人"><span class="blab">秋田県</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">0.8%</span></div><div class="brow hl" title="マレーシア 1,505人／外国人 317,353人"><span class="blab">神奈川県</span><span class="btrack"><span class="bar" style="width:62.6%"></span></span><span class="bval">0.5%</span></div><div class="brow " title="マレーシア 3,779人／外国人 801,438人"><span class="blab">東京都</span><span class="btrack"><span class="bar" style="width:62.2%"></span></span><span class="bval">0.5%</span></div><div class="brow " title="マレーシア 359人／外国人 77,401人"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:61.2%"></span></span><span class="bval">0.5%</span></div><div class="brow " title="マレーシア 93人／外国人 25,313人"><span class="blab">山梨県</span><span class="btrack"><span class="bar" style="width:48.5%"></span></span><span class="bval">0.4%</span></div><div class="brow " title="マレーシア 925人／外国人 259,663人"><span class="blab">千葉県</span><span class="btrack"><span class="bar" style="width:47.0%"></span></span><span class="bval">0.4%</span></div><div class="brow " title="マレーシア 38人／外国人 11,111人"><span class="blab">山形県</span><span class="btrack"><span class="bar" style="width:45.1%"></span></span><span class="bval">0.3%</span></div><div class="brow " title="マレーシア 39人／外国人 11,529人"><span class="blab">和歌山県</span><span class="btrack"><span class="bar" style="width:44.6%"></span></span><span class="bval">0.3%</span></div><div class="brow " title="マレーシア 208人／外国人 61,878人"><span class="blab">栃木県</span><span class="btrack"><span class="bar" style="width:44.4%"></span></span><span class="bval">0.3%</span></div><div class="brow " title="マレーシア 307人／外国人 92,563人"><span class="blab">京都府</span><span class="btrack"><span class="bar" style="width:43.8%"></span></span><span class="bval">0.3%</span></div><div class="brow ref" title="マレーシア 12,266人／外国人 4,125,395人"><span class="blab">全国</span><span class="btrack"><span class="bar" style="width:39.2%"></span></span><span class="bval">0.3%</span></div></div></div><h3 id="s2-3">2016〜2025年の推移</h3><div class="grid"><div class="card"><h4>神奈川県に住む人の推移（国籍別、各年12月末）</h4><dl class="chart-meta"><dt>対象</dt><dd>2025年に神奈川県で人数が多い5つ（対象10か国・スリランカ・アフリカの国（合計）の中から）</dd><dt>期間</dt><dd>2016〜2025年の各年12月末</dd><dt>出典</dt><dd>出入国在留管理庁「在留外国人統計」（くわしくは「5. 出典・調査方法」）</dd></dl><div class="legend"><span><i class="sw" style="background:var(--c0)"></i>インドネシア</span><span><i class="sw" style="background:var(--c1)"></i>スリランカ</span><span><i class="sw" style="background:var(--c2)"></i>アフリカの国（合計）</span><span><i class="sw" style="background:var(--c3)"></i>バングラデシュ</span><span><i class="sw" style="background:var(--c4)"></i>パキスタン</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移の線グラフ">
 <line x1="56" x2="530" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
 <line x1="56" x2="530" y1="198.7" y2="198.7" class="grid"/><text x="48" y="198.7" dy="0.32em" text-anchor="end">5,000</text>
 <line x1="56" x2="530" y1="105.3" y2="105.3" class="grid"/><text x="48" y="105.3" dy="0.32em" text-anchor="end">10,000</text>
@@ -263,66 +295,66 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <text x="424.7" y="312" text-anchor="middle">2023</text>
 <text x="477.3" y="312" text-anchor="middle">2024</text>
 <text x="530.0" y="312" text-anchor="middle">2025</text>
-<polyline points="56.0,243.8 108.7,238.7 161.3,228.1 214.0,218.1 266.7,215.4 319.3,219.4 372.0,186.1 424.7,135.7 477.3,92.0 530.0,26.1" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="56.0" cy="243.8" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2016年 インドネシア 2,584人</title></circle>
-<circle cx="108.7" cy="238.7" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2017年 インドネシア 2,854人</title></circle>
-<circle cx="161.3" cy="228.1" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2018年 インドネシア 3,425人</title></circle>
-<circle cx="214.0" cy="218.1" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2019年 インドネシア 3,960人</title></circle>
-<circle cx="266.7" cy="215.4" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2020年 インドネシア 4,101人</title></circle>
-<circle cx="319.3" cy="219.4" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2021年 インドネシア 3,890人</title></circle>
-<circle cx="372.0" cy="186.1" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2022年 インドネシア 5,673人</title></circle>
-<circle cx="424.7" cy="135.7" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2023年 インドネシア 8,375人</title></circle>
-<circle cx="477.3" cy="92.0" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2024年 インドネシア 10,716人</title></circle>
-<circle cx="530.0" cy="26.1" r="4" fill="#2a78d6" stroke="#fff" stroke-width="1.5"><title>2025年 インドネシア 14,242人</title></circle>
-<polyline points="56.0,250.1 108.7,243.0 161.3,234.7 214.0,222.1 266.7,217.0 319.3,214.8 372.0,196.7 424.7,180.6 477.3,149.1 530.0,124.1" fill="none" stroke="#eb6834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="56.0" cy="250.1" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2016年 スリランカ 2,242人</title></circle>
-<circle cx="108.7" cy="243.0" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2017年 スリランカ 2,625人</title></circle>
-<circle cx="161.3" cy="234.7" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2018年 スリランカ 3,067人</title></circle>
-<circle cx="214.0" cy="222.1" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2019年 スリランカ 3,747人</title></circle>
-<circle cx="266.7" cy="217.0" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2020年 スリランカ 4,017人</title></circle>
-<circle cx="319.3" cy="214.8" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2021年 スリランカ 4,136人</title></circle>
-<circle cx="372.0" cy="196.7" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2022年 スリランカ 5,106人</title></circle>
-<circle cx="424.7" cy="180.6" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2023年 スリランカ 5,967人</title></circle>
-<circle cx="477.3" cy="149.1" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2024年 スリランカ 7,658人</title></circle>
-<circle cx="530.0" cy="124.1" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"><title>2025年 スリランカ 8,995人</title></circle>
-<polyline points="56.0,260.1 108.7,256.7 161.3,254.9 214.0,253.2 266.7,250.6 319.3,250.3 372.0,247.5 424.7,243.4 477.3,236.3 530.0,229.8" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="56.0" cy="260.1" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2016年 アフリカの国（合計） 1,710人</title></circle>
-<circle cx="108.7" cy="256.7" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2017年 アフリカの国（合計） 1,889人</title></circle>
-<circle cx="161.3" cy="254.9" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2018年 アフリカの国（合計） 1,986人</title></circle>
-<circle cx="214.0" cy="253.2" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2019年 アフリカの国（合計） 2,078人</title></circle>
-<circle cx="266.7" cy="250.6" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2020年 アフリカの国（合計） 2,218人</title></circle>
-<circle cx="319.3" cy="250.3" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2021年 アフリカの国（合計） 2,233人</title></circle>
-<circle cx="372.0" cy="247.5" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2022年 アフリカの国（合計） 2,385人</title></circle>
-<circle cx="424.7" cy="243.4" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2023年 アフリカの国（合計） 2,604人</title></circle>
-<circle cx="477.3" cy="236.3" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2024年 アフリカの国（合計） 2,983人</title></circle>
-<circle cx="530.0" cy="229.8" r="4" fill="#1baf7a" stroke="#fff" stroke-width="1.5"><title>2025年 アフリカの国（合計） 3,334人</title></circle>
-<polyline points="56.0,273.6 108.7,272.0 161.3,270.0 214.0,268.0 266.7,267.2 319.3,265.4 372.0,260.7 424.7,254.3 477.3,245.4 530.0,236.6" fill="none" stroke="#eda100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="56.0" cy="273.6" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2016年 バングラデシュ 987人</title></circle>
-<circle cx="108.7" cy="272.0" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2017年 バングラデシュ 1,073人</title></circle>
-<circle cx="161.3" cy="270.0" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2018年 バングラデシュ 1,179人</title></circle>
-<circle cx="214.0" cy="268.0" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2019年 バングラデシュ 1,288人</title></circle>
-<circle cx="266.7" cy="267.2" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2020年 バングラデシュ 1,331人</title></circle>
-<circle cx="319.3" cy="265.4" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2021年 バングラデシュ 1,427人</title></circle>
-<circle cx="372.0" cy="260.7" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2022年 バングラデシュ 1,676人</title></circle>
-<circle cx="424.7" cy="254.3" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2023年 バングラデシュ 2,021人</title></circle>
-<circle cx="477.3" cy="245.4" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2024年 バングラデシュ 2,497人</title></circle>
-<circle cx="530.0" cy="236.6" r="4" fill="#eda100" stroke="#fff" stroke-width="1.5"><title>2025年 バングラデシュ 2,969人</title></circle>
-<polyline points="56.0,270.7 108.7,269.2 161.3,268.8 214.0,267.8 266.7,266.3 319.3,265.9 372.0,264.8 424.7,263.4 477.3,259.9 530.0,257.8" fill="none" stroke="#e87ba4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="56.0" cy="270.7" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2016年 パキスタン 1,142人</title></circle>
-<circle cx="108.7" cy="269.2" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2017年 パキスタン 1,220人</title></circle>
-<circle cx="161.3" cy="268.8" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2018年 パキスタン 1,243人</title></circle>
-<circle cx="214.0" cy="267.8" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2019年 パキスタン 1,295人</title></circle>
-<circle cx="266.7" cy="266.3" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2020年 パキスタン 1,376人</title></circle>
-<circle cx="319.3" cy="265.9" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2021年 パキスタン 1,396人</title></circle>
-<circle cx="372.0" cy="264.8" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2022年 パキスタン 1,458人</title></circle>
-<circle cx="424.7" cy="263.4" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2023年 パキスタン 1,532人</title></circle>
-<circle cx="477.3" cy="259.9" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2024年 パキスタン 1,722人</title></circle>
-<circle cx="530.0" cy="257.8" r="4" fill="#e87ba4" stroke="#fff" stroke-width="1.5"><title>2025年 パキスタン 1,833人</title></circle>
-<line x1="538.0" x2="548.0" y1="26.1" y2="26.1" stroke="#2a78d6" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="26.1" dy="0.32em" class="end">インドネシア 14,242</text>
-<line x1="538.0" x2="548.0" y1="124.1" y2="124.1" stroke="#eb6834" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="124.1" dy="0.32em" class="end">スリランカ 8,995</text>
-<line x1="538.0" x2="548.0" y1="229.8" y2="229.8" stroke="#1baf7a" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="229.8" dy="0.32em" class="end">アフリカの国（合計） 3,334</text>
-<line x1="538.0" x2="548.0" y1="244.8" y2="244.8" stroke="#eda100" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="244.8" dy="0.32em" class="end">バングラデシュ 2,969</text>
-<line x1="538.0" x2="548.0" y1="259.8" y2="259.8" stroke="#e87ba4" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="259.8" dy="0.32em" class="end">パキスタン 1,833</text>
+<polyline points="56.0,243.8 108.7,238.7 161.3,228.1 214.0,218.1 266.7,215.4 319.3,219.4 372.0,186.1 424.7,135.7 477.3,92.0 530.0,26.1" fill="none" style="stroke:var(--c0)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="243.8" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2016年 インドネシア 2,584人</title></circle>
+<circle cx="108.7" cy="238.7" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2017年 インドネシア 2,854人</title></circle>
+<circle cx="161.3" cy="228.1" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2018年 インドネシア 3,425人</title></circle>
+<circle cx="214.0" cy="218.1" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2019年 インドネシア 3,960人</title></circle>
+<circle cx="266.7" cy="215.4" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2020年 インドネシア 4,101人</title></circle>
+<circle cx="319.3" cy="219.4" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2021年 インドネシア 3,890人</title></circle>
+<circle cx="372.0" cy="186.1" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2022年 インドネシア 5,673人</title></circle>
+<circle cx="424.7" cy="135.7" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2023年 インドネシア 8,375人</title></circle>
+<circle cx="477.3" cy="92.0" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2024年 インドネシア 10,716人</title></circle>
+<circle cx="530.0" cy="26.1" r="4" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5"><title>2025年 インドネシア 14,242人</title></circle>
+<polyline points="56.0,250.1 108.7,243.0 161.3,234.7 214.0,222.1 266.7,217.0 319.3,214.8 372.0,196.7 424.7,180.6 477.3,149.1 530.0,124.1" fill="none" style="stroke:var(--c1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="250.1" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2016年 スリランカ 2,242人</title></circle>
+<circle cx="108.7" cy="243.0" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2017年 スリランカ 2,625人</title></circle>
+<circle cx="161.3" cy="234.7" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2018年 スリランカ 3,067人</title></circle>
+<circle cx="214.0" cy="222.1" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2019年 スリランカ 3,747人</title></circle>
+<circle cx="266.7" cy="217.0" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2020年 スリランカ 4,017人</title></circle>
+<circle cx="319.3" cy="214.8" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2021年 スリランカ 4,136人</title></circle>
+<circle cx="372.0" cy="196.7" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2022年 スリランカ 5,106人</title></circle>
+<circle cx="424.7" cy="180.6" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2023年 スリランカ 5,967人</title></circle>
+<circle cx="477.3" cy="149.1" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2024年 スリランカ 7,658人</title></circle>
+<circle cx="530.0" cy="124.1" r="4" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5"><title>2025年 スリランカ 8,995人</title></circle>
+<polyline points="56.0,260.1 108.7,256.7 161.3,254.9 214.0,253.2 266.7,250.6 319.3,250.3 372.0,247.5 424.7,243.4 477.3,236.3 530.0,229.8" fill="none" style="stroke:var(--c2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="260.1" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2016年 アフリカの国（合計） 1,710人</title></circle>
+<circle cx="108.7" cy="256.7" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2017年 アフリカの国（合計） 1,889人</title></circle>
+<circle cx="161.3" cy="254.9" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2018年 アフリカの国（合計） 1,986人</title></circle>
+<circle cx="214.0" cy="253.2" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2019年 アフリカの国（合計） 2,078人</title></circle>
+<circle cx="266.7" cy="250.6" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2020年 アフリカの国（合計） 2,218人</title></circle>
+<circle cx="319.3" cy="250.3" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2021年 アフリカの国（合計） 2,233人</title></circle>
+<circle cx="372.0" cy="247.5" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2022年 アフリカの国（合計） 2,385人</title></circle>
+<circle cx="424.7" cy="243.4" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2023年 アフリカの国（合計） 2,604人</title></circle>
+<circle cx="477.3" cy="236.3" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2024年 アフリカの国（合計） 2,983人</title></circle>
+<circle cx="530.0" cy="229.8" r="4" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5"><title>2025年 アフリカの国（合計） 3,334人</title></circle>
+<polyline points="56.0,273.6 108.7,272.0 161.3,270.0 214.0,268.0 266.7,267.2 319.3,265.4 372.0,260.7 424.7,254.3 477.3,245.4 530.0,236.6" fill="none" style="stroke:var(--c3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="273.6" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2016年 バングラデシュ 987人</title></circle>
+<circle cx="108.7" cy="272.0" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2017年 バングラデシュ 1,073人</title></circle>
+<circle cx="161.3" cy="270.0" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2018年 バングラデシュ 1,179人</title></circle>
+<circle cx="214.0" cy="268.0" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2019年 バングラデシュ 1,288人</title></circle>
+<circle cx="266.7" cy="267.2" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2020年 バングラデシュ 1,331人</title></circle>
+<circle cx="319.3" cy="265.4" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2021年 バングラデシュ 1,427人</title></circle>
+<circle cx="372.0" cy="260.7" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2022年 バングラデシュ 1,676人</title></circle>
+<circle cx="424.7" cy="254.3" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2023年 バングラデシュ 2,021人</title></circle>
+<circle cx="477.3" cy="245.4" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2024年 バングラデシュ 2,497人</title></circle>
+<circle cx="530.0" cy="236.6" r="4" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5"><title>2025年 バングラデシュ 2,969人</title></circle>
+<polyline points="56.0,270.7 108.7,269.2 161.3,268.8 214.0,267.8 266.7,266.3 319.3,265.9 372.0,264.8 424.7,263.4 477.3,259.9 530.0,257.8" fill="none" style="stroke:var(--c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="270.7" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2016年 パキスタン 1,142人</title></circle>
+<circle cx="108.7" cy="269.2" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2017年 パキスタン 1,220人</title></circle>
+<circle cx="161.3" cy="268.8" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2018年 パキスタン 1,243人</title></circle>
+<circle cx="214.0" cy="267.8" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2019年 パキスタン 1,295人</title></circle>
+<circle cx="266.7" cy="266.3" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2020年 パキスタン 1,376人</title></circle>
+<circle cx="319.3" cy="265.9" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2021年 パキスタン 1,396人</title></circle>
+<circle cx="372.0" cy="264.8" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2022年 パキスタン 1,458人</title></circle>
+<circle cx="424.7" cy="263.4" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2023年 パキスタン 1,532人</title></circle>
+<circle cx="477.3" cy="259.9" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2024年 パキスタン 1,722人</title></circle>
+<circle cx="530.0" cy="257.8" r="4" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5"><title>2025年 パキスタン 1,833人</title></circle>
+<line x1="538.0" x2="548.0" y1="26.1" y2="26.1" style="stroke:var(--c0)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="26.1" dy="0.32em" class="end">インドネシア 14,242</text>
+<line x1="538.0" x2="548.0" y1="124.1" y2="124.1" style="stroke:var(--c1)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="124.1" dy="0.32em" class="end">スリランカ 8,995</text>
+<line x1="538.0" x2="548.0" y1="229.8" y2="229.8" style="stroke:var(--c2)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="229.8" dy="0.32em" class="end">アフリカの国（合計） 3,334</text>
+<line x1="538.0" x2="548.0" y1="244.8" y2="244.8" style="stroke:var(--c3)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="244.8" dy="0.32em" class="end">バングラデシュ 2,969</text>
+<line x1="538.0" x2="548.0" y1="259.8" y2="259.8" style="stroke:var(--c4)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="259.8" dy="0.32em" class="end">パキスタン 1,833</text>
 </svg><p class="note">点を押さえると、その年の人数が出ます。国籍別の人数で、ムスリムの人数ではありません。</p><details class="more"><summary>詳しい数値を見る（対象10か国・スリランカ・アフリカの国（合計）・外国人全体の各年の表）</summary><p class="note">「何倍」は2016年の人数が30人より少ないときは出していません。アフリカの国（合計）は、統計の地域の区分「アフリカ」の54か国の合計で、この表のエジプト・ナイジェリアの人も入っています（10か国の合計とは別に数えています）。</p><div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">2016</th><th class="num">2017</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2016年から増えた人数</th><th class="num">何倍</th></tr></thead><tbody><tr class=""><td>インドネシア</td><td class="num">2,584</td><td class="num">2,854</td><td class="num">3,425</td><td class="num">3,960</td><td class="num">4,101</td><td class="num">3,890</td><td class="num">5,673</td><td class="num">8,375</td><td class="num">10,716</td><td class="num">14,242</td><td class="num">+11,658</td><td class="num">5.5倍</td></tr><tr class=""><td>バングラデシュ</td><td class="num">987</td><td class="num">1,073</td><td class="num">1,179</td><td class="num">1,288</td><td class="num">1,331</td><td class="num">1,427</td><td class="num">1,676</td><td class="num">2,021</td><td class="num">2,497</td><td class="num">2,969</td><td class="num">+1,982</td><td class="num">3.0倍</td></tr><tr class=""><td>パキスタン</td><td class="num">1,142</td><td class="num">1,220</td><td class="num">1,243</td><td class="num">1,295</td><td class="num">1,376</td><td class="num">1,396</td><td class="num">1,458</td><td class="num">1,532</td><td class="num">1,722</td><td class="num">1,833</td><td class="num">+691</td><td class="num">1.6倍</td></tr><tr class=""><td>マレーシア</td><td class="num">1,005</td><td class="num">1,068</td><td class="num">1,174</td><td class="num">1,287</td><td class="num">1,299</td><td class="num">1,240</td><td class="num">1,307</td><td class="num">1,410</td><td class="num">1,458</td><td class="num">1,505</td><td class="num">+500</td><td class="num">1.5倍</td></tr><tr class=""><td>ナイジェリア</td><td class="num">457</td><td class="num">479</td><td class="num">488</td><td class="num">495</td><td class="num">511</td><td class="num">505</td><td class="num">502</td><td class="num">549</td><td class="num">623</td><td class="num">682</td><td class="num">+225</td><td class="num">1.5倍</td></tr><tr class=""><td>イラン</td><td class="num">533</td><td class="num">547</td><td class="num">558</td><td class="num">576</td><td class="num">568</td><td class="num">562</td><td class="num">588</td><td class="num">593</td><td class="num">622</td><td class="num">614</td><td class="num">+81</td><td class="num">1.2倍</td></tr><tr class=""><td>ウズベキスタン</td><td class="num">126</td><td class="num">137</td><td class="num">240</td><td class="num">309</td><td class="num">281</td><td class="num">257</td><td class="num">366</td><td class="num">404</td><td class="num">424</td><td class="num">483</td><td class="num">+357</td><td class="num">3.8倍</td></tr><tr class=""><td>トルコ</td><td class="num">201</td><td class="num">251</td><td class="num">272</td><td class="num">301</td><td class="num">310</td><td class="num">302</td><td class="num">307</td><td class="num">327</td><td class="num">390</td><td class="num">370</td><td class="num">+169</td><td class="num">1.8倍</td></tr><tr class=""><td>エジプト</td><td class="num">91</td><td class="num">108</td><td class="num">117</td><td class="num">119</td><td class="num">137</td><td class="num">149</td><td class="num">152</td><td class="num">160</td><td class="num">155</td><td class="num">161</td><td class="num">+70</td><td class="num">1.8倍</td></tr><tr class=""><td>アフガニスタン</td><td class="num">63</td><td class="num">45</td><td class="num">41</td><td class="num">45</td><td class="num">41</td><td class="num">43</td><td class="num">78</td><td class="num">114</td><td class="num">111</td><td class="num">113</td><td class="num">+50</td><td class="num">1.8倍</td></tr><tr class="sum"><td>対象10か国の合計</td><td class="num">7,189</td><td class="num">7,782</td><td class="num">8,737</td><td class="num">9,675</td><td class="num">9,955</td><td class="num">9,771</td><td class="num">12,107</td><td class="num">15,485</td><td class="num">18,718</td><td class="num">22,972</td><td class="num">+15,783</td><td class="num">3.2倍</td></tr><tr class="refhead"><td colspan="13">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">2,242</td><td class="num">2,625</td><td class="num">3,067</td><td class="num">3,747</td><td class="num">4,017</td><td class="num">4,136</td><td class="num">5,106</td><td class="num">5,967</td><td class="num">7,658</td><td class="num">8,995</td><td class="num">+6,753</td><td class="num">4.0倍</td></tr><tr class="ref"><td>アフリカの国（合計）</td><td class="num">1,710</td><td class="num">1,889</td><td class="num">1,986</td><td class="num">2,078</td><td class="num">2,218</td><td class="num">2,233</td><td class="num">2,385</td><td class="num">2,604</td><td class="num">2,983</td><td class="num">3,334</td><td class="num">+1,624</td><td class="num">1.9倍</td></tr><tr class="ref"><td>外国人全体</td><td class="num">191,741</td><td class="num">204,487</td><td class="num">218,946</td><td class="num">235,233</td><td class="num">232,321</td><td class="num">227,511</td><td class="num">245,790</td><td class="num">267,523</td><td class="num">292,450</td><td class="num">317,353</td><td class="num">+125,612</td><td class="num">1.7倍</td></tr></tbody></table></div></details></div></div><p class="totop"><a href="#toc">↑ 目次へ戻る</a></p></section>
 <section class="sec" id="s3"><h2><span class="no">3.</span>市区町村別の状況</h2><h3 id="s3-1">市区町村別の人口と施設数</h3><div class="card">
   <h4>市区町村ごとの、対象10か国の在留外国人とモスク・礼拝所・ハラール食材店</h4>
@@ -341,8 +373,8 @@ a { color: var(--navy-2); overflow-wrap: anywhere; }
 <section class="sec" id="s4"><h2><span class="no">4.</span>モスク・関連施設</h2><h3 id="s4-1">モスクの開設時期</h3><div class="card">
   <p class="note">開設時期は、資料で分かったものを書いています。<b>「遅くとも」</b>は、その時期には使われていたと資料で確認できた<b>いちばん古い時期</b>で、実際の開設はもっと前かもしれません。「ごろ」「？」はおおよその時期です。名前を押すと、そのモスクの詳しい情報が開きます。</p>
   <div class="kinds">印の形：<span><i class="open"></i>開設の時期（資料による） 8か所</span><span><i class="early"></i>遅くとも（資料で確認できたいちばん古い時期） 5か所</span></div>
-  <div class="legend">印の色（中心の国籍）：<span><i class="sw" style="background:#2a78d6"></i>多国籍</span><span><i class="sw" style="background:#eb6834"></i>スリランカ</span><span><i class="sw" style="background:#1baf7a"></i>インドネシア</span><span><i class="sw" style="background:#eda100"></i>バングラデシュ</span><span><i class="sw" style="background:#e87ba4"></i>パキスタン</span><span><i class="sw" style="background:#8a8f98"></i>不明</span></div>
-  <div class="tl"><span class="tl-lab"><a href="mosque.html#m-ac69fe20">海老名マスジド</a>（海老名市）</span><span class="tl-track"><span class="tl-dot open" style="left:6.5%;background:#eb6834;--c:#eb6834" title="1998年（開設の時期（資料による））・スリランカ系が中心（ほかにパキスタン・バングラデシュ・インドなど）"></span><span class="tl-yr" style="left:6.5%">1998年</span></span><span class="tl-lab"><a href="mosque.html#m-6908faed">ジャーメ・マスジド 横浜</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:32.3%;background:#2a78d6;--c:#2a78d6" title="2006年12月29日（開設の時期（資料による））・多国籍（パキスタン系が中心。スリランカ・インド・ウズベキスタン・トルコなどの人も通う）"></span><span class="tl-yr" style="left:32.3%">2006年12月29日</span></span><span class="tl-lab"><a href="mosque.html#m-9243f412">YOKOHAMA MUSALAH</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:41.9%;background:#2a78d6;--c:#2a78d6" title="2009年（開設の時期（資料による））・多国籍（国ごとの内わけは不明。案内は英語）"></span><span class="tl-yr" style="left:41.9%">2009年</span></span><span class="tl-lab"><a href="mosque.html#m-c07e7e8b">マスジド トゥバー</a>（相模原市）</span><span class="tl-track"><span class="tl-dot open" style="left:67.7%;background:#8a8f98;--c:#8a8f98" title="2017年（開設の時期（資料による））・不明"></span><span class="tl-yr" style="left:67.7%">2017年</span></span><span class="tl-lab"><a href="mosque.html#m-f14ae487">東海モスク</a>（秦野市）</span><span class="tl-track"><span class="tl-dot open" style="left:67.7%;background:#2a78d6;--c:#2a78d6" title="2017年1月（開設の時期（資料による））・多国籍（マレーシア・サウジアラビアなどアラブの国・スリランカ・バングラデシュ・アフガニスタン・エジプトなど。東海大学の留学生・教員も通う）"></span><span class="tl-yr" style="left:67.7%">2017年1月</span></span><span class="tl-lab"><a href="mosque.html#m-9e91bb28">ムハンマディ・マスジット</a>（相模原市）</span><span class="tl-track"><span class="tl-dot early" style="left:71.0%;background:#e87ba4;--c:#e87ba4" title="遅くとも2018年（遅くとも（資料で確認できたいちばん古い時期））・パキスタン"></span><span class="tl-yr" style="left:71.0%">遅くとも2018年</span></span><span class="tl-lab"><a href="mosque.html#m-1914d919">田名モスク</a>（相模原市）</span><span class="tl-track"><span class="tl-dot early" style="left:74.2%;background:#eda100;--c:#eda100" title="遅くとも2019年12月（遅くとも（資料で確認できたいちばん古い時期））・バングラデシュ"></span><span class="tl-yr" style="left:74.2%">遅くとも2019年12月</span></span><span class="tl-lab"><a href="mosque.html#m-0a8e487c">Mushala Ar-Rahmah（ムサッラー・アッラフマ／Ar Rahmah Japan）</a>（厚木市）</span><span class="tl-track"><span class="tl-dot open" style="left:83.9%;background:#1baf7a;--c:#1baf7a" title="2022年4月（開設の時期（資料による））・インドネシア（マレーシア・バングラデシュの人や、日本人のムスリムも金曜礼拝やタラーウィーフ礼拝に来る）"></span><span class="tl-yr" style="left:83.9%">2022年4月</span></span><span class="tl-lab"><a href="mosque.html#m-776a0163">Idogaya Musollah</a>（横浜市）</span><span class="tl-track"><span class="tl-dot early" style="left:90.3%;background:#eda100;--c:#eda100" title="遅くとも2024年3月（遅くとも（資料で確認できたいちばん古い時期））・バングラデシュ"></span><span class="tl-yr" style="left:90.3%">遅くとも2024年3月</span></span><span class="tl-lab"><a href="mosque.html#m-2cd565db">Quba Cultural Center</a>（海老名市）</span><span class="tl-track"><span class="tl-dot early" style="left:90.3%;background:#eb6834;--c:#eb6834" title="遅くとも2024年（遅くとも（資料で確認できたいちばん古い時期））・スリランカ系"></span><span class="tl-yr" style="left:90.3%">遅くとも2024年</span></span><span class="tl-lab"><a href="mosque.html#m-e5eeb760">DARUL MUSHAF AL ISLAMIYAH</a>（愛川町）</span><span class="tl-track"><span class="tl-dot early" style="left:93.5%;background:#eb6834;--c:#eb6834" title="遅くとも2025年1月（遅くとも（資料で確認できたいちばん古い時期））・スリランカ"></span><span class="tl-yr" style="left:93.5%">遅くとも2025年1月</span></span><span class="tl-lab"><a href="mosque.html#m-882ed44f">Darut Tauhid Masjid</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:93.5%;background:#2a78d6;--c:#2a78d6" title="2025年2月28日（開設の時期（資料による））・多国籍（バングラデシュ・インドネシア・エジプト・ガーナ・インド・マレーシア・パキスタン・サウジアラビア・スリランカ・スーダンなど）"></span><span class="tl-yr" style="left:93.5%">2025年2月28日</span></span><span class="tl-lab"><a href="mosque.html#m-6a7729b6">Masjid As-Sholihin</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:96.8%;background:#1baf7a;--c:#1baf7a" title="2026年4月4日（開設の時期（資料による））・インドネシア"></span><span class="tl-yr" style="left:96.8%">2026年4月4日</span></span><span></span><span class="tl-axis"><span style="left:12.9%">2000</span><span style="left:29.0%">2005</span><span style="left:45.2%">2010</span><span style="left:61.3%">2015</span><span style="left:77.4%">2020</span><span style="left:93.5%">2025</span></span></div>
+  <div class="legend">印の色（中心の国籍）：<span><i class="sw" style="background:var(--c0)"></i>多国籍</span><span><i class="sw" style="background:var(--c1)"></i>スリランカ</span><span><i class="sw" style="background:var(--c2)"></i>インドネシア</span><span><i class="sw" style="background:var(--c3)"></i>バングラデシュ</span><span><i class="sw" style="background:var(--c4)"></i>パキスタン</span><span><i class="sw" style="background:var(--cg)"></i>不明</span></div>
+  <div class="tl"><span class="tl-lab"><a href="mosque.html#m-ac69fe20">海老名マスジド</a>（海老名市）</span><span class="tl-track"><span class="tl-dot open" style="left:6.5%;background:var(--c1);--c:var(--c1)" title="1998年（開設の時期（資料による））・スリランカ系が中心（ほかにパキスタン・バングラデシュ・インドなど）"></span><span class="tl-yr" style="left:6.5%">1998年</span></span><span class="tl-lab"><a href="mosque.html#m-6908faed">ジャーメ・マスジド 横浜</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:32.3%;background:var(--c0);--c:var(--c0)" title="2006年12月29日（開設の時期（資料による））・多国籍（パキスタン系が中心。スリランカ・インド・ウズベキスタン・トルコなどの人も通う）"></span><span class="tl-yr" style="left:32.3%">2006年12月29日</span></span><span class="tl-lab"><a href="mosque.html#m-9243f412">YOKOHAMA MUSALAH</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:41.9%;background:var(--c0);--c:var(--c0)" title="2009年（開設の時期（資料による））・多国籍（国ごとの内わけは不明。案内は英語）"></span><span class="tl-yr" style="left:41.9%">2009年</span></span><span class="tl-lab"><a href="mosque.html#m-c07e7e8b">マスジド トゥバー</a>（相模原市）</span><span class="tl-track"><span class="tl-dot open" style="left:67.7%;background:var(--cg);--c:var(--cg)" title="2017年（開設の時期（資料による））・不明"></span><span class="tl-yr" style="left:67.7%">2017年</span></span><span class="tl-lab"><a href="mosque.html#m-f14ae487">東海モスク</a>（秦野市）</span><span class="tl-track"><span class="tl-dot open" style="left:67.7%;background:var(--c0);--c:var(--c0)" title="2017年1月（開設の時期（資料による））・多国籍（マレーシア・サウジアラビアなどアラブの国・スリランカ・バングラデシュ・アフガニスタン・エジプトなど。東海大学の留学生・教員も通う）"></span><span class="tl-yr" style="left:67.7%">2017年1月</span></span><span class="tl-lab"><a href="mosque.html#m-9e91bb28">ムハンマディ・マスジット</a>（相模原市）</span><span class="tl-track"><span class="tl-dot early" style="left:71.0%;background:var(--c4);--c:var(--c4)" title="遅くとも2018年（遅くとも（資料で確認できたいちばん古い時期））・パキスタン"></span><span class="tl-yr" style="left:71.0%">遅くとも2018年</span></span><span class="tl-lab"><a href="mosque.html#m-1914d919">田名モスク</a>（相模原市）</span><span class="tl-track"><span class="tl-dot early" style="left:74.2%;background:var(--c3);--c:var(--c3)" title="遅くとも2019年12月（遅くとも（資料で確認できたいちばん古い時期））・バングラデシュ"></span><span class="tl-yr" style="left:74.2%">遅くとも2019年12月</span></span><span class="tl-lab"><a href="mosque.html#m-0a8e487c">Mushala Ar-Rahmah（ムサッラー・アッラフマ／Ar Rahmah Japan）</a>（厚木市）</span><span class="tl-track"><span class="tl-dot open" style="left:83.9%;background:var(--c2);--c:var(--c2)" title="2022年4月（開設の時期（資料による））・インドネシア（マレーシア・バングラデシュの人や、日本人のムスリムも金曜礼拝やタラーウィーフ礼拝に来る）"></span><span class="tl-yr" style="left:83.9%">2022年4月</span></span><span class="tl-lab"><a href="mosque.html#m-776a0163">Idogaya Musollah</a>（横浜市）</span><span class="tl-track"><span class="tl-dot early" style="left:90.3%;background:var(--c3);--c:var(--c3)" title="遅くとも2024年3月（遅くとも（資料で確認できたいちばん古い時期））・バングラデシュ"></span><span class="tl-yr" style="left:90.3%">遅くとも2024年3月</span></span><span class="tl-lab"><a href="mosque.html#m-2cd565db">Quba Cultural Center</a>（海老名市）</span><span class="tl-track"><span class="tl-dot early" style="left:90.3%;background:var(--c1);--c:var(--c1)" title="遅くとも2024年（遅くとも（資料で確認できたいちばん古い時期））・スリランカ系"></span><span class="tl-yr" style="left:90.3%">遅くとも2024年</span></span><span class="tl-lab"><a href="mosque.html#m-e5eeb760">DARUL MUSHAF AL ISLAMIYAH</a>（愛川町）</span><span class="tl-track"><span class="tl-dot early" style="left:93.5%;background:var(--c1);--c:var(--c1)" title="遅くとも2025年1月（遅くとも（資料で確認できたいちばん古い時期））・スリランカ"></span><span class="tl-yr" style="left:93.5%">遅くとも2025年1月</span></span><span class="tl-lab"><a href="mosque.html#m-882ed44f">Darut Tauhid Masjid</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:93.5%;background:var(--c0);--c:var(--c0)" title="2025年2月28日（開設の時期（資料による））・多国籍（バングラデシュ・インドネシア・エジプト・ガーナ・インド・マレーシア・パキスタン・サウジアラビア・スリランカ・スーダンなど）"></span><span class="tl-yr" style="left:93.5%">2025年2月28日</span></span><span class="tl-lab"><a href="mosque.html#m-6a7729b6">Masjid As-Sholihin</a>（横浜市）</span><span class="tl-track"><span class="tl-dot open" style="left:96.8%;background:var(--c2);--c:var(--c2)" title="2026年4月4日（開設の時期（資料による））・インドネシア"></span><span class="tl-yr" style="left:96.8%">2026年4月4日</span></span><span></span><span class="tl-axis"><span style="left:12.9%">2000</span><span style="left:29.0%">2005</span><span style="left:45.2%">2010</span><span style="left:61.3%">2015</span><span style="left:77.4%">2020</span><span style="left:93.5%">2025</span></span></div>
 </div><h3 id="s4-2">モスク・礼拝所一覧</h3><div class="card">
   <p class="note">名前を押すと、モスクごとの詳しい情報が開きます。その下の「地図」で地図のページのその場所、「地域別」で地域別のページのその場所が開きます。国籍・宗派・運営は、確かめられたものだけを載せています（確かめられていないものは「不明」）。</p>
   <div class="tablewrap"><table><thead><tr><th>モスク・礼拝所</th><th>市区町村</th><th>中心の国籍</th><th>宗派</th><th>運営</th><th>施設の形態</th><th>開設時期</th><th>区域区分</th></tr></thead><tbody><tr><td><a href="mosque.html#m-ac69fe20">海老名マスジド</a><span class="mlinks"><a href="map.html#m-ac69fe20">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-ac69fe20">地域別</a></span></td><td>海老名市</td><td>スリランカ系が中心（ほかにパキスタン・バングラデシュ・インドなど）</td><td>スンニ派（タブリーギー・ジャマーアト系）</td><td>宗教法人ダル・ウッサラーム（海老名支部）</td><td>大規模モスク</td><td>1998年</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-6908faed">ジャーメ・マスジド 横浜</a><span class="mlinks"><a href="map.html#m-6908faed">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-6908faed">地域別</a></span></td><td>横浜市</td><td>多国籍（パキスタン系が中心。スリランカ・インド・ウズベキスタン・トルコなどの人も通う）</td><td>スンニ派</td><td>一般社団法人YOKOHAMA GRAND MASJID</td><td>大規模モスク</td><td>2006年12月29日</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-9243f412">YOKOHAMA MUSALAH</a><span class="mlinks"><a href="map.html#m-9243f412">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-9243f412">地域別</a></span></td><td>横浜市</td><td>多国籍（国ごとの内わけは不明。案内は英語）</td><td>スンニ派</td><td>Yokohama Musalla（横浜ムサッラー。礼拝所に集まるムスリムの会。法人の登録は見当たらない）</td><td>簡易礼拝所</td><td>2009年</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-c07e7e8b">マスジド トゥバー</a><span class="mlinks"><a href="map.html#m-c07e7e8b">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-c07e7e8b">地域別</a></span></td><td>相模原市</td><td>不明</td><td>不明</td><td>一般社団法人マスジド・トゥバ</td><td>大規模モスク</td><td>2017年</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-f14ae487">東海モスク</a><span class="mlinks"><a href="map.html#m-f14ae487">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-f14ae487">地域別</a></span></td><td>秦野市</td><td>多国籍（マレーシア・サウジアラビアなどアラブの国・スリランカ・バングラデシュ・アフガニスタン・エジプトなど。東海大学の留学生・教員も通う）</td><td>スンニ派</td><td>一般社団法人東海マスジド</td><td>小規模モスク</td><td>2017年1月</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-9e91bb28">ムハンマディ・マスジット</a><span class="mlinks"><a href="map.html#m-9e91bb28">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-9e91bb28">地域別</a></span></td><td>相模原市</td><td>パキスタン</td><td>スンニ派（預言者の生誕祭を祝う南アジアの流れ）</td><td>一般社団法人ムハマディマスジェッド</td><td>小規模モスク</td><td>遅くとも2018年</td><td><span class="nw">市街化調整区域</span></td></tr><tr><td><a href="mosque.html#m-1914d919">田名モスク</a><span class="mlinks"><a href="map.html#m-1914d919">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-1914d919">地域別</a></span></td><td>相模原市</td><td>バングラデシュ</td><td>不明</td><td>一般社団法人SAGAMIHARA ISLAMIC CULTURAL ACADEMY</td><td>小規模モスク</td><td>遅くとも2019年12月</td><td><span class="nw">市街化調整区域</span></td></tr><tr><td><a href="mosque.html#m-0a8e487c">Mushala Ar-Rahmah（ムサッラー・アッラフマ／Ar Rahmah Japan）</a><span class="mlinks"><a href="map.html#m-0a8e487c">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-0a8e487c">地域別</a></span></td><td>厚木市</td><td>インドネシア（マレーシア・バングラデシュの人や、日本人のムスリムも金曜礼拝やタラーウィーフ礼拝に来る）</td><td>スンニ派</td><td>ムショラ・アッラフマ運営委員会（建物の持ち主のインドネシアの人たちが中心の任意の会。在日インドネシア人ムスリムの会「日本マダニー」と協力）</td><td>簡易礼拝所</td><td>2022年4月</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-776a0163">Idogaya Musollah</a><span class="mlinks"><a href="map.html#m-776a0163">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-776a0163">地域別</a></span></td><td>横浜市</td><td>バングラデシュ</td><td>不明</td><td>IDOGAYA MUSOLLAH MANAGEMENT（礼拝所の運営の会）</td><td>簡易礼拝所</td><td>遅くとも2024年3月</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-2cd565db">Quba Cultural Center</a><span class="mlinks"><a href="map.html#m-2cd565db">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-2cd565db">地域別</a></span></td><td>海老名市</td><td>スリランカ系</td><td>不明</td><td>不明</td><td>不明</td><td>遅くとも2024年</td><td><span class="nw">市街化調整区域</span></td></tr><tr><td><a href="mosque.html#m-e5eeb760">DARUL MUSHAF AL ISLAMIYAH</a><span class="mlinks"><a href="map.html#m-e5eeb760">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-e5eeb760">地域別</a></span></td><td>愛川町</td><td>スリランカ</td><td>不明</td><td>一般社団法人DARUL MUSHAF AL ISLAMIYAH</td><td>小規模モスク</td><td>遅くとも2025年1月</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-882ed44f">Darut Tauhid Masjid</a><span class="mlinks"><a href="map.html#m-882ed44f">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-882ed44f">地域別</a></span></td><td>横浜市</td><td>多国籍（バングラデシュ・インドネシア・エジプト・ガーナ・インド・マレーシア・パキスタン・サウジアラビア・スリランカ・スーダンなど）</td><td>スンニ派（ハナフィー学派）</td><td>一般社団法人田園都市イスラム文化センター（DTICC）</td><td>小規模モスク</td><td>2025年2月28日</td><td><span class="nw">市街化区域</span></td></tr><tr><td><a href="mosque.html#m-6a7729b6">Masjid As-Sholihin</a><span class="mlinks"><a href="map.html#m-6a7729b6">地図</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C#r-m-6a7729b6">地域別</a></span></td><td>横浜市</td><td>インドネシア</td><td>スンニ派</td><td>一般社団法人AS-SHOLIHIN YOKOHAMA FOUNDATION</td><td>大規模モスク</td><td>2026年4月4日</td><td><span class="nw">市街化区域</span></td></tr></tbody></table></div>
