@@ -45,9 +45,45 @@
         
 
     <style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
+  --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
+  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
+  --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
+  --warn:#b42318; --warn-soft:#fdecea;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171c; --card:#1d2128; --text:#e7eaf0; --sub:#9aa3b2; --line:#2e343e;
+    --accent:#8fb5dd; --accent-soft:#25313f; --bar:#6f9bc8; --bar-bg:#2b313b; --over:#b39ddb;
+    --open-bg:#18232f; --open-line:#6f9bc8; --done-bg:#1b1e23; --done-line:#8a93a2; --pend-bg:#2a2418; --pend-line:#d9a441; --extra-bg:#241f2e; --extra-line:#b39ddb;
+    --warn:#f2958c; --warn-soft:#3a1d1b;
+  }
+}
+/* 暗い画面では、黒っぽい印（閉鎖・移転の✕など）が背景に溶けないよう、ページの中の小さな印に白いふちを付ける（地図の上の印・右上の一覧の印はそのまま） */
+@media (prefers-color-scheme: dark){
+  svg.mk-s,svg.zsh,svg.dot{filter:drop-shadow(0 0 1px rgba(255,255,255,.85))}
+}
+/* リンクの色（全ページ同じ。ボタン・札・メニューなど、自分の色を決めているリンクはそちらが優先。暗い画面でブラウザの濃い青のままにならないように） */
+a{color:var(--accent)}
+
+:root{
+  --navy:#1e3a5f; --blue-soft:#eef4fb; --head-bg:#f1f4f8; --hit:#fff7d6; --tag-bg:#eef0f4; --tag-ink:#374151;
+  --warn-bg:#fdf0d5; --warn-line:#e0a836; --warn-ink:#6b4a12; --don-ink:#7c4a03;
+  --ap-bg:#fff7ed; --ap-ink:#7c2d12; --ap-line:#c2410c; --st-bg:#fef2f2; --st-ink:#7f1d1d; --st-line:#c00;
+  --net-ink:#5b21b6; --sum-line:#93b4d6; --sum-rule:#c7d9ec;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --navy:#a9c7e8; --blue-soft:#1f2a37; --head-bg:#252b34; --hit:#3d3416; --tag-bg:#2b313b; --tag-ink:#d1d5db;
+    --warn-bg:#2a2418; --warn-line:#d9a441; --warn-ink:#f0c97a; --don-ink:#f0c97a;
+    --ap-bg:#2b1d14; --ap-ink:#fdba8c; --ap-line:#fb923c; --st-bg:#3a1d1b; --st-ink:#fca5a5; --st-line:#ef4444;
+    --net-ink:#c4b5fd; --sum-line:#3b5574; --sum-rule:#2e3d50;
+  }
+}
         /* 地図の高さ（パソコンでもスマホでも、画面に収まる高さ。吹き出しと施設一覧の高さもこれに合わせる） */
         :root { --map-h: clamp(380px, 74vh, 680px); }
-        body { background: #fff; color: #1d2330; }
+        body { background: var(--bg); color: var(--text); }
         /* 吹き出し（ポップアップ）を大きく・読みやすく。地図に収まらない長さのときは、吹き出しの中だけを動かす */
         .leaflet-popup-content-wrapper { border-radius: 14px; }
         .leaflet-popup-content { font-size: 17px; line-height: 1.8; margin: 16px 22px 16px 18px;
@@ -119,12 +155,13 @@
         /* ---- ページの組み立て（見出し → 1. 施設を探す → 2. 地図・3. 見方・4. 一覧 → 5. この地図について） ---- */
         .mp-page { max-width: 1200px; margin: 16px auto 0; padding: 0 16px; line-height: 1.7;
                    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
+        .mp-page :where(a) { color: var(--accent); }  /* リンクの色はほかのページと同じ。:where で弱くして、地図の中（吹き出し・ボタン）と白い文字のボタンは、それぞれの色のまま */
         .mp-page h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 0 0 8px; }
         .mp-lead { font-size: 16px; line-height: 1.8; margin: 0 0 6px; max-width: 46em; }
-        .mp-upd { font-size: 14px; color: #5b6474; margin: 0 0 12px; }
-        .mp-upd b { color: #1d2330; }
+        .mp-upd { font-size: 14px; color: var(--sub); margin: 0 0 12px; }
+        .mp-upd b { color: var(--text); }
         .mp-h2 { font-size: 21px; font-weight: 800; line-height: 1.4; margin: 0 0 12px; padding-left: 10px;
-                 border-left: 5px solid #2f5d8a; scroll-margin-top: 12px; }
+                 border-left: 5px solid var(--accent); scroll-margin-top: 12px; }
         .mp-sec { margin: 0 0 26px; }
         .mp-page h3 { font-size: 16px; font-weight: 800; line-height: 1.5; margin: 0 0 6px; }
         /* 印の見本（数・凡例・施設一覧で、地図の印と同じ色・形） */
@@ -136,16 +173,16 @@
         .mk.yen { width: 18px; height: 18px; color: #fff; font: 700 11px/15px sans-serif; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,.35); }
         .mk.grave { border-radius: 4px; }
         /* 掲載している場所の数（小さくまとめる） */
-        .mp-counts { background: #fff; border: 1px solid #dfe3ea; border-top: 4px solid #1e3a5f; border-radius: 12px;
+        .mp-counts { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 12px;
                      padding: 10px 16px 12px; margin: 0 0 10px; }
         .mp-counts .main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; }
         .mp-counts .main .n { font-size: 30px; font-weight: 800; line-height: 1.25; font-variant-numeric: tabular-nums; }
         .mp-counts .main .n small { font-size: 15px; margin-left: 2px; }
-        .mp-counts .main .k { font-size: 17px; font-weight: 800; color: #1e3a5f; }
-        .mp-counts .main .s { font-size: 13px; color: #5b6474; }
+        .mp-counts .main .k { font-size: 17px; font-weight: 800; color: var(--navy); }
+        .mp-counts .main .s { font-size: 13px; color: var(--sub); }
         .mp-cnt { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 8px 0 0; padding: 0; }
-        .mp-cnt li { display: inline-block; font-size: 14px; line-height: 1.5; background: #f6f7f9;
-                     border: 1px solid #dfe3ea; border-radius: 999px; padding: 3px 12px; }
+        .mp-cnt li { display: inline-block; font-size: 14px; line-height: 1.5; background: var(--bg);
+                     border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
         .mp-cnt li .mk, .mp-cnt li .mk-s { margin-right: 5px; }
         .mp-cnt li b { font-size: 16px; font-variant-numeric: tabular-nums; }
         .mp-cnt.m { display: none; margin: 4px 0 8px; }
@@ -153,52 +190,52 @@
         .mp-jump a { display: inline-block; font-size: 15px; font-weight: 800; color: #fff; background: #2f5d8a; text-decoration: none;
                      border-radius: 999px; padding: 8px 18px; }
         details.mp-more { margin-top: 8px; }
-        details.mp-more > summary { cursor: pointer; font-size: 14px; font-weight: 700; color: #2f5d8a; }
+        details.mp-more > summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--accent); }
         details.mp-more ul { margin: 6px 0 0; padding-left: 1.3em; font-size: 14px; line-height: 1.75; }
         details.mp-more li { margin-bottom: 4px; }
-        .mp-warn { font-size: 14px; line-height: 1.7; color: #6b4a12; background: #fdf0d5; border: 1px solid #e0a836;
+        .mp-warn { font-size: 14px; line-height: 1.7; color: var(--warn-ink); background: var(--warn-bg); border: 1px solid var(--warn-line);
                    border-radius: 10px; padding: 8px 14px; margin: 0 0 22px; }
         /* 1. 施設を探す */
-        .mp-find { background: #eef4fb; border: 2px solid #2f5d8a; border-radius: 14px; padding: 14px 16px; }
-        .mp-find label { display: block; font-size: 15px; font-weight: 800; color: #1e3a5f; margin: 0 0 4px; }
+        .mp-find { background: var(--blue-soft); border: 2px solid var(--accent); border-radius: 14px; padding: 14px 16px; }
+        .mp-find label { display: block; font-size: 15px; font-weight: 800; color: var(--navy); margin: 0 0 4px; }
         .mp-find input[type=search], .mp-find select { display: block; width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box;
-                font-size: 16px; font-family: inherit; padding: 9px 12px; border: 2px solid #2f5d8a; border-radius: 10px;
-                background: #fff; color: #1d2330; }
-        .mp-find select:disabled { border-color: #b8c4d3; color: #6b7280; background: #f3f5f8; }
-        .f-help { font-size: 13px; color: #44516a; margin: 4px 0 0; line-height: 1.6; }
+                font-size: 16px; font-family: inherit; padding: 9px 12px; border: 2px solid var(--accent); border-radius: 10px;
+                background: var(--card); color: var(--text); }
+        .mp-find select:disabled { border-color: var(--line); color: var(--sub); background: var(--bg); }
+        .f-help { font-size: 13px; color: var(--sub); margin: 4px 0 0; line-height: 1.6; }
         .f-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; margin-top: 12px; }
         @media (max-width: 760px) { .f-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
                                     .f-row > div:last-child { grid-column: 1 / -1; } }
-        .f-and { font-size: 13px; color: #44516a; margin: 8px 0 0; line-height: 1.6; }
+        .f-and { font-size: 13px; color: var(--sub); margin: 8px 0 0; line-height: 1.6; }
         .mp-find label.f-only { display: flex; align-items: center; gap: 6px; margin: 6px 0 0; font-size: 14px; font-weight: 700;
-                                color: #5b21b6; cursor: pointer; }
-        .mp-find label.f-only.off { color: #8a93a2; cursor: default; }
+                                color: var(--net-ink); cursor: pointer; }
+        .mp-find label.f-only.off { color: var(--sub); cursor: default; }
         .f-only input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: #6d28d9; }
         .f-state { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 12px; padding-top: 10px;
-                   border-top: 1px solid #c9d6e6; }
+                   border-top: 1px solid var(--line); }
         .f-chips { flex: 1 1 300px; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; }
-        .f-chips .lbl { font-weight: 700; color: #1e3a5f; }
+        .f-chips .lbl { font-weight: 700; color: var(--navy); }
         .f-chip { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; font-size: 14px; font-weight: 700;
                   font-family: inherit; color: #fff; background: #2f5d8a; border: 0; border-radius: 999px;
                   padding: 4px 6px 4px 12px; cursor: pointer; text-align: left; overflow-wrap: anywhere; }
         .f-chip .x { flex: none; display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
                      border-radius: 50%; background: rgba(255,255,255,.28); font-size: 14px; }
         .f-chip.net { background: #6d28d9; }
-        .f-clear { font-size: 14px; font-weight: 800; font-family: inherit; color: #b42318; background: #fff;
-                   border: 2px solid #b42318; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
-        .f-clear:disabled { color: #8a93a2; border-color: #c4cbd6; cursor: default; }
+        .f-clear { font-size: 14px; font-weight: 800; font-family: inherit; color: var(--warn); background: var(--card);
+                   border: 2px solid var(--warn); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+        .f-clear:disabled { color: var(--sub); border-color: var(--line); cursor: default; }
         .f-result { margin-top: 10px; font-size: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
         .f-result b.n { font-size: 21px; }
-        .f-result .none { font-weight: 800; color: #b42318; font-size: 16px; }
-        .f-result .sub { flex-basis: 100%; font-size: 13px; color: #44516a; line-height: 1.6; }
-        .f-result .sub.net { color: #5b21b6; font-weight: 700; }
-        .f-result .sub.hid { color: #7c2d12; background: #fff7ed; border: 1px dashed #c2410c; border-radius: 6px; padding: 3px 8px; }
-        .f-result .sub.don { color: #7c4a03; }
-        .f-result .sub.about { color: #44516a; }
+        .f-result .none { font-weight: 800; color: var(--warn); font-size: 16px; }
+        .f-result .sub { flex-basis: 100%; font-size: 13px; color: var(--sub); line-height: 1.6; }
+        .f-result .sub.net { color: var(--net-ink); font-weight: 700; }
+        .f-result .sub.hid { color: var(--ap-ink); background: var(--ap-bg); border: 1px dashed var(--ap-line); border-radius: 6px; padding: 3px 8px; }
+        .f-result .sub.don { color: var(--don-ink); }
+        .f-result .sub.about { color: var(--sub); }
         .fl-list li.off .fl-item { opacity: .78; }
-        .f-go { font-size: 14px; font-weight: 700; font-family: inherit; color: #2f5d8a; background: #fff;
-                border: 1.5px solid #2f5d8a; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
-        .f-go:hover { background: #e3ecf5; }
+        .f-go { font-size: 14px; font-weight: 700; font-family: inherit; color: var(--accent); background: var(--card);
+                border: 1.5px solid var(--accent); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+        .f-go:hover { background: var(--accent-soft); }
         .f-links { margin: 10px 0 0; font-size: 14px; }
         .f-links a { font-weight: 700; }
         /* 2. 地図・3. 見方・4. 一覧（パソコンでは一覧を地図の横に並べる） */
@@ -209,20 +246,20 @@
             .mp-layout.list-closed { grid-template-columns: minmax(0, 1fr) 230px; }  /* たたんでも地図の横にボタンを残す */
         }
         .mp-map-sec, .mp-legend-sec, .mp-list-sec { min-width: 0; margin-bottom: 26px; }
-        .mp-map-sec .folium-map { height: var(--map-h) !important; border: 1px solid #c9d1dc; border-radius: 10px; }
-        .mp-maptip { font-size: 14px; color: #44516a; margin: -4px 0 8px; line-height: 1.7; }
+        .mp-map-sec .folium-map { height: var(--map-h) !important; border: 1px solid var(--line); border-radius: 10px; }
+        .mp-maptip { font-size: 14px; color: var(--sub); margin: -4px 0 8px; line-height: 1.7; }
         .mp-maptip button { margin-left: 4px; }
         /* 3. 地図の色・記号の見方 */
         .lg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
         @media (max-width: 700px) { .lg-grid { grid-template-columns: minmax(0, 1fr); } }
-        .lg-box { background: #fff; border: 1px solid #dfe3ea; border-radius: 12px; padding: 10px 14px; min-width: 0; }
-        .lg-box h3 { font-size: 15px !important; color: #1e3a5f; }
+        .lg-box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; min-width: 0; }
+        .lg-box h3 { font-size: 15px !important; color: var(--navy); }
         .lg-box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px;
                      font-size: 14px; line-height: 1.55; }
         .lg-box li { display: flex; align-items: center; gap: 8px; }
-        .lg-box .s { font-size: 12.5px; color: #5b6474; margin: 6px 0 0; line-height: 1.6; }
-        details.lg-more { margin-top: 10px; background: #fff; border: 1px solid #dfe3ea; border-radius: 12px; }
-        details.lg-more > summary { cursor: pointer; padding: 10px 14px; font-size: 14px; font-weight: 700; color: #2f5d8a; }
+        .lg-box .s { font-size: 12.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.6; }
+        details.lg-more { margin-top: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+        details.lg-more > summary { cursor: pointer; padding: 10px 14px; font-size: 14px; font-weight: 700; color: var(--accent); }
         details.lg-more .in { padding: 0 16px 12px; font-size: 14px; line-height: 1.75; }
         details.lg-more ul { margin: 0; padding-left: 1.3em; }
         details.lg-more li { margin-bottom: 4px; }
@@ -232,50 +269,50 @@
                      border-radius: 12px; padding: 12px 16px; cursor: pointer; text-align: left; }
         .fl-toggle::after { content: "▼"; font-size: 12px; transition: transform .15s; }
         .fl-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
-        .fl-note { font-size: 13px; color: #5b6474; margin: 8px 0 6px; line-height: 1.6; }
-        .fl-hint { font-size: 13px; color: #1e3a5f; background: #eef4fb; border: 1px dashed #2f5d8a; border-radius: 10px;
+        .fl-note { font-size: 13px; color: var(--sub); margin: 8px 0 6px; line-height: 1.6; }
+        .fl-hint { font-size: 13px; color: var(--navy); background: var(--blue-soft); border: 1px dashed var(--accent); border-radius: 10px;
                    padding: 8px 12px; margin: 8px 0 0; line-height: 1.6; }
-        .fl-toggle[aria-expanded="false"] { background: #2f5d8a; box-shadow: 0 0 0 3px #c9daee; }
-        .fl-box { position: relative; border: 1px solid #dfe3ea; border-radius: 12px; background: #fff;
+        .fl-toggle[aria-expanded="false"] { background: #2f5d8a; box-shadow: 0 0 0 3px var(--accent-soft); }
+        .fl-box { position: relative; border: 1px solid var(--line); border-radius: 12px; background: var(--card);
                   max-height: 65vh; overflow-y: auto; overscroll-behavior: contain; }
         @media (min-width: 1000px) { .fl-box { max-height: calc(var(--map-h) - 70px); } }
-        .fl-pref { position: sticky; top: 0; z-index: 1; background: #f1f4f8; font-size: 13px; font-weight: 800;
-                   color: #1e3a5f; padding: 5px 12px; border-bottom: 1px solid #dfe3ea; }
-        .fl-pref span { font-weight: 400; color: #5b6474; margin-left: 4px; }
+        .fl-pref { position: sticky; top: 0; z-index: 1; background: var(--head-bg); font-size: 13px; font-weight: 800;
+                   color: var(--navy); padding: 5px 12px; border-bottom: 1px solid var(--line); }
+        .fl-pref span { font-weight: 400; color: var(--sub); margin-left: 4px; }
         .fl-list { list-style: none; margin: 0; padding: 0; }
-        .fl-list li { display: flex; align-items: stretch; border-bottom: 1px solid #eef0f4; }
-        .fl-list li.on { background: #fff7d6; box-shadow: inset 4px 0 0 #111827; }
+        .fl-list li { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+        .fl-list li.on { background: var(--hit); box-shadow: inset 4px 0 0 var(--text); }
         .fl-item { flex: 1 1 auto; min-width: 0; display: flex; gap: 9px; align-items: flex-start; text-align: left;
-                   background: none; border: 0; padding: 9px 8px 9px 12px; font-family: inherit; color: #1d2330; cursor: pointer; }
-        .fl-item:hover, .fl-item:focus-visible { background: #eef4fb; }
+                   background: none; border: 0; padding: 9px 8px 9px 12px; font-family: inherit; color: var(--text); cursor: pointer; }
+        .fl-item:hover, .fl-item:focus-visible { background: var(--blue-soft); }
         .fl-item .mk { margin-top: 6px; }
         .fl-item .mk-s { margin-top: 5px; }
         .fl-item .tx { min-width: 0; display: flex; flex-direction: column; }
-        .fl-item .nm { font-size: 15px; font-weight: 700; line-height: 1.5; overflow-wrap: anywhere; color: #1e3a5f; }
-        .fl-item .ad { font-size: 12.5px; color: #5b6474; line-height: 1.5; }
+        .fl-item .nm { font-size: 15px; font-weight: 700; line-height: 1.5; overflow-wrap: anywhere; color: var(--navy); }
+        .fl-item .ad { font-size: 12.5px; color: var(--sub); line-height: 1.5; }
         .fl-tags { display: flex; flex-wrap: wrap; gap: 3px 4px; margin-top: 3px; }
         .fl-tag { font-size: 11.5px; font-weight: 700; border-radius: 4px; padding: 0 6px; line-height: 1.7;
-                  background: #eef0f4; color: #374151; }
+                  background: var(--tag-bg); color: var(--tag-ink); }
         .fl-tag.don { background: #d97706; color: #fff; }
         .fl-tag.net { color: #fff; }
-        .fl-tag.ap { background: #fff7ed; color: #7c2d12; border: 1px dashed #c2410c; }
-        .fl-tag.off { background: #fff; color: #6b7280; border: 1px solid #c4cbd6; }
+        .fl-tag.ap { background: var(--ap-bg); color: var(--ap-ink); border: 1px dashed var(--ap-line); }
+        .fl-tag.off { background: var(--card); color: var(--sub); border: 1px solid var(--line); }
         .fl-detail { flex: none; align-self: center; font-size: 13px; font-weight: 700; padding: 8px 12px 8px 4px;
                      text-decoration: none; white-space: nowrap; }
-        .fl-empty { margin: 0; padding: 16px; font-size: 15px; font-weight: 700; color: #b42318; }
+        .fl-empty { margin: 0; padding: 16px; font-size: 15px; font-weight: 700; color: var(--warn); }
         /* 5. この地図について */
         .mp-about { margin: 6px 0 40px; }
-        .ab-important { background: #fdf0d5; border: 2px solid #e0a836; color: #6b4a12; border-radius: 12px;
+        .ab-important { background: var(--warn-bg); border: 2px solid var(--warn-line); color: var(--warn-ink); border-radius: 12px;
                         padding: 12px 18px; margin: 0 0 12px; font-size: 15px; line-height: 1.75; }
-        .ab-important h3 { color: #6b4a12; }
+        .ab-important h3 { color: var(--warn-ink); }
         .ab-important .key { font-weight: 800; font-size: 16px; margin: 0 0 6px; }
         .ab-important ul { margin: 0; padding-left: 1.3em; }
-        details.ab { background: #fff; border: 1px solid #dfe3ea; border-radius: 12px; margin: 0 0 8px; }
+        details.ab { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 0 0 8px; }
         details.ab > summary { cursor: pointer; list-style: none; padding: 11px 40px 11px 14px; position: relative; }
         details.ab > summary::-webkit-details-marker { display: none; }
-        details.ab > summary h3 { display: inline; font-size: 15.5px; margin: 0; color: #1e3a5f; }
+        details.ab > summary h3 { display: inline; font-size: 15.5px; margin: 0; color: var(--navy); }
         details.ab > summary::after { content: "▼"; position: absolute; right: 14px; top: 14px; font-size: 11px;
-                                      color: #5b6474; transition: transform .15s; }
+                                      color: var(--sub); transition: transform .15s; }
         details.ab[open] > summary::after { transform: rotate(180deg); }
         details.ab .in { padding: 0 16px 12px; font-size: 14.5px; line-height: 1.8; }
         details.ab .in p { margin: 0 0 8px; }
@@ -325,7 +362,7 @@
       
       <h1>全国モスク・礼拝所マップ</h1>
       <p class="mp-lead">全国のモスク・礼拝所の所在地と、都市計画の区域区分を地図で確認できます。施設名・地域・運営団体などで検索でき、寄付情報や関連施設も表示しています。</p>
-      <p class="mp-upd">最終更新 <b>2026年10月14日 10:43</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年10月14日 11:35</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">264<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>
@@ -10629,7 +10666,7 @@ Tobishima mosque（市街化調整区域）
 
         
             
-                var html_0000000000000000000000000000039a = $(`<div id="html_0000000000000000000000000000039a" style="width: 100.0%; height: 100.0%;"><b>¥ 寄付情報あり</b><br>横浜アッソリヒーンマスジド<ul class='don-list'><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-5d2f7726' target='_blank' rel='noopener'>横浜アッソリヒーンモスク</a>（2027-12-31まで）<br>約6,620万円 ／ 目標 約7,500万円<span style='font-size:14px;color:#555;'>（2ページの合計・概算）</span><br>寄付ページ: <a href='https://www.launchgood.com/v4/campaign/assholihin_mosque_yokohama_japan' target='_blank' rel='noopener'>建設費・第3弾</a> ／ <a href='https://www.launchgood.com/v4/campaign/help_build_assholihin_mosque_yokohama_japan' target='_blank' rel='noopener'>別ページ</a></li><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-34f82a15' target='_blank' rel='noopener'>横浜アッソリヒーンマスジド（運営費・設備の寄付）</a>（締切の表示なし）<br>5,607万ルピア ／ 目標 — <a href='https://www.amalsholeh.com/dukungoperasional-fasilitas-masjid-as-sholihin-yokohama' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2026年完了</span><a href='donation.html#d-9c0368e1' target='_blank' rel='noopener'>横浜アッソリヒーンマスジド（開堂時の総額発表）</a><br>約5.3億円 ／ 目標 — <a href='https://www.cicc-japan.com/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/2026%E5%B9%B44%E6%9C%884%E6%97%A5%E3%80%81%E6%A8%AA%E6%B5%9C%E3%82%A2%E3%83%83%E3%82%BD%E3%83%AA%E3%83%92%E3%83%BC%E3%83%B3%E3%83%9E%E3%82%B9%E3%82%B8%E3%83%89%E3%81%8C%E3%81%A4%E3%81%84%E3%81%AB/' target='_blank' rel='noopener'>出典（団体の発表）</a></li><li><span class='don-badge' style='background:#6b7280;'>2025年終了</span><a href='donation.html#d-6ade01ad' target='_blank' rel='noopener'>横浜アッソリヒーンモスク（インドネシアの寄付サイト）</a><br>34.6億ルピア ／ 目標 40.0億ルピア <a href='https://sharinghappiness.org/wakafmasjidyokohama' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2024年終了</span><a href='donation.html#d-7acfe483' target='_blank' rel='noopener'>横浜アッソリヒーンモスク（第2弾・建設費）</a><br>$87 ／ 目標 $300,000 <a href='https://www.launchgood.com/v4/campaign/build_our_community_donate_to_the_assholihin_yokohama_mosque_construction' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2024年終了</span><a href='donation.html#d-1368a0e7' target='_blank' rel='noopener'>横浜アッソリヒーンモスク（第1弾）</a><br>$11,965 ／ 目標 $600,000 <a href='https://www.launchgood.com/v4/campaign/embrace_the_rise_of_yokohama_muslim_community_assholihin_mosque_yokohama_japan_1' target='_blank' rel='noopener'>寄付ページ</a></li></ul><a href='donation.html#d-5d2f7726' target='_blank' rel='noopener'>寄付のページで詳しく見る</a></div>`)[0];
+                var html_0000000000000000000000000000039a = $(`<div id="html_0000000000000000000000000000039a" style="width: 100.0%; height: 100.0%;"><b>¥ 寄付情報あり</b><br>横浜アッソリヒーンマスジド<ul class='don-list'><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-5d2f7726' target='_blank' rel='noopener'>横浜アッソリヒーンモスク</a>（2027-12-31まで）<br>約6,620万円 ／ 目標 約7,500万円<span style='font-size:14px;opacity:.75;'>（2ページの合計・概算）</span><br>寄付ページ: <a href='https://www.launchgood.com/v4/campaign/assholihin_mosque_yokohama_japan' target='_blank' rel='noopener'>建設費・第3弾</a> ／ <a href='https://www.launchgood.com/v4/campaign/help_build_assholihin_mosque_yokohama_japan' target='_blank' rel='noopener'>別ページ</a></li><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-34f82a15' target='_blank' rel='noopener'>横浜アッソリヒーンマスジド（運営費・設備の寄付）</a>（締切の表示なし）<br>5,607万ルピア ／ 目標 — <a href='https://www.amalsholeh.com/dukungoperasional-fasilitas-masjid-as-sholihin-yokohama' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2026年完了</span><a href='donation.html#d-9c0368e1' target='_blank' rel='noopener'>横浜アッソリヒーンマスジド（開堂時の総額発表）</a><br>約5.3億円 ／ 目標 — <a href='https://www.cicc-japan.com/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/2026%E5%B9%B44%E6%9C%884%E6%97%A5%E3%80%81%E6%A8%AA%E6%B5%9C%E3%82%A2%E3%83%83%E3%82%BD%E3%83%AA%E3%83%92%E3%83%BC%E3%83%B3%E3%83%9E%E3%82%B9%E3%82%B8%E3%83%89%E3%81%8C%E3%81%A4%E3%81%84%E3%81%AB/' target='_blank' rel='noopener'>出典（団体の発表）</a></li><li><span class='don-badge' style='background:#6b7280;'>2025年終了</span><a href='donation.html#d-6ade01ad' target='_blank' rel='noopener'>横浜アッソリヒーンモスク（インドネシアの寄付サイト）</a><br>34.6億ルピア ／ 目標 40.0億ルピア <a href='https://sharinghappiness.org/wakafmasjidyokohama' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2024年終了</span><a href='donation.html#d-7acfe483' target='_blank' rel='noopener'>横浜アッソリヒーンモスク（第2弾・建設費）</a><br>$87 ／ 目標 $300,000 <a href='https://www.launchgood.com/v4/campaign/build_our_community_donate_to_the_assholihin_yokohama_mosque_construction' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2024年終了</span><a href='donation.html#d-1368a0e7' target='_blank' rel='noopener'>横浜アッソリヒーンモスク（第1弾）</a><br>$11,965 ／ 目標 $600,000 <a href='https://www.launchgood.com/v4/campaign/embrace_the_rise_of_yokohama_muslim_community_assholihin_mosque_yokohama_japan_1' target='_blank' rel='noopener'>寄付ページ</a></li></ul><a href='donation.html#d-5d2f7726' target='_blank' rel='noopener'>寄付のページで詳しく見る</a></div>`)[0];
                 popup_00000000000000000000000000000399.setContent(html_0000000000000000000000000000039a);
             
         
@@ -10678,7 +10715,7 @@ Tobishima mosque（市街化調整区域）
 
         
             
-                var html_0000000000000000000000000000039e = $(`<div id="html_0000000000000000000000000000039e" style="width: 100.0%; height: 100.0%;"><b>¥ 寄付情報あり</b><br>静岡マスジド<ul class='don-list'><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-f7cac274' target='_blank' rel='noopener'>静岡イスラミックセンター</a>（締切の表示なし）<br>約308万円 ／ 目標 約2,250万円<span style='font-size:14px;color:#555;'>（2ページの合計・概算）</span><br>寄付ページ: <a href='https://www.launchgood.com/v4/campaign/shizuoka_masjid' target='_blank' rel='noopener'>LaunchGood</a> ／ <a href='https://muslimseasia.com/program/MasjidJepang' target='_blank' rel='noopener'>インドネシアの寄付サイト・MuslimSEAsia</a></li><li><span class='don-badge' style='background:#6b7280;'>2026年終了</span><a href='donation.html#d-d2677269' target='_blank' rel='noopener'>静岡モスク（インドネシアの寄付サイト・第2弾）</a><br>3.3億ルピア ／ 目標 3.7億ルピア <a href='https://adaorangbaik.com/campaign/wakaf-pembangunan-masjid-shizuoka-di-jepang-bersama-japan-dahwa-foundation-2' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2024年終了</span><a href='donation.html#d-35770380' target='_blank' rel='noopener'>静岡モスク（インドネシアの寄付サイト・第1弾）</a><br>9,914万ルピア ／ 目標 1.2億ルピア <a href='https://adaorangbaik.com/campaign/wakaf-pembangunan-masjid-shizuoka-di-jepang-9qf' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2019年終了</span><a href='donation.html#d-611a1a4f' target='_blank' rel='noopener'>静岡モスク（第1弾）</a><br>$26,652 ／ 目標 $25,000 <a href='https://www.launchgood.com/v4/campaign/bring_islam_to_japan' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>終了</span><a href='donation.html#d-a67e3474' target='_blank' rel='noopener'>静岡モスク（第1弾・別ページ）</a><br>$2,238 ／ 目標 $25,000 <a href='https://www.launchgood.com/v4/campaign/help_spread_islam_in_japan' target='_blank' rel='noopener'>寄付ページ</a></li></ul><a href='donation.html#d-f7cac274' target='_blank' rel='noopener'>寄付のページで詳しく見る</a></div>`)[0];
+                var html_0000000000000000000000000000039e = $(`<div id="html_0000000000000000000000000000039e" style="width: 100.0%; height: 100.0%;"><b>¥ 寄付情報あり</b><br>静岡マスジド<ul class='don-list'><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-f7cac274' target='_blank' rel='noopener'>静岡イスラミックセンター</a>（締切の表示なし）<br>約308万円 ／ 目標 約2,250万円<span style='font-size:14px;opacity:.75;'>（2ページの合計・概算）</span><br>寄付ページ: <a href='https://www.launchgood.com/v4/campaign/shizuoka_masjid' target='_blank' rel='noopener'>LaunchGood</a> ／ <a href='https://muslimseasia.com/program/MasjidJepang' target='_blank' rel='noopener'>インドネシアの寄付サイト・MuslimSEAsia</a></li><li><span class='don-badge' style='background:#6b7280;'>2026年終了</span><a href='donation.html#d-d2677269' target='_blank' rel='noopener'>静岡モスク（インドネシアの寄付サイト・第2弾）</a><br>3.3億ルピア ／ 目標 3.7億ルピア <a href='https://adaorangbaik.com/campaign/wakaf-pembangunan-masjid-shizuoka-di-jepang-bersama-japan-dahwa-foundation-2' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2024年終了</span><a href='donation.html#d-35770380' target='_blank' rel='noopener'>静岡モスク（インドネシアの寄付サイト・第1弾）</a><br>9,914万ルピア ／ 目標 1.2億ルピア <a href='https://adaorangbaik.com/campaign/wakaf-pembangunan-masjid-shizuoka-di-jepang-9qf' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>2019年終了</span><a href='donation.html#d-611a1a4f' target='_blank' rel='noopener'>静岡モスク（第1弾）</a><br>$26,652 ／ 目標 $25,000 <a href='https://www.launchgood.com/v4/campaign/bring_islam_to_japan' target='_blank' rel='noopener'>寄付ページ</a></li><li><span class='don-badge' style='background:#6b7280;'>終了</span><a href='donation.html#d-a67e3474' target='_blank' rel='noopener'>静岡モスク（第1弾・別ページ）</a><br>$2,238 ／ 目標 $25,000 <a href='https://www.launchgood.com/v4/campaign/help_spread_islam_in_japan' target='_blank' rel='noopener'>寄付ページ</a></li></ul><a href='donation.html#d-f7cac274' target='_blank' rel='noopener'>寄付のページで詳しく見る</a></div>`)[0];
                 popup_0000000000000000000000000000039d.setContent(html_0000000000000000000000000000039e);
             
         
@@ -10874,7 +10911,7 @@ Tobishima mosque（市街化調整区域）
 
         
             
-                var html_000000000000000000000000000003ae = $(`<div id="html_000000000000000000000000000003ae" style="width: 100.0%; height: 100.0%;"><b>¥ 寄付情報あり</b><br>松戸市五香2-1-1 RMビル（アル・ムッタキーン・マスジド千葉）<br><span style='color:#b35900;font-size:14px;'>※ピンの位置は番地までの住所から</span><ul class='don-list'><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-5512fa6b' target='_blank' rel='noopener'>アル・ムッタキーン・マスジド千葉</a>（2026-10-25まで）<br>約3,246万円 ／ 目標 約9,200万円<span style='font-size:14px;color:#555;'>（4ページの合計・概算）</span><br>寄付ページ: <a href='https://donation.ddjepang.org/campaign/wakaf-almuttaqin/' target='_blank' rel='noopener'>団体サイト</a> ／ <a href='https://www.launchgood.com/v4/campaign/help_build_a_mosque_for_15000_muslims_in_chiba_japan' target='_blank' rel='noopener'>LaunchGood</a> ／ <a href='https://www.launchgood.com/v4/campaign/a_home_for_new_muslims_in_japan' target='_blank' rel='noopener'>新ムスリム（改宗者）向けイスラームセンター千葉</a> ／ <a href='https://www.launchgood.com/v4/campaign/build_a_masjid_build_a_future_for_muslims_in_japan' target='_blank' rel='noopener'>千葉のマスジド（Rumah Zakat）</a></li><li><span class='don-badge' style='background:#6b7280;'>2026年終了</span><a href='donation.html#d-e9fded87' target='_blank' rel='noopener'>アル・ムッタキーン・マスジド千葉（団体サイト・旧ページ）</a><br>約500万円 ／ 目標 約9,200万円 <a href='https://donation.ddjepang.org/campaign/chiba/' target='_blank' rel='noopener'>寄付ページ</a></li></ul><a href='donation.html#d-5512fa6b' target='_blank' rel='noopener'>寄付のページで詳しく見る</a></div>`)[0];
+                var html_000000000000000000000000000003ae = $(`<div id="html_000000000000000000000000000003ae" style="width: 100.0%; height: 100.0%;"><b>¥ 寄付情報あり</b><br>松戸市五香2-1-1 RMビル（アル・ムッタキーン・マスジド千葉）<br><span style='color:#b35900;font-size:14px;'>※ピンの位置は番地までの住所から</span><ul class='don-list'><li><span class='don-badge' style='background:#d97706;'>募集中</span><a href='donation.html#d-5512fa6b' target='_blank' rel='noopener'>アル・ムッタキーン・マスジド千葉</a>（2026-10-25まで）<br>約3,246万円 ／ 目標 約9,200万円<span style='font-size:14px;opacity:.75;'>（4ページの合計・概算）</span><br>寄付ページ: <a href='https://donation.ddjepang.org/campaign/wakaf-almuttaqin/' target='_blank' rel='noopener'>団体サイト</a> ／ <a href='https://www.launchgood.com/v4/campaign/help_build_a_mosque_for_15000_muslims_in_chiba_japan' target='_blank' rel='noopener'>LaunchGood</a> ／ <a href='https://www.launchgood.com/v4/campaign/a_home_for_new_muslims_in_japan' target='_blank' rel='noopener'>新ムスリム（改宗者）向けイスラームセンター千葉</a> ／ <a href='https://www.launchgood.com/v4/campaign/build_a_masjid_build_a_future_for_muslims_in_japan' target='_blank' rel='noopener'>千葉のマスジド（Rumah Zakat）</a></li><li><span class='don-badge' style='background:#6b7280;'>2026年終了</span><a href='donation.html#d-e9fded87' target='_blank' rel='noopener'>アル・ムッタキーン・マスジド千葉（団体サイト・旧ページ）</a><br>約500万円 ／ 目標 約9,200万円 <a href='https://donation.ddjepang.org/campaign/chiba/' target='_blank' rel='noopener'>寄付ページ</a></li></ul><a href='donation.html#d-5512fa6b' target='_blank' rel='noopener'>寄付のページで詳しく見る</a></div>`)[0];
                 popup_000000000000000000000000000003ad.setContent(html_000000000000000000000000000003ae);
             
         
