@@ -75,7 +75,7 @@ details.year[open] > summary::before{transform:rotate(90deg)}
 details.year > summary .ys{font-size:.85rem;font-weight:400;color:var(--sub)}
 details.year > .list{padding:0 12px 12px}
 .year-tools{display:flex;gap:8px;margin:0 0 10px}
-.year-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.year-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
 .endyear{display:inline-block;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:6px;background:var(--text);color:var(--card)}
 .deadline{display:inline-block;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
 .org a{color:var(--accent);font-size:.8rem;margin-left:6px}
@@ -111,8 +111,8 @@ details.year > .list{padding:0 12px 12px}
 .pages .pg{border-top:1px dashed var(--line);padding-top:6px;font-size:.84rem}
 .pages .pg:first-of-type{border-top:0;padding-top:0}
 .pages .pg b{font-size:.9rem}
-.card a.map-link{display:inline-block;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
-.card a.src-btn{display:inline-block;font-weight:700;background:var(--accent-soft);padding:2px 10px;border-radius:999px;text-decoration:none}
+.card a.map-link{display:inline-block;font-weight:700;padding:2px 10px;border-radius:8px;border:1px solid var(--accent);text-decoration:none}
+.card a.src-btn{display:inline-block;font-weight:700;background:var(--accent-soft);padding:2px 10px;border-radius:8px;text-decoration:none}
 .card a{color:var(--accent);font-size:.85rem}
 /* 目次（3つの区分へ飛ぶ） */
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
@@ -124,7 +124,7 @@ details.year > .list{padding:0 12px 12px}
 .toc a.pend,details.sec.pend{background:var(--pend-bg);border-left-color:var(--pend-line)}
 .toc a.extra,details.sec.extra{background:var(--extra-bg);border-left-color:var(--extra-line)}
 .sec-tools{display:flex;gap:8px;margin:0 0 12px}
-.sec-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.sec-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
 /* 区分の箱（見出しを押すと開閉） */
 details.sec{border:1px solid var(--line);border-left:6px solid;border-radius:14px;padding:0 14px;margin-bottom:18px}
 details.sec > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:14px 2px}
@@ -162,7 +162,7 @@ details.pref > .list{padding:0 12px 12px}
 details.sec.open details.pref{border-left:5px solid var(--open-line)}
 details.sec.pend details.pref{border-left:5px solid var(--pend-line)}
 .pref-tools{display:flex;gap:8px;margin:0 0 10px}
-.pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
 /* カードの表に出すチラシ */
 .flyers{display:flex;gap:6px;flex-wrap:wrap}
 .flyers button{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;width:92px;position:relative}
@@ -215,6 +215,16 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-go.stat span{color:var(--sub)}
 .rg-go:hover{filter:brightness(1.08)}
 #list{scroll-margin-top:8px}
+/* 地域別のページの注意書き（A. 掲載対象・数え方／B. 情報の見方）。はじめは閉じる */
+.rg-guides{display:grid;gap:8px;margin:4px 0 6px}
+details.rg-guide{background:var(--bg);border:1px solid var(--line);border-radius:12px;scroll-margin-top:8px}
+details.rg-guide > summary{cursor:pointer;list-style:none;font-weight:800;color:var(--accent);padding:12px 14px;min-height:46px}
+details.rg-guide > summary::-webkit-details-marker{display:none}
+details.rg-guide > summary::before{content:"▶ ";font-size:.8em}
+details.rg-guide[open] > summary::before{content:"▼ "}
+details.rg-guide ul{margin:0;padding:0 16px 12px 2.2em;font-size:.88rem;line-height:1.7}
+details.rg-guide li{margin-bottom:6px}
+details.rg-guide li.rank-note:has(> span:empty){display:none}
 .rg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
 .rg-tile{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--done-line);border-radius:10px;padding:8px 12px}
 .rg-tile .k{font-size:.82rem;font-weight:700;color:var(--sub)}
@@ -261,7 +271,7 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 #rg-map .leaflet-control-layers-toggle{width:auto;height:36px;padding:0 10px 0 36px;background-position:6px 50%;text-decoration:none;color:#1e3a5f;font:700 13px/36px sans-serif}
 #rg-map .leaflet-control-layers-toggle::after{content:"地図に表示する情報"}
 #rg-map .layer-title{font-size:13px;font-weight:700;color:#1e3a5f;margin:0 0 4px;padding-bottom:4px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:8px}
-#rg-map .layer-title button{flex:none;white-space:nowrap;margin-left:auto;font-size:13px;font-weight:700;color:#fff;background:#2f5d8a;border:0;border-radius:999px;padding:3px 10px;cursor:pointer}
+#rg-map .layer-title button{flex:none;white-space:nowrap;margin-left:auto;font-size:13px;font-weight:700;color:#fff;background:#2f5d8a;border:0;border-radius:10px;padding:3px 10px;cursor:pointer}
 #rg-map .leaflet-control-layers-overlays label{margin:2px 0;font-size:12.5px}
 .rg-btns{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .rg-btns:empty{display:none}
@@ -287,7 +297,7 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rg-ev .x{font-size:.88rem}
 .rg-ev .m{font-size:.75rem;color:var(--sub)}
 .rg-ev a,.rg-places a{color:var(--accent)}
-.rg-more{margin-top:8px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 16px;font-size:.85rem;cursor:pointer}
+.rg-more{margin-top:8px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:6px 16px;font-size:.85rem;cursor:pointer}
 .rg-places .btns{display:flex;flex-wrap:wrap;gap:6px}
 .rg-places button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 12px;font-size:.9rem;cursor:pointer}
 .rg-places button span{font-weight:800;margin-left:4px;color:var(--accent)}
@@ -336,7 +346,7 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rc-items > .h + .ri{border-top:0;padding-top:0}
 .ri-past > summary{cursor:pointer;font-size:.82rem;font-weight:700;color:var(--accent)}
 .rc-links{display:flex;flex-wrap:wrap;gap:6px}
-.rc-links a{display:inline-block;padding:3px 12px;border-radius:999px;border:1px solid var(--accent);text-decoration:none;font-weight:700}
+.rc-links a{display:inline-block;padding:3px 12px;border-radius:8px;border:1px solid var(--accent);text-decoration:none;font-weight:700}
 .rc-old{color:var(--pend-line);font-weight:700}
 /* 一覧のアウトライン（都道府県 → 市区町村 → 1か所1行） */
 .ol-pref > h4{display:flex;align-items:baseline;gap:8px;font-size:1.1rem;margin:16px 0 4px;padding:6px 12px;border-radius:8px;background:var(--text);color:var(--card)}
@@ -425,7 +435,7 @@ details.fp-top[open] > summary{margin-bottom:10px}
 details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px solid var(--line)}
 .fp-foldbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 0;font-size:.82rem;color:var(--sub)}
 .fp-foldbar span{margin-right:4px}
-.fp-foldbar button{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);border-radius:999px;padding:3px 12px;cursor:pointer}
+.fp-foldbar button{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);border-radius:10px;padding:3px 12px;cursor:pointer}
 .fp-foldbar button:hover{background:var(--accent);color:var(--card)}
 .fp-h .n{font-size:.85rem;font-weight:400;color:var(--sub);margin-left:8px;white-space:nowrap}
 .fp-hsub{font-size:.82rem;color:var(--sub);margin:0 0 8px;line-height:1.7}
@@ -438,7 +448,7 @@ details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px sol
 .fe-rows li::marker{color:var(--accent)}
 .fe-when{color:var(--accent)}
 .fe-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.fe-links a{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);padding:3px 10px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
+.fe-links a{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);padding:3px 10px;border-radius:8px;border:1px solid var(--accent);text-decoration:none}
 .fp-none{font-size:.88rem;color:var(--sub);background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:8px 0 0}
 details.fp-more{margin-top:8px}
 details.fp-more > summary{cursor:pointer;font-weight:700;color:var(--accent)}
@@ -546,10 +556,10 @@ details.fe-more > .fe-rows{margin-top:6px}
 .news .date{font-size:.85rem;color:var(--sub)}
 .news .ttl{display:block;font-size:1.12rem;font-weight:800;margin-top:2px}
 .news .sub{display:block;font-size:.93rem}
-.go{display:inline-block;margin-top:8px;background:var(--accent);color:var(--card);font-weight:700;font-size:.92rem;padding:6px 18px;border-radius:999px;text-decoration:none}
+.go{display:inline-block;margin-top:8px;background:var(--accent);color:var(--card);font-weight:700;font-size:.92rem;padding:6px 18px;border-radius:12px;text-decoration:none}
 .go:hover{filter:brightness(1.1)}
 .news-past{border-top:1px dashed var(--line);padding:10px 0 6px}
-.news-past > summary{display:inline-block;list-style:none;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:4px 16px}
+.news-past > summary{display:inline-block;list-style:none;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:12px;padding:4px 16px}
 .news-past > summary::-webkit-details-marker{display:none}
 .news-past > summary::before{content:"▶ ";font-size:.75rem}
 .news-past[open] > summary::before{content:"▼ "}
@@ -578,7 +588,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 .pref-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:0 0 28px}
 .pref-box p{margin:0 0 10px;font-size:.93rem}
 .pref-btns{display:flex;flex-wrap:wrap;gap:8px}
-.pref-btns a{background:var(--accent);color:var(--card);font-weight:700;font-size:.95rem;text-decoration:none;padding:6px 16px;border-radius:999px}
+.pref-btns a{background:var(--accent);color:var(--card);font-weight:700;font-size:.95rem;text-decoration:none;padding:6px 16px;border-radius:12px}
 .pref-btns a:hover{filter:brightness(1.1)}
 </style>
 </head>
@@ -607,7 +617,7 @@ details.fe-more > .fe-rows{margin-top:6px}
   <p class="lead">インターネット上で公開されている寄付募集・団体発表・報道の数字を、出典付きで一覧にしています。
   地域ごとのまとめ（今あるモスク・建設計画・寄付）は<a href="area.html">地域別のページ</a>、葬儀・墓地の調べた結果は<a href="funeral.html">葬儀・墓地のページ</a>にあります。</p>
 
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 11:35</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている寄付の募集</div><div class="v">121<small>件</small></div><div class=s>いま募集中 41件・終了したもの 80件。このほか、未確定情報 23件・そのほかの寄付・情報 5件（どちらも合計の額には含めていません）</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:04</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている寄付の募集</div><div class="v">121<small>件</small></div><div class=s>いま募集中 41件・終了したもの 80件。このほか、未確定情報 23件・そのほかの寄付・情報 5件（どちらも合計の額には含めていません）</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;

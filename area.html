@@ -69,7 +69,7 @@ details.year[open] > summary::before{transform:rotate(90deg)}
 details.year > summary .ys{font-size:.85rem;font-weight:400;color:var(--sub)}
 details.year > .list{padding:0 12px 12px}
 .year-tools{display:flex;gap:8px;margin:0 0 10px}
-.year-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.year-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
 .endyear{display:inline-block;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:6px;background:var(--text);color:var(--card)}
 .deadline{display:inline-block;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
 .org a{color:var(--accent);font-size:.8rem;margin-left:6px}
@@ -105,8 +105,8 @@ details.year > .list{padding:0 12px 12px}
 .pages .pg{border-top:1px dashed var(--line);padding-top:6px;font-size:.84rem}
 .pages .pg:first-of-type{border-top:0;padding-top:0}
 .pages .pg b{font-size:.9rem}
-.card a.map-link{display:inline-block;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
-.card a.src-btn{display:inline-block;font-weight:700;background:var(--accent-soft);padding:2px 10px;border-radius:999px;text-decoration:none}
+.card a.map-link{display:inline-block;font-weight:700;padding:2px 10px;border-radius:8px;border:1px solid var(--accent);text-decoration:none}
+.card a.src-btn{display:inline-block;font-weight:700;background:var(--accent-soft);padding:2px 10px;border-radius:8px;text-decoration:none}
 .card a{color:var(--accent);font-size:.85rem}
 /* 目次（3つの区分へ飛ぶ） */
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
@@ -118,7 +118,7 @@ details.year > .list{padding:0 12px 12px}
 .toc a.pend,details.sec.pend{background:var(--pend-bg);border-left-color:var(--pend-line)}
 .toc a.extra,details.sec.extra{background:var(--extra-bg);border-left-color:var(--extra-line)}
 .sec-tools{display:flex;gap:8px;margin:0 0 12px}
-.sec-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.sec-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
 /* 区分の箱（見出しを押すと開閉） */
 details.sec{border:1px solid var(--line);border-left:6px solid;border-radius:14px;padding:0 14px;margin-bottom:18px}
 details.sec > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:14px 2px}
@@ -156,7 +156,7 @@ details.pref > .list{padding:0 12px 12px}
 details.sec.open details.pref{border-left:5px solid var(--open-line)}
 details.sec.pend details.pref{border-left:5px solid var(--pend-line)}
 .pref-tools{display:flex;gap:8px;margin:0 0 10px}
-.pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 14px;font-size:.85rem;cursor:pointer}
+.pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
 /* カードの表に出すチラシ */
 .flyers{display:flex;gap:6px;flex-wrap:wrap}
 .flyers button{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;width:92px;position:relative}
@@ -209,6 +209,16 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .rg-go.stat span{color:var(--sub)}
 .rg-go:hover{filter:brightness(1.08)}
 #list{scroll-margin-top:8px}
+/* 地域別のページの注意書き（A. 掲載対象・数え方／B. 情報の見方）。はじめは閉じる */
+.rg-guides{display:grid;gap:8px;margin:4px 0 6px}
+details.rg-guide{background:var(--bg);border:1px solid var(--line);border-radius:12px;scroll-margin-top:8px}
+details.rg-guide > summary{cursor:pointer;list-style:none;font-weight:800;color:var(--accent);padding:12px 14px;min-height:46px}
+details.rg-guide > summary::-webkit-details-marker{display:none}
+details.rg-guide > summary::before{content:"▶ ";font-size:.8em}
+details.rg-guide[open] > summary::before{content:"▼ "}
+details.rg-guide ul{margin:0;padding:0 16px 12px 2.2em;font-size:.88rem;line-height:1.7}
+details.rg-guide li{margin-bottom:6px}
+details.rg-guide li.rank-note:has(> span:empty){display:none}
 .rg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
 .rg-tile{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--done-line);border-radius:10px;padding:8px 12px}
 .rg-tile .k{font-size:.82rem;font-weight:700;color:var(--sub)}
@@ -255,7 +265,7 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 #rg-map .leaflet-control-layers-toggle{width:auto;height:36px;padding:0 10px 0 36px;background-position:6px 50%;text-decoration:none;color:#1e3a5f;font:700 13px/36px sans-serif}
 #rg-map .leaflet-control-layers-toggle::after{content:"地図に表示する情報"}
 #rg-map .layer-title{font-size:13px;font-weight:700;color:#1e3a5f;margin:0 0 4px;padding-bottom:4px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:8px}
-#rg-map .layer-title button{flex:none;white-space:nowrap;margin-left:auto;font-size:13px;font-weight:700;color:#fff;background:#2f5d8a;border:0;border-radius:999px;padding:3px 10px;cursor:pointer}
+#rg-map .layer-title button{flex:none;white-space:nowrap;margin-left:auto;font-size:13px;font-weight:700;color:#fff;background:#2f5d8a;border:0;border-radius:10px;padding:3px 10px;cursor:pointer}
 #rg-map .leaflet-control-layers-overlays label{margin:2px 0;font-size:12.5px}
 .rg-btns{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .rg-btns:empty{display:none}
@@ -281,7 +291,7 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rg-ev .x{font-size:.88rem}
 .rg-ev .m{font-size:.75rem;color:var(--sub)}
 .rg-ev a,.rg-places a{color:var(--accent)}
-.rg-more{margin-top:8px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 16px;font-size:.85rem;cursor:pointer}
+.rg-more{margin-top:8px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:6px 16px;font-size:.85rem;cursor:pointer}
 .rg-places .btns{display:flex;flex-wrap:wrap;gap:6px}
 .rg-places button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 12px;font-size:.9rem;cursor:pointer}
 .rg-places button span{font-weight:800;margin-left:4px;color:var(--accent)}
@@ -330,7 +340,7 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rc-items > .h + .ri{border-top:0;padding-top:0}
 .ri-past > summary{cursor:pointer;font-size:.82rem;font-weight:700;color:var(--accent)}
 .rc-links{display:flex;flex-wrap:wrap;gap:6px}
-.rc-links a{display:inline-block;padding:3px 12px;border-radius:999px;border:1px solid var(--accent);text-decoration:none;font-weight:700}
+.rc-links a{display:inline-block;padding:3px 12px;border-radius:8px;border:1px solid var(--accent);text-decoration:none;font-weight:700}
 .rc-old{color:var(--pend-line);font-weight:700}
 /* 一覧のアウトライン（都道府県 → 市区町村 → 1か所1行） */
 .ol-pref > h4{display:flex;align-items:baseline;gap:8px;font-size:1.1rem;margin:16px 0 4px;padding:6px 12px;border-radius:8px;background:var(--text);color:var(--card)}
@@ -419,7 +429,7 @@ details.fp-top[open] > summary{margin-bottom:10px}
 details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px solid var(--line)}
 .fp-foldbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 0;font-size:.82rem;color:var(--sub)}
 .fp-foldbar span{margin-right:4px}
-.fp-foldbar button{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);border-radius:999px;padding:3px 12px;cursor:pointer}
+.fp-foldbar button{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);border-radius:10px;padding:3px 12px;cursor:pointer}
 .fp-foldbar button:hover{background:var(--accent);color:var(--card)}
 .fp-h .n{font-size:.85rem;font-weight:400;color:var(--sub);margin-left:8px;white-space:nowrap}
 .fp-hsub{font-size:.82rem;color:var(--sub);margin:0 0 8px;line-height:1.7}
@@ -432,7 +442,7 @@ details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px sol
 .fe-rows li::marker{color:var(--accent)}
 .fe-when{color:var(--accent)}
 .fe-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.fe-links a{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);padding:3px 10px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
+.fe-links a{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);padding:3px 10px;border-radius:8px;border:1px solid var(--accent);text-decoration:none}
 .fp-none{font-size:.88rem;color:var(--sub);background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:8px 0 0}
 details.fp-more{margin-top:8px}
 details.fp-more > summary{cursor:pointer;font-weight:700;color:var(--accent)}
@@ -540,10 +550,10 @@ details.fe-more > .fe-rows{margin-top:6px}
 .news .date{font-size:.85rem;color:var(--sub)}
 .news .ttl{display:block;font-size:1.12rem;font-weight:800;margin-top:2px}
 .news .sub{display:block;font-size:.93rem}
-.go{display:inline-block;margin-top:8px;background:var(--accent);color:var(--card);font-weight:700;font-size:.92rem;padding:6px 18px;border-radius:999px;text-decoration:none}
+.go{display:inline-block;margin-top:8px;background:var(--accent);color:var(--card);font-weight:700;font-size:.92rem;padding:6px 18px;border-radius:12px;text-decoration:none}
 .go:hover{filter:brightness(1.1)}
 .news-past{border-top:1px dashed var(--line);padding:10px 0 6px}
-.news-past > summary{display:inline-block;list-style:none;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:4px 16px}
+.news-past > summary{display:inline-block;list-style:none;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:12px;padding:4px 16px}
 .news-past > summary::-webkit-details-marker{display:none}
 .news-past > summary::before{content:"▶ ";font-size:.75rem}
 .news-past[open] > summary::before{content:"▼ "}
@@ -572,7 +582,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 .pref-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:0 0 28px}
 .pref-box p{margin:0 0 10px;font-size:.93rem}
 .pref-btns{display:flex;flex-wrap:wrap;gap:8px}
-.pref-btns a{background:var(--accent);color:var(--card);font-weight:700;font-size:.95rem;text-decoration:none;padding:6px 16px;border-radius:999px}
+.pref-btns a{background:var(--accent);color:var(--card);font-weight:700;font-size:.95rem;text-decoration:none;padding:6px 16px;border-radius:12px}
 .pref-btns a:hover{filter:brightness(1.1)}
 </style>
 </head>
@@ -598,8 +608,8 @@ details.fe-more > .fe-rows{margin-top:6px}
 @media print { .site-nav { display: none; } }
 </style>
   <h1>地域別に見る</h1>
-  <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、団体の公式サイト・寄付ページ・行政資料・報道などの公開情報を、出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 11:35</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:04</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -628,7 +638,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     <nav class="rg-entry" id="rg-entry" aria-label="この地域の施設一覧と統計"></nav>
     <div class="rg-tiles" id="rg-tiles"></div>
     <p class="rg-break" id="rg-break"></p>
-    <p class="rg-small">※<span id="rg-note-ex"></span>1か所を2つ以上の項目に数えることがあるため、足しても全部の場所の数にはなりません（例：今あるモスクに建て替えの計画があれば、「モスク・礼拝所」と「建設・改修などの計画」の両方に数えます）。「建設・改修などの計画」には土地・建物の取得や改修の途中のものも、「土葬墓地関連」には墓地のほか墓地の計画や区画の寄付の場所も、「寄付募集中」には修理費や家賃などの募集（寄付のページでは「そのほかの寄付・情報」）をしている場所も含みます。<span id="rg-note-rank"></span></p>
+    <p class="rg-small">※ 1か所を2つ以上の札に数えることがあるため、札の数を足しても場所の数にはなりません。<a href="#guide-a" data-guide="guide-a">掲載対象・数え方を見る</a></p>
     <div class="rg-facts" id="rg-facts"></div>
     <p class="rg-rank" id="rg-rank"></p>
     <div class="rg-mapbox" id="rg-mapbox">
@@ -640,6 +650,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     <div class="rg-sec rg-places" id="rg-places"></div>
     <div class="rg-sec" id="list">
       <div class="h">場所の一覧</div>
+      <p class="sub">数え方や「寄付募集なし」「未確認情報あり」などの意味は、一覧の下の <a href="#guide-a" data-guide="guide-a">掲載対象・数え方</a>・<a href="#guide-b" data-guide="guide-b">情報の見方</a> にあります（押すと開きます）。</p>
       <div class="rg-find"><input id="rg-q" type="search" autocomplete="off" placeholder="施設名・団体名・市区町村などで探す" aria-label="施設名・団体名・市区町村などで探す"></div>
       <div class="rg-chips" id="rg-chips"></div>
       <details class="rg-moref" id="rg-moref"><summary id="rg-moref-s">運営する団体の形・系統・区域でも絞り込む</summary><div class="rg-fx" id="rg-fx"></div></details>
@@ -647,21 +658,39 @@ details.fe-more > .fe-rows{margin-top:6px}
       <div class="rg-count" id="rg-count"></div>
       <div id="rg-list"></div>
     </div>
-    <p class="rg-small">「寄付募集なし」は、このサイトで調べた公開情報の中に、今の寄付の募集が見つからなかったという意味です。
-      情報の確かさは「確認済み」（出典で確認できたもの）・「複数情報あり」・「未確認情報あり」（一部に確かめられていない情報を含むもの）の3つで、未確認は誤りという意味ではありません。
-      状況（計画中・土地取得など）は、寄付の募集や団体の発表の題名・説明からこのサイトで分類したもので、最新の状況と異なることがあります。</p>
+    <div class="rg-guides">
+      <details class="rg-guide" id="guide-a"><summary>A. 掲載対象・数え方</summary>
+        <ul>
+          <li><b>載せている場所</b>：いま使われているモスク・礼拝所のほか、建設・改修などの計画地、寄付の募集が出ている場所、土葬墓地、学校、状況確認中の場所、閉鎖・移転した場所です。
+            このサイトで集めたモスクの一覧（2026年6月23日時点）に、その後に調べて分かった場所を足しています。</li>
+          <li><b>「モスク・礼拝所」の数</b>：<span id="rg-note-ex"></span></li>
+          <li><b>1か所を2つ以上の札に数えることがあります</b>：たとえば今あるモスクに建て替えの計画があれば、「モスク・礼拝所」と「建設・改修などの計画」の両方に数えます。
+            そのため、札の数を足しても、載っている場所の数にはなりません（載っている場所の数は、札の下の内わけを見てください）。</li>
+          <li><b>札に入るもの</b>：「建設・改修などの計画」には土地・建物の取得や改修の途中のものも、「土葬墓地関連」には墓地の計画や区画の寄付の場所も、
+            「寄付募集中」には修理費や家賃などの募集（寄付のページでは「そのほかの寄付・情報」）をしている場所も入ります。</li>
+          <li class="rank-note"><b>順位</b>：<span id="rg-note-rank"></span></li>
+        </ul>
+      </details>
+      <details class="rg-guide" id="guide-b"><summary>B. 情報の見方</summary>
+        <ul>
+          <li><b>情報の確かさ</b>：「確認済み」は出典で確かめられたもの、「複数情報あり」は複数の情報があるもの、「未確認情報あり」は一部に確かめられていない情報を含むものです。未確認は、誤りという意味ではありません。</li>
+          <li><b>寄付</b>：「寄付募集中」は、寄付ページなどで募集中と確かめられたものです（「〇〇時点」は、その日に確かめたという意味）。
+            「寄付募集なし」は、このサイトで調べた公開情報の中に、今の募集が見つからなかったという意味です。金額・締切は寄付のページと同じデータで、出典を「確認日」に見たときの表示です。</li>
+          <li><b>計画・施設の状況</b>：計画中・土地取得などの状況は、寄付の募集や団体の発表の題名・説明から、このサイトで分けたものです。最新の状況と違うことがあるので、各カードの出典で確かめてください。</li>
+          <li><b>日付</b>：各カードの「最終確認」はその場所を確かめた日、「最近の動き」の日付は出典で確かめられた出来事の日です（まだ確かでない情報は入れていません）。
+            ページの上の「最終更新」は、このページの中身を変えた日時で、すべての場所を確かめ直した日ではありません。</li>
+          <li><b>位置と住所</b>：一覧の場所は市区町村までの表示です。正確な位置は、ページの中の地図か「地図を見る」で確かめてください。地図の位置はGoogleマップの登録などによるもので、正確さは保証できません。</li>
+          <li><b>葬儀・墓地</b>：「葬儀・墓地について」には、公式サイト・寄付ページ・報道などに書かれていたことだけを載せています。全国のまとめは<a href="funeral.html">葬儀・墓地のページ</a>にあります。</li>
+        </ul>
+      </details>
+    </div>
   </section>
 
   <div class="notice">
-    <b>このページについて</b>
+    <b>情報提供・訂正依頼</b>
     <ul>
-      <li>モスク・礼拝所は、このサイトで集めたモスクの一覧（2026年6月23日時点のものに、その後に調べて分かった場所を足したもの）をもとにしています。一覧の場所は市区町村までの表示で、正確な位置はページの中の地図か「地図を見る」から確認できます。</li>
-      <li>寄付の募集の金額・締切などは、寄付のページと同じデータです（各出典を「確認日」に見た時点の表示）。くわしくは各カードの「寄付の詳しい情報」から寄付のページへ移れます。</li>
-      <li>「寄付募集なし」は、このサイトで調べた公開情報の中に、今の寄付の募集が見つからなかったという意味です。</li>
-      <li>「最近の動き」には、出典で確認できた出来事だけを載せています（未確定情報は含めていません）。「〇〇時点」は、その日に寄付ページなどで募集中であることを確認したという意味です。</li>
-      <li>「葬儀・墓地について」は、公式サイト・寄付ページ・報道などに書かれていたことだけを載せています。全国のまとめは<a href="funeral.html">葬儀・墓地のページ</a>にあります。</li>
-      <li>このページは、特定の人や団体への抗議・迷惑行為のために作ったものではありません。</li>
       <li>誤りのご指摘・削除のご希望・情報提供は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ4DvW3eASTXY2OnMTZaSNuvdp4npMC5MoNbLxKNSCL1-jQ/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお寄せください。</li>
+      <li>このページは、特定の人や団体への抗議・迷惑行為のために作ったものではありません。</li>
     </ul>
   </div>
 </div>
@@ -783,7 +812,7 @@ const CATEGORY_JA = {"mosque": "モスク", "prayer_space": "礼拝所", "islami
 const VERIF_JA = {"confirmed": "確認済み", "probable": "複数情報あり", "unconfirmed": "未確認情報あり"};
 const PUBLIC_URL = "https://yumaki5555.github.io/mosque-map/area.html";
 const PREF_PAGES = {"栃木県": "pref-tochigi.html", "北海道": "pref-hokkaido.html", "青森県": "pref-aomori.html", "岩手県": "pref-iwate.html", "宮城県": "pref-miyagi.html", "秋田県": "pref-akita.html", "山形県": "pref-yamagata.html", "福島県": "pref-fukushima.html", "茨城県": "pref-ibaraki.html", "千葉県": "pref-chiba.html", "群馬県": "pref-gunma.html", "埼玉県": "pref-saitama.html", "東京都": "pref-tokyo.html", "神奈川県": "pref-kanagawa.html", "富山県": "pref-toyama.html", "新潟県": "pref-niigata.html", "石川県": "pref-ishikawa.html", "福井県": "pref-fukui.html", "山梨県": "pref-yamanashi.html", "岐阜県": "pref-gifu.html", "長野県": "pref-nagano.html", "静岡県": "pref-shizuoka.html"};  // {都道府県: 県のくわしいページ}
-const PREF_NOTES = {"北海道": ["インドネシアの人が道内の各地に", "ムスリムの数のわりにモスクが少ない", "旭川に2か所、札幌・小樽にも", "半分の3か所は2024年から"], "千葉県": ["アフガニスタンの人は全国最多", "四街道にアフガニスタンの人のモスク", "1990年代のモスクも", "半分以上は2021年から"], "埼玉県": ["モスクの掲載数は全国1位", "パキスタンの人の数は全国1位", "11か所が市街化調整区域", "2022年から9か所が新しく"], "宮城県": ["ムスリムの数のわりにモスクが多い", "仙台のモスクは1985年から", "5か所は2019年から", "気仙沼に実習生のための礼拝所"], "富山県": ["パキスタンの人の割合が全国3位", "射水市にパキスタン系の大モスク", "留学生のモスクが富山と高岡に", "ムスリム推計は全国25位"], "山形県": ["モスクは河北町と庄内町", "どちらも2024〜25年から", "ムスリムの数のわりにはモスクがある", "山形市には見つかっていない"], "山梨県": ["富士河口湖と甲府に1か所ずつ", "甲州市にムスリムの霊園", "インドネシアの人が9年で5.8倍", "ムスリム推計は全国39位"], "岐阜県": ["岐阜市など5市に6か所", "インドネシア・トルコ系など", "インドネシア人が9年で9倍", "ムスリム推計は全国15位"], "岩手県": ["モスクは盛岡市と北上市の2か所", "同じつながりのモスク", "盛岡は留学生中心の多国籍", "ムスリムの数のわりにはモスクがある"], "新潟県": ["パキスタン人の割合が全国5位", "パキスタン系・多国籍が2か所ずつ", "3か所は2024年から", "人数のわりにモスクが多い"], "東京都": ["ムスリムの推計は全国1位", "モスクは26か所で全国2位", "多国籍とバングラデシュ系が中心", "2022年から8か所が新しく"], "栃木県": ["パキスタン系が10か所中6か所", "小山・佐野など県南に6か所", "半分の5か所は2023年ごろから", "ムスリムの数のわりにモスクが多い"], "石川県": ["モスクは金沢市だけ", "10か国の人の84%がインドネシア", "インドネシアの人は9年で4.9倍", "ムスリム推計は全国31位"], "神奈川県": ["モスクは13か所で全国6位", "ムスリムの推計は全国5位", "スリランカ系のモスクが3か所", "2022年から6か所が新しく"], "福井県": ["福井大学近くの多国籍モスク", "富山モスクの福井支部が運営", "インドネシアの人が9年で8倍に", "ムスリム推計は全国38位"], "福島県": ["郡山・いわき・白河に1か所ずつ", "最古はいわき（2005年）", "2か所はICOJ系", "ムスリムの数のわりにモスクが多い"], "秋田県": ["モスクはまだ見つかっていない", "インドネシアの人は秋田市・大館市に", "秋田市から盛岡のモスクまで約90km", "ムスリム推計は全国46位"], "群馬県": ["伊勢崎・館林など東部に集まる", "パキスタン系が5か所でいちばん多い", "ミャンマー系・インド系も", "シーア派の集会所もある"], "茨城県": ["パキスタンの人の数は全国2位", "モスクもパキスタン系が最多", "坂東・古河など県西部に集まる", "半分近くが2020年から"], "長野県": ["上田・坂城・東御など6か所", "4か所は2025年から確認", "インドネシアの人が9年で5.4倍", "ムスリム推計は全国19位"], "青森県": ["モスクは六戸町だけ", "インドネシアの人は各地に", "六戸町にアフガニスタンの人も", "八戸市などには見つからない"], "静岡県": ["浜松に2、富士と静岡に1", "インドネシアの人が9年で3.8倍", "ムスリム推計は全国12位", "1か所あたりの人数は全国の2倍"]};  // {都道府県: [Xの共有の文に入れる特徴]}（県のまとめ/〇〇県.txt の「ひとこと:」の行）
+const PREF_NOTES = {"北海道": ["インドネシアの人が道内の各地に", "ムスリム推計のわりにモスクが少ない", "旭川に2か所、札幌・小樽にも", "2024年以降の開設は2か所"], "千葉県": ["アフガニスタンの人は全国最多", "四街道にアフガニスタンの人のモスク", "1990年代のモスクも", "2021年以降の開設は6か所"], "埼玉県": ["モスクの掲載数は全国1位", "パキスタンの人の数は全国1位", "11か所が市街化調整区域", "2022年以降の開設は4か所"], "宮城県": ["ムスリム推計のわりにモスクが多い", "仙台のモスクは1985年から", "2019年以降の開設は3か所", "気仙沼に実習生のための礼拝所"], "富山県": ["パキスタンの人の割合が全国3位", "射水市にパキスタン系の大モスク", "留学生のモスクが富山と高岡に", "ムスリム推計は全国25位"], "山形県": ["モスクは河北町と庄内町", "どちらも2024〜25年から", "ムスリム推計のわりにはモスクがある", "山形市には見つかっていない"], "山梨県": ["富士河口湖と甲府に1か所ずつ", "甲州市にムスリムの霊園", "インドネシアの人が9年で5.8倍", "ムスリム推計は全国39位"], "岐阜県": ["岐阜市など5市に6か所", "インドネシア・トルコ系など", "インドネシア人が9年で9倍", "ムスリム推計は全国15位"], "岩手県": ["モスクは盛岡市と北上市の2か所", "同じつながりのモスク", "盛岡は留学生中心の多国籍", "ムスリム推計のわりにはモスクがある"], "新潟県": ["パキスタン人の割合が全国5位", "パキスタン系・多国籍が2か所ずつ", "2024年以降の開設は2か所", "人数のわりにモスクが多い"], "東京都": ["ムスリム推計は全国1位", "モスクは26か所で全国2位", "多国籍とバングラデシュ系が中心", "2022年以降の開設は5か所"], "栃木県": ["パキスタン系が10か所中6か所", "小山・佐野など県南に6か所", "半分の5か所は2023年ごろから", "ムスリム推計のわりにモスクが多い"], "石川県": ["モスクは金沢市だけ", "10か国の人の84%がインドネシア", "インドネシアの人は9年で4.9倍", "ムスリム推計は全国31位"], "神奈川県": ["モスクは13か所で全国6位", "ムスリム推計は全国5位", "スリランカ系のモスクが3か所", "2022年以降の開設は3か所"], "福井県": ["福井大学近くの多国籍モスク", "富山モスクの福井支部が運営", "インドネシアの人が9年で8倍に", "ムスリム推計は全国38位"], "福島県": ["郡山・いわき・白河に1か所ずつ", "最古はいわき（2005年）", "2か所はICOJ系", "ムスリム推計のわりにモスクが多い"], "秋田県": ["モスクはまだ見つかっていない", "インドネシアの人は秋田市・大館市に", "秋田市から盛岡のモスクまで約90km", "ムスリム推計は全国46位"], "群馬県": ["伊勢崎・館林など東部に集まる", "パキスタン系が5か所でいちばん多い", "ミャンマー系・インド系も", "シーア派の集会所もある"], "茨城県": ["パキスタンの人の数は全国2位", "モスクもパキスタン系が最多", "坂東・古河など県西部に集まる", "2020年以降の開設は5か所"], "長野県": ["上田・坂城・東御など6か所", "4か所は2025年から確認", "インドネシアの人が9年で5.4倍", "ムスリム推計は全国19位"], "青森県": ["モスクは六戸町だけ", "インドネシアの人は各地に", "六戸町にアフガニスタンの人も", "八戸市などには見つからない"], "静岡県": ["浜松に2、富士と静岡に1", "インドネシアの人が9年で3.8倍", "ムスリム推計は全国12位", "1か所あたりの人数は全国の2倍"]};  // {都道府県: [Xの共有の文に入れる特徴]}（県のまとめ/〇〇県.txt の「ひとこと:」の行）
 const DON_TEXT = {open: "寄付募集中", past: "寄付募集なし（過去に募集あり）", unconfirmed: "寄付の未確定情報あり", none: "寄付募集なし"};
 const PURPOSE_JA = {land_acquisition: "土地取得", building_acquisition: "建物取得", renovation: "改修", under_construction: "建設", planned: "建設・拡張など"};
 const ST_ICON = {existing: "🕌", fundraising: "💰", planned: "🏗️", under_construction: "🏗️"};
@@ -1311,7 +1340,13 @@ $("rg-q").addEventListener("input", e => { R.q = e.target.value; writeParams(); 
 $("region").addEventListener("click", e => {
   const t = e.target.closest("button, a");
   if (!t) return;
-  if (t.dataset.go === "list") {  // 「〇〇の施設一覧を見る」→ このページの下の一覧へ
+  if (t.dataset.guide) {  // 「掲載対象・数え方を見る」など → 一覧の下の説明を開いて移る
+    e.preventDefault();
+    const g = $(t.dataset.guide);
+    g.open = true;
+    history.replaceState(null, "", location.pathname + location.search + "#" + t.dataset.guide);
+    g.scrollIntoView({behavior: "smooth", block: "start"});
+  } else if (t.dataset.go === "list") {  // 「〇〇の施設一覧を見る」→ このページの下の一覧へ
     e.preventDefault();
     history.replaceState(null, "", location.pathname + location.search + "#list");
     $("list").scrollIntoView({behavior: "smooth", block: "start"});
@@ -1343,6 +1378,7 @@ function goHash(id) {
 function jumpToHash() {
   const id = decodeURIComponent(location.hash.slice(1));
   if (id === "list") { $("list").scrollIntoView({block: "start"}); return; }  // 県のくわしいページの「〇〇県の施設一覧」から来たとき（area.html?pref=〇〇県#list）
+  if (id === "guide-a" || id === "guide-b") { $(id).open = true; $(id).scrollIntoView({block: "start"}); return; }  // 注意書きへ直接来たとき
   if (!id.startsWith("r-")) return;
   let el = document.getElementById(id);
   if (!el) {  // 今の表示に出ていなければ、その場所の都道府県を選び直して出す（都道府県が分からなければ名前で探す）
