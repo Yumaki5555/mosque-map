@@ -193,9 +193,16 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 .region{background:var(--card);border:2px solid var(--accent);border-radius:16px;padding:16px;margin:0 0 24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .rg-h{font-size:1.45rem;margin:0 0 4px}
 .rg-lead{font-size:.88rem;color:var(--sub);margin:0 0 12px}
-.rg-pick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 14px}
-.rg-pick label{font-weight:800}
-.rg-pick select{flex:1 1 220px;max-width:100%;font-size:1.15rem;font-weight:700;padding:10px 12px;border:2px solid var(--accent);border-radius:10px}
+/* 見出し「1. 地域を選ぶ」〜「5. 最近の動き」（地図のページの見出しと同じ形） */
+.rg-h2{font-size:1.3rem;font-weight:800;line-height:1.4;margin:26px 0 10px;padding-left:10px;border-left:5px solid var(--accent);scroll-margin-top:8px}
+.region > .rg-h2:first-child{margin-top:0}
+.rg-sub{font-size:.8rem;color:var(--sub);margin:-4px 0 10px}
+.rg-sub a{color:var(--accent)}
+.rg-pick{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:flex-end;margin:0 0 10px}
+.rg-sel{flex:1 1 220px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.rg-sel label{font-weight:800}
+.rg-sel select{width:100%;font-size:1.1rem;font-weight:700;padding:10px 12px;border:2px solid var(--accent);border-radius:10px;background:var(--card);color:var(--text)}
+.rg-sel select:disabled{border-color:var(--line);color:var(--sub);font-weight:400;font-size:.95rem}
 .rg-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 8px}
 .rg-area{font-size:1.55rem;font-weight:800;margin:0;line-height:1.3}
 /* 県を選んだときの2つの入口（この地域の施設一覧／県の人口・国籍・モスク統計）。県のくわしいページがない県は1つだけ */
@@ -299,6 +306,8 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rg-places button.on span{color:var(--card)}
 .rg-places button.zero{opacity:.55}
 .rg-places details > summary{cursor:pointer;font-weight:700;color:var(--accent);margin-bottom:8px}
+.rg-places{margin:0 0 14px}
+.rg-places details > summary{font-size:.9rem}
 .rg-find input{width:100%;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);margin:0 0 8px}
 .rg-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
 .rg-chips button.chip{padding:6px 12px}
@@ -317,6 +326,7 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rg-moref > summary{cursor:pointer;font-weight:700;color:var(--accent);padding:8px 12px;font-size:.92rem}
 .rg-fx{padding:0 12px 4px}
 .rg-fl{font-size:.88rem;font-weight:800;margin:4px 0 6px}
+label.rg-fl{display:block}
 .rg-fn{font-size:.75rem;color:var(--sub);margin:-4px 0 10px}
 .rcard .zd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
 .rg-count{font-size:.85rem;color:var(--sub);margin:0 0 8px}
@@ -609,7 +619,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:04</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月14日 12:26</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">載っている場所</div><div class="v">305<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 8か所、状況確認中 12か所、閉鎖・移転 5か所、学校 6か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -628,12 +638,18 @@ details.fe-more > .fe-rows{margin-top:6px}
 }
 </style>
 
-  <section class="region solo" id="region" aria-label="地域を選ぶ">
+  <section class="region solo" id="region" aria-label="地域を選んで施設を探す">
+    <!-- ページの並び：1. 地域を選ぶ（都道府県・市区町村と、その地域の数）→ 2. 施設を探す（言葉・絞り込み）→ 3. 施設一覧
+         → 4. 地図 → 5. 最近の動き → 注意書き（2026-10-14 ユーザー「選択→検索→一覧の順に」） -->
+    <h2 class="rg-h2" id="pick">1. 地域を選ぶ</h2>
     <div class="rg-pick">
-      <label for="rg-pref">都道府県を選ぶ</label>
-      <select id="rg-pref"><option value="">全国</option></select>
+      <div class="rg-sel"><label for="rg-pref">都道府県</label>
+        <select id="rg-pref"><option value="">全国</option></select></div>
+      <div class="rg-sel"><label for="rg-city">市区町村</label>
+        <select id="rg-city"></select></div>
       <a class="rg-btn share" id="rg-share" href="#" target="_blank" rel="noopener noreferrer">このページを共有（X）</a>
     </div>
+    <div class="rg-places" id="rg-places"></div>
     <div class="rg-head"><div class="rg-area" id="rg-area"></div></div>
     <nav class="rg-entry" id="rg-entry" aria-label="この地域の施設一覧と統計"></nav>
     <div class="rg-tiles" id="rg-tiles"></div>
@@ -641,23 +657,31 @@ details.fe-more > .fe-rows{margin-top:6px}
     <p class="rg-small">※ 1か所を2つ以上の札に数えることがあるため、札の数を足しても場所の数にはなりません。<a href="#guide-a" data-guide="guide-a">掲載対象・数え方を見る</a></p>
     <div class="rg-facts" id="rg-facts"></div>
     <p class="rg-rank" id="rg-rank"></p>
+
+    <h2 class="rg-h2" id="find">2. 施設を探す</h2>
+    <div class="rg-find"><label class="rg-fl" for="rg-q">名前・キーワード</label>
+      <input id="rg-q" type="search" autocomplete="off" enterkeyhint="search" placeholder="施設名・団体名・市区町村などで探す"></div>
+    <div class="rg-fl">施設の種類・状況などで絞り込む</div>
+    <div class="rg-chips" id="rg-chips"></div>
+    <details class="rg-moref" id="rg-moref"><summary id="rg-moref-s">運営する団体の形・系統・区域でも絞り込む</summary><div class="rg-fx" id="rg-fx"></div></details>
+    <div class="rg-wash" id="rg-wash"></div>
+
+    <h2 class="rg-h2" id="list">3. 施設一覧</h2>
+    <p class="rg-sub">1. で選んだ地域のうち、2. の言葉・絞り込みに当てはまる場所です。数え方や「寄付募集なし」「未確認情報あり」などの意味は、ページの下の <a href="#guide-a" data-guide="guide-a">掲載対象・数え方</a>・<a href="#guide-b" data-guide="guide-b">情報の見方</a> にあります（押すと開きます）。</p>
+    <div class="rg-count" id="rg-count"></div>
+    <div id="rg-list"></div>
+
+    <h2 class="rg-h2" id="map-h">4. 地図で見る</h2>
+    <p class="rg-sub">1. で選んだ地域の場所を、すべて地図に出しています（2. の言葉・絞り込みでは変わりません）。</p>
     <div class="rg-mapbox" id="rg-mapbox">
       <div id="rg-map" role="region" aria-label="選んだ地域の地図"></div>
       <div class="rg-legend" id="rg-legend"></div>
     </div>
     <div class="rg-btns" id="rg-btns"></div>
-    <div class="rg-sec rg-ev" id="rg-events"></div>
-    <div class="rg-sec rg-places" id="rg-places"></div>
-    <div class="rg-sec" id="list">
-      <div class="h">場所の一覧</div>
-      <p class="sub">数え方や「寄付募集なし」「未確認情報あり」などの意味は、一覧の下の <a href="#guide-a" data-guide="guide-a">掲載対象・数え方</a>・<a href="#guide-b" data-guide="guide-b">情報の見方</a> にあります（押すと開きます）。</p>
-      <div class="rg-find"><input id="rg-q" type="search" autocomplete="off" placeholder="施設名・団体名・市区町村などで探す" aria-label="施設名・団体名・市区町村などで探す"></div>
-      <div class="rg-chips" id="rg-chips"></div>
-      <details class="rg-moref" id="rg-moref"><summary id="rg-moref-s">運営する団体の形・系統・区域でも絞り込む</summary><div class="rg-fx" id="rg-fx"></div></details>
-      <div class="rg-wash" id="rg-wash"></div>
-      <div class="rg-count" id="rg-count"></div>
-      <div id="rg-list"></div>
-    </div>
+
+    <h2 class="rg-h2" id="ev-h">5. <span id="rg-ev-t">最近の動き</span></h2>
+    <div class="rg-ev" id="rg-events"></div>
+
     <div class="rg-guides">
       <details class="rg-guide" id="guide-a"><summary>A. 掲載対象・数え方</summary>
         <ul>
@@ -1048,6 +1072,11 @@ function prefRank(pf, test) {
   const byPref = PREF_ORDER.map(x => countOf(PREF_ROWS[x] || [], test));
   return {rk: 1 + byPref.filter(m => m > n).length, tie: byPref.filter(m => m === n).length > 1};
 }
+// 選ぶ欄の数（地図のページと同じ書き方。モスク・礼拝所がなければ「ほかの施設」、それもなければ寄付・計画の情報だけ）
+const optCount = ps => {
+  const m = countOf(ps, isMosque), o = countOf(ps, p => !isMosque(p) && p.cls !== "other");
+  return m ? `（モスク${m}）` : o ? `（ほかの施設${o}）` : ps.length ? "（寄付・計画の情報のみ）" : "（掲載なし）";
+};
 const rankText = r => r ? (r.tie ? "同率" : "") + r.rk + "位" : "";
 
 // 最近の動き1件（1行に場所・名前。押すと中身と出典が開く）
@@ -1202,7 +1231,15 @@ if (window.ResizeObserver) new ResizeObserver(() => { if (MAP && MAP_FIT) fitMap
 function renderRegion() {
   const rows = PLACES.filter(inArea);
   const all = PLACES;
+  // 1. 地域を選ぶ：市区町村の選ぶ欄は、選んだ都道府県の市区町村（数の書き方は地図のページと同じ「川口市（モスク5）」。多い順）
   $("rg-pref").value = R.pref;
+  const cs = R.pref ? Object.entries((PREF_ROWS[R.pref] || []).reduce((o, p) => ((o[cityOf(p)] = o[cityOf(p)] || []).push(p), o), {}))
+    .sort((a, b) => countOf(b[1], isMosque) - countOf(a[1], isMosque) || b[1].length - a[1].length || (a[0] === NO_CITY) - (b[0] === NO_CITY) || a[0].localeCompare(b[0], "ja")) : [];
+  $("rg-city").innerHTML = R.pref ? `<option value="">すべての市区町村${optCount(PREF_ROWS[R.pref] || [])}</option>` +
+      cs.map(([c, ps]) => `<option value="${esc(c)}">${esc(c)}${optCount(ps)}</option>`).join("")
+    : '<option value="">都道府県を選ぶと選べます</option>';
+  $("rg-city").disabled = !R.pref;
+  $("rg-city").value = R.city;
   $("rg-area").textContent = "📍 " + areaName();
   // 札の下に全国の数と、選んだ都道府県が47都道府県の中で多い順に何位か（市区町村まで選んでいるときは順位は出さない）
   $("rg-tiles").innerHTML = COUNTERS.map(x => {
@@ -1261,24 +1298,25 @@ function renderRegion() {
     const g = days[days.length - 1];
     if (g && g.date === e.date) g.es.push(e); else days.push({date: e.date, es: [e]});
   });
-  $("rg-events").innerHTML = `<div class="h">${R.pref ? esc(areaName()) + "の最近の動き" : "最近の動き（全国）"}</div>
-    <p class="sub">出典で確認できた出来事だけを、新しい日付の順に並べています（未確定の情報は含めていません）。名前を押すと中身が開きます。</p>
+  $("rg-ev-t").textContent = R.pref ? areaName() + "の最近の動き" : "最近の動き（全国）";
+  $("rg-events").innerHTML = `<p class="rg-sub">出典で確認できた出来事だけを、新しい日付の順に並べています（未確定の情報は含めていません）。名前を押すと中身が開きます。</p>
     ${ev.length ? days.map(g => `<div class="ev-day"><h5>${jpDate(g.date)}</h5>${g.es.map(evItem).join("")}</div>`).join("") +
       (ev.length > 5 ? `<button type="button" class="rg-more" id="rg-ev-more">${R.evAll ? "5件だけ表示する" : `すべて見る（${ev.length}件）`}</button>` : "")
       : '<p class="empty">この地域で、日付が確認できた出来事はまだありません。</p>'}`;
 
-  // 県を選んでいれば市区町村ごと、全国なら都道府県ごとの件数
+  // 県を選んでいれば市区町村ごと、全国なら都道府県ごとの件数（「1. 地域を選ぶ」の選ぶ欄の下。押すと開く。開いたままなら開いたまま）
+  const wasOpen = !!document.querySelector("#rg-places details[open]");
   if (R.pref) {
     const cities = {};
     all.filter(p => p.prefecture === R.pref).forEach(p => { cities[cityOf(p)] = (cities[cityOf(p)] || 0) + 1; });
     const list = Object.entries(cities).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ja"));
     const total = list.reduce((a, x) => a + x[1], 0);
-    $("rg-places").innerHTML = `<div class="h">市区町村ごとの場所の数</div><p class="sub">押すと、その市区町村だけを表示します。</p>
+    $("rg-places").innerHTML = `<details${wasOpen ? " open" : ""}><summary>市区町村ごとの場所の数を見る（押すとその市区町村を表示）</summary>
       <div class="btns"><button type="button" data-city="" class="${R.city ? "" : "on"}">すべて<span>${total}</span></button>${list.map(([c, n]) =>
-        `<button type="button" data-city="${esc(c)}" class="${R.city === c ? "on" : ""}">${esc(c)}<span>${n}</span></button>`).join("")}</div>`;
+        `<button type="button" data-city="${esc(c)}" class="${R.city === c ? "on" : ""}">${esc(c)}<span>${n}</span></button>`).join("")}</div></details>`;
   } else {
     const n = pf => all.filter(p => p.prefecture === pf).length;
-    $("rg-places").innerHTML = `<details><summary>都道府県ごとの場所の数を見る（押すとその都道府県を表示）</summary>
+    $("rg-places").innerHTML = `<details${wasOpen ? " open" : ""}><summary>都道府県ごとの場所の数を見る（押すとその都道府県を表示）</summary>
       <div class="btns">${PREF_ORDER.map(pf => `<button type="button" data-pref="${pf}" class="${n(pf) ? "" : "zero"}">${pf}<span>${n(pf)}</span></button>`).join("")}</div></details>`;
   }
 
@@ -1334,13 +1372,15 @@ function setPref(pf) {
   writeParams();
   renderRegion();
 }
-PREF_ORDER.forEach(p => $("rg-pref").add(new Option(p, p)));
+$("rg-pref").options[0].text = "全国" + optCount(PLACES);
+PREF_ORDER.forEach(p => $("rg-pref").add(new Option(p + optCount(PREF_ROWS[p] || []), p)));
 $("rg-pref").onchange = e => setPref(e.target.value);
+$("rg-city").onchange = e => { R.city = e.target.value; writeParams(); renderRegion(); };
 $("rg-q").addEventListener("input", e => { R.q = e.target.value; writeParams(); renderRegion(); });
 $("region").addEventListener("click", e => {
   const t = e.target.closest("button, a");
   if (!t) return;
-  if (t.dataset.guide) {  // 「掲載対象・数え方を見る」など → 一覧の下の説明を開いて移る
+  if (t.dataset.guide) {  // 「掲載対象・数え方を見る」など → ページの下の説明を開いて移る
     e.preventDefault();
     const g = $(t.dataset.guide);
     g.open = true;
