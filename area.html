@@ -208,6 +208,22 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 /* 見出し「1. 地域を選ぶ」〜「5. 最近の動き」（地図のページの見出しと同じ形） */
 .rg-h2{font-size:1.3rem;font-weight:800;line-height:1.4;margin:26px 0 10px;padding-left:10px;border-left:5px solid var(--accent);scroll-margin-top:8px}
 .region > .rg-h2:first-child{margin-top:0}
+/* 2. 〜 5. の章：はじめは閉じる。見出しの行のどこを押しても開閉（県のページの章と同じ ▶／▼。2026-10-15 ユーザー） */
+details.rg-chap{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-radius:12px;scroll-margin-top:8px}
+.rg-rank + details.rg-chap{margin-top:22px}
+details.rg-chap > summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1.3em 1fr;gap:2px 6px;align-items:baseline;padding:12px 14px;min-height:52px;border-radius:12px}
+details.rg-chap > summary::-webkit-details-marker{display:none}
+details.rg-chap > summary::before{content:"▶";color:var(--accent);font-size:.9rem;grid-row:1 / span 2}
+details.rg-chap[open] > summary::before{content:"▼"}
+details.rg-chap > summary:hover{background:var(--accent-soft)}
+details.rg-chap[open] > summary{border-bottom:1px solid var(--line);border-radius:12px 12px 0 0}
+details.rg-chap > summary .rg-h2{margin:0;padding:0;border:0}
+.rg-chap-d{grid-column:2;font-size:.85rem;color:var(--sub);line-height:1.5}
+.rg-chap-d:empty{display:none}
+.rg-chap-in{padding:12px 14px 14px}
+.rg-chap-in > .rg-sub:first-child{margin-top:0}
+details.rg-chap ~ .rg-guides{margin-top:16px}
+@media (max-width:600px){details.rg-chap > summary .rg-h2{font-size:1.15rem}.rg-chap-in{padding:10px 10px 12px}}
 .rg-sub{font-size:.8rem;color:var(--sub);margin:-4px 0 10px}
 .rg-sub a{color:var(--accent)}
 .rg-pick{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:flex-end;margin:0 0 10px}
@@ -662,7 +678,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月15日 15:59</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">264<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月15日 16:14</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">264<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -683,7 +699,8 @@ details.fe-more > .fe-rows{margin-top:6px}
 
   <section class="region solo" id="region" aria-label="地域を選んで施設を探す">
     <!-- ページの並び：1. 地域を選ぶ（都道府県・市区町村と、その地域の数）→ 2. 施設を探す（言葉・絞り込み）→ 3. 施設一覧
-         → 4. 地図 → 5. 最近の動き → 注意書き（2026-10-14 ユーザー「選択→検索→一覧の順に」） -->
+         → 4. 地図 → 5. 最近の動き → 注意書き（2026-10-14 ユーザー「選択→検索→一覧の順に」）。
+         2. 〜 5. は押すと開く章で、はじめは閉じる（2026-10-15 ユーザー「1. 地域を選ぶ以外は、たたむ」） -->
     <h2 class="rg-h2" id="pick">1. 地域を選ぶ</h2>
     <div class="rg-pick">
       <div class="rg-sel"><label for="rg-pref">都道府県</label>
@@ -701,29 +718,37 @@ details.fe-more > .fe-rows{margin-top:6px}
     <div class="rg-facts" id="rg-facts"></div>
     <p class="rg-rank" id="rg-rank"></p>
 
-    <h2 class="rg-h2" id="find">2. 施設を探す</h2>
+    <details class="rg-chap" id="c-find"><summary><h2 class="rg-h2" id="find">2. 施設を探す</h2><span class="rg-chap-d" id="c-find-d"></span></summary>
+    <div class="rg-chap-in">
     <div class="rg-find"><label class="rg-fl" for="rg-q">名前・キーワード</label>
       <input id="rg-q" type="search" autocomplete="off" enterkeyhint="search" placeholder="施設名・団体名・市区町村などで探す"></div>
     <div class="rg-fl">施設の種類・状況などで絞り込む</div>
     <div class="rg-chips" id="rg-chips"></div>
     <details class="rg-moref" id="rg-moref"><summary id="rg-moref-s">運営する団体の形・系統・区域でも絞り込む</summary><div class="rg-fx" id="rg-fx"></div></details>
     <div class="rg-wash" id="rg-wash"></div>
+    </div></details>
 
-    <h2 class="rg-h2" id="list">3. 施設一覧</h2>
+    <details class="rg-chap" id="c-list"><summary><h2 class="rg-h2" id="list">3. 施設一覧</h2><span class="rg-chap-d" id="c-list-d"></span></summary>
+    <div class="rg-chap-in">
     <p class="rg-sub">1. で選んだ地域のうち、2. の言葉・絞り込みに当てはまる場所です。数え方や「寄付募集なし」「未確認情報あり」などの意味は、ページの下の <a href="#guide-a" data-guide="guide-a">掲載対象・数え方</a>・<a href="#guide-b" data-guide="guide-b">情報の見方</a> にあります（押すと開きます）。</p>
     <div class="rg-count" id="rg-count"></div>
     <div id="rg-list"></div>
+    </div></details>
 
-    <h2 class="rg-h2" id="map-h">4. 地図で見る</h2>
+    <details class="rg-chap" id="c-map"><summary><h2 class="rg-h2" id="map-h">4. 地図で見る</h2><span class="rg-chap-d" id="c-map-d"></span></summary>
+    <div class="rg-chap-in">
     <p class="rg-sub" id="rg-map-n"></p>
     <div class="rg-mapbox" id="rg-mapbox">
       <div id="rg-map" role="region" aria-label="選んだ地域の地図"></div>
       <div class="rg-legend" id="rg-legend"></div>
     </div>
     <div class="rg-btns" id="rg-btns"></div>
+    </div></details>
 
-    <h2 class="rg-h2" id="ev-h">5. <span id="rg-ev-t">最近の動き</span></h2>
+    <details class="rg-chap" id="c-ev"><summary><h2 class="rg-h2" id="ev-h">5. <span id="rg-ev-t">最近の動き</span></h2><span class="rg-chap-d" id="c-ev-d"></span></summary>
+    <div class="rg-chap-in">
     <div class="rg-ev" id="rg-events"></div>
+    </div></details>
 
     <div class="rg-guides">
       <details class="rg-guide" id="guide-a"><summary>A. 掲載対象・数え方</summary>
@@ -1377,6 +1402,9 @@ function renderRegion() {
     if (g && g.date === e.date) g.es.push(e); else days.push({date: e.date, es: [e]});
   });
   $("rg-ev-t").textContent = R.pref ? areaName() + "の最近の動き" : "最近の動き（全国）";
+  // 閉じた章の見出しの下に、中に何があるかを1行で（2. 〜 5. ははじめ閉じる 2026-10-15）
+  $("c-ev-d").textContent = ev.length ? `出典で確認できた出来事 ${ev.length}件（新しい順）` : "この地域で、日付が確認できた出来事はまだありません";
+  $("c-map-d").textContent = `${areaName()}の場所を地図で（3. の一覧と同じ条件）`;
   $("rg-events").innerHTML = `<p class="rg-sub">出典で確認できた出来事だけを、新しい日付の順に並べています（未確定の情報は含めていません）。名前を押すと中身が開きます。</p>
     ${ev.length ? days.map(g => `<div class="ev-day"><h5>${jpDate(g.date)}</h5>${g.es.map(evItem).join("")}</div>`).join("") +
       (ev.length > 5 ? `<button type="button" class="rg-more" id="rg-ev-more">${R.evAll ? "5件だけ表示する" : `すべて見る（${ev.length}件）`}</button>` : "")
@@ -1424,6 +1452,12 @@ function renderRegion() {
   const nMore = GROUPS.slice(1).reduce((a, G) => a + R.sel[G.g].size, 0);
   $("rg-moref-s").textContent = "運営する団体の形・系統・区域でも絞り込む" + (nMore ? `（${nMore}つ選んでいます）` : "");
   if (nMore) $("rg-moref").open = true;
+  const nSel = GROUPS.reduce((a, G) => a + R.sel[G.g].size, 0);
+  $("c-find-d").textContent = terms.length || nSel
+    ? "いまの条件：" + [terms.length ? `言葉「${R.q.trim()}」` : "", nSel ? `絞り込み ${nSel}つ` : ""].filter(Boolean).join("・")
+    : "名前・キーワード、施設の種類・状況、運営する団体の形・系統・区域で絞り込む";
+  $("c-list-d").textContent = !R.pref && !terms.length && !anySel() ? "都道府県を選ぶか、2. で探すと、場所の一覧が出ます"
+    : `${areaName()}：${hits.length}か所`;
 
   // 「遺体の洗い清めあり」を選んだときの説明（調べた範囲だけであることを必ず添える）
   $("rg-wash").innerHTML = R.f.has("wash") ? `<b>遺体の洗い清めあり</b>：公式サイト・寄付ページ・葬儀会社の実績報告などで、モスクでの遺体の洗い清めの実施や洗い清めに使う場所の存在、または洗い清めに使う場所・設備を設ける計画が確認できたものです。専用の部屋があるとは限りません（${esc(areaName())}：既存施設 ${countOf(rows, p => p.washNow)}か所・建設計画 ${countOf(rows, p => p.washPlan)}か所）。
@@ -1465,9 +1499,10 @@ $("region").addEventListener("click", e => {
     g.open = true;
     history.replaceState(null, "", location.pathname + location.search + "#" + t.dataset.guide);
     g.scrollIntoView({behavior: "smooth", block: "start"});
-  } else if (t.dataset.go === "list") {  // 「〇〇の施設一覧を見る」→ このページの下の一覧へ
+  } else if (t.dataset.go === "list") {  // 「〇〇の施設一覧を見る」→ このページの下の一覧へ（閉じていれば開いて）
     e.preventDefault();
     history.replaceState(null, "", location.pathname + location.search + "#list");
+    openChap($("list"));
     $("list").scrollIntoView({behavior: "smooth", block: "start"});
   } else if (t.dataset.g !== undefined) {  // 絞り込みボタン（「すべて」はその列のボタンを全部外す）
     const s = R.sel[t.dataset.g], k = t.dataset.k;
@@ -1492,6 +1527,15 @@ $("region").addEventListener("click", e => {
     goHash("r-" + p.id);
   }
 });
+// 2. 〜 5. の章ははじめ閉じているので、中の見出し・カードへ移るときは、それを囲む章（と行）を開いてから移る
+function openChap(el) {
+  for (let d = el; d; d = d.parentElement) if (d.tagName === "DETAILS" && !d.open) d.open = true;
+}
+// 地図の章を開いたら、閉じている間に変えた地域に寄せ直す（閉じている間は地図の大きさが0で寄せられないため）
+$("c-map").addEventListener("toggle", () => {
+  if (!MAP || !$("c-map").open) return;
+  if (MAP_FIT) fitMap(MAP_FIT); else MAP.invalidateSize();
+});
 // 同じ場所へもう一度飛ぶときは hashchange が起きないので、自分で呼ぶ
 function goHash(id) {
   if (decodeURIComponent(location.hash.slice(1)) === id) jumpToHash(); else location.hash = id;
@@ -1499,7 +1543,8 @@ function goHash(id) {
 // 地図の吹き出し・モスク詳細・葬儀と墓地のページから「area.html#r-xxxx」で来たら、その場所の行を開いて枠で知らせる
 function jumpToHash() {
   const id = decodeURIComponent(location.hash.slice(1));
-  if (id === "list") { $("list").scrollIntoView({block: "start"}); return; }  // 県のくわしいページの「〇〇県の施設一覧」から来たとき（area.html?pref=〇〇県#list）
+  // 章の見出しへ直接来たとき（県のくわしいページの「〇〇県の施設一覧」からの area.html?pref=〇〇県#list など）は、その章を開いて移る
+  if (["find", "list", "map-h", "ev-h"].includes(id)) { openChap($(id)); $(id).scrollIntoView({block: "start"}); return; }
   if (id === "guide-a" || id === "guide-b") { $(id).open = true; $(id).scrollIntoView({block: "start"}); return; }  // 注意書きへ直接来たとき
   if (!id.startsWith("r-")) return;
   let el = document.getElementById(id);
@@ -1512,8 +1557,7 @@ function jumpToHash() {
     el = document.getElementById(id);
   }
   if (!el) return;
-  const oi = el.closest("details.ol-it");
-  if (oi && !oi.open) oi.open = true;
+  openChap(el);  // 3. 施設一覧の章と、その場所の行を開く
   document.querySelectorAll(".card.hl").forEach(c => c.classList.remove("hl"));
   el.scrollIntoView({behavior: "smooth", block: "center"});
   el.classList.add("hl");
@@ -1531,6 +1575,8 @@ window.addEventListener("hashchange", jumpToHash);
   // 絞り込みを付けて来たとき（葬儀・墓地のページからの ?f=wash や、?org=rel&zone=control など。いくつかなら , で区切る）
   GROUPS.forEach(G => (ps.get(G.param) || "").split(",").filter(k => G.opts.some(o => o[0] === k)).forEach(k => R.sel[G.g].add(k)));
   renderRegion();
+  // 言葉・絞り込みを付けて来たとき（葬儀・墓地のページの ?f=wash など）は、その結果が見えるよう 3. 施設一覧を開いておく
+  if (R.q || anySel()) $("c-list").open = true;
 })();
 
 jumpToHash();

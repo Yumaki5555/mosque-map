@@ -214,6 +214,22 @@ body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタ�
 /* 見出し「1. 地域を選ぶ」〜「5. 最近の動き」（地図のページの見出しと同じ形） */
 .rg-h2{font-size:1.3rem;font-weight:800;line-height:1.4;margin:26px 0 10px;padding-left:10px;border-left:5px solid var(--accent);scroll-margin-top:8px}
 .region > .rg-h2:first-child{margin-top:0}
+/* 2. 〜 5. の章：はじめは閉じる。見出しの行のどこを押しても開閉（県のページの章と同じ ▶／▼。2026-10-15 ユーザー） */
+details.rg-chap{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-radius:12px;scroll-margin-top:8px}
+.rg-rank + details.rg-chap{margin-top:22px}
+details.rg-chap > summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1.3em 1fr;gap:2px 6px;align-items:baseline;padding:12px 14px;min-height:52px;border-radius:12px}
+details.rg-chap > summary::-webkit-details-marker{display:none}
+details.rg-chap > summary::before{content:"▶";color:var(--accent);font-size:.9rem;grid-row:1 / span 2}
+details.rg-chap[open] > summary::before{content:"▼"}
+details.rg-chap > summary:hover{background:var(--accent-soft)}
+details.rg-chap[open] > summary{border-bottom:1px solid var(--line);border-radius:12px 12px 0 0}
+details.rg-chap > summary .rg-h2{margin:0;padding:0;border:0}
+.rg-chap-d{grid-column:2;font-size:.85rem;color:var(--sub);line-height:1.5}
+.rg-chap-d:empty{display:none}
+.rg-chap-in{padding:12px 14px 14px}
+.rg-chap-in > .rg-sub:first-child{margin-top:0}
+details.rg-chap ~ .rg-guides{margin-top:16px}
+@media (max-width:600px){details.rg-chap > summary .rg-h2{font-size:1.15rem}.rg-chap-in{padding:10px 10px 12px}}
 .rg-sub{font-size:.8rem;color:var(--sub);margin:-4px 0 10px}
 .rg-sub a{color:var(--accent)}
 .rg-pick{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:flex-end;margin:0 0 10px}
@@ -796,7 +812,7 @@ details.dc-fold > :not(summary){margin-top:6px}
   <p class="dn-lead">モスクの建設・購入・改修や土葬墓地のための寄付の募集を、寄付ページ・団体の発表・報道などの公開資料から出典付きでまとめています。
   地域・募集状況・寄付の目的・言葉で探せます。</p>
 
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月15日 15:59</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">掲載している寄付の募集</div><div class="v">131<small>件</small></div><div class=s>現在募集中 44件と終了したもの 87件の合計（同じ計画の複数の寄付ページは1件）。未確定情報 25件・そのほかの寄付・情報 7件は含めていません</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月15日 16:14</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">掲載している寄付の募集</div><div class="v">131<small>件</small></div><div class=s>現在募集中 44件と終了したもの 87件の合計（同じ計画の複数の寄付ページは1件）。未確定情報 25件・そのほかの寄付・情報 7件は含めていません</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
