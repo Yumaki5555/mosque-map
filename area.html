@@ -238,7 +238,11 @@ details.rg-guide[open] > summary::before{content:"▼ "}
 details.rg-guide ul{margin:0;padding:0 16px 12px 2.2em;font-size:.88rem;line-height:1.7}
 details.rg-guide li{margin-bottom:6px}
 details.rg-guide li.rank-note:has(> span:empty){display:none}
-.rg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.rg-tiles{display:grid;gap:10px}
+.rg-tg-t{font-size:.86rem;font-weight:800;color:var(--accent);margin:0 0 4px}
+.rg-tg-t small{font-size:.76rem;font-weight:400;color:var(--sub);margin-left:2px}
+.rg-tgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:600px){.rg-tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .rg-tile{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--done-line);border-radius:10px;padding:8px 12px}
 .rg-tile .k{font-size:.82rem;font-weight:700;color:var(--sub)}
 .rg-tile .v{font-size:1.75rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
@@ -658,7 +662,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月15日 14:11</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">264<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div><div><div class="k">載っている場所の総数</div><div class="v">319<small>か所</small></div><div class=s>モスク・礼拝所 264か所、計画・建設中 9か所、状況確認中 21か所、閉鎖・移転 6か所、学校 9か所、墓地 6か所、寄付・計画の情報だけの場所 4か所</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月15日 15:59</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">264<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -693,7 +697,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     <nav class="rg-entry" id="rg-entry" aria-label="この地域の施設一覧と統計"></nav>
     <div class="rg-tiles" id="rg-tiles"></div>
     <p class="rg-break" id="rg-break"></p>
-    <p class="rg-small">※ 1か所を2つ以上の札に数えることがあるため、札の数を足しても場所の数にはなりません。<a href="#guide-a" data-guide="guide-a">掲載対象・数え方を見る</a></p>
+    <p class="rg-small">※ 「計画・寄付・墓地」の札は、1か所を2つ以上に数えることがあるため、足しても場所の数にはなりません（今あるモスクに建て替えの計画があれば、「モスク・礼拝所」と「建設・改修などの計画」の両方に入ります）。<a href="#guide-a" data-guide="guide-a">掲載対象・数え方を見る</a></p>
     <div class="rg-facts" id="rg-facts"></div>
     <p class="rg-rank" id="rg-rank"></p>
 
@@ -893,19 +897,22 @@ const isLand = p => hasSt(p, "land_acquisition") || p.purposes.includes("land_ac
 // 数え方は全部のページで同じ（page_parts.count_class が場所ごとに決めた cls）。「モスク・礼拝所」は、いま使われていると確認できた場所だけ
 const CLASS_JA = {"mosque": "モスク・礼拝所", "plan": "計画・建設中", "unknown": "状況確認中", "closed": "閉鎖・移転", "school": "学校", "cemetery": "墓地", "other": "寄付・計画の情報だけの場所"};
 const isMosque = p => p.cls === "mosque";
+// 札は2段（2026-10-15 ユーザー「ここも考え直そうか」）。g:1＝施設（1か所を1つの種類に数える。地図・モスク一覧と同じ分け方）、
+// g:2＝計画・寄付・墓地（1か所を2つ以上に数えることがある）
 const COUNTERS = [
-  {k: "existing", label: "🕌 モスク・礼拝所", test: isMosque},
-  {k: "plan", label: "🏗️ 建設・改修などの計画", test: isPlan},  // 今あるモスクの建て替え・改修も含む（数え方の「計画・建設中」はまだ建物がない場所だけ）
-  {k: "fund", label: "💰 寄付募集中", test: p => hasSt(p, "fundraising")},
-  {k: "land", label: "土地取得関連", test: isLand},
-  {k: "cem", label: "土葬墓地関連", test: p => p.category === "cemetery"},
-  {k: "unk", label: "状況確認中", test: p => p.cls === "unknown"},  // 地図・モスク一覧の「状況確認中」と同じ場所
+  {k: "existing", g: 1, label: "🕌 モスク・礼拝所", test: isMosque},
+  {k: "unk", g: 1, label: "状況確認中", test: p => p.cls === "unknown"},  // 地図・モスク一覧の「状況確認中」と同じ場所
+  {k: "school", g: 1, label: "学校", test: p => p.cls === "school"},  // 地図・モスク一覧の「学校」と同じ場所
+  {k: "plan", g: 2, label: "🏗️ 建設・改修などの計画", test: isPlan},  // 今あるモスクの建て替え・改修も含む（数え方の「計画・建設中」はまだ建物がない場所だけ）
+  {k: "fund", g: 2, label: "💰 寄付募集中", test: p => hasSt(p, "fundraising")},
+  {k: "land", g: 2, label: "土地取得関連", test: isLand},
+  {k: "cem", g: 2, label: "土葬墓地関連", test: p => p.category === "cemetery"},
 ];
+const TILE_GROUPS = [[1, "施設", "1か所を1つの種類に数えています"], [2, "計画・寄付・墓地", "1か所を2つ以上に数えることがあります"]];
 // 絞り込みのボタンは、上の札と同じ名前のものは同じ数え方（札とボタンの数をそろえる 2026-10-12）
 const FILTERS = [
   ...COUNTERS.map(x => ({k: x.k, label: x.label.replace(/^\S+ /, ""), test: x.test})),  // 札と同じ（絵文字は外す）
   {k: "closed", label: "閉鎖・移転", test: p => p.cls === "closed"},
-  {k: "school", label: "学校", test: p => p.cls === "school"},
   {k: "wash", label: "遺体の洗い清めあり", test: p => p.washNow || p.washPlan},
   {k: "unconf", label: "未確認の情報あり", test: p => p.verification === "unconfirmed"},
 ];
@@ -1309,10 +1316,12 @@ function renderRegion() {
   $("rg-city").value = R.city;
   $("rg-area").textContent = "📍 " + areaName();
   // 札の下に全国の数と、選んだ都道府県が47都道府県の中で多い順に何位か（市区町村まで選んでいるときは順位は出さない）
-  $("rg-tiles").innerHTML = COUNTERS.map(x => {
+  const tile = x => {
     const n = countOf(rows, x.test), rk = R.pref && !R.city ? rankText(prefRank(R.pref, x.test)) : "";
     return `<div class="rg-tile t-${x.k}"><div class="k">${x.label}</div><div class="v">${n}<small>か所</small></div>${R.pref ? `<div class="s">全国 ${countOf(all, x.test)}か所${rk ? "／" + rk : ""}</div>` : ""}</div>`;
-  }).join("");
+  };
+  $("rg-tiles").innerHTML = TILE_GROUPS.map(([g, t, note]) => `<div class="rg-tg"><div class="rg-tg-t">${t}<small>（${note}）</small></div>` +
+    `<div class="rg-tgrid">${COUNTERS.filter(x => x.g === g).map(tile).join("")}</div></div>`).join("");
   $("rg-note-rank").textContent = R.pref && !R.city ? "「○位」は、47都道府県の中で数が多い順の順位です（同じ数の都道府県があるときは「同率」）。" : "";
 
   // 札の下の内わけ：載っている場所を、数え方（cls）ごとに1か所1つずつ数える（足すと載っている場所の数になる。入口・地図・県のページと同じ分け方）
