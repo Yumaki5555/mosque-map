@@ -386,7 +386,7 @@ a{color:var(--accent)}
   <div id="list-view">
     <h1>モスク・施設を探す</h1>
     <p class="lead">全国のモスク・礼拝所などを、名前・地域・条件で探せます。名前を押すと、その施設の詳しい情報が開きます。</p>
-    <p class='ls-upd'>最終更新 <b>2026年10月15日 11:23</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p><details class='fold ls-more'><summary>掲載数：<b>モスク・礼拝所 265か所</b>（いま使われているもの）／この一覧に載せている場所 307か所<span class='ls-more-t'>（数え方を見る）</span></summary><ul><li><b>モスク・礼拝所 265か所</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</li><li><b>この一覧に載せている場所 307か所</b>：内わけは、モスク・礼拝所 265か所、計画・建設中 1か所、状況確認中 20か所、閉鎖・移転 6か所、学校 9か所、墓地 6か所です。1か所は、このどれか1つにだけ数えています。</li><li>建物がまだない計画地や、寄付・計画の情報だけの場所は、この一覧には入れていません。<a href='map.html'>地図</a>・<a href='area.html'>地域別のページ</a>で見られます。</li></ul></details>
+    <p class='ls-upd'>最終更新 <b>2026年10月15日 11:34</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p><details class='fold ls-more'><summary>掲載数：<b>モスク・礼拝所 265か所</b>（いま使われているもの）／この一覧に載せている場所 307か所<span class='ls-more-t'>（数え方を見る）</span></summary><ul><li><b>モスク・礼拝所 265か所</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</li><li><b>この一覧に載せている場所 307か所</b>：内わけは、モスク・礼拝所 265か所、計画・建設中 1か所、状況確認中 20か所、閉鎖・移転 6か所、学校 9か所、墓地 6か所です。1か所は、このどれか1つにだけ数えています。</li><li>建物がまだない計画地や、寄付・計画の情報だけの場所は、この一覧には入れていません。<a href='map.html'>地図</a>・<a href='area.html'>地域別のページ</a>で見られます。</li></ul></details>
     <section class="find" role="search" aria-label="モスク・施設を探す">
       <div class="f-row">
         <div>
@@ -540,7 +540,7 @@ var CLASS_NOTES = {"plan": "モスクを建てる計画や、土地・建物を�
 var RN_GROUPS = [["hist", "あゆみ・これからの計画"], ["place", "建物・規模・場所"], ["org", "運営・団体・法人"], ["act", "礼拝・活動・集まる人"], ["fu", "葬儀・墓地"], ["gov", "議会・行政・報道"], ["src", "資料・地図サイト・SNSでの確かめ"], ["etc", "名前・近くの場所・そのほか"]];  // 「調査で判明したこと」の大きなまとまり（[目印, 名前]。この順に並べる）
 // 公開ページの「調査で判明したこと」（d.rn）は別のファイル（mosque_notes.json）。施設の詳しい情報を開くときに読む（2026-10-14）。
 // 自分用のページは "" で、文章はページの中にある
-var NOTES_URL = "mosque_notes.json?v=de93669de3ca", NOTES_OK = !NOTES_URL, NOTES_FAIL = false, notesWait = null;
+var NOTES_URL = "mosque_notes.json?v=6ffa6386dc09", NOTES_OK = !NOTES_URL, NOTES_FAIL = false, notesWait = null;
 function withNotes(cb) {
   if (NOTES_OK) { cb(); return; }
   if (!notesWait) {
