@@ -492,6 +492,8 @@ details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px sol
 .fp-hsub{font-size:.82rem;color:var(--sub);margin:0 0 8px;line-height:1.7}
 .fp-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:10px;margin-top:8px}
 .fe{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere;min-width:0}
+/* 「1. 地域・項目を選ぶ」で外れたカードを隠す（上の display:flex が hidden より強く、全国のカードが出たままだった。2026-10-16 ユーザー指摘） */
+.fe[hidden]{display:none}
 .fe-name{font-size:1rem;font-weight:700;line-height:1.45;margin:0}
 .fe-loc{font-size:.8rem;color:var(--sub);margin:-2px 0 0}
 .fe-rows{list-style:disc;margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
@@ -678,7 +680,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1 id="page-title">葬儀・墓地について調べた結果</h1>
   <p class="lead">全国のモスク・礼拝所などについて、<b>遺体の洗い清め（グスル）</b>、<b>葬儀の礼拝（ジャナーザ）</b>、<b>土葬墓地</b>に関する情報を公開資料から調べ、その結果をまとめたページです。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月16日 13:32</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">315<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く315か所すべてです（モスク・礼拝所 266か所、計画・建設中 8か所、状況確認中 23か所、閉鎖・移転 6か所、墓地 8か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月16日 13:40</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">315<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く315か所すべてです（モスク・礼拝所 266か所、計画・建設中 8か所、状況確認中 23か所、閉鎖・移転 6か所、墓地 8か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
