@@ -280,7 +280,7 @@ a{color:var(--accent)}
         .fl-toggle[aria-expanded="false"] { background: #2f5d8a; box-shadow: 0 0 0 3px var(--accent-soft); }
         .fl-box { position: relative; border: 1px solid var(--line); border-radius: 12px; background: var(--card);
                   max-height: 65vh; overflow-y: auto; overscroll-behavior: contain; }
-        @media (min-width: 1000px) { .fl-box { max-height: calc(var(--map-h) - 70px); } }
+        @media (min-width: 1000px) { .fl-box { max-height: calc(var(--map-h) - 150px); } }  /* 上の「範囲」のチェックと数の分だけ短く（地図の下の端にそろえる） */
         .fl-pref { position: sticky; top: 0; z-index: 1; background: var(--head-bg); font-size: 13px; font-weight: 800;
                    color: var(--navy); padding: 5px 12px; border-bottom: 1px solid var(--line); }
         .fl-pref span { font-weight: 400; color: var(--sub); margin-left: 4px; }
@@ -305,6 +305,18 @@ a{color:var(--accent)}
         .fl-detail { flex: none; align-self: center; font-size: 13px; font-weight: 700; padding: 8px 12px 8px 4px;
                      text-decoration: none; white-space: nowrap; }
         .fl-empty { margin: 0; padding: 16px; font-size: 15px; font-weight: 700; color: var(--warn); }
+        .fl-empty .s { display: block; margin-top: 4px; font-size: 13px; font-weight: 400; color: var(--sub); line-height: 1.6; }
+        /* 地図に映っている範囲の施設だけを一覧に出す（2026-10-16 ユーザー） */
+        .fl-view { display: flex; gap: 8px; align-items: flex-start; margin: 0 0 6px; font-size: 14px; font-weight: 700;
+                   color: var(--navy); line-height: 1.5; cursor: pointer; }
+        .fl-view input { flex: none; width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--accent); cursor: pointer; }
+        .fl-view .s { display: block; font-size: 12px; font-weight: 400; color: var(--sub); line-height: 1.55; margin-top: 1px; }
+        .fl-range { font-size: 13.5px; color: var(--text); background: var(--blue-soft); border: 1px solid var(--accent);
+                    border-radius: 10px; padding: 6px 10px; margin: 0 0 6px; line-height: 1.6; }
+        .fl-range .n { font-size: 16px; color: var(--navy); }
+        .fl-range button { font: inherit; font-size: 12.5px; font-weight: 700; color: var(--accent); background: var(--card);
+                           border: 1px solid var(--accent); border-radius: 999px; padding: 1px 10px; margin-left: 4px; cursor: pointer; }
+        .fl-range button:hover { background: var(--accent-soft); }
         /* 5. この地図について */
         .mp-about { margin: 6px 0 40px; }
         .ab-important { background: var(--warn-bg); border: 2px solid var(--warn-line); color: var(--warn-ink); border-radius: 12px;
@@ -395,7 +407,7 @@ a{color:var(--accent)}
       
       <h1>全国モスク・礼拝所マップ</h1>
       <p class="mp-lead">全国のモスク・礼拝所の所在地と、都市計画の区域区分を地図で確認できます。施設名・地域・運営団体などで検索でき、寄付情報や関連施設も表示しています。</p>
-      <p class="mp-upd">最終更新 <b>2026年10月16日 21:41</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年10月16日 22:06</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">266<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>
@@ -504,6 +516,8 @@ a{color:var(--accent)}
           <p class="fl-hint" id="fl-hint">地図と同じ条件の施設を、ここに一覧で出せます。上のボタンを押すと開きます（名前を押すと、地図でその施設を開きます）。</p>
           <div id="fl-wrap" hidden>
             <p class="fl-note">「1. 施設を探す」と同じ条件の施設です（地図の印と同じ）。名前を押すと、地図でその施設を開きます。</p>
+            <label class="fl-view"><input type="checkbox" id="fl-view" checked><span>地図に映っている範囲の施設だけを一覧に出す<span class="s">地図を動かしたり拡大・縮小したりして止まると、少しあとに、その範囲の施設だけになります。条件を変えたときと「全国表示」を押したときは、条件に合う施設をすべて出します。</span></span></label>
+            <p class="fl-range" id="fl-range" aria-live="polite" hidden></p>
             <div class="fl-box" id="fl-box"></div>
           </div>
         </section>
@@ -17715,7 +17729,7 @@ function textHit(ix, t) {
         var box = $("kw-input"), sel = $("pref-select"), csel = $("city-select"), nsel = $("net-select"),
             chips = $("f-chips"), clearBtn = $("f-clear"), result = $("f-result"),
             tog = $("fl-toggle"), wrap = $("fl-wrap"), listBox = $("fl-box"), layout = $("mp-layout"),
-            onlyBox = $("net-only"), mapNow = $("mp-now");
+            onlyBox = $("net-only"), mapNow = $("mp-now"), viewBox = $("fl-view"), rangeBox = $("fl-range");
         if (!box || !sel) return;
         // 全角・半角、大文字・小文字、ひらがな・カタカナ、空白や「・」の違いは気にせず探す
         function norm(s) {
@@ -17790,6 +17804,12 @@ function textHit(ix, t) {
         }
         function active() { return !!(st.terms.length || st.pref || netOnly()); }  // 印を絞り込む条件があるか
         function matched() { return FAC.filter(function (f) { return pass(f.id); }); }
+        // 一覧に出す施設＝条件に合う施設のうち、地図に映っている範囲のもの（viewB＝自分の手で地図を動かして止まったときの範囲。
+        // まだ動かしていない・条件を変えた・「全国表示」を押した・チェックを外したときは null＝条件に合う施設をすべて出す）
+        var viewB = null;
+        function viewOn() { return !!(viewB && viewBox && viewBox.checked); }
+        function inView(f) { var x = byFk[f.id]; return !!x && viewB.contains(x.mk.getLatLng()); }
+        function listed(fs) { fs = fs || matched(); return viewOn() ? fs.filter(inView) : fs; }
 
         // 条件に合わない印を地図から外し、合う印を戻す
         function apply() {
@@ -17890,7 +17910,15 @@ function textHit(ix, t) {
                                               : "表示中：掲載しているすべての施設 <b class='n'>" + fs.length + "</b>か所") +
                     " <a href='#find' class='mp-now-a'>" + (cs.length ? "条件を変える・クリアする ↑" : "条件で絞り込む ↑") + "</a>";
             }
-            tog.querySelector(".t").textContent = (listOpen ? "施設一覧をたたむ" : "施設一覧を表示") + "（" + fs.length + "か所）";
+            // 一覧を地図に映っている範囲で絞っているときは、一覧の上に範囲の数（条件に合う数のうち）と「範囲で絞るのをやめる」。
+            // 上の「条件に合う施設」の数はそのまま（数が混ざらないよう、一覧の数は「地図に映っている範囲」「地図の範囲」と書き分ける）
+            var ls = listed(fs), narrow = viewOn() && ls.length < fs.length;
+            if (rangeBox) {
+                rangeBox.hidden = !narrow;
+                rangeBox.innerHTML = narrow ? "地図に映っている範囲：<b class='n'>" + ls.length + "</b>か所（条件に合う" + fs.length + "か所のうち）" +
+                                              "<button type='button' class='fl-range-off'>範囲で絞るのをやめる</button>" : "";
+            }
+            tog.querySelector(".t").textContent = (listOpen ? "施設一覧をたたむ" : "施設一覧を表示") + "（" + (narrow ? "地図の範囲 " : "") + ls.length + "か所）";
         }
 
         // 地図で隠している種類の施設の数（「閉鎖・移転 5か所」のように種類ごと）
@@ -17923,8 +17951,13 @@ function textHit(ix, t) {
         }
         function renderList() {
             if (!listOpen) return;
-            var fs = matched();
-            if (!fs.length) { listBox.innerHTML = "<p class='fl-empty'>該当する施設がありません。</p>"; return; }
+            var all = matched(), fs = listed(all);
+            if (!fs.length) {
+                listBox.innerHTML = "<p class='fl-empty'>" + (all.length ? "地図に映っている範囲に、条件に合う施設はありません。" +
+                    "<span class='s'>地図を縮小して広い範囲を映すか、上の「範囲で絞るのをやめる」を押すと、条件に合う" + all.length + "か所をすべて出します。</span>"
+                    : "該当する施設がありません。") + "</p>";
+                return;
+            }
             var count = {};
             fs.forEach(function (f) { count[f.pf] = (count[f.pf] || 0) + 1; });
             var h = "", pf = null;
@@ -17969,6 +18002,7 @@ function textHit(ix, t) {
         });
         // 一覧の施設を押す → 地図でその施設を開く（ほかのページの「地図で見る」と同じ仕組み）
         function go(fk) {
+            quietMove();  // その施設へ寄せても、一覧は今の範囲のまま
             hovLayer.clearLayers();
             if (location.hash === "#" + fk) history.replaceState(null, "", location.pathname + location.search);
             location.hash = fk;
@@ -18006,6 +18040,7 @@ function textHit(ix, t) {
             var key = (active() ? "1:" : "0:") + keys.join(",");
             if (!force && (key === lastFit || Date.now() - lastInput < 1500)) return;
             lastFit = key;
+            quietMove();
             if (!active()) { map.fitBounds(ALL); return; }
             if (!pts.length) return;
             if (pts.length === 1) map.setView(pts[0], Math.max(map.getZoom(), 13));
@@ -18017,12 +18052,54 @@ function textHit(ix, t) {
             var pts = d.ids.map(function (id) { return byFk[id]; }).filter(function (x) { return x && onMap(x); })
                          .map(function (x) { return x.mk.getLatLng(); });
             if (!pts.length) return;
+            quietMove();
             map.fitBounds(L.latLngBounds(pts), { padding: [50, 50], maxZoom: 12 });
             lastFit = "";
         }
 
+        // ---- 地図に映っている範囲の施設だけを一覧に出す（2026-10-16 ユーザー。「4. 施設一覧」のチェック、はじめは入れておく）----
+        // 自分の手で地図を動かした・拡大縮小したとき（引っぱる・ホイール・2本指・ダブルクリック・＋−のボタン・キーボード・Shift で囲む）だけ、
+        // 止まって 0.8 秒たったら、そのとき映っている範囲で一覧を絞る（続けて動かしている間は待つ）。
+        // 一覧やほかのページから施設を開いたとき・吹き出しが開いて地図が少しずれたとき・条件に合わせて地図を寄せたときは、一覧の範囲を変えない
+        // （押した施設のまわりだけに一覧が縮むと、ほかの施設を選べなくなるため）
+        var gestT = 0, moveT = 0, vTimer = null, ct = map.getContainer();
+        function gesture() { gestT = Date.now(); }
+        function quietMove() { gestT = 0; clearTimeout(vTimer); }  // これから地図を動かすのはこのページの仕組みの側（手の操作ではない）
+        ["wheel", "dblclick", "keydown"].forEach(function (ev) { ct.addEventListener(ev, gesture, { capture: true, passive: true }); });
+        ["touchstart", "touchmove"].forEach(function (ev) {
+            ct.addEventListener(ev, function (e) { if (e.touches && e.touches.length > 1) gesture(); }, { capture: true, passive: true });
+        });
+        ct.addEventListener("click", function (e) { if (e.target.closest && e.target.closest(".leaflet-control-zoom")) gesture(); }, true);
+        map.on("dragstart boxzoomend", gesture);
+        map.on("movestart", function () { moveT = Date.now(); clearTimeout(vTimer); });
+        map.on("moveend", function () {
+            clearTimeout(vTimer);
+            if (!viewBox || !viewBox.checked || !gestT || gestT < moveT - 1000) return;
+            vTimer = setTimeout(takeView, 800);
+        });
+        function listKey() { return listed().map(function (f) { return f.id; }).join(","); }
+        function showList() { renderResult(); listBox.scrollTop = 0; renderList(); }
+        function takeView() {
+            if (!viewBox.checked) return;
+            var before = listKey();
+            viewB = map.getBounds();
+            if (listKey() !== before) showList();  // 映っている施設が前と同じなら、一覧はそのまま（読んでいた位置も動かさない）
+        }
+        if (viewBox) {
+            // チェックを入れたら、いま映っている範囲で絞る。外したら、条件に合う施設をすべて出す
+            viewBox.addEventListener("change", function () { viewB = viewBox.checked ? map.getBounds() : null; showList(); });
+            rangeBox.addEventListener("click", function (e) {
+                if (!e.target.closest("button.fl-range-off")) return;
+                viewBox.checked = false;
+                viewB = null;
+                showList();
+            });
+        }
+
         // ---- 条件を変える ----
+        // 条件を変えたら、一覧の範囲の絞り込みは外す（地図も条件に合う施設に寄せるので、条件に合う施設をすべて一覧に出す）
         function setKw(v) {
+            viewB = null;
             st.kw = v;
             st.terms = v.split(/[\s　]+/).map(norm).filter(Boolean);
             apply();
@@ -18043,6 +18120,7 @@ function textHit(ix, t) {
         }
         // how: "quiet"＝ほかの操作のついで（地図を動かさない。URL の #m-xxxx などは消さない）／"hash"＝地域別のページから来たとき
         function setArea(pref, city, how) {
+            viewB = null;
             if (!PREF[pref]) pref = "";
             if (!pref || !cityRow(pref, city)) city = "";
             if (pref !== st.pref || csel.options.length < 2) cityOptions(pref);
@@ -18064,6 +18142,7 @@ function textHit(ix, t) {
             if (how === "hash" && pref) map.getContainer().scrollIntoView({ behavior: "smooth", block: "center" });
         }
         function setNet(k) {
+            viewB = null;
             st.net = NET[k] ? k : "";
             nsel.value = st.net;
             netSet = {};
@@ -18075,6 +18154,7 @@ function textHit(ix, t) {
         }
         // 「選んだ系統の施設だけを表示する」を切り替えたとき（入れたら系統の施設に寄せる。外したときは地図を動かさない）
         onlyBox.addEventListener("change", function () {
+            viewB = null;
             apply();
             if (onlyBox.checked) fitNet();
         });
@@ -18137,7 +18217,8 @@ function textHit(ix, t) {
                 b.textContent = "全国表示";
                 b.title = "地図を日本全体の表示に戻します（選んでいる条件はそのままです）";
                 L.DomEvent.disableClickPropagation(b);
-                L.DomEvent.on(b, "click", function () { map.fitBounds(ALL); });
+                // 一覧の範囲の絞り込みも外す（日本全体に戻すので、条件に合う施設をすべて一覧に出す）
+                L.DomEvent.on(b, "click", function () { quietMove(); viewB = null; map.fitBounds(ALL); showList(); });
                 return b;
             }
         });
@@ -18147,6 +18228,9 @@ function textHit(ix, t) {
             reveal: function (fk) {
                 var x = byFk[fk];
                 if (!x) return null;
+                quietMove();  // その施設へ寄せても、一覧の範囲は変えない
+                // 一覧を絞っている範囲の外の施設なら、範囲の絞り込みを外す（一覧でもその施設に色を付けられるように）
+                if (viewB && !viewB.contains(x.mk.getLatLng())) { viewB = null; showList(); }
                 if (!x.shown && !pass(fk)) {
                     box.value = ""; st.kw = ""; st.terms = [];
                     if (netOnly()) { st.net = ""; nsel.value = ""; netSet = {}; onlyBox.disabled = true; onlyBox.parentNode.classList.add("off"); }
