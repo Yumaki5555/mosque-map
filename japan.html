@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本全体のモスクと人口｜日本のモスク情報</title>
+<meta name="description" content="日本全体のモスク・礼拝所の数、国籍別の在留外国人数とその推移、都道府県のくらべ、ムスリム人口の推計などを、公開資料をもとにまとめています。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="日本のモスク情報">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="日本全体のモスクと人口｜日本のモスク情報">
+<meta property="og:description" content="日本全体のモスク・礼拝所の数、国籍別の在留外国人数とその推移、都道府県のくらべ、ムスリム人口の推計などを、公開資料をもとにまとめています。">
+<meta property="og:url" content="https://yumaki5555.github.io/mosque-map/japan.html">
+<meta property="og:image" content="https://yumaki5555.github.io/mosque-map/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="日本のモスク情報（公開資料をもとに出典付きでまとめたサイト）">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACJElEQVR4nGNgQAMyVvHBcpZxu+Ws4n8A8X9qYFnLuG+yVvE7ZS3i/dDtgwNR7VAeoMWbqWUpTsdYxW8U14vlxmb5WVINM/GI/a/lGEeOI47LWIZywh0AtHw1qYY0VYb9764PIz80LONXQeLcPNaLVM1+EdH/3+z1+69qR7rvkbGMRZwng6xV3D5SNbZWh/2/v9Wf8jRhGb+HQY6M1J6fF/H/00G//wFRUZQlSGDuYCBHoyYw4V1ZF/D/7mb//0mpkf8NXGP/mwITJDlmkeUAENYHWjqxOfT/1llB//ubQv/rudDZASDcMX3V/66ZayiKBrIcoGKf/H/J+n3/YWDxun3/le2S6OMAp8iK/xev3fuPDkBiDhHltHOAkm0SOLh//PyFYTkMfP/x63/n9NX/FW0TqesAkM8u33yA02J0cPnG/f/24WXUcUBSWf//b99/EG05DID0JJT0UeaAxNL+/z9//SbZchgA6SXkCJwOMPbJ+//h01eyLYeBDx+//DfwyiHdAXNW7KTYchiYsWQr6Q649+g51Rxw58Ez0h1ASdyjA1DWpbgcoBXGcMDURVuo5nN00D5tFfUccPrirf/xRb3gcuLS9fv0dcC7D5//a7qkw/Xoe2b///qNcGFFNQfsP34Jw6Azl2+T7YAfpDpg79ELGAadunCTZAeAm2TojVJ6OgDcKEVvltPTAeBmObkdE4oxrGNCSdeMXIzRNRvwzulAds8B7oUNIyzbY/YAAAAASUVORK5CYII=">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjMWUzYTVmIi8+CjxwYXRoIGQ9Ik0zMyA1LjVhNiA2IDAgMSAwIDQuNiA5LjlhNC42IDQuNiAwIDEgMS00LjYtOS45eiIgZmlsbD0iI2YyYzE0ZSIvPgo8cGF0aCBkPSJNMzIgMThDMjUgMjYgMTIgMjggMTIgNDBoNDBjMC0xMi0xMy0xNC0yMC0yMnoiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTkgNDJoNDZ2MTRIOXoiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTI3LjUgNTZ2LTdhNC41IDQuNSAwIDAgMSA5IDB2N3oiIGZpbGw9IiMxZTNhNWYiLz4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAPDklEQVR4nO2deXAVRR7HU2UVWmXpH5ZVavLmicoql3gt5M0AyqWILoGQvJDrzTyyCogcixyRQwGj4CIRDAjoCp6cQcIlIgqIrGDJKYq7AovrASgIJNx3b/8GwkLON+/NzK973u9b9SmhhLzung/9enq6exISkFO3Vfgaf7LeQlGNIYqqz/drxma/ph/k/2WEuPDrdcCv6hv5r+f5AsbgRDVXS2gUrIPtE0puSM65XgmEwopmLOQNcwz74hC2SX6MU+JXDR2uMbZnjsefnNOQSzyZJPY+/Nv2KGdiohquj+2d7fGp4bt5JZfwCp7HbmjCdbHPcz68JRBqgO1hzPGpehKMi0lk4qLYM5XmeYnYXkaR4FX8xi5f0fQj2A1JCIZqlCoBoz84gm1pRPEl60385kyFAI1HiIuqb4ShKLavNYYPMXrzwp5AbyxCFk7wb/Fe2N5Wyo3N867jXyVzBWggQkIU1ZgDDmF7bMbf1GjEB/s7sBuFkBsu9XaY1kWVOUkLtYFBPnZjEJ7hUFKy3hpFZp+m5/KB/SkBGoHwEtwpX8DIcVVmJaB35YP5s+iVJzyJ6VbAyHBFZp8ayuYfeAa70oTHUY3TihbOdFRmvxoKUs9MuMWFnjrU0RGZYbBOY2br3N5CZw+n5bCnn85kBUMzWMuUXPQyyQQsZPOpejNbZVY04w5F1fdjV04edJYRymazi9LYz0s7scOrU9ia91NZq84kczTwnnrfzYFwXVtkNtcu0zxzxGSHs9nXs1JNict5rSDIbuM9NXbZZIY7uNWWNdb8By3FrowMNGyts+JJaVeIDDyf3xW9bB5iSawyDxSgEsID4+LvSzpXknn8C0H0snmNCyv1opFZCzWmm8DaaZuay378qFMlmT+b3oXVbU7DDAc4af0ReaNgHX4j+J0AhReaZh1CbOfiyjL//mkK0x6nG0CngPG0pQ25SkAfil1o0YHe94v3UivJDLz+Eg01nEfPj0jmxKbdFNrEWjvDB3etUubSVSns/vYh9PJ5HdgNBa7W3jurxhzswopOk3Yh9tunlWUGlr3VBb188QKXelaNMidp4XtpQ2vtvDoqWKXMQP4zNE3nFuBqUrPce6oVmv+hediFFB14QPLDwso3guXAY27sMsYVql5cpcw+NbceH26cQy+g4HTJya5WZuDOh2iqzk3AWViaUUXvrBdhF04Gxo3MqFbmXz7uhF6+eISPpQuvkPmmJqFredddhl0wGYCbvuqEhqEIdvnilEPg8GW9cygkQKGkYNv8yo+4y4GZD+zyxStXbNvivfNi7ALJwt7l1Y+fgQataQyNgaLqiy7YXK/D1fw3x7ELJAuHVtUsdGp2NnoZ4xFw2Hwcbh5FIECBZOGnpdVP2QGwKwW7jPGKLxBuBbtRhmEXRCY2za1+DA2snZGKXsZ4Bd4CQY+6LTJ3YuVF/BV5NJ0ermCgaPrshIvvyUAvjCwMHVT1oqTLmT85Db2c8QgXej0IvQe7IDIBu1NqE7rs8xTWMZN6abfhw+fdsH6Djr+1yLqZVa+DvpxtJZ3ZXa1oCs9NzJkO7ELICJyxUZvQwMIpabQNy2VI6Ci4lUu6pbjm2Y5yZkxIZ7e3JKndgoSOElh1B2PlSKSG9R/3PUK7WNyAhI6ByaOrX+hfEXgg0/OpLPQyex0SOgZgfLx8WvWr76oCHsz06Z0Z8Q0jzGm360IzJpFCQsdIfS7miretSQ0cWJHCFk9NY4WjMli/Ppks/EQWyzKyWfeeWey5wV3ZO+PS2dZ5ndk7hekMzsrDrqcskNA2ADd977+ablnqGoVfWX6MGMlsBRLaRrr3yGK7ltS8eCkSYAYlJYuGGdFAQttM4zYhNnZExqVjdK0A5+PB8INOKo0eEtoh/vSgzp7kPfYH49PNp4ZVTfHBOBp64yljgiwtB9ZRk8ixQkK7BMxqtOiYa85aPJKWY56LRw9c7IeEdoFGD/c0wS5HPEBCO8wdD+axf27YxlZ8ucX8NXZ5vA4J7SAg8PIvNrHyLFu9kaR2GBLaIW5r2c0UuGIWLF9n/j/s8nkVEtoBoBf+dM3/e+aK+eQL6qmdgoS2mfptu7NV67ay2rJi7Rbzz2KX12uQ0DZyd/tebPO2/7BIs/HbnebfwS63lyChbeJR/Tn20+59zGp2/byXtdeHo5ffK5DQNmAMKGRHj51g0Qb+bqj/OPR6eAESOgZubR5m4978kJ07d47FmrNnz7GxU4vR6yQ7JHSUNG7/lDlbYXc+/nwDPVWMARI6CtJ6vsR+3fsHcyowFk/tUYBeTxkhoS0AQ4wxk+eyM2fOMqcDn1FQNNP8TOx6ywQJHSEt0geyr7f8wNzOuk3/YlqXAej1lwUSOgL6F7zJDh89zrBSevgY6ztyKno7yAAJXQP3P97nisVF2Fm6aj2777He6O0iMiR0NfQZOYUdOHSYiZb9B8tYz2GT0NtHVEjoCjRN6RfRWgzswPrqBzr2RW8v0SChL2N44XvmeFWWHCo7wvJfno7ebiJBQnMCqf3ZyrXfMFkDS1WptyahzTneYa+8y44dP8lkz5Gjx6m31uJY6NaZz7JN3+1kXsv6b7azBzMGo7cvCe0SsP1pwvQF7NTpM8yrOXHyFBv7xjxWt0X8PWWMK6Fh3fGGb3eweAk82WyT9Sx6u5PQNgNj5YKJs9jJU6dZvOXEydNs5IQZcbMmxPNCt8rMj6teubrA2LplcBD69SChY2DQ6Gkx7STxWmA9CqxLwb4uJLRFYDd1ybK1VV9VCpv70Rp2Z+sn0a8TCR0Bj+eNYDv/u6fai0m5kO27fjU39mJfLxK6BgaPmR6XN37RBm4Ynyn4B/p1I6ErAKcQzV68uuarR6k2H5Ss9MxJTtILDWuWv9r871ovGqXmwAmp93pgrbXUQjdPG0DjZRuz/cfd0m/3klbotjlD2J7fD0R0oSiRB3azt8kegn5940rox7o9z/44WBbhJaJYDeyKkXUGRDqhU54YxcqOyLMIX9ZAG8t45p5UQj+cO4wdLD1i4bJQYgl8C8r2uFwaoR/4S18aMyPkx19+k2r2Qwqh4TGtFxfjyxI47EaWeWophJ61iB6aYOf9+SvRPfCE0H1GTLHc+BRn0mv46+g+SC30n1P6sdKyo1E0PcWJwLEJcC+D7YW0Qtf0JikKTuD8amwvpBT6qeGTompwivPpPqQI3Q+phIad2bRGQ9zs4NdG1JeHCin0wJfeiratKS5F1HXUwgl9e8s89sve/VE3NMWd/Lxnv5C9tHBCw9QQRY6IeKyvcELDdnuKHIGDbLB9EVpoNfWZGJqXgpHkzv3RvRFWaHjrE0WuvPDaTHRvhBV6w1YabsgW0YYdwggNb0+14xXDFHcD16xBux7o/ggndE6/sbG1LAUtWX3/ju6PcEIXvbMotlaloKXo7YXo/ggntEjvA6RYi0gLloQRmtZuyBtY24Htj3BC07G38gZeWITtj1BC39Ph6RiblIKdJo/2QvdIGKHhlH2K3Hmoqxhv3hJC6M7dC2JtTwpy4MwUbI+EEbpr7zGxticFOV16vojukTBCt0gfyEa/PoeQmGad/obukTBCE4RdkNCEpyChCU9BQhOegoQmPIUrQi/67CvzSC8ifpm5cJV3hF7x5RZGie+UfLKWhKZ4JyQ0xVMhoSmeCglN8VRIaIqnQkJLHHj1XPFHa9ig0dPMpbGw+ApejwYr0vJfnm5e3NLD8fWuRRJawvy27yAb9sq75lu7amuT+m27sxHjP2D7DpTiFdjFkNCSZcaCVeyuNrWLXJGG7Xqwubw393pIaEly/vx5NrzwvZjbCM6Ig5/l1ZDQkuTFSbNta6exU4vdLr5rIaElyILl62xvq2WrN7pbCZdCQgseOIvCiXdgw3sAjx0/6W5lXAgJLXjGTytxrL0mvuu9c/5IaIEDR8g6uSlU6zLAczeIJLTA+eb7XY632bbtP7lXIRdCQgucN2YsdbzN3i5e7l6FXAgJLXDgkbbTbTZqwgz3KuRCSGiB80T+a463Wb9Rb7hXIRdCQgscY0Ch423WZ8QU9yrkQkhogUNCWw8JLXBIaOtxU+gTJLS1kNDW44bQiqofT/Cr+h4S2lpIaOtxRWjN2A1CbyShrYWEth53hNbXJyiqMYeEthYS2npcEnp2Au+mh5HQ1kJCW487Y2hjSEKSFmpDQlsLCW09bgjtC4RbJSTU63A13B2S0JGHhLYep4U2ZzgaBeskQPiN4WISOvKQ0NbjgtCLEsrj10IhEjrykNDW47TQvoCRc0nom5qEruW9dBkJHVlIaOtxWOhD4HDC5fFrehEJHVlIaOtxUmhF0wsTKsan5tZTVOMcCV17SGjrcUpocFbRjDsqCX2hlzbmkdC1h4S2Hsd6aFUvrlJmSJIWvpffLZ4noWsOCW09TggNriY1y72nWqEhTjwKJ6FJaEeE1vRZNcoMSWzaTeFSHyOhqw8JbT12C81lPgKu1iq02UsH9KF2fniPoRPRX65uJ3/Nn8CCvUY7SvchRej1tJNug8bb/I9ez49IZjONgnX4neN3TvdCBBENfOy89dJj7kijaKHG/A7yFHbhCaICJ/3JOQ0tyXxJalUfKEAFCOISSsDoH5XMl0m9FLsSBHGRJTHJDLkhOed6LvUOASpDxDEwbgYXYxYaAo8W+Q/cj10pIj5RNH3fzYFwXVtkLk9Sst6abhIJt4FnIj5Vb2arzOXxq6Eg/9dyFruSRHxguhYIdXRE5vL41FA2/6Az2JUlPI5qnFa0cKajMpdHCehdqacmnOJCz2xkuCJzeXyanktjasJ2uFNXbKdyM+YRCKpRit4IhFc4BJMPKDKXx9/UaETz1ESsKKqxPepH2nbnxuZ51/Geei52oxByAmvwwSFsjyvFp+q9/S4cz0t4hhP8BrAXtrc1xpesN+EF3SxAYxEio+obfWr4bmxfI0zwKliADbsK0BuOEAvVKL2wYi54FballsOHIEn8hnG+ExtvCbkABzgzleZ5idhexhz4auGVWkJixx8XRf7wlkCoAbaHtgemZRTNmGz3JlxCPLjERzkTE9VwfWzvHI+5xjoQCnO5F5Lc3gGuJaeEj5N129Yuy5a6rcLX+JP1FnD6Ooy3/eYMif6702dWE7GJC9fo4vt55vkCxuBENVezvHHVgfwPdFw9mgJfh3wAAAAASUVORK5CYII=">
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
+  --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
+  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
+  --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
+  --warn:#b42318; --warn-soft:#fdecea;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171c; --card:#1d2128; --text:#e7eaf0; --sub:#9aa3b2; --line:#2e343e;
+    --accent:#8fb5dd; --accent-soft:#25313f; --bar:#6f9bc8; --bar-bg:#2b313b; --over:#b39ddb;
+    --open-bg:#18232f; --open-line:#6f9bc8; --done-bg:#1b1e23; --done-line:#8a93a2; --pend-bg:#2a2418; --pend-line:#d9a441; --extra-bg:#241f2e; --extra-line:#b39ddb;
+    --warn:#f2958c; --warn-soft:#3a1d1b;
+  }
+}
+/* 暗い画面では、黒っぽい印（閉鎖・移転の✕など）が背景に溶けないよう、ページの中の小さな印に白いふちを付ける（地図の上の印・右上の一覧の印はそのまま） */
+@media (prefers-color-scheme: dark){
+  svg.mk-s,svg.zsh,svg.dot{filter:drop-shadow(0 0 1px rgba(255,255,255,.85))}
+}
+/* リンクの色（全ページ同じ。ボタン・札・メニューなど、自分の色を決めているリンクはそちらが優先。暗い画面でブラウザの濃い青のままにならないように） */
+a{color:var(--accent)}
+
+/* 県のページだけの色。--tg＝この県・強調の棒、--jp＝ほかの棒、--ref＝全国・参考、--pick＝地域別から選んで来た行、--th＝表の見出し、--c0〜7＝国籍などの色 */
+:root{
+  --tg:#1e3a5f; --jp:#b9c3cf; --ref:#8a8f98; --pick:#fff3c4; --th:#eef2f7;
+  --c0:#2a78d6; --c1:#eb6834; --c2:#1baf7a; --c3:#eda100; --c4:#e87ba4; --c5:#008300; --c6:#4a3aa7; --c7:#e34948; --cg:#8a8f98;
+  --c8:#6b7280; --c9:#8a5a2b;  /* 9位・10位（色が足りないので、線は点線にして見分ける） */
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --tg:#8fb5dd; --jp:#4b5563; --ref:#6b7280; --pick:#3d3416; --th:#252b34;
+    --c0:#3987e5; --c1:#d95926; --c2:#199e70; --c3:#c98500; --c4:#d55181; --c5:#008300; --c6:#9085e9; --c7:#e66767; --cg:#8a93a2;
+    --c8:#9aa3b2; --c9:#c49a6c;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 48px}
+a{color:var(--accent);overflow-wrap:anywhere}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+/* ページの上：地域別に戻る ＞ 〇〇県の施設一覧 */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:.88rem;margin:0 0 8px}
+.crumbs .sep,.crumbs .here{color:var(--sub)}
+h1{font-size:1.6rem;line-height:1.35;margin:0 0 4px}
+.lead{color:var(--sub);margin:0 0 16px;font-size:.95rem;max-width:62em}
+.title-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:0 0 6px}
+.title-row h1{margin:0}
+/* X の共有ボタン（地域別のページの「この地域の情報を共有（X）」と同じ色） */
+.xbtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:12px;background:var(--text);color:var(--card);font-size:.9rem;font-weight:800;text-decoration:none;white-space:nowrap}
+.xbtn:hover{filter:brightness(1.15)}
+/* 地域別・地図・このページの一覧へのボタン（地域別のページで県を選んだときの2つの入口と同じ形） */
+.golinks{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.go{flex:1 1 220px;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:12px;text-decoration:none;line-height:1.4;border:2px solid var(--accent);background:var(--card);color:var(--accent)}
+.go b{font-size:1rem}
+.go span{font-size:.8rem;color:var(--sub)}
+.go.main{background:var(--accent);color:var(--card)}
+.go.main span{color:var(--card)}
+.go:hover{filter:brightness(1.08)}
+/* 最終更新の帯と、主な数のカード（入口・地域別などの上の札と同じ形） */
+.updbar{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--ref);border-radius:12px;padding:6px 14px;margin:0 0 10px}
+.updbar b{color:var(--accent);font-size:.88rem}
+.updbar .t{font-size:1.05rem;font-weight:800;font-variant-numeric:tabular-nums}
+.updbar .s{font-size:.8rem;color:var(--sub)}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 8px}  /* 4枚：広い画面は4つ、中くらいは2つずつ、スマホは1つずつ */
+@media (min-width:1000px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px} .kpi{padding:8px 10px} .kpi .k{font-size:.8rem} .kpi .v{font-size:1.35rem!important} .kpi .v small{font-size:.8rem} .kpi .r{font-size:.75rem;margin:0} .kpi .tm{font-size:.7rem}}  /* スマホは2つずつ（下へのスクロールを減らす） */
+.kpi{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--tg);border-radius:12px;padding:10px 14px;min-width:0}
+.kpi .k{font-size:.88rem;font-weight:700;color:var(--accent);line-height:1.45}
+.kpi .v{font-size:1.75rem;font-weight:800;line-height:1.3;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:.95rem;font-weight:700;margin-left:2px}
+.kpi .v.t{font-size:1.25rem;padding-top:4px}
+.kpi .r{font-size:.85rem;font-weight:700;color:var(--accent);margin:0 0 4px}
+.kpi dl{margin:0;font-size:.78rem;color:var(--sub);line-height:1.55;display:grid;grid-template-columns:auto 1fr;gap:1px 6px}
+.kpi dt{font-weight:700;white-space:nowrap}
+.kpi dd{margin:0;overflow-wrap:anywhere}
+.kpi-note{font-size:.82rem;color:var(--sub);margin:0 0 14px;max-width:62em}
+.kpi-note b{color:var(--text)}
+/* 目次（はじめは閉じる。開閉の印は文字の ▶／▼） */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 16px;margin:0 0 8px}
+.toc > summary{cursor:pointer;list-style:none;display:block;font-weight:800;font-size:1rem;color:var(--accent);padding:12px 0}
+.toc > summary::-webkit-details-marker{display:none}
+.toc .tc-o,.toc[open] .tc-c{display:none}
+.toc[open] .tc-o{display:inline}
+.toc ol{list-style:none;margin:0 0 10px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2px 18px}
+.toc li{padding:4px 0 6px;border-top:1px solid var(--line)}
+.toc li > a{font-weight:800;text-decoration:none}
+.toc li > a:hover{text-decoration:underline}
+.toc .subs{display:block;font-size:.8rem;color:var(--sub)}
+.toc .subs a{color:var(--sub)}
+/* ほかの折りたたみ（詳しい数値を見る・表示する国籍・項目を選ぶ・店の一覧を見る）も同じ ▶／▼ の印。はじめに開くか閉じるかはそれぞれのまま */
+details.more > summary,.colpick > summary{cursor:pointer;list-style:none;display:block;font-weight:700;font-size:.92rem;color:var(--accent);padding:6px 0}
+details.more > summary::-webkit-details-marker,.colpick > summary::-webkit-details-marker{display:none}
+details.more > summary::before,.colpick > summary::before{content:"▶ ";font-size:.8em}
+details.more[open] > summary::before,.colpick[open] > summary::before{content:"▼ "}
+details.more[open] > summary{margin-bottom:6px}
+details.cityn{border-top:1px solid var(--line);padding:2px 0}
+td.lat,th.lat{background:var(--accent-soft)}
+small.asof{display:block;font-size:.72rem;color:var(--sub);font-weight:400;line-height:1.2}
+small.vs{display:block;font-size:.74rem;color:var(--sub);font-weight:400;line-height:1.3}
+details.cityn > summary small.vs{display:inline;margin-left:.5em}
+.rank10 .val small.vs{display:block}
+.bval small.vs{display:block;text-align:right}
+.lpt{font-size:.82rem;color:var(--sub);margin:4px 0 0;display:flex;align-items:center;gap:6px}
+.lpt .hollow{display:inline-block;width:10px;height:10px;border-radius:50%;border:2.5px solid var(--sub);background:var(--card);flex:none}
+details.cityn > summary{font-weight:400;color:var(--text);padding:8px 0}
+details.cityn > summary b{color:var(--accent)}
+/* 章（h2）と節（h3）。葬儀・墓地のページの章の見出しと同じ形 */
+section.sec{margin-top:36px;scroll-margin-top:12px}
+h2{font-size:1.35rem;font-weight:800;line-height:1.4;margin:0 0 12px;padding:2px 0 2px 12px;border-left:5px solid var(--accent);scroll-margin-top:12px}
+h2 .no{margin-right:6px}
+h3{font-size:1.08rem;font-weight:800;line-height:1.45;margin:22px 0 8px;padding:0 0 5px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+h4{font-size:1rem;margin:0;line-height:1.45}
+.totop{text-align:right;font-size:.82rem;margin:10px 0 0}
+.summary{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:12px 18px}
+.summary p{max-width:62em;margin:0 0 8px}
+.summary p.sum-lead{font-size:1.05rem;color:var(--accent)}
+.summary .note{margin:4px 0 0}
+.summary ul{margin:0 0 6px;padding-left:1.3em;max-width:62em}
+.summary li{margin-bottom:3px}
+.sum-table{overflow-x:auto;margin:2px 0 10px}
+.sum-table table{width:auto;font-size:.88rem;border:1px solid var(--line)}
+.sum-table th{position:static}
+.sum-table td:first-child{min-width:8.5em}
+@media (min-width:561px){.sum-table td:nth-child(n+2){white-space:nowrap}}
+.meta,.note{font-size:.82rem;color:var(--sub);margin:0}
+.note b{color:var(--text)}
+/* 全国順位の札（地域別のページの札と同じ形。3つずつ並べる） */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:700px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.tile .k{font-size:.8rem;font-weight:700;color:var(--sub)}
+.tile .v{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.3}
+.tile .v small{font-size:.9rem;font-weight:700;margin-left:2px}
+.tile .s{font-size:.8rem;color:var(--sub)}
+.tile .s b{color:var(--text);font-size:.95rem}
+/* 研究者の推計の札（数えた数ではないので、点線で分ける 2026-10-15） */
+.tile.ref{background:transparent;border-style:dashed}
+.tile .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:6px}
+.dist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dist li{display:grid;grid-template-columns:4.5em 1fr;gap:8px;align-items:baseline;font-size:.92rem}
+.dist li b{color:var(--accent);white-space:nowrap}
+.dist .bx{display:inline-block;height:10px;background:var(--tg);border-radius:0 3px 3px 0;margin-right:6px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:8px}
+/* 横棒のグラフ */
+.bars{display:flex;flex-direction:column;gap:2px}
+.brow{max-width:860px;display:grid;grid-template-columns:minmax(84px,30%) 1fr auto;gap:8px;align-items:center;font-size:.82rem;padding:2px 0}
+.blab{overflow-wrap:anywhere;line-height:1.35}
+.btrack{background:var(--bar-bg);border-radius:4px;height:12px;overflow:hidden;min-width:0}
+.bar{display:block;height:100%;background:var(--jp);border-radius:0 4px 4px 0}
+.brow.hl .bar,.bar.tg{background:var(--tg)}
+.brow.hl .blab,.brow.hl .bval{font-weight:800;color:var(--accent)}
+.brow.ref .bar{background:var(--ref)}
+.bval{font-variant-numeric:tabular-nums;color:var(--sub);white-space:nowrap;min-width:4em;text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--sub)}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.chart-meta{font-size:.78rem;color:var(--sub);margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 8px}
+.chart-meta dt{font-weight:700;white-space:nowrap}
+.chart-meta dd{margin:0}
+.chart-svg text{fill:var(--sub);font-size:12px;font-family:inherit}
+.chart-svg text.end{font-weight:700;font-size:12.5px;fill:var(--text)}
+.chart-svg line.grid{stroke:var(--line);stroke-width:1}
+/* 表（見出しの文字は地域別のページの表と同じ小さめの灰色） */
+.tablewrap{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:10px}
+.tablewrap.short{max-height:none}
+.tablewrap td:first-child,.tablewrap th:first-child{min-width:7.5em}  /* スマホで国籍・市区町村の名前が1字ずつ折り返されないように */
+table{border-collapse:collapse;width:100%;font-size:.82rem;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;z-index:1;background:var(--th);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--sub);font-size:.78rem;font-weight:700}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr.has td{background:var(--accent-soft)}
+tr.pick td{background:var(--pick)}
+tr.sum td{font-weight:700;border-top:2px solid var(--accent)}
+tr.ref td{color:var(--sub)}
+tr.ref td:first-child{color:var(--text)}
+tr.refhead td{background:var(--bg);font-size:.75rem;color:var(--sub);padding:4px 8px}
+.cell{display:inline-flex;align-items:center;gap:6px;justify-content:flex-end}
+.cbar{display:inline-block;height:10px;border-radius:0 3px 3px 0;min-width:2px;background:var(--jp)}
+.cbar.tg{background:var(--tg)}
+.nw{white-space:nowrap}
+.mlinks{display:block;font-size:.75rem;white-space:nowrap}
+.mlinks a{margin-right:8px}
+/* 表の上の操作（検索・並べ替え・絞り込み・列の選択）。ボタンは地域別のページの絞り込みボタンと同じ形 */
+.tctl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.88rem}
+.tctl input[type=search]{flex:1 1 220px;max-width:360px;font-size:.95rem;padding:7px 10px;border:1px solid var(--sub);border-radius:8px;background:var(--card);color:var(--text)}
+.tctl select{font-size:.88rem;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);max-width:100%}
+.tctl label{display:inline-flex;align-items:center;gap:6px}
+.tctl input[type=checkbox],.colpick input{width:18px;height:18px;accent-color:var(--accent)}
+.colpick{font-size:.85rem}
+.colpick .boxes{display:flex;flex-wrap:wrap;gap:4px 14px;padding:2px 2px 4px}
+.colpick label{display:inline-flex;align-items:center;gap:5px}
+.tcount{font-size:.8rem;color:var(--sub);margin:0}
+.sortbtns{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem}
+.sortbtns button,.hchips button{font:inherit;font-size:.85rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer}
+.sortbtns button[aria-pressed=true],.hchips button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--card)}
+.hchips{display:flex;flex-wrap:wrap;gap:6px}
+.hchips button span{margin-left:6px;font-variant-numeric:tabular-nums;opacity:.8}
+/* 市区町村の表：いちばん左の列はスマホで横に動かしても見えるように */
+.muni th:first-child,.muni td:first-child{position:sticky;left:0;background:var(--card);z-index:1;box-shadow:1px 0 0 var(--line)}
+.muni th:first-child{z-index:2;background:var(--th)}
+.muni tr.has td:first-child{background:var(--accent-soft)}
+.muni tr.pick td:first-child{background:var(--pick)}
+/* 開設時期の年表 */
+.tl{display:grid;grid-template-columns:minmax(120px,min(42%,360px)) 1fr;gap:4px 10px;align-items:center;font-size:.82rem}
+.tl-lab{overflow-wrap:anywhere;line-height:1.35}
+.tl-track{position:relative;height:30px;border-left:1px solid var(--sub)}
+.tl-track::after{content:"";position:absolute;left:0;right:0;top:10px;border-top:1px solid var(--line)}
+.tl-dot{position:absolute;top:10px;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);z-index:1;border:2px solid var(--card);box-shadow:0 0 0 1px var(--sub)}
+.tl-dot.early{background:var(--card)!important;border:3px solid var(--c);box-shadow:none;width:13px;height:13px}
+.tl-dot.approx{border:2px dashed var(--text);box-shadow:none}
+.tl-yr{position:absolute;top:15px;transform:translateX(-50%);font-size:.7rem;color:var(--sub);white-space:nowrap}
+.tl-axis{position:relative;height:18px;font-size:.75rem;color:var(--sub)}
+.tl-axis span{position:absolute;transform:translateX(-50%)}
+.kinds{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.82rem;color:var(--sub)}
+.kinds i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:var(--sub)}
+.kinds i.early{background:var(--card);border:3px solid var(--sub)}
+.kinds i.approx{border:2px dashed var(--text)}
+.facts{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.facts li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:.9rem}
+.facts li b.h{display:block;color:var(--accent);font-size:.95rem}
+/* 出典・調査方法（地域別のページの「このページについて」と同じ大きさ） */
+.src{margin:0;padding-left:1.4em;font-size:.85rem}
+.src li{margin-bottom:6px}
+.plain{margin:0;padding-left:1.3em;font-size:.88rem}
+.plain li{margin-bottom:4px}
+/* 章（1〜5）：はじめは閉じる。見出しの行のどこを押しても開閉（2026-10-14 ユーザー） */
+details.chap{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;scroll-margin-top:12px}
+details.chap > summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1.3em 1fr;gap:2px 6px;align-items:baseline;padding:14px 16px;min-height:52px;border-radius:12px}
+details.chap > summary::-webkit-details-marker{display:none}
+details.chap > summary::before{content:"▶";color:var(--accent);font-size:.9rem;grid-row:1 / span 2}
+details.chap[open] > summary::before{content:"▼"}
+details.chap > summary:hover{background:var(--accent-soft)}
+details.chap[open] > summary{border-bottom:1px solid var(--line);border-radius:12px 12px 0 0}
+details.chap > summary h2{margin:0;padding:0;border:0;font-size:1.25rem}
+.chap-d{grid-column:2;font-size:.85rem;color:var(--sub);line-height:1.5}
+.chap-in{padding:2px 16px 16px}
+.chap-in > h3:first-child{margin-top:14px}
+/* 主な数のカード（数・順位・時点だけ。くわしい決め方は5章） */
+.kpi .tm{font-size:.78rem;color:var(--sub);line-height:1.5}
+.kpi-note a{white-space:nowrap}
+/* 目的別のボタン（四角いボタン。ほかのページのボタンと同じ形） */
+.jump{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;margin:0 0 14px}
+.jump a{display:flex;align-items:center;gap:6px;min-height:46px;padding:8px 12px;border:2px solid var(--accent);border-radius:12px;background:var(--card);color:var(--accent);font-weight:800;text-decoration:none;line-height:1.35}
+.jump a.in{background:var(--accent);color:var(--card)}
+.jump a:hover{filter:brightness(1.08)}
+/* 外国人全体の国籍・地域別トップ10（横棒） */
+.rank10{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rank10 li{display:grid;grid-template-columns:1.6em minmax(6.5em,11em) 1fr auto;gap:4px 8px;align-items:center;font-size:.88rem}
+.rank10 .rk{color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
+.rank10 .nm{font-weight:700;overflow-wrap:anywhere;line-height:1.35}
+.rank10 .tr{background:var(--bar-bg);border-radius:4px;height:14px;overflow:hidden;min-width:0}
+.rank10 .tr i{display:block;height:100%;border-radius:0 4px 4px 0}
+.rank10 .val{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.rank10 .val small{color:var(--sub);margin-left:4px}
+@media (max-width:560px){.rank10 li{grid-template-columns:1.6em 1fr auto;grid-template-areas:"rk nm val" ". tr tr"} .rank10 .rk{grid-area:rk} .rank10 .nm{grid-area:nm} .rank10 .val{grid-area:val} .rank10 .tr{grid-area:tr}}
+/* 上位10か国・地域の推移：表示する国籍・地域を選ぶ */
+.t10btns{display:flex;flex-wrap:wrap;gap:6px}
+.t10btns button{font:inherit;font-size:.88rem;font-weight:700;min-height:40px;padding:6px 14px;border-radius:12px;border:2px solid var(--accent);background:var(--card);color:var(--accent);cursor:pointer}
+.t10btns button[aria-pressed=true]{background:var(--accent);color:var(--card)}
+.t10pick{border:1px solid var(--line);border-radius:12px;padding:6px 12px 8px;margin:0}
+.t10pick legend{font-size:.82rem;font-weight:700;color:var(--sub);padding:0 4px}
+.t10pick .boxes{display:flex;flex-wrap:wrap;gap:4px 14px}
+.t10pick label{display:inline-flex;align-items:center;gap:5px;font-size:.88rem;min-height:32px}
+.t10pick input{width:18px;height:18px;accent-color:var(--accent)}
+.t10chart{min-height:200px}
+/* 点をタップ（PCではクリック）したときの吹き出し */
+.ctip{position:absolute;z-index:20;pointer-events:none;background:var(--text);color:var(--card);font-size:.82rem;font-weight:700;line-height:1.4;padding:5px 9px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap;transform:translate(-50%,calc(-100% - 10px))}
+.chart-svg [data-tip]{cursor:pointer}
+/* 市区町村の表：0 と「—」を見分ける・表示項目の追加 */
+td.z{color:var(--sub)}
+.colpick .tools{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.colpick .tools button{font:inherit;font-size:.85rem;font-weight:700;min-height:36px;padding:4px 12px;border-radius:12px;border:2px solid var(--accent);background:var(--card);color:var(--accent);cursor:pointer}
+@media (max-width:560px){
+  .tl-yr{display:none} h1{font-size:1.45rem} h2{font-size:1.2rem} .kpi .v{font-size:1.6rem}
+  details.chap > summary h2{font-size:1.1rem}
+  .golinks{gap:6px} .go{padding:7px 12px} .go:not(.main) span{display:none}
+}
+</style>
+<style>#muni.h-shr [data-c="shr"] { display: none; }#muni.h-est [data-c="est"] { display: none; }#muni.h-shop [data-c="shop"] { display: none; }#muni.h-c0 [data-c="c0"] { display: none; }#muni.h-c1 [data-c="c1"] { display: none; }#muni.h-c2 [data-c="c2"] { display: none; }#muni.h-c3 [data-c="c3"] { display: none; }#muni.h-c4 [data-c="c4"] { display: none; }#muni.h-c5 [data-c="c5"] { display: none; }#muni.h-c6 [data-c="c6"] { display: none; }#muni.h-c7 [data-c="c7"] { display: none; }#muni.h-c8 [data-c="c8"] { display: none; }#muni.h-c9 [data-c="c9"] { display: none; }#muni.h-c10 [data-c="c10"] { display: none; }.tile .tag,.card h4 .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:6px}</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="ページの切り替え"><a class="home" href="index.html" aria-label="ホーム" title="ホーム（入口のページ）"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg><span>ホーム</span></a><a href="map.html">地図</a><a href="area.html" aria-current=page>地域別</a><a href="mosque.html" class="long"><span>モスク・</span><span>施設を探す</span></a><a href="donation.html">寄付</a><a href="funeral.html" class="split"><span>葬儀・</span><span>墓地</span></a></nav><style>
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 16px; padding: 5px; background: #1e3a5f;
+            border-radius: 14px; font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
+.site-nav a { flex: 1 1 auto; text-align: center; white-space: nowrap; text-decoration: none; color: #fff;
+              font-size: 15px; font-weight: 700; line-height: 1.4; padding: 8px 12px; border-radius: 10px; }
+.site-nav a:hover { background: rgba(255,255,255,.16); }
+.site-nav a[aria-current="page"] { background: #fff; color: #1e3a5f; }
+.site-nav a.home { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+.site-nav a.home svg { flex: 0 0 auto; }
+/* スマホでは6つが1段に収まるよう、「ホーム」は家の絵だけにして、すき間も詰める */
+@media (max-width: 480px) {
+  .site-nav { gap: 2px; padding: 4px; }
+  .site-nav a { font-size: 14px; padding: 7px 4px; }
+  .site-nav a.home { padding: 7px 6px; }
+  .site-nav a.home span { display: none; }
+}
+@media (max-width: 370px) { .site-nav a { font-size: 13px; } }
+/* 「・」の入った名前は、幅が狭いときだけ「・」の後ろで2行にして、メニューを1段に収める
+   （長い「モスク・施設を探す」は600px以下で、「葬儀・墓地」はさらに狭い370px以下で） */
+.site-nav a.long span, .site-nav a.split span { white-space: nowrap; }
+@media (min-width: 481px) and (max-width: 600px) { .site-nav a { padding: 8px 8px; } }
+@media (max-width: 600px) {
+  .site-nav a.long { flex: 1 1 0; white-space: normal; line-height: 1.25; display: flex; flex-wrap: wrap; align-items: center;
+                     justify-content: center; align-content: center; }
+}
+@media (max-width: 370px) {
+  .site-nav a.split { flex: 1 1 0; white-space: normal; line-height: 1.25; display: flex; flex-wrap: wrap; align-items: center;
+                      justify-content: center; align-content: center; }
+}
+@media print { .site-nav { display: none; } }
+</style>
+<nav class="crumbs" aria-label="現在地"><a href="area.html">← 地域別に戻る</a><span class="sep">＞</span><span class="here" aria-current="page">日本全体のモスクと人口</span></nav>
+<div class="title-row"><h1>日本全体のモスクと人口</h1>
+  <a class="xbtn" href="https://twitter.com/intent/tweet?text=%F0%9F%93%8A%20%E6%97%A5%E6%9C%AC%E5%85%A8%E4%BD%93%E3%81%AE%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%A8%E4%BA%BA%E5%8F%A3%0A%EF%BC%882026%E5%B9%B410%E6%9C%8816%E6%97%A5%E6%99%82%E7%82%B9%EF%BC%89%0A%0A%F0%9F%95%8C%20%E3%83%A2%E3%82%B9%E3%82%AF%E3%83%BB%E7%A4%BC%E6%8B%9D%E6%89%80%20266%E3%81%8B%E6%89%80%EF%BC%8845%E9%83%BD%E9%81%93%E5%BA%9C%E7%9C%8C%EF%BC%89%0A%F0%9F%91%A5%20%E5%9C%A8%E7%95%99%E5%A4%96%E5%9B%BD%E4%BA%BA%204%2C281%2C026%E4%BA%BA%EF%BC%882026%E5%B9%B46%E6%9C%88%E6%9C%AB%EF%BC%89%0A%0A%E4%BA%BA%E5%8F%A3%E3%83%BB%E5%9B%BD%E7%B1%8D%E3%83%BB%E9%83%BD%E9%81%93%E5%BA%9C%E7%9C%8C%E3%81%AE%E3%81%8F%E3%82%89%E3%81%B9%E3%81%A8%E3%83%A2%E3%82%B9%E3%82%AF%E3%81%AE%E7%89%B9%E5%BE%B4%E3%82%92%E5%87%BA%E5%85%B8%E4%BB%98%E3%81%8D%E3%81%A7%F0%9F%91%87&amp;url=https%3A%2F%2Fyumaki5555.github.io%2Fmosque-map%2Fjapan.html" target="_blank" rel="noopener noreferrer" title="日本全体の数とこのページへのリンクが入った投稿の画面が開きます">このページを共有（X）</a></div>
+<p class="lead">日本全体のモスク・礼拝所の数、国籍別の在留外国人数とその推移、都道府県のくらべ、ムスリム人口の推計などを、公開資料をもとにまとめています。都道府県ごとのくわしいページは「3. 都道府県別の状況」の表から開けます。</p>
+<p class="updbar"><b>最終更新</b><span class="t">2026年10月16日 16:45</span><span class="s">このページの中身を変えた日時です（施設を確かめた日・統計の時点とは別です）。</span></p>
+<div class="kpis"><div class="kpi"><div class="k">モスク・礼拝所</div><div class="v">266<small>か所</small></div><div class="r">45都道府県にあります</div><div class="tm">このページの最終更新の時点の掲載数</div></div><div class="kpi"><div class="k">在留外国人数（外国人全体）</div><div class="v">4,281,026<small>人</small></div><div class="r">2025年末から+155,631人（3.8%）</div><div class="tm">2026年6月末・すべての国籍の合計</div></div><div class="kpi"><div class="k">対象10か国の在留外国人数</div><div class="v">392,159<small>人</small></div><div class="r">外国人全体の9.5%（2025年12月末どうし）</div><div class="tm">2025年12月末・国籍別の人数</div></div><div class="kpi"><div class="k">ハラール食材店</div><div class="v">672<small>店</small></div><div class="r">調べた36都道府県の合計</div><div class="tm">2026年10月12日〜2026年10月16日に確認</div></div></div>
+<p class="kpi-note">人口は国の統計で、外国人全体はいちばん新しい2026年6月末（2026年10月16日発表）、対象10か国は国籍ごとの数がそろう2025年12月末の数です（2026年6月末のくわしい表は2026年12月ごろの見込み）。<b>10か国の人は外国人全体の一部です（国籍で数えた人数で、宗教は問いません）。</b>研究者が推計したムスリムの人数は<a href="#s1-2">都道府県のくらべ</a>にあります。 <a href="#s5-2">集計基準を見る →</a></p>
+<nav class="jump" aria-label="目的別に見る">
+  <a class="in" href="#s2">👥 人口・国籍を見る</a>
+  <a class="in" href="#s3">🗾 都道府県別に見る</a>
+  <a class="in" href="#s4">🕌 モスク・関連施設を見る</a>
+  <a href="area.html">📋 地域別に施設を探す</a>
+  <a href="map.html">🗺️ 地図で見る</a>
+</nav>
+<details class="toc" id="toc"><summary><span class="tc-c">▶ このページの目次（全5章）</span><span class="tc-o">▼ このページの目次（閉じる）</span></summary><nav aria-label="このページの目次"><ol><li><a href="#s1">1. 日本全体の特徴</a><span class="subs"><a href="#s1-1">主要な調査結果</a>・<a href="#s1-2">都道府県のくらべ</a></span></li><li><a href="#s2">2. 人口・国籍別統計</a><span class="subs"><a href="#s2-top10">外国人全体の国籍・地域別 上位10（2026年6月末）</a>・<a href="#s2-top10-trend">上位10か国・地域の人数の推移（2016〜2025年）</a>・<a href="#s2-1">対象10か国の在留外国人</a>・<a href="#s2-2">対象10か国などの人口推移（2016〜2025年）</a></span></li><li><a href="#s3">3. 都道府県別の状況</a><span class="subs"><a href="#s3-1">都道府県別の人口と施設数</a></span></li><li><a href="#s4">4. モスク・関連施設</a><span class="subs"><a href="#s4-1">中心の国籍ごとのモスクの数</a>・<a href="#s4-2">開設時期</a>・<a href="#s4-3">運営団体・国籍・宗派・区域区分</a>・<a href="#s4-4">数に入れていない場所</a>・<a href="#s4-5">ハラール食材店</a></span></li><li><a href="#s5">5. 出典・調査方法</a><span class="subs"><a href="#s5-1">統計資料と出典</a>・<a href="#s5-2">集計基準と注意事項</a>・<a href="#s5-3">情報提供・訂正依頼</a></span></li></ol></nav></details>
+<details class="chap" id="s1"><summary><h2><span class="no">1.</span>日本全体の特徴</h2><span class="chap-d">モスクの数、外国人の人数、都道府県のくらべ</span></summary><div class="chap-in"><h3 id="s1-1">主要な調査結果</h3><div class="summary"><ul><li><b>モスク・礼拝所</b>：<b>266か所</b>（45都道府県）。多いのは埼玉県 29・東京都 26・茨城県 24・千葉県 22・愛知県 22か所。秋田県・山口県は掲載なし。</li><li><b>外国人全体</b>：<b>4,281,026人</b>（2026年6月末）。半年で+155,631人（3.8%）、2016〜2025年の9年で約1.7倍。</li><li><b>対象10か国の人</b>：<b>392,159人</b>（2025年12月末）＝外国人全体の9.5%。インドネシア 266,037人・バングラデシュ 44,938人・パキスタン 34,911人の順。9年で約4.1倍。</li><li><b>ムスリム人口（研究者推計）</b>：約<b>508,951人</b>（数えた数ではありません）。モスク・礼拝所1か所あたり約1,913人。</li><li><b>モスクの中心の国籍</b>：確かめられた209か所では、多国籍 67・パキスタン系 43・インドネシア系 40・バングラデシュ系 32か所の順（57か所は不明）。</li><li><b>開設時期</b>：2022年以降に開設したと資料で分かる施設は<b>44か所</b>。</li></ul><p class="note">このページの数から自動でまとめた文です。数字の出典は「5. 出典・調査方法」にあります。</p></div><h3 id="s1-2">都道府県のくらべ</h3><div class="grid">
+  <div class="card"><h4>モスク・礼拝所の数が多い都道府県（当サイトの掲載数・上位10）</h4>
+    <p class="note">いま使われていると確認できた場所の数です（状況確認中・閉鎖・学校・墓地は入れていません）。</p><div class="bars"><div class="brow " title="埼玉県 29か所"><span class="blab">埼玉県</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">29か所</span></div><div class="brow " title="東京都 26か所"><span class="blab">東京都</span><span class="btrack"><span class="bar" style="width:89.7%"></span></span><span class="bval">26か所</span></div><div class="brow " title="茨城県 24か所"><span class="blab">茨城県</span><span class="btrack"><span class="bar" style="width:82.8%"></span></span><span class="bval">24か所</span></div><div class="brow " title="千葉県 22か所"><span class="blab">千葉県</span><span class="btrack"><span class="bar" style="width:75.9%"></span></span><span class="bval">22か所</span></div><div class="brow " title="愛知県 22か所"><span class="blab">愛知県</span><span class="btrack"><span class="bar" style="width:75.9%"></span></span><span class="bval">22か所</span></div><div class="brow " title="群馬県 13か所"><span class="blab">群馬県</span><span class="btrack"><span class="bar" style="width:44.8%"></span></span><span class="bval">13か所</span></div><div class="brow " title="神奈川県 13か所"><span class="blab">神奈川県</span><span class="btrack"><span class="bar" style="width:44.8%"></span></span><span class="bval">13か所</span></div><div class="brow " title="栃木県 10か所"><span class="blab">栃木県</span><span class="btrack"><span class="bar" style="width:34.5%"></span></span><span class="bval">10か所</span></div><div class="brow " title="宮城県 7か所"><span class="blab">宮城県</span><span class="btrack"><span class="bar" style="width:24.1%"></span></span><span class="bval">7か所</span></div><div class="brow " title="北海道 6か所"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:20.7%"></span></span><span class="bval">6か所</span></div></div>
+    <p class="note">このほか、長野県・岐阜県・大阪府も6か所です（同じ数の都道府県は北から順に並べ、上位10に入らなかった分）。</p></div>
+  <div class="card"><h4>対象10か国の人が多い都道府県（2025年12月末・上位10）</h4>
+    <p class="note">国籍別の人数で、宗教別の人数ではありません。47都道府県の表は「3. 都道府県別の状況」にあります。</p><div class="bars"><div class="brow " title="東京都 39,320人"><span class="blab">東京都</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">39,320人</span></div><div class="brow " title="埼玉県 30,661人"><span class="blab">埼玉県</span><span class="btrack"><span class="bar" style="width:78.0%"></span></span><span class="bval">30,661人</span></div><div class="brow " title="愛知県 30,380人"><span class="blab">愛知県</span><span class="btrack"><span class="bar" style="width:77.3%"></span></span><span class="bval">30,380人</span></div><div class="brow " title="千葉県 25,610人"><span class="blab">千葉県</span><span class="btrack"><span class="bar" style="width:65.1%"></span></span><span class="bval">25,610人</span></div><div class="brow " title="神奈川県 22,972人"><span class="blab">神奈川県</span><span class="btrack"><span class="bar" style="width:58.4%"></span></span><span class="bval">22,972人</span></div><div class="brow " title="大阪府 22,168人"><span class="blab">大阪府</span><span class="btrack"><span class="bar" style="width:56.4%"></span></span><span class="bval">22,168人</span></div><div class="brow " title="茨城県 20,637人"><span class="blab">茨城県</span><span class="btrack"><span class="bar" style="width:52.5%"></span></span><span class="bval">20,637人</span></div><div class="brow " title="北海道 14,819人"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:37.7%"></span></span><span class="bval">14,819人</span></div><div class="brow " title="群馬県 13,210人"><span class="blab">群馬県</span><span class="btrack"><span class="bar" style="width:33.6%"></span></span><span class="bval">13,210人</span></div><div class="brow " title="福岡県 12,381人"><span class="blab">福岡県</span><span class="btrack"><span class="bar" style="width:31.5%"></span></span><span class="bval">12,381人</span></div></div></div>
+  <div class="card"><h4><span class="tag">参考</span>ムスリム人口（研究者推計）が多い都道府県（上位10）</h4>
+    <p class="note">在留外国人統計（2025年12月末）の国籍別の人数をもとに研究者が推計した数で、数えた数ではありません（2026年9月発表）。</p><div class="bars"><div class="brow ref" title="東京都 約51,131人"><span class="blab">東京都</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">約51,131人</span></div><div class="brow ref" title="埼玉県 約39,871人"><span class="blab">埼玉県</span><span class="btrack"><span class="bar" style="width:78.0%"></span></span><span class="bval">約39,871人</span></div><div class="brow ref" title="愛知県 約39,506人"><span class="blab">愛知県</span><span class="btrack"><span class="bar" style="width:77.3%"></span></span><span class="bval">約39,506人</span></div><div class="brow ref" title="千葉県 約33,303人"><span class="blab">千葉県</span><span class="btrack"><span class="bar" style="width:65.1%"></span></span><span class="bval">約33,303人</span></div><div class="brow ref" title="神奈川県 約29,872人"><span class="blab">神奈川県</span><span class="btrack"><span class="bar" style="width:58.4%"></span></span><span class="bval">約29,872人</span></div><div class="brow ref" title="大阪府 約28,827人"><span class="blab">大阪府</span><span class="btrack"><span class="bar" style="width:56.4%"></span></span><span class="bval">約28,827人</span></div><div class="brow ref" title="茨城県 約26,836人"><span class="blab">茨城県</span><span class="btrack"><span class="bar" style="width:52.5%"></span></span><span class="bval">約26,836人</span></div><div class="brow ref" title="北海道 約19,283人"><span class="blab">北海道</span><span class="btrack"><span class="bar" style="width:37.7%"></span></span><span class="bval">約19,283人</span></div><div class="brow ref" title="群馬県 約17,178人"><span class="blab">群馬県</span><span class="btrack"><span class="bar" style="width:33.6%"></span></span><span class="bval">約17,178人</span></div><div class="brow ref" title="福岡県 約16,101人"><span class="blab">福岡県</span><span class="btrack"><span class="bar" style="width:31.5%"></span></span><span class="bval">約16,101人</span></div></div></div>
+</div><p class="totop"><a href="#toc">↑ 目次へ戻る</a></p></div></details>
+<details class="chap" id="s2"><summary><h2><span class="no">2.</span>人口・国籍別統計</h2><span class="chap-d">外国人全体と対象10か国の人数・推移</span></summary><div class="chap-in"><h3 id="s2-top10">外国人全体の国籍・地域別 上位10（2026年6月末）</h3><div class="card" id="top10">
+  <h4>日本に住む外国人の国籍・地域 上位10（2026年6月末）</h4>
+  <p class="note"><b>国籍・地域別の在留外国人数で、宗教による分類ではありません。ムスリムかどうかは分かりません。</b>外国人全体は4,281,026人で、かっこの中はそのうちの割合です。</p>
+  <ol class="rank10"><li><span class="rk">1</span><span class="nm"><i class="sw" style="background:var(--c0)"></i>中国</span><span class="tr"><i style="width:100.0%;background:var(--c0)"></i></span><span class="val">941,031人<small>（22.0%）</small></span></li><li><span class="rk">2</span><span class="nm"><i class="sw" style="background:var(--c1)"></i>ベトナム</span><span class="tr"><i style="width:73.7%;background:var(--c1)"></i></span><span class="val">693,750人<small>（16.2%）</small></span></li><li><span class="rk">3</span><span class="nm"><i class="sw" style="background:var(--c2)"></i>韓国</span><span class="tr"><i style="width:43.4%;background:var(--c2)"></i></span><span class="val">408,682人<small>（9.5%）</small></span></li><li><span class="rk">4</span><span class="nm"><i class="sw" style="background:var(--c3)"></i>フィリピン</span><span class="tr"><i style="width:38.5%;background:var(--c3)"></i></span><span class="val">362,761人<small>（8.5%）</small></span></li><li><span class="rk">5</span><span class="nm"><i class="sw" style="background:var(--c4)"></i>ネパール</span><span class="tr"><i style="width:35.6%;background:var(--c4)"></i></span><span class="val">334,850人<small>（7.8%）</small></span></li><li><span class="rk">6</span><span class="nm"><i class="sw" style="background:var(--c5)"></i>インドネシア</span><span class="tr"><i style="width:32.7%;background:var(--c5)"></i></span><span class="val">307,456人<small>（7.2%）</small></span></li><li><span class="rk">7</span><span class="nm"><i class="sw" style="background:var(--c6)"></i>ミャンマー</span><span class="tr"><i style="width:22.5%;background:var(--c6)"></i></span><span class="val">211,602人<small>（4.9%）</small></span></li><li><span class="rk">8</span><span class="nm"><i class="sw" style="background:var(--c7)"></i>ブラジル</span><span class="tr"><i style="width:22.3%;background:var(--c7)"></i></span><span class="val">209,550人<small>（4.9%）</small></span></li><li><span class="rk">9</span><span class="nm"><i class="sw" style="background:var(--c8)"></i>スリランカ</span><span class="tr"><i style="width:9.1%;background:var(--c8)"></i></span><span class="val">85,415人<small>（2.0%）</small></span></li><li><span class="rk">10</span><span class="nm"><i class="sw" style="background:var(--c9)"></i>台湾</span><span class="tr"><i style="width:7.8%;background:var(--c9)"></i></span><span class="val">73,628人<small>（1.7%）</small></span></li></ol>
+  <p class="note">前の年からの増え方は、すぐ下のグラフにあります。出典：出入国在留管理庁「令和8年6月末における在留外国人数について」（2026年10月16日発表）の第1表。</p>
+</div><h3 id="s2-top10-trend">上位10か国・地域の人数の推移（2016〜2025年）</h3><div class="card t10" id="top10-trend" data-src="top10-data-japan">
+  <h4>日本に住む外国人の上位10か国・地域の推移（2016〜2025年の各年12月末と2026年6月末）</h4>
+  <dl class="chart-meta"><dt>対象</dt><dd>2026年6月末の上位10か国・地域（どの年も同じ10か国・地域の人数をくらべています）</dd>
+    <dt>期間</dt><dd>2016〜2025年の各年12月末と、2026年6月末（右はしの白抜きの点）</dd>
+    <dt>数</dt><dd>47都道府県の合計（住む都道府県が「未定・不詳」の人＝2025年末で7,228人は入らないので、全国の数より少しだけ少なくなります）</dd><dt>出典</dt><dd>出入国在留管理庁「在留外国人統計」（くわしくは「5. 出典・調査方法」）</dd></dl>
+  <div class="t10btns" role="group" aria-label="表示する国籍・地域"><button type="button" data-show="5" aria-pressed="true">上位5を表示</button><button type="button" data-show="all" aria-pressed="false">全10か国・地域を表示</button></div>
+  <fieldset class="t10pick"><legend>国籍・地域を選ぶ（チェックで表示・非表示）</legend><div class="boxes"><label><input type="checkbox" checked><i class="sw" style="background:var(--c0)"></i>中国</label><label><input type="checkbox" checked><i class="sw" style="background:var(--c1)"></i>ベトナム</label><label><input type="checkbox" checked><i class="sw" style="background:var(--c2)"></i>韓国</label><label><input type="checkbox" checked><i class="sw" style="background:var(--c3)"></i>フィリピン</label><label><input type="checkbox" checked><i class="sw" style="background:var(--c4)"></i>ネパール</label><label><input type="checkbox"><i class="sw" style="background:var(--c5)"></i>インドネシア</label><label><input type="checkbox"><i class="sw" style="background:var(--c6)"></i>ミャンマー</label><label><input type="checkbox"><i class="sw" style="background:var(--c7)"></i>ブラジル</label><label><input type="checkbox"><i class="sw" style="background:var(--c8)"></i>スリランカ</label><label><input type="checkbox"><i class="sw" style="background:var(--c9)"></i>台湾</label></div></fieldset>
+  <div class="t10chart"><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移の線グラフ">
+<line x1="56" x2="530" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
+<line x1="56" x2="530" y1="236.0" y2="236.0" class="grid"/><text x="48" y="236.0" dy="0.32em" text-anchor="end">200,000</text>
+<line x1="56" x2="530" y1="180.0" y2="180.0" class="grid"/><text x="48" y="180.0" dy="0.32em" text-anchor="end">400,000</text>
+<line x1="56" x2="530" y1="124.0" y2="124.0" class="grid"/><text x="48" y="124.0" dy="0.32em" text-anchor="end">600,000</text>
+<line x1="56" x2="530" y1="68.0" y2="68.0" class="grid"/><text x="48" y="68.0" dy="0.32em" text-anchor="end">800,000</text>
+<line x1="56" x2="530" y1="12.0" y2="12.0" class="grid"/><text x="48" y="12.0" dy="0.32em" text-anchor="end">1,000,000</text>
+<text x="56.0" y="312" text-anchor="middle">2016</text>
+<text x="105.9" y="312" text-anchor="middle">2017</text>
+<text x="155.8" y="312" text-anchor="middle">2018</text>
+<text x="205.7" y="312" text-anchor="middle">2019</text>
+<text x="255.6" y="312" text-anchor="middle">2020</text>
+<text x="305.6" y="312" text-anchor="middle">2021</text>
+<text x="355.5" y="312" text-anchor="middle">2022</text>
+<text x="405.4" y="312" text-anchor="middle">2023</text>
+<text x="455.3" y="312" text-anchor="middle">2024</text>
+<text x="505.2" y="312" text-anchor="middle">2025</text>
+<polyline points="56.0,97.3 105.9,87.4 155.8,77.9 205.7,64.3 255.6,76.1 305.6,91.4 355.5,79.1 405.4,62.3 455.3,47.8 505.2,31.9" fill="none" style="stroke:var(--c0)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="97.3" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 中国 695,437人"><title>2016年 中国 695,437人</title></circle>
+<circle cx="105.9" cy="87.4" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 中国 730,663人"><title>2017年 中国 730,663人</title></circle>
+<circle cx="155.8" cy="77.9" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 中国 764,610人"><title>2018年 中国 764,610人</title></circle>
+<circle cx="205.7" cy="64.3" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 中国 813,056人"><title>2019年 中国 813,056人</title></circle>
+<circle cx="255.6" cy="76.1" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 中国 771,181人"><title>2020年 中国 771,181人</title></circle>
+<circle cx="305.6" cy="91.4" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 中国 716,315人"><title>2021年 中国 716,315人</title></circle>
+<circle cx="355.5" cy="79.1" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 中国 760,440人"><title>2022年 中国 760,440人</title></circle>
+<circle cx="405.4" cy="62.3" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 中国 820,238人"><title>2023年 中国 820,238人</title></circle>
+<circle cx="455.3" cy="47.8" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 中国 872,125人"><title>2024年 中国 872,125人</title></circle>
+<circle cx="505.2" cy="31.9" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 中国 928,995人"><title>2025年 中国 928,995人</title></circle>
+<line x1="505.2" y1="31.9" x2="530.0" y2="28.9" style="stroke:var(--c0)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="28.9" r="4.5" style="fill:var(--card);stroke:var(--c0)" stroke-width="2.5" data-tip="2026年6月末（国の統計） 中国 939,814人"><title>2026年6月末（国の統計） 中国 939,814人</title></circle>
+<polyline points="56.0,236.0 105.9,218.6 155.8,199.4 205.7,176.7 255.6,168.2 305.6,170.8 355.5,155.3 405.4,134.0 455.3,114.5 505.2,101.5" fill="none" style="stroke:var(--c1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="236.0" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 ベトナム 199,966人"><title>2016年 ベトナム 199,966人</title></circle>
+<circle cx="105.9" cy="218.6" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 ベトナム 262,295人"><title>2017年 ベトナム 262,295人</title></circle>
+<circle cx="155.8" cy="199.4" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 ベトナム 330,798人"><title>2018年 ベトナム 330,798人</title></circle>
+<circle cx="205.7" cy="176.7" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 ベトナム 411,717人"><title>2019年 ベトナム 411,717人</title></circle>
+<circle cx="255.6" cy="168.2" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 ベトナム 442,190人"><title>2020年 ベトナム 442,190人</title></circle>
+<circle cx="305.6" cy="170.8" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 ベトナム 432,900人"><title>2021年 ベトナム 432,900人</title></circle>
+<circle cx="355.5" cy="155.3" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 ベトナム 488,329人"><title>2022年 ベトナム 488,329人</title></circle>
+<circle cx="405.4" cy="134.0" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 ベトナム 564,161人"><title>2023年 ベトナム 564,161人</title></circle>
+<circle cx="455.3" cy="114.5" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 ベトナム 633,880人"><title>2024年 ベトナム 633,880人</title></circle>
+<circle cx="505.2" cy="101.5" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 ベトナム 680,449人"><title>2025年 ベトナム 680,449人</title></circle>
+<line x1="505.2" y1="101.5" x2="530.0" y2="97.9" style="stroke:var(--c1)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="97.9" r="4.5" style="fill:var(--card);stroke:var(--c1)" stroke-width="2.5" data-tip="2026年6月末（国の統計） ベトナム 693,251人"><title>2026年6月末（国の統計） ベトナム 693,251人</title></circle>
+<polyline points="56.0,165.2 105.9,165.9 155.8,166.2 205.7,167.1 255.6,172.7 305.6,177.3 355.5,177.0 405.4,177.3 455.3,177.5 505.2,178.1" fill="none" style="stroke:var(--c2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="165.2" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 韓国 452,980人"><title>2016年 韓国 452,980人</title></circle>
+<circle cx="105.9" cy="165.9" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 韓国 450,430人"><title>2017年 韓国 450,430人</title></circle>
+<circle cx="155.8" cy="166.2" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 韓国 449,459人"><title>2018年 韓国 449,459人</title></circle>
+<circle cx="205.7" cy="167.1" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 韓国 446,007人"><title>2019年 韓国 446,007人</title></circle>
+<circle cx="255.6" cy="172.7" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 韓国 426,145人"><title>2020年 韓国 426,145人</title></circle>
+<circle cx="305.6" cy="177.3" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 韓国 409,724人"><title>2021年 韓国 409,724人</title></circle>
+<circle cx="355.5" cy="177.0" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 韓国 410,875人"><title>2022年 韓国 410,875人</title></circle>
+<circle cx="405.4" cy="177.3" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 韓国 409,695人"><title>2023年 韓国 409,695人</title></circle>
+<circle cx="455.3" cy="177.5" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 韓国 408,875人"><title>2024年 韓国 408,875人</title></circle>
+<circle cx="505.2" cy="178.1" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 韓国 406,800人"><title>2025年 韓国 406,800人</title></circle>
+<line x1="505.2" y1="178.1" x2="530.0" y2="177.7" style="stroke:var(--c2)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="177.7" r="4.5" style="fill:var(--card);stroke:var(--c2)" stroke-width="2.5" data-tip="2026年6月末（国の統計） 韓国 408,277人"><title>2026年6月末（国の統計） 韓国 408,277人</title></circle>
+<polyline points="56.0,223.8 105.9,219.1 155.8,216.1 205.7,212.9 255.6,214.0 305.6,214.6 355.5,208.5 405.4,201.9 455.3,196.5 505.2,192.3" fill="none" style="stroke:var(--c3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="223.8" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 フィリピン 243,540人"><title>2016年 フィリピン 243,540人</title></circle>
+<circle cx="105.9" cy="219.1" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 フィリピン 260,345人"><title>2017年 フィリピン 260,345人</title></circle>
+<circle cx="155.8" cy="216.1" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 フィリピン 271,166人"><title>2018年 フィリピン 271,166人</title></circle>
+<circle cx="205.7" cy="212.9" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 フィリピン 282,535人"><title>2019年 フィリピン 282,535人</title></circle>
+<circle cx="255.6" cy="214.0" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 フィリピン 278,641人"><title>2020年 フィリピン 278,641人</title></circle>
+<circle cx="305.6" cy="214.6" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 フィリピン 276,448人"><title>2021年 フィリピン 276,448人</title></circle>
+<circle cx="355.5" cy="208.5" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 フィリピン 298,219人"><title>2022年 フィリピン 298,219人</title></circle>
+<circle cx="405.4" cy="201.9" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 フィリピン 321,618人"><title>2023年 フィリピン 321,618人</title></circle>
+<circle cx="455.3" cy="196.5" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 フィリピン 341,197人"><title>2024年 フィリピン 341,197人</title></circle>
+<circle cx="505.2" cy="192.3" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 フィリピン 356,162人"><title>2025年 フィリピン 356,162人</title></circle>
+<line x1="505.2" y1="192.3" x2="530.0" y2="190.5" style="stroke:var(--c3)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="190.5" r="4.5" style="fill:var(--card);stroke:var(--c3)" stroke-width="2.5" data-tip="2026年6月末（国の統計） フィリピン 362,501人"><title>2026年6月末（国の統計） フィリピン 362,501人</title></circle>
+<polyline points="56.0,273.1 105.9,269.6 155.8,267.1 205.7,264.9 255.6,265.4 305.6,264.8 355.5,253.1 405.4,242.8 455.3,226.8 505.2,207.8" fill="none" style="stroke:var(--c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="273.1" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 ネパール 67,465人"><title>2016年 ネパール 67,465人</title></circle>
+<circle cx="105.9" cy="269.6" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 ネパール 80,032人"><title>2017年 ネパール 80,032人</title></circle>
+<circle cx="155.8" cy="267.1" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 ネパール 88,945人"><title>2018年 ネパール 88,945人</title></circle>
+<circle cx="205.7" cy="264.9" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 ネパール 96,772人"><title>2019年 ネパール 96,772人</title></circle>
+<circle cx="255.6" cy="265.4" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 ネパール 95,016人"><title>2020年 ネパール 95,016人</title></circle>
+<circle cx="305.6" cy="264.8" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 ネパール 97,092人"><title>2021年 ネパール 97,092人</title></circle>
+<circle cx="355.5" cy="253.1" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 ネパール 138,913人"><title>2022年 ネパール 138,913人</title></circle>
+<circle cx="405.4" cy="242.8" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 ネパール 175,891人"><title>2023年 ネパール 175,891人</title></circle>
+<circle cx="455.3" cy="226.8" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 ネパール 232,874人"><title>2024年 ネパール 232,874人</title></circle>
+<circle cx="505.2" cy="207.8" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 ネパール 300,694人"><title>2025年 ネパール 300,694人</title></circle>
+<line x1="505.2" y1="207.8" x2="530.0" y2="198.3" style="stroke:var(--c4)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="198.3" r="4.5" style="fill:var(--card);stroke:var(--c4)" stroke-width="2.5" data-tip="2026年6月末（国の統計） ネパール 334,634人"><title>2026年6月末（国の統計） ネパール 334,634人</title></circle>
+<line x1="538.0" x2="548.0" y1="28.9" y2="28.9" style="stroke:var(--c0)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="28.9" dy="0.32em" class="end">中国 939,814</text>
+<line x1="538.0" x2="548.0" y1="97.9" y2="97.9" style="stroke:var(--c1)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="97.9" dy="0.32em" class="end">ベトナム 693,251</text>
+<line x1="538.0" x2="548.0" y1="177.7" y2="177.7" style="stroke:var(--c2)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="177.7" dy="0.32em" class="end">韓国 408,277</text>
+<line x1="538.0" x2="548.0" y1="192.7" y2="192.7" style="stroke:var(--c3)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="192.7" dy="0.32em" class="end">フィリピン 362,501</text>
+<line x1="538.0" x2="548.0" y1="207.7" y2="207.7" style="stroke:var(--c4)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="207.7" dy="0.32em" class="end">ネパール 334,634</text>
+</svg></div>
+  <p class="lpt"><span class="hollow"></span>白抜きの点（右はし）＝国の統計の2026年6月末の数。ほかの点は各年12月末</p>
+  <p class="note">線の点をタップ（PCではクリック）すると、国籍・地域、年、人数が出ます。9位・10位の線は点線です。</p>
+  <details class="more"><summary>年ごとの詳しい人数を見る</summary>
+    <p class="note">「何倍」は2016年の人数が30人より少ないときは出していません。</p>
+    <div class="tablewrap short"><table><thead><tr><th>国籍・地域（2026年6月末の順位）</th><th class="num">2016</th><th class="num">2017</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2016年から増えた人数</th><th class="num">何倍</th><th class="num lat">2026年6月末<br><small>国の統計</small></th></tr></thead>
+    <tbody><tr class=""><td><i class="sw" style="background:var(--c0)"></i>1. 中国</td><td class="num">695,437</td><td class="num">730,663</td><td class="num">764,610</td><td class="num">813,056</td><td class="num">771,181</td><td class="num">716,315</td><td class="num">760,440</td><td class="num">820,238</td><td class="num">872,125</td><td class="num">928,995</td><td class="num">+233,558</td><td class="num">1.3倍</td><td class="num lat">939,814</td></tr><tr class=""><td><i class="sw" style="background:var(--c1)"></i>2. ベトナム</td><td class="num">199,966</td><td class="num">262,295</td><td class="num">330,798</td><td class="num">411,717</td><td class="num">442,190</td><td class="num">432,900</td><td class="num">488,329</td><td class="num">564,161</td><td class="num">633,880</td><td class="num">680,449</td><td class="num">+480,483</td><td class="num">3.4倍</td><td class="num lat">693,251</td></tr><tr class=""><td><i class="sw" style="background:var(--c2)"></i>3. 韓国</td><td class="num">452,980</td><td class="num">450,430</td><td class="num">449,459</td><td class="num">446,007</td><td class="num">426,145</td><td class="num">409,724</td><td class="num">410,875</td><td class="num">409,695</td><td class="num">408,875</td><td class="num">406,800</td><td class="num">-46,180</td><td class="num">0.9倍</td><td class="num lat">408,277</td></tr><tr class=""><td><i class="sw" style="background:var(--c3)"></i>4. フィリピン</td><td class="num">243,540</td><td class="num">260,345</td><td class="num">271,166</td><td class="num">282,535</td><td class="num">278,641</td><td class="num">276,448</td><td class="num">298,219</td><td class="num">321,618</td><td class="num">341,197</td><td class="num">356,162</td><td class="num">+112,622</td><td class="num">1.5倍</td><td class="num lat">362,501</td></tr><tr class=""><td><i class="sw" style="background:var(--c4)"></i>5. ネパール</td><td class="num">67,465</td><td class="num">80,032</td><td class="num">88,945</td><td class="num">96,772</td><td class="num">95,016</td><td class="num">97,092</td><td class="num">138,913</td><td class="num">175,891</td><td class="num">232,874</td><td class="num">300,694</td><td class="num">+233,229</td><td class="num">4.5倍</td><td class="num lat">334,634</td></tr><tr class=""><td><i class="sw" style="background:var(--c5)"></i>6. インドネシア</td><td class="num">42,844</td><td class="num">49,951</td><td class="num">56,331</td><td class="num">66,827</td><td class="num">65,667</td><td class="num">59,792</td><td class="num">98,386</td><td class="num">148,640</td><td class="num">199,576</td><td class="num">265,537</td><td class="num">+222,693</td><td class="num">6.2倍</td><td class="num lat">306,824</td></tr><tr class=""><td><i class="sw" style="background:var(--c6)"></i>7. ミャンマー</td><td class="num">17,775</td><td class="num">22,517</td><td class="num">26,455</td><td class="num">32,039</td><td class="num">34,739</td><td class="num">37,237</td><td class="num">56,079</td><td class="num">86,426</td><td class="num">134,457</td><td class="num">182,394</td><td class="num">+164,619</td><td class="num">10.3倍</td><td class="num lat">211,423</td></tr><tr class=""><td><i class="sw" style="background:var(--c7)"></i>8. ブラジル</td><td class="num">180,891</td><td class="num">191,268</td><td class="num">201,828</td><td class="num">211,617</td><td class="num">208,271</td><td class="num">204,766</td><td class="num">209,309</td><td class="num">211,732</td><td class="num">211,857</td><td class="num">209,964</td><td class="num">+29,073</td><td class="num">1.2倍</td><td class="num lat">209,514</td></tr><tr class=""><td><i class="sw" style="background:var(--c8)"></i>9. スリランカ</td><td class="num">17,335</td><td class="num">23,318</td><td class="num">25,406</td><td class="num">27,326</td><td class="num">28,747</td><td class="num">28,957</td><td class="num">37,063</td><td class="num">46,742</td><td class="num">63,357</td><td class="num">78,913</td><td class="num">+61,578</td><td class="num">4.6倍</td><td class="num lat">85,286</td></tr><tr class=""><td><i class="sw" style="background:var(--c9)"></i>10. 台湾</td><td class="num">52,669</td><td class="num">56,559</td><td class="num">60,586</td><td class="num">64,621</td><td class="num">55,569</td><td class="num">51,133</td><td class="num">57,096</td><td class="num">64,419</td><td class="num">69,926</td><td class="num">72,957</td><td class="num">+20,288</td><td class="num">1.4倍</td><td class="num lat">73,266</td></tr><tr class="ref"><td>外国人全体</td><td class="num">2,381,698</td><td class="num">2,559,750</td><td class="num">2,729,811</td><td class="num">2,929,769</td><td class="num">2,865,494</td><td class="num">2,758,841</td><td class="num">3,067,354</td><td class="num">3,402,867</td><td class="num">3,763,664</td><td class="num">4,118,167</td><td class="num">+1,736,469</td><td class="num">1.7倍</td><td class="num lat">4,274,872</td></tr></tbody></table></div>
+  </details>
+</div>
+<script type="application/json" id="top10-data-japan">{"title": "日本に住む外国人の上位10か国・地域の推移", "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "series": [{"k": "中国", "c": "var(--c0)", "d": false, "v": [695437, 730663, 764610, 813056, 771181, 716315, 760440, 820238, 872125, 928995], "lv": 939814}, {"k": "ベトナム", "c": "var(--c1)", "d": false, "v": [199966, 262295, 330798, 411717, 442190, 432900, 488329, 564161, 633880, 680449], "lv": 693251}, {"k": "韓国", "c": "var(--c2)", "d": false, "v": [452980, 450430, 449459, 446007, 426145, 409724, 410875, 409695, 408875, 406800], "lv": 408277}, {"k": "フィリピン", "c": "var(--c3)", "d": false, "v": [243540, 260345, 271166, 282535, 278641, 276448, 298219, 321618, 341197, 356162], "lv": 362501}, {"k": "ネパール", "c": "var(--c4)", "d": false, "v": [67465, 80032, 88945, 96772, 95016, 97092, 138913, 175891, 232874, 300694], "lv": 334634}, {"k": "インドネシア", "c": "var(--c5)", "d": false, "v": [42844, 49951, 56331, 66827, 65667, 59792, 98386, 148640, 199576, 265537], "lv": 306824}, {"k": "ミャンマー", "c": "var(--c6)", "d": false, "v": [17775, 22517, 26455, 32039, 34739, 37237, 56079, 86426, 134457, 182394], "lv": 211423}, {"k": "ブラジル", "c": "var(--c7)", "d": false, "v": [180891, 191268, 201828, 211617, 208271, 204766, 209309, 211732, 211857, 209964], "lv": 209514}, {"k": "スリランカ", "c": "var(--c8)", "d": true, "v": [17335, 23318, 25406, 27326, 28747, 28957, 37063, 46742, 63357, 78913], "lv": 85286}, {"k": "台湾", "c": "var(--c9)", "d": true, "v": [52669, 56559, 60586, 64621, 55569, 51133, 57096, 64419, 69926, 72957], "lv": 73266}], "latest": {"x": 2025.497, "label": "6月末", "tip": "2026年6月末（国の統計）", "v": {"中国": 939814, "ベトナム": 693251, "韓国": 408277, "フィリピン": 362501, "ネパール": 334634, "インドネシア": 306824, "ミャンマー": 211423, "ブラジル": 209514, "スリランカ": 85286, "台湾": 73266}}}</script><h3 id="s2-1">対象10か国の在留外国人</h3><div class="card">
+  <h4>対象10か国の在留外国人（全国、2025年12月末）</h4>
+  <p class="note"><b>国籍別の人数で、宗教別の人数ではありません。</b>割合は、10か国の人を合わせて100%としたときの割合。「何倍」は2016年から2025年の増え方（47都道府県の合計で計算）。</p>
+  <p class="note">色のついた列は、国のいちばん新しい統計（2026年6月末）の数です。この発表の表は全国で多い20の国籍・地域だけ名前が出ているので、対象10か国ではインドネシア・パキスタン・バングラデシュだけです（「—」は2026年12月ごろに出る見込みのくわしい表で埋めます）。</p>
+  <div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">人数<br><small>2025年12月末</small></th><th class="num lat">2026年6月末<br><small>国の統計</small></th><th class="num">10か国の中の割合</th><th class="num">2016→2025年</th></tr></thead>
+    <tbody><tr><td>インドネシア</td><td class="num">266,037</td><td class="num lat">307,456</td><td class="num"><span class="cell"><span class="cbar tg" style="width:5.00rem"></span>67.8%</span></td><td class="num">6.2倍</td></tr><tr><td>バングラデシュ</td><td class="num">44,938</td><td class="num lat">53,398</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.84rem"></span>11.5%</span></td><td class="num">3.6倍</td></tr><tr><td>パキスタン</td><td class="num">34,911</td><td class="num lat">36,870</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.66rem"></span>8.9%</span></td><td class="num">2.5倍</td></tr><tr><td>マレーシア</td><td class="num">12,266</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.23rem"></span>3.1%</span></td><td class="num">1.3倍</td></tr><tr><td>トルコ</td><td class="num">7,919</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.15rem"></span>2.0%</span></td><td class="num">1.7倍</td></tr><tr><td>ウズベキスタン</td><td class="num">7,362</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.14rem"></span>1.9%</span></td><td class="num">3.9倍</td></tr><tr><td>アフガニスタン</td><td class="num">6,887</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.13rem"></span>1.8%</span></td><td class="num">2.4倍</td></tr><tr><td>ナイジェリア</td><td class="num">4,807</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.09rem"></span>1.2%</span></td><td class="num">1.7倍</td></tr><tr><td>イラン</td><td class="num">4,431</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.08rem"></span>1.1%</span></td><td class="num">1.1倍</td></tr><tr><td>エジプト</td><td class="num">2,601</td><td class="num lat">—</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.05rem"></span>0.7%</span></td><td class="num">1.4倍</td></tr><tr class="sum"><td>対象10か国の合計</td><td class="num">392,159</td><td class="num lat">—</td><td class="num">100%</td><td class="num">4.1倍</td></tr><tr class="refhead"><td colspan="5">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">79,121</td><td class="num lat">85,415</td><td class="num">—</td><td class="num">4.6倍</td></tr><tr class="ref"><td>外国人全体</td><td class="num">4,125,395</td><td class="num lat">4,281,026</td><td class="num">—</td><td class="num">1.7倍</td></tr></tbody></table></div>
+  <p class="note">出典：出入国在留管理庁「在留外国人統計」2025年12月末（都道府県別の表の全国の合計。住む都道府県が「未定・不詳」の人も入ります）。いちばん新しい数は出入国在留管理庁「令和8年6月末における在留外国人数について」（2026年10月16日発表）の第1表。</p>
+</div><h3 id="s2-2">対象10か国などの人口推移（2016〜2025年）</h3><div class="card"><h4>日本に住む対象10か国などの人の推移（国籍別、各年12月末）</h4>
+  <dl class="chart-meta"><dt>対象</dt><dd>2025年に人数が多い5つ（対象10か国・スリランカ・アフリカの国（合計）の中から）</dd>
+    <dt>期間</dt><dd>2016〜2025年の各年12月末と、2026年6月末（右はしの白抜きの点。国の発表の表で名前が出ている国だけ）</dd>
+    <dt>数</dt><dd>47都道府県の合計（住む都道府県が「未定・不詳」の人＝2025年末で7,228人は入らないので、全国の数より少しだけ少なくなります）</dd><dt>出典</dt><dd>出入国在留管理庁「在留外国人統計」（くわしくは「5. 出典・調査方法」）</dd></dl>
+  <div class="legend"><span><i class="sw" style="background:var(--c0)"></i>インドネシア</span><span><i class="sw" style="background:var(--c1)"></i>スリランカ</span><span><i class="sw" style="background:var(--c2)"></i>バングラデシュ</span><span><i class="sw" style="background:var(--c3)"></i>パキスタン</span><span><i class="sw" style="background:var(--c4)"></i>アフリカの国（合計）</span></div><svg class="chart-svg" viewBox="0 0 720 320" width="100%" role="img" aria-label="国籍別の推移の線グラフ">
+<line x1="56" x2="530" y1="292.0" y2="292.0" class="grid"/><text x="48" y="292.0" dy="0.32em" text-anchor="end">0</text>
+<line x1="56" x2="530" y1="222.0" y2="222.0" class="grid"/><text x="48" y="222.0" dy="0.32em" text-anchor="end">100,000</text>
+<line x1="56" x2="530" y1="152.0" y2="152.0" class="grid"/><text x="48" y="152.0" dy="0.32em" text-anchor="end">200,000</text>
+<line x1="56" x2="530" y1="82.0" y2="82.0" class="grid"/><text x="48" y="82.0" dy="0.32em" text-anchor="end">300,000</text>
+<line x1="56" x2="530" y1="12.0" y2="12.0" class="grid"/><text x="48" y="12.0" dy="0.32em" text-anchor="end">400,000</text>
+<text x="56.0" y="312" text-anchor="middle">2016</text>
+<text x="105.9" y="312" text-anchor="middle">2017</text>
+<text x="155.8" y="312" text-anchor="middle">2018</text>
+<text x="205.7" y="312" text-anchor="middle">2019</text>
+<text x="255.6" y="312" text-anchor="middle">2020</text>
+<text x="305.6" y="312" text-anchor="middle">2021</text>
+<text x="355.5" y="312" text-anchor="middle">2022</text>
+<text x="405.4" y="312" text-anchor="middle">2023</text>
+<text x="455.3" y="312" text-anchor="middle">2024</text>
+<text x="505.2" y="312" text-anchor="middle">2025</text>
+<polyline points="56.0,262.0 105.9,257.0 155.8,252.6 205.7,245.2 255.6,246.0 305.6,250.1 355.5,223.1 405.4,188.0 455.3,152.3 505.2,106.1" fill="none" style="stroke:var(--c0)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="262.0" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 インドネシア 42,844人"><title>2016年 インドネシア 42,844人</title></circle>
+<circle cx="105.9" cy="257.0" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 インドネシア 49,951人"><title>2017年 インドネシア 49,951人</title></circle>
+<circle cx="155.8" cy="252.6" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 インドネシア 56,331人"><title>2018年 インドネシア 56,331人</title></circle>
+<circle cx="205.7" cy="245.2" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 インドネシア 66,827人"><title>2019年 インドネシア 66,827人</title></circle>
+<circle cx="255.6" cy="246.0" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 インドネシア 65,667人"><title>2020年 インドネシア 65,667人</title></circle>
+<circle cx="305.6" cy="250.1" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 インドネシア 59,792人"><title>2021年 インドネシア 59,792人</title></circle>
+<circle cx="355.5" cy="223.1" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 インドネシア 98,386人"><title>2022年 インドネシア 98,386人</title></circle>
+<circle cx="405.4" cy="188.0" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 インドネシア 148,640人"><title>2023年 インドネシア 148,640人</title></circle>
+<circle cx="455.3" cy="152.3" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 インドネシア 199,576人"><title>2024年 インドネシア 199,576人</title></circle>
+<circle cx="505.2" cy="106.1" r="4.5" style="fill:var(--c0);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 インドネシア 265,537人"><title>2025年 インドネシア 265,537人</title></circle>
+<line x1="505.2" y1="106.1" x2="530.0" y2="77.2" style="stroke:var(--c0)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="77.2" r="4.5" style="fill:var(--card);stroke:var(--c0)" stroke-width="2.5" data-tip="2026年6月末（国の統計） インドネシア 306,824人"><title>2026年6月末（国の統計） インドネシア 306,824人</title></circle>
+<polyline points="56.0,279.9 105.9,275.7 155.8,274.2 205.7,272.9 255.6,271.9 305.6,271.7 355.5,266.1 405.4,259.3 455.3,247.7 505.2,236.8" fill="none" style="stroke:var(--c1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="279.9" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 スリランカ 17,335人"><title>2016年 スリランカ 17,335人</title></circle>
+<circle cx="105.9" cy="275.7" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 スリランカ 23,318人"><title>2017年 スリランカ 23,318人</title></circle>
+<circle cx="155.8" cy="274.2" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 スリランカ 25,406人"><title>2018年 スリランカ 25,406人</title></circle>
+<circle cx="205.7" cy="272.9" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 スリランカ 27,326人"><title>2019年 スリランカ 27,326人</title></circle>
+<circle cx="255.6" cy="271.9" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 スリランカ 28,747人"><title>2020年 スリランカ 28,747人</title></circle>
+<circle cx="305.6" cy="271.7" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 スリランカ 28,957人"><title>2021年 スリランカ 28,957人</title></circle>
+<circle cx="355.5" cy="266.1" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 スリランカ 37,063人"><title>2022年 スリランカ 37,063人</title></circle>
+<circle cx="405.4" cy="259.3" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 スリランカ 46,742人"><title>2023年 スリランカ 46,742人</title></circle>
+<circle cx="455.3" cy="247.7" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 スリランカ 63,357人"><title>2024年 スリランカ 63,357人</title></circle>
+<circle cx="505.2" cy="236.8" r="4.5" style="fill:var(--c1);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 スリランカ 78,913人"><title>2025年 スリランカ 78,913人</title></circle>
+<line x1="505.2" y1="236.8" x2="530.0" y2="232.3" style="stroke:var(--c1)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="232.3" r="4.5" style="fill:var(--card);stroke:var(--c1)" stroke-width="2.5" data-tip="2026年6月末（国の統計） スリランカ 85,286人"><title>2026年6月末（国の統計） スリランカ 85,286人</title></circle>
+<polyline points="56.0,283.3 105.9,282.1 155.8,281.2 205.7,280.4 255.6,279.9 305.6,279.7 355.5,276.1 405.4,272.5 455.3,267.5 505.2,260.6" fill="none" style="stroke:var(--c2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="283.3" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 バングラデシュ 12,369人"><title>2016年 バングラデシュ 12,369人</title></circle>
+<circle cx="105.9" cy="282.1" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 バングラデシュ 14,136人"><title>2017年 バングラデシュ 14,136人</title></circle>
+<circle cx="155.8" cy="281.2" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 バングラデシュ 15,475人"><title>2018年 バングラデシュ 15,475人</title></circle>
+<circle cx="205.7" cy="280.4" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 バングラデシュ 16,622人"><title>2019年 バングラデシュ 16,622人</title></circle>
+<circle cx="255.6" cy="279.9" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 バングラデシュ 17,286人"><title>2020年 バングラデシュ 17,286人</title></circle>
+<circle cx="305.6" cy="279.7" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 バングラデシュ 17,526人"><title>2021年 バングラデシュ 17,526人</title></circle>
+<circle cx="355.5" cy="276.1" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 バングラデシュ 22,676人"><title>2022年 バングラデシュ 22,676人</title></circle>
+<circle cx="405.4" cy="272.5" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 バングラデシュ 27,906人"><title>2023年 バングラデシュ 27,906人</title></circle>
+<circle cx="455.3" cy="267.5" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 バングラデシュ 35,033人"><title>2024年 バングラデシュ 35,033人</title></circle>
+<circle cx="505.2" cy="260.6" r="4.5" style="fill:var(--c2);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 バングラデシュ 44,848人"><title>2025年 バングラデシュ 44,848人</title></circle>
+<line x1="505.2" y1="260.6" x2="530.0" y2="254.7" style="stroke:var(--c2)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="254.7" r="4.5" style="fill:var(--card);stroke:var(--c2)" stroke-width="2.5" data-tip="2026年6月末（国の統計） バングラデシュ 53,316人"><title>2026年6月末（国の統計） バングラデシュ 53,316人</title></circle>
+<polyline points="56.0,282.4 105.9,281.5 155.8,280.7 205.7,279.6 255.6,278.7 305.6,278.6 355.5,276.6 405.4,274.4 455.3,271.3 505.2,267.6" fill="none" style="stroke:var(--c3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="282.4" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 パキスタン 13,750人"><title>2016年 パキスタン 13,750人</title></circle>
+<circle cx="105.9" cy="281.5" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 パキスタン 15,058人"><title>2017年 パキスタン 15,058人</title></circle>
+<circle cx="155.8" cy="280.7" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 パキスタン 16,197人"><title>2018年 パキスタン 16,197人</title></circle>
+<circle cx="205.7" cy="279.6" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 パキスタン 17,735人"><title>2019年 パキスタン 17,735人</title></circle>
+<circle cx="255.6" cy="278.7" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 パキスタン 18,933人"><title>2020年 パキスタン 18,933人</title></circle>
+<circle cx="305.6" cy="278.6" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 パキスタン 19,108人"><title>2021年 パキスタン 19,108人</title></circle>
+<circle cx="355.5" cy="276.6" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 パキスタン 22,017人"><title>2022年 パキスタン 22,017人</title></circle>
+<circle cx="405.4" cy="274.4" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 パキスタン 25,185人"><title>2023年 パキスタン 25,185人</title></circle>
+<circle cx="455.3" cy="271.3" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 パキスタン 29,610人"><title>2024年 パキスタン 29,610人</title></circle>
+<circle cx="505.2" cy="267.6" r="4.5" style="fill:var(--c3);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 パキスタン 34,845人"><title>2025年 パキスタン 34,845人</title></circle>
+<line x1="505.2" y1="267.6" x2="530.0" y2="266.2" style="stroke:var(--c3)" stroke-width="2" stroke-dasharray="4 3"/><circle cx="530.0" cy="266.2" r="4.5" style="fill:var(--card);stroke:var(--c3)" stroke-width="2.5" data-tip="2026年6月末（国の統計） パキスタン 36,817人"><title>2026年6月末（国の統計） パキスタン 36,817人</title></circle>
+<polyline points="56.0,281.7 105.9,280.9 155.8,280.4 205.7,279.5 255.6,279.1 305.6,279.1 355.5,277.7 405.4,276.4 455.3,274.3 505.2,272.3" fill="none" style="stroke:var(--c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56.0" cy="281.7" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2016年 アフリカの国（合計） 14,679人"><title>2016年 アフリカの国（合計） 14,679人</title></circle>
+<circle cx="105.9" cy="280.9" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2017年 アフリカの国（合計） 15,920人"><title>2017年 アフリカの国（合計） 15,920人</title></circle>
+<circle cx="155.8" cy="280.4" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2018年 アフリカの国（合計） 16,613人"><title>2018年 アフリカの国（合計） 16,613人</title></circle>
+<circle cx="205.7" cy="279.5" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2019年 アフリカの国（合計） 17,873人"><title>2019年 アフリカの国（合計） 17,873人</title></circle>
+<circle cx="255.6" cy="279.1" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2020年 アフリカの国（合計） 18,490人"><title>2020年 アフリカの国（合計） 18,490人</title></circle>
+<circle cx="305.6" cy="279.1" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2021年 アフリカの国（合計） 18,416人"><title>2021年 アフリカの国（合計） 18,416人</title></circle>
+<circle cx="355.5" cy="277.7" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2022年 アフリカの国（合計） 20,491人"><title>2022年 アフリカの国（合計） 20,491人</title></circle>
+<circle cx="405.4" cy="276.4" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2023年 アフリカの国（合計） 22,323人"><title>2023年 アフリカの国（合計） 22,323人</title></circle>
+<circle cx="455.3" cy="274.3" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2024年 アフリカの国（合計） 25,217人"><title>2024年 アフリカの国（合計） 25,217人</title></circle>
+<circle cx="505.2" cy="272.3" r="4.5" style="fill:var(--c4);stroke:var(--card)" stroke-width="1.5" data-tip="2025年 アフリカの国（合計） 28,147人"><title>2025年 アフリカの国（合計） 28,147人</title></circle>
+<line x1="538.0" x2="548.0" y1="77.2" y2="77.2" style="stroke:var(--c0)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="77.2" dy="0.32em" class="end">インドネシア 306,824</text>
+<line x1="538.0" x2="548.0" y1="232.3" y2="232.3" style="stroke:var(--c1)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="232.3" dy="0.32em" class="end">スリランカ 85,286</text>
+<line x1="538.0" x2="548.0" y1="254.7" y2="254.7" style="stroke:var(--c2)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="254.7" dy="0.32em" class="end">バングラデシュ 53,316</text>
+<line x1="538.0" x2="548.0" y1="269.7" y2="269.7" style="stroke:var(--c3)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="269.7" dy="0.32em" class="end">パキスタン 36,817</text>
+<line x1="538.0" x2="548.0" y1="284.7" y2="284.7" style="stroke:var(--c4)" stroke-width="3" stroke-linecap="round"/><text x="553.0" y="284.7" dy="0.32em" class="end">アフリカの国（合計） 28,147</text>
+</svg>
+  <p class="note">点をタップ（PCではクリック）すると、その年の人数が出ます。国籍別の人数で、ムスリムの人数ではありません。</p>
+  <details class="more"><summary>詳しい数値を見る（対象10か国・スリランカ・アフリカの国（合計）・外国人全体の各年の表）</summary>
+    <p class="note">アフリカの国（合計）は、統計の地域の区分「アフリカ」の54か国の合計で、エジプト・ナイジェリアの人も入っています。「何倍」は2016年の人数が30人より少ないときは出していません。</p>
+    <div class="tablewrap short"><table><thead><tr><th>国籍</th><th class="num">2016</th><th class="num">2017</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2016年から増えた人数</th><th class="num">何倍</th><th class="num lat">2026年6月末<br><small>国の統計</small></th></tr></thead>
+    <tbody><tr class=""><td>インドネシア</td><td class="num">42,844</td><td class="num">49,951</td><td class="num">56,331</td><td class="num">66,827</td><td class="num">65,667</td><td class="num">59,792</td><td class="num">98,386</td><td class="num">148,640</td><td class="num">199,576</td><td class="num">265,537</td><td class="num">+222,693</td><td class="num">6.2倍</td><td class="num lat">306,824</td></tr><tr class=""><td>バングラデシュ</td><td class="num">12,369</td><td class="num">14,136</td><td class="num">15,475</td><td class="num">16,622</td><td class="num">17,286</td><td class="num">17,526</td><td class="num">22,676</td><td class="num">27,906</td><td class="num">35,033</td><td class="num">44,848</td><td class="num">+32,479</td><td class="num">3.6倍</td><td class="num lat">53,316</td></tr><tr class=""><td>パキスタン</td><td class="num">13,750</td><td class="num">15,058</td><td class="num">16,197</td><td class="num">17,735</td><td class="num">18,933</td><td class="num">19,108</td><td class="num">22,017</td><td class="num">25,185</td><td class="num">29,610</td><td class="num">34,845</td><td class="num">+21,095</td><td class="num">2.5倍</td><td class="num lat">36,817</td></tr><tr class=""><td>マレーシア</td><td class="num">9,078</td><td class="num">9,629</td><td class="num">10,366</td><td class="num">10,838</td><td class="num">10,254</td><td class="num">9,646</td><td class="num">10,994</td><td class="num">11,425</td><td class="num">11,943</td><td class="num">12,237</td><td class="num">+3,159</td><td class="num">1.3倍</td><td class="num lat">—</td></tr><tr class=""><td>トルコ</td><td class="num">4,646</td><td class="num">5,492</td><td class="num">5,243</td><td class="num">5,386</td><td class="num">6,149</td><td class="num">5,894</td><td class="num">6,047</td><td class="num">6,383</td><td class="num">7,663</td><td class="num">7,883</td><td class="num">+3,237</td><td class="num">1.7倍</td><td class="num lat">—</td></tr><tr class=""><td>ウズベキスタン</td><td class="num">1,874</td><td class="num">2,915</td><td class="num">3,745</td><td class="num">3,623</td><td class="num">3,582</td><td class="num">3,663</td><td class="num">5,491</td><td class="num">6,558</td><td class="num">7,098</td><td class="num">7,327</td><td class="num">+5,453</td><td class="num">3.9倍</td><td class="num lat">—</td></tr><tr class=""><td>アフガニスタン</td><td class="num">2,888</td><td class="num">2,976</td><td class="num">3,124</td><td class="num">3,338</td><td class="num">3,456</td><td class="num">3,754</td><td class="num">5,248</td><td class="num">5,864</td><td class="num">6,337</td><td class="num">6,874</td><td class="num">+3,986</td><td class="num">2.4倍</td><td class="num lat">—</td></tr><tr class=""><td>ナイジェリア</td><td class="num">2,797</td><td class="num">2,911</td><td class="num">3,025</td><td class="num">3,194</td><td class="num">3,310</td><td class="num">3,346</td><td class="num">3,661</td><td class="num">3,940</td><td class="num">4,313</td><td class="num">4,793</td><td class="num">+1,996</td><td class="num">1.7倍</td><td class="num lat">—</td></tr><tr class=""><td>イラン</td><td class="num">3,994</td><td class="num">4,034</td><td class="num">4,090</td><td class="num">4,161</td><td class="num">4,097</td><td class="num">4,053</td><td class="num">4,226</td><td class="num">4,296</td><td class="num">4,393</td><td class="num">4,426</td><td class="num">+432</td><td class="num">1.1倍</td><td class="num lat">—</td></tr><tr class=""><td>エジプト</td><td class="num">1,886</td><td class="num">1,848</td><td class="num">1,930</td><td class="num">2,233</td><td class="num">2,004</td><td class="num">1,944</td><td class="num">2,231</td><td class="num">2,252</td><td class="num">2,438</td><td class="num">2,584</td><td class="num">+698</td><td class="num">1.4倍</td><td class="num lat">—</td></tr><tr class="sum"><td>対象10か国の合計</td><td class="num">96,126</td><td class="num">108,950</td><td class="num">119,526</td><td class="num">133,957</td><td class="num">134,738</td><td class="num">128,726</td><td class="num">180,977</td><td class="num">242,449</td><td class="num">308,404</td><td class="num">391,354</td><td class="num">+295,228</td><td class="num">4.1倍</td><td class="num lat">—</td></tr><tr class="refhead"><td colspan="14">参考（10か国とは別に数えたもの）</td></tr><tr class="ref"><td>スリランカ</td><td class="num">17,335</td><td class="num">23,318</td><td class="num">25,406</td><td class="num">27,326</td><td class="num">28,747</td><td class="num">28,957</td><td class="num">37,063</td><td class="num">46,742</td><td class="num">63,357</td><td class="num">78,913</td><td class="num">+61,578</td><td class="num">4.6倍</td><td class="num lat">85,286</td></tr><tr class="ref"><td>アフリカの国（合計）</td><td class="num">14,679</td><td class="num">15,920</td><td class="num">16,613</td><td class="num">17,873</td><td class="num">18,490</td><td class="num">18,416</td><td class="num">20,491</td><td class="num">22,323</td><td class="num">25,217</td><td class="num">28,147</td><td class="num">+13,468</td><td class="num">1.9倍</td><td class="num lat">—</td></tr><tr class="ref"><td>外国人全体</td><td class="num">2,381,698</td><td class="num">2,559,750</td><td class="num">2,729,811</td><td class="num">2,929,769</td><td class="num">2,865,494</td><td class="num">2,758,841</td><td class="num">3,067,354</td><td class="num">3,402,867</td><td class="num">3,763,664</td><td class="num">4,118,167</td><td class="num">+1,736,469</td><td class="num">1.7倍</td><td class="num lat">4,274,872</td></tr></tbody></table></div></details></div><p class="totop"><a href="#toc">↑ 目次へ戻る</a></p></div></details>
+<details class="chap" id="s3"><summary><h2><span class="no">3.</span>都道府県別の状況</h2><span class="chap-d">47都道府県の人口・モスク・食材店（並べ替え・列の追加）</span></summary><div class="chap-in"><h3 id="s3-1">都道府県別の人口と施設数</h3><div class="card">
+  <h4>都道府県ごとの、モスク・礼拝所と在留外国人</h4>
+  <p class="note">はじめは4列だけを出しています。割合・ムスリム人口の推計・ハラール食材店・国籍別の人数は「表示項目を追加」で足せます。
+    色のついた行は、モスク・礼拝所を掲載している都道府県です。名前の下の「くわしいページ」で都道府県のくわしいページ（36都道府県）、「地域別」で地域別のページが開きます。
+    モスク・礼拝所はこのサイトの掲載数（このページの最終更新の時点）、ハラール食材店は調べた36都道府県だけ（「—」はまだ調べていない）。</p>
+  <div class="tctl">
+    <input type="search" id="mq" autocomplete="off" placeholder="都道府県の名前で探す" aria-label="都道府県の名前で探す">
+    <label>並べ替え <select id="ms"><option value="ten">対象10か国の人が多い順</option><option value="all">外国人全体が多い順</option><option value="m">モスク・礼拝所が多い順</option><option value="est">ムスリム人口（推計）が多い順</option><option value="shop">ハラール食材店が多い順</option><option value="code">北から順</option></select></label>
+    <label><input type="checkbox" id="monly">モスク・礼拝所がある都道府県だけ</label>
+  </div>
+  <details class="colpick"><summary>表示項目を追加（割合・ムスリム人口の推計・ハラール食材店・国籍別の人数）</summary><div class="boxes"><label><input type="checkbox" data-c="shr">外国人のうち対象10か国の人の割合（2025年12月末）</label><label><input type="checkbox" data-c="est">ムスリム人口（研究者推計）</label><label><input type="checkbox" data-c="shop">ハラール食材店</label><label><input type="checkbox" data-c="c0">インドネシア</label><label><input type="checkbox" data-c="c1">スリランカ</label><label><input type="checkbox" data-c="c2">バングラデシュ</label><label><input type="checkbox" data-c="c3">パキスタン</label><label><input type="checkbox" data-c="c4">マレーシア</label><label><input type="checkbox" data-c="c5">トルコ</label><label><input type="checkbox" data-c="c6">ウズベキスタン</label><label><input type="checkbox" data-c="c7">アフガニスタン</label><label><input type="checkbox" data-c="c8">ナイジェリア</label><label><input type="checkbox" data-c="c9">イラン</label><label><input type="checkbox" data-c="c10">エジプト</label></div><div class="tools"><button type="button" id="mreset">基本表示に戻す</button></div></details>
+  <p class="tcount" id="mcount" aria-live="polite">47都道府県</p>
+  <div class="tablewrap"><table id="muni" data-word="都道府県" class="muni h-shr h-est h-shop h-c0 h-c1 h-c2 h-c3 h-c4 h-c5 h-c6 h-c7 h-c8 h-c9 h-c10"><thead><tr><th>都道府県</th><th class="num" data-c="m">モスク・礼拝所</th><th class="num" data-c="ten">対象10か国の人<br><small>2025年12月末</small></th><th class="num" data-c="all">外国人全体<br><small>2026年6月末</small></th><th class="num" data-c="shr">10か国の人の割合<br><small>2025年12月末</small></th><th class="num" data-c="est">ムスリム人口<br><small>研究者推計</small></th><th class="num" data-c="shop">ハラール食材店<br><small>調べた都道府県だけ</small></th><th class="num" data-c="c0">インドネシア<br><small>2025年12月末</small></th><th class="num" data-c="c1">スリランカ<br><small>2025年12月末</small></th><th class="num" data-c="c2">バングラデシュ<br><small>2025年12月末</small></th><th class="num" data-c="c3">パキスタン<br><small>2025年12月末</small></th><th class="num" data-c="c4">マレーシア<br><small>2025年12月末</small></th><th class="num" data-c="c5">トルコ<br><small>2025年12月末</small></th><th class="num" data-c="c6">ウズベキスタン<br><small>2025年12月末</small></th><th class="num" data-c="c7">アフガニスタン<br><small>2025年12月末</small></th><th class="num" data-c="c8">ナイジェリア<br><small>2025年12月末</small></th><th class="num" data-c="c9">イラン<br><small>2025年12月末</small></th><th class="num" data-c="c10">エジプト<br><small>2025年12月末</small></th></tr></thead><tbody><tr class="has" data-name="東京都" data-i="12" data-m="26" data-shop="99" data-ten="39320" data-all="824486" data-est="51131"><td>東京都<span class="mlinks"><a href="pref-tokyo.html">くわしいページ</a><a href="area.html?pref=%E6%9D%B1%E4%BA%AC%E9%83%BD">地域別</a></span></td><td class="num" data-c="m">26</td><td class="num" data-c="ten">39,320</td><td class="num" data-c="all">824,486</td><td class="num" data-c="shr">4.9%</td><td class="num" data-c="est">51,131</td><td class="num" data-c="shop">99</td><td class="num" data-c="c0">16,225</td><td class="num" data-c="c1">5,879</td><td class="num" data-c="c2">9,741</td><td class="num" data-c="c3">1,962</td><td class="num" data-c="c4">3,779</td><td class="num" data-c="c5">1,406</td><td class="num" data-c="c6">3,588</td><td class="num" data-c="c7">220</td><td class="num" data-c="c8">791</td><td class="num" data-c="c9">1,122</td><td class="num" data-c="c10">486</td></tr><tr class="has" data-name="埼玉県" data-i="10" data-m="29" data-shop="90" data-ten="30661" data-all="305867" data-est="39871"><td>埼玉県<span class="mlinks"><a href="pref-saitama.html">くわしいページ</a><a href="area.html?pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">29</td><td class="num" data-c="ten">30,661</td><td class="num" data-c="all">305,867</td><td class="num" data-c="shr">10.5%</td><td class="num" data-c="est">39,871</td><td class="num" data-c="shop">90</td><td class="num" data-c="c0">14,497</td><td class="num" data-c="c1">5,010</td><td class="num" data-c="c2">6,197</td><td class="num" data-c="c3">4,577</td><td class="num" data-c="c4">697</td><td class="num" data-c="c5">2,335</td><td class="num" data-c="c6">542</td><td class="num" data-c="c7">289</td><td class="num" data-c="c8">856</td><td class="num" data-c="c9">516</td><td class="num" data-c="c10">155</td></tr><tr class="has" data-name="愛知県" data-i="22" data-m="22" data-shop="72" data-ten="30380" data-all="369849" data-est="39506"><td>愛知県<span class="mlinks"><a href="pref-aichi.html">くわしいページ</a><a href="area.html?pref=%E6%84%9B%E7%9F%A5%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">22</td><td class="num" data-c="ten">30,380</td><td class="num" data-c="all">369,849</td><td class="num" data-c="shr">8.5%</td><td class="num" data-c="est">39,506</td><td class="num" data-c="shop">72</td><td class="num" data-c="c0">21,153</td><td class="num" data-c="c1">5,973</td><td class="num" data-c="c2">1,773</td><td class="num" data-c="c3">3,564</td><td class="num" data-c="c4">431</td><td class="num" data-c="c5">1,868</td><td class="num" data-c="c6">470</td><td class="num" data-c="c7">407</td><td class="num" data-c="c8">317</td><td class="num" data-c="c9">236</td><td class="num" data-c="c10">161</td></tr><tr class="has" data-name="千葉県" data-i="11" data-m="22" data-shop="69" data-ten="25610" data-all="272332" data-est="33303"><td>千葉県<span class="mlinks"><a href="pref-chiba.html">くわしいページ</a><a href="area.html?pref=%E5%8D%83%E8%91%89%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">22</td><td class="num" data-c="ten">25,610</td><td class="num" data-c="all">272,332</td><td class="num" data-c="shr">9.9%</td><td class="num" data-c="est">33,303</td><td class="num" data-c="shop">69</td><td class="num" data-c="c0">14,147</td><td class="num" data-c="c1">13,989</td><td class="num" data-c="c2">2,749</td><td class="num" data-c="c3">2,876</td><td class="num" data-c="c4">925</td><td class="num" data-c="c5">245</td><td class="num" data-c="c6">591</td><td class="num" data-c="c7">2,995</td><td class="num" data-c="c8">486</td><td class="num" data-c="c9">472</td><td class="num" data-c="c10">124</td></tr><tr class="has" data-name="神奈川県" data-i="13" data-m="13" data-shop="52" data-ten="22972" data-all="331515" data-est="29872"><td>神奈川県<span class="mlinks"><a href="pref-kanagawa.html">くわしいページ</a><a href="area.html?pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">13</td><td class="num" data-c="ten">22,972</td><td class="num" data-c="all">331,515</td><td class="num" data-c="shr">7.2%</td><td class="num" data-c="est">29,872</td><td class="num" data-c="shop">52</td><td class="num" data-c="c0">14,242</td><td class="num" data-c="c1">8,995</td><td class="num" data-c="c2">2,969</td><td class="num" data-c="c3">1,833</td><td class="num" data-c="c4">1,505</td><td class="num" data-c="c5">370</td><td class="num" data-c="c6">483</td><td class="num" data-c="c7">113</td><td class="num" data-c="c8">682</td><td class="num" data-c="c9">614</td><td class="num" data-c="c10">161</td></tr><tr class="has" data-name="大阪府" data-i="26" data-m="6" data-shop="44" data-ten="22168" data-all="389846" data-est="28827"><td>大阪府<span class="mlinks"><a href="pref-osaka.html">くわしいページ</a><a href="area.html?pref=%E5%A4%A7%E9%98%AA%E5%BA%9C">地域別</a></span></td><td class="num" data-c="m">6</td><td class="num" data-c="ten">22,168</td><td class="num" data-c="all">389,846</td><td class="num" data-c="shr">5.9%</td><td class="num" data-c="est">28,827</td><td class="num" data-c="shop">44</td><td class="num" data-c="c0">15,279</td><td class="num" data-c="c1">3,576</td><td class="num" data-c="c2">3,161</td><td class="num" data-c="c3">1,315</td><td class="num" data-c="c4">819</td><td class="num" data-c="c5">396</td><td class="num" data-c="c6">331</td><td class="num" data-c="c7">147</td><td class="num" data-c="c8">277</td><td class="num" data-c="c9">198</td><td class="num" data-c="c10">245</td></tr><tr class="has" data-name="茨城県" data-i="7" data-m="24" data-shop="48" data-ten="20637" data-all="115800" data-est="26836"><td>茨城県<span class="mlinks"><a href="pref-ibaraki.html">くわしいページ</a><a href="area.html?pref=%E8%8C%A8%E5%9F%8E%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">24</td><td class="num" data-c="ten">20,637</td><td class="num" data-c="all">115,800</td><td class="num" data-c="shr">18.5%</td><td class="num" data-c="est">26,836</td><td class="num" data-c="shop">48</td><td class="num" data-c="c0">12,976</td><td class="num" data-c="c1">6,878</td><td class="num" data-c="c2">1,925</td><td class="num" data-c="c3">4,065</td><td class="num" data-c="c4">262</td><td class="num" data-c="c5">62</td><td class="num" data-c="c6">154</td><td class="num" data-c="c7">664</td><td class="num" data-c="c8">155</td><td class="num" data-c="c9">198</td><td class="num" data-c="c10">176</td></tr><tr class="has" data-name="北海道" data-i="0" data-m="6" data-shop="4" data-ten="14819" data-all="79654" data-est="19283"><td>北海道<span class="mlinks"><a href="pref-hokkaido.html">くわしいページ</a><a href="area.html?pref=%E5%8C%97%E6%B5%B7%E9%81%93">地域別</a></span></td><td class="num" data-c="m">6</td><td class="num" data-c="ten">14,819</td><td class="num" data-c="all">79,654</td><td class="num" data-c="shr">19.1%</td><td class="num" data-c="est">19,283</td><td class="num" data-c="shop">4</td><td class="num" data-c="c0">12,471</td><td class="num" data-c="c1">720</td><td class="num" data-c="c2">403</td><td class="num" data-c="c3">1,026</td><td class="num" data-c="c4">359</td><td class="num" data-c="c5">111</td><td class="num" data-c="c6">100</td><td class="num" data-c="c7">165</td><td class="num" data-c="c8">70</td><td class="num" data-c="c9">22</td><td class="num" data-c="c10">92</td></tr><tr class="has" data-name="群馬県" data-i="9" data-m="13" data-shop="43" data-ten="13210" data-all="93254" data-est="17178"><td>群馬県<span class="mlinks"><a href="pref-gunma.html">くわしいページ</a><a href="area.html?pref=%E7%BE%A4%E9%A6%AC%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">13</td><td class="num" data-c="ten">13,210</td><td class="num" data-c="all">93,254</td><td class="num" data-c="shr">14.7%</td><td class="num" data-c="est">17,178</td><td class="num" data-c="shop">43</td><td class="num" data-c="c0">8,267</td><td class="num" data-c="c1">2,399</td><td class="num" data-c="c2">2,637</td><td class="num" data-c="c3">1,755</td><td class="num" data-c="c4">96</td><td class="num" data-c="c5">122</td><td class="num" data-c="c6">50</td><td class="num" data-c="c7">47</td><td class="num" data-c="c8">38</td><td class="num" data-c="c9">168</td><td class="num" data-c="c10">30</td></tr><tr class="has" data-name="福岡県" data-i="39" data-m="3" data-shop="0" data-ten="12381" data-all="131422" data-est="16101"><td>福岡県<span class="mlinks"><a href="area.html?pref=%E7%A6%8F%E5%B2%A1%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">3</td><td class="num" data-c="ten">12,381</td><td class="num" data-c="all">131,422</td><td class="num" data-c="shr">9.9%</td><td class="num" data-c="est">16,101</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">9,705</td><td class="num" data-c="c1">2,296</td><td class="num" data-c="c2">801</td><td class="num" data-c="c3">687</td><td class="num" data-c="c4">274</td><td class="num" data-c="c5">78</td><td class="num" data-c="c6">145</td><td class="num" data-c="c7">295</td><td class="num" data-c="c8">133</td><td class="num" data-c="c9">48</td><td class="num" data-c="c10">215</td></tr><tr class="has" data-name="兵庫県" data-i="27" data-m="4" data-shop="23" data-ten="11741" data-all="160908" data-est="15268"><td>兵庫県<span class="mlinks"><a href="pref-hyogo.html">くわしいページ</a><a href="area.html?pref=%E5%85%B5%E5%BA%AB%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">4</td><td class="num" data-c="ten">11,741</td><td class="num" data-c="all">160,908</td><td class="num" data-c="shr">7.6%</td><td class="num" data-c="est">15,268</td><td class="num" data-c="shop">23</td><td class="num" data-c="c0">7,696</td><td class="num" data-c="c1">1,406</td><td class="num" data-c="c2">2,287</td><td class="num" data-c="c3">706</td><td class="num" data-c="c4">308</td><td class="num" data-c="c5">118</td><td class="num" data-c="c6">137</td><td class="num" data-c="c7">112</td><td class="num" data-c="c8">155</td><td class="num" data-c="c9">106</td><td class="num" data-c="c10">116</td></tr><tr class="has" data-name="静岡県" data-i="21" data-m="4" data-shop="23" data-ten="11447" data-all="135730" data-est="14886"><td>静岡県<span class="mlinks"><a href="pref-shizuoka.html">くわしいページ</a><a href="area.html?pref=%E9%9D%99%E5%B2%A1%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">4</td><td class="num" data-c="ten">11,447</td><td class="num" data-c="all">135,730</td><td class="num" data-c="shr">8.7%</td><td class="num" data-c="est">14,886</td><td class="num" data-c="shop">23</td><td class="num" data-c="c0">9,513</td><td class="num" data-c="c1">3,566</td><td class="num" data-c="c2">765</td><td class="num" data-c="c3">709</td><td class="num" data-c="c4">198</td><td class="num" data-c="c5">53</td><td class="num" data-c="c6">35</td><td class="num" data-c="c7">33</td><td class="num" data-c="c8">58</td><td class="num" data-c="c9">67</td><td class="num" data-c="c10">16</td></tr><tr class="has" data-name="広島県" data-i="33" data-m="4" data-shop="15" data-ten="9460" data-all="74613" data-est="12302"><td>広島県<span class="mlinks"><a href="pref-hiroshima.html">くわしいページ</a><a href="area.html?pref=%E5%BA%83%E5%B3%B6%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">4</td><td class="num" data-c="ten">9,460</td><td class="num" data-c="all">74,613</td><td class="num" data-c="shr">13.0%</td><td class="num" data-c="est">12,302</td><td class="num" data-c="shop">15</td><td class="num" data-c="c0">7,803</td><td class="num" data-c="c1">515</td><td class="num" data-c="c2">889</td><td class="num" data-c="c3">217</td><td class="num" data-c="c4">201</td><td class="num" data-c="c5">23</td><td class="num" data-c="c6">47</td><td class="num" data-c="c7">117</td><td class="num" data-c="c8">68</td><td class="num" data-c="c9">33</td><td class="num" data-c="c10">62</td></tr><tr class="has" data-name="栃木県" data-i="8" data-m="10" data-shop="21" data-ten="9166" data-all="64980" data-est="11919"><td>栃木県<span class="mlinks"><a href="pref-tochigi.html">くわしいページ</a><a href="area.html?pref=%E6%A0%83%E6%9C%A8%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">10</td><td class="num" data-c="ten">9,166</td><td class="num" data-c="all">64,980</td><td class="num" data-c="shr">14.8%</td><td class="num" data-c="est">11,919</td><td class="num" data-c="shop">21</td><td class="num" data-c="c0">5,174</td><td class="num" data-c="c1">3,817</td><td class="num" data-c="c2">903</td><td class="num" data-c="c3">2,414</td><td class="num" data-c="c4">208</td><td class="num" data-c="c5">29</td><td class="num" data-c="c6">36</td><td class="num" data-c="c7">190</td><td class="num" data-c="c8">51</td><td class="num" data-c="c9">144</td><td class="num" data-c="c10">17</td></tr><tr class="has" data-name="岐阜県" data-i="20" data-m="6" data-shop="5" data-ten="7981" data-all="83247" data-est="10378"><td>岐阜県<span class="mlinks"><a href="pref-gifu.html">くわしいページ</a><a href="area.html?pref=%E5%B2%90%E9%98%9C%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">6</td><td class="num" data-c="ten">7,981</td><td class="num" data-c="all">83,247</td><td class="num" data-c="shr">9.9%</td><td class="num" data-c="est">10,378</td><td class="num" data-c="shop">5</td><td class="num" data-c="c0">6,042</td><td class="num" data-c="c1">1,635</td><td class="num" data-c="c2">582</td><td class="num" data-c="c3">997</td><td class="num" data-c="c4">79</td><td class="num" data-c="c5">140</td><td class="num" data-c="c6">12</td><td class="num" data-c="c7">39</td><td class="num" data-c="c8">35</td><td class="num" data-c="c9">24</td><td class="num" data-c="c10">31</td></tr><tr class="has" data-name="京都府" data-i="25" data-m="5" data-shop="8" data-ten="6841" data-all="96348" data-est="8896"><td>京都府<span class="mlinks"><a href="pref-kyoto.html">くわしいページ</a><a href="area.html?pref=%E4%BA%AC%E9%83%BD%E5%BA%9C">地域別</a></span></td><td class="num" data-c="m">5</td><td class="num" data-c="ten">6,841</td><td class="num" data-c="all">96,348</td><td class="num" data-c="shr">7.4%</td><td class="num" data-c="est">8,896</td><td class="num" data-c="shop">8</td><td class="num" data-c="c0">4,508</td><td class="num" data-c="c1">2,107</td><td class="num" data-c="c2">946</td><td class="num" data-c="c3">406</td><td class="num" data-c="c4">307</td><td class="num" data-c="c5">129</td><td class="num" data-c="c6">135</td><td class="num" data-c="c7">108</td><td class="num" data-c="c8">64</td><td class="num" data-c="c9">101</td><td class="num" data-c="c10">137</td></tr><tr class="has" data-name="三重県" data-i="23" data-m="3" data-shop="10" data-ten="6799" data-all="76276" data-est="8841"><td>三重県<span class="mlinks"><a href="pref-mie.html">くわしいページ</a><a href="area.html?pref=%E4%B8%89%E9%87%8D%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">3</td><td class="num" data-c="ten">6,799</td><td class="num" data-c="all">76,276</td><td class="num" data-c="shr">9.2%</td><td class="num" data-c="est">8,841</td><td class="num" data-c="shop">10</td><td class="num" data-c="c0">5,640</td><td class="num" data-c="c1">2,016</td><td class="num" data-c="c2">379</td><td class="num" data-c="c3">393</td><td class="num" data-c="c4">100</td><td class="num" data-c="c5">45</td><td class="num" data-c="c6">16</td><td class="num" data-c="c7">135</td><td class="num" data-c="c8">29</td><td class="num" data-c="c9">35</td><td class="num" data-c="c10">27</td></tr><tr class="has" data-name="岡山県" data-i="32" data-m="5" data-shop="6" data-ten="5745" data-all="43007" data-est="7471"><td>岡山県<span class="mlinks"><a href="pref-okayama.html">くわしいページ</a><a href="area.html?pref=%E5%B2%A1%E5%B1%B1%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">5</td><td class="num" data-c="ten">5,745</td><td class="num" data-c="all">43,007</td><td class="num" data-c="shr">13.7%</td><td class="num" data-c="est">7,471</td><td class="num" data-c="shop">6</td><td class="num" data-c="c0">4,707</td><td class="num" data-c="c1">461</td><td class="num" data-c="c2">480</td><td class="num" data-c="c3">338</td><td class="num" data-c="c4">91</td><td class="num" data-c="c5">29</td><td class="num" data-c="c6">13</td><td class="num" data-c="c7">31</td><td class="num" data-c="c8">24</td><td class="num" data-c="c9">14</td><td class="num" data-c="c10">18</td></tr><tr class="has" data-name="長野県" data-i="19" data-m="6" data-shop="5" data-ten="5680" data-all="51878" data-est="7386"><td>長野県<span class="mlinks"><a href="pref-nagano.html">くわしいページ</a><a href="area.html?pref=%E9%95%B7%E9%87%8E%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">6</td><td class="num" data-c="ten">5,680</td><td class="num" data-c="all">51,878</td><td class="num" data-c="shr">11.2%</td><td class="num" data-c="est">7,386</td><td class="num" data-c="shop">5</td><td class="num" data-c="c0">4,651</td><td class="num" data-c="c1">631</td><td class="num" data-c="c2">233</td><td class="num" data-c="c3">517</td><td class="num" data-c="c4">164</td><td class="num" data-c="c5">20</td><td class="num" data-c="c6">23</td><td class="num" data-c="c7">3</td><td class="num" data-c="c8">13</td><td class="num" data-c="c9">51</td><td class="num" data-c="c10">5</td></tr><tr class="has" data-name="鹿児島県" data-i="45" data-m="2" data-shop="0" data-ten="5612" data-all="22733" data-est="7303"><td>鹿児島県<span class="mlinks"><a href="area.html?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">5,612</td><td class="num" data-c="all">22,733</td><td class="num" data-c="shr">26.1%</td><td class="num" data-c="est">7,303</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">5,257</td><td class="num" data-c="c1">184</td><td class="num" data-c="c2">83</td><td class="num" data-c="c3">137</td><td class="num" data-c="c4">38</td><td class="num" data-c="c5">8</td><td class="num" data-c="c6">21</td><td class="num" data-c="c7">39</td><td class="num" data-c="c8">10</td><td class="num" data-c="c9">3</td><td class="num" data-c="c10">16</td></tr><tr class="has" data-name="熊本県" data-i="42" data-m="1" data-shop="0" data-ten="5594" data-all="33945" data-est="7278"><td>熊本県<span class="mlinks"><a href="area.html?pref=%E7%86%8A%E6%9C%AC%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">5,594</td><td class="num" data-c="all">33,945</td><td class="num" data-c="shr">17.3%</td><td class="num" data-c="est">7,278</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">5,029</td><td class="num" data-c="c1">349</td><td class="num" data-c="c2">165</td><td class="num" data-c="c3">242</td><td class="num" data-c="c4">67</td><td class="num" data-c="c5">5</td><td class="num" data-c="c6">15</td><td class="num" data-c="c7">25</td><td class="num" data-c="c8">18</td><td class="num" data-c="c9">6</td><td class="num" data-c="c10">22</td></tr><tr class="has" data-name="宮城県" data-i="3" data-m="7" data-shop="9" data-ten="5184" data-all="33658" data-est="6741"><td>宮城県<span class="mlinks"><a href="pref-miyagi.html">くわしいページ</a><a href="area.html?pref=%E5%AE%AE%E5%9F%8E%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">7</td><td class="num" data-c="ten">5,184</td><td class="num" data-c="all">33,658</td><td class="num" data-c="shr">15.8%</td><td class="num" data-c="est">6,741</td><td class="num" data-c="shop">9</td><td class="num" data-c="c0">3,592</td><td class="num" data-c="c1">1,027</td><td class="num" data-c="c2">704</td><td class="num" data-c="c3">601</td><td class="num" data-c="c4">86</td><td class="num" data-c="c5">45</td><td class="num" data-c="c6">8</td><td class="num" data-c="c7">46</td><td class="num" data-c="c8">36</td><td class="num" data-c="c9">27</td><td class="num" data-c="c10">39</td></tr><tr class="has" data-name="香川県" data-i="36" data-m="2" data-shop="0" data-ten="4924" data-all="22593" data-est="6403"><td>香川県<span class="mlinks"><a href="area.html?pref=%E9%A6%99%E5%B7%9D%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">4,924</td><td class="num" data-c="all">22,593</td><td class="num" data-c="shr">22.6%</td><td class="num" data-c="est">6,403</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">4,572</td><td class="num" data-c="c1">132</td><td class="num" data-c="c2">163</td><td class="num" data-c="c3">108</td><td class="num" data-c="c4">46</td><td class="num" data-c="c5">6</td><td class="num" data-c="c6">5</td><td class="num" data-c="c7">1</td><td class="num" data-c="c8">10</td><td class="num" data-c="c9">4</td><td class="num" data-c="c10">9</td></tr><tr class="has" data-name="沖縄県" data-i="46" data-m="3" data-shop="0" data-ten="4859" data-all="35894" data-est="6319"><td>沖縄県<span class="mlinks"><a href="area.html?pref=%E6%B2%96%E7%B8%84%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">3</td><td class="num" data-c="ten">4,859</td><td class="num" data-c="all">35,894</td><td class="num" data-c="shr">14.5%</td><td class="num" data-c="est">6,319</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">4,234</td><td class="num" data-c="c1">557</td><td class="num" data-c="c2">150</td><td class="num" data-c="c3">109</td><td class="num" data-c="c4">79</td><td class="num" data-c="c5">35</td><td class="num" data-c="c6">31</td><td class="num" data-c="c7">111</td><td class="num" data-c="c8">41</td><td class="num" data-c="c9">44</td><td class="num" data-c="c10">25</td></tr><tr class="has" data-name="富山県" data-i="15" data-m="4" data-shop="2" data-ten="4629" data-all="27536" data-est="6019"><td>富山県<span class="mlinks"><a href="pref-toyama.html">くわしいページ</a><a href="area.html?pref=%E5%AF%8C%E5%B1%B1%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">4</td><td class="num" data-c="ten">4,629</td><td class="num" data-c="all">27,536</td><td class="num" data-c="shr">17.6%</td><td class="num" data-c="est">6,019</td><td class="num" data-c="shop">2</td><td class="num" data-c="c0">3,331</td><td class="num" data-c="c1">106</td><td class="num" data-c="c2">206</td><td class="num" data-c="c3">918</td><td class="num" data-c="c4">84</td><td class="num" data-c="c5">12</td><td class="num" data-c="c6">42</td><td class="num" data-c="c7">4</td><td class="num" data-c="c8">5</td><td class="num" data-c="c9">8</td><td class="num" data-c="c10">19</td></tr><tr class="has" data-name="大分県" data-i="43" data-m="2" data-shop="0" data-ten="4213" data-all="24263" data-est="5481"><td>大分県<span class="mlinks"><a href="area.html?pref=%E5%A4%A7%E5%88%86%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">4,213</td><td class="num" data-c="all">24,263</td><td class="num" data-c="shr">18.3%</td><td class="num" data-c="est">5,481</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">3,500</td><td class="num" data-c="c1">1,004</td><td class="num" data-c="c2">372</td><td class="num" data-c="c3">96</td><td class="num" data-c="c4">68</td><td class="num" data-c="c5">7</td><td class="num" data-c="c6">47</td><td class="num" data-c="c7">51</td><td class="num" data-c="c8">48</td><td class="num" data-c="c9">13</td><td class="num" data-c="c10">11</td></tr><tr class="has" data-name="滋賀県" data-i="24" data-m="2" data-shop="2" data-ten="4007" data-all="47865" data-est="5211"><td>滋賀県<span class="mlinks"><a href="pref-shiga.html">くわしいページ</a><a href="area.html?pref=%E6%BB%8B%E8%B3%80%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">4,007</td><td class="num" data-c="all">47,865</td><td class="num" data-c="shr">8.7%</td><td class="num" data-c="est">5,211</td><td class="num" data-c="shop">2</td><td class="num" data-c="c0">3,555</td><td class="num" data-c="c1">222</td><td class="num" data-c="c2">140</td><td class="num" data-c="c3">92</td><td class="num" data-c="c4">119</td><td class="num" data-c="c5">18</td><td class="num" data-c="c6">30</td><td class="num" data-c="c7">17</td><td class="num" data-c="c8">17</td><td class="num" data-c="c9">11</td><td class="num" data-c="c10">8</td></tr><tr class="has" data-name="宮崎県" data-i="44" data-m="2" data-shop="0" data-ten="3942" data-all="13834" data-est="5130"><td>宮崎県<span class="mlinks"><a href="area.html?pref=%E5%AE%AE%E5%B4%8E%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">3,942</td><td class="num" data-c="all">13,834</td><td class="num" data-c="shr">30.4%</td><td class="num" data-c="est">5,130</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">3,446</td><td class="num" data-c="c1">137</td><td class="num" data-c="c2">161</td><td class="num" data-c="c3">76</td><td class="num" data-c="c4">11</td><td class="num" data-c="c5">4</td><td class="num" data-c="c6">5</td><td class="num" data-c="c7">186</td><td class="num" data-c="c8">34</td><td class="num" data-c="c9">0</td><td class="num" data-c="c10">19</td></tr><tr class="has" data-name="新潟県" data-i="14" data-m="5" data-shop="3" data-ten="3818" data-all="27303" data-est="4966"><td>新潟県<span class="mlinks"><a href="pref-niigata.html">くわしいページ</a><a href="area.html?pref=%E6%96%B0%E6%BD%9F%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">5</td><td class="num" data-c="ten">3,818</td><td class="num" data-c="all">27,303</td><td class="num" data-c="shr">14.3%</td><td class="num" data-c="est">4,966</td><td class="num" data-c="shop">3</td><td class="num" data-c="c0">2,816</td><td class="num" data-c="c1">455</td><td class="num" data-c="c2">232</td><td class="num" data-c="c3">502</td><td class="num" data-c="c4">84</td><td class="num" data-c="c5">26</td><td class="num" data-c="c6">61</td><td class="num" data-c="c7">28</td><td class="num" data-c="c8">35</td><td class="num" data-c="c9">17</td><td class="num" data-c="c10">17</td></tr><tr class="" data-name="山口県" data-i="34" data-m="0" data-shop="0" data-ten="3451" data-all="23146" data-est="4488"><td>山口県<span class="mlinks"><a href="pref-yamaguchi.html">くわしいページ</a><a href="area.html?pref=%E5%B1%B1%E5%8F%A3%E7%9C%8C">地域別</a></span></td><td class="num z" data-c="m">0</td><td class="num" data-c="ten">3,451</td><td class="num" data-c="all">23,146</td><td class="num" data-c="shr">15.3%</td><td class="num" data-c="est">4,488</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">3,050</td><td class="num" data-c="c1">188</td><td class="num" data-c="c2">237</td><td class="num" data-c="c3">56</td><td class="num" data-c="c4">55</td><td class="num" data-c="c5">10</td><td class="num" data-c="c6">9</td><td class="num" data-c="c7">13</td><td class="num" data-c="c8">20</td><td class="num" data-c="c9">1</td><td class="num" data-c="c10">0</td></tr><tr class="has" data-name="石川県" data-i="16" data-m="1" data-shop="4" data-ten="3410" data-all="24691" data-est="4434"><td>石川県<span class="mlinks"><a href="pref-ishikawa.html">くわしいページ</a><a href="area.html?pref=%E7%9F%B3%E5%B7%9D%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">3,410</td><td class="num" data-c="all">24,691</td><td class="num" data-c="shr">14.5%</td><td class="num" data-c="est">4,434</td><td class="num" data-c="shop">4</td><td class="num" data-c="c0">2,850</td><td class="num" data-c="c1">166</td><td class="num" data-c="c2">337</td><td class="num" data-c="c3">68</td><td class="num" data-c="c4">53</td><td class="num" data-c="c5">20</td><td class="num" data-c="c6">17</td><td class="num" data-c="c7">12</td><td class="num" data-c="c8">22</td><td class="num" data-c="c9">4</td><td class="num" data-c="c10">27</td></tr><tr class="has" data-name="愛媛県" data-i="37" data-m="2" data-shop="0" data-ten="3020" data-all="21269" data-est="3927"><td>愛媛県<span class="mlinks"><a href="area.html?pref=%E6%84%9B%E5%AA%9B%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">3,020</td><td class="num" data-c="all">21,269</td><td class="num" data-c="shr">14.9%</td><td class="num" data-c="est">3,927</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">2,727</td><td class="num" data-c="c1">175</td><td class="num" data-c="c2">113</td><td class="num" data-c="c3">75</td><td class="num" data-c="c4">31</td><td class="num" data-c="c5">9</td><td class="num" data-c="c6">28</td><td class="num" data-c="c7">13</td><td class="num" data-c="c8">20</td><td class="num" data-c="c9">3</td><td class="num" data-c="c10">1</td></tr><tr class="has" data-name="佐賀県" data-i="40" data-m="1" data-shop="0" data-ten="2922" data-all="13508" data-est="3800"><td>佐賀県<span class="mlinks"><a href="area.html?pref=%E4%BD%90%E8%B3%80%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">2,922</td><td class="num" data-c="all">13,508</td><td class="num" data-c="shr">22.8%</td><td class="num" data-c="est">3,800</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">2,614</td><td class="num" data-c="c1">260</td><td class="num" data-c="c2">159</td><td class="num" data-c="c3">84</td><td class="num" data-c="c4">29</td><td class="num" data-c="c5">3</td><td class="num" data-c="c6">6</td><td class="num" data-c="c7">23</td><td class="num" data-c="c8">0</td><td class="num" data-c="c9">0</td><td class="num" data-c="c10">4</td></tr><tr class="has" data-name="福島県" data-i="6" data-m="3" data-shop="6" data-ten="2877" data-all="22233" data-est="3741"><td>福島県<span class="mlinks"><a href="pref-fukushima.html">くわしいページ</a><a href="area.html?pref=%E7%A6%8F%E5%B3%B6%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">3</td><td class="num" data-c="ten">2,877</td><td class="num" data-c="all">22,233</td><td class="num" data-c="shr">13.3%</td><td class="num" data-c="est">3,741</td><td class="num" data-c="shop">6</td><td class="num" data-c="c0">2,241</td><td class="num" data-c="c1">280</td><td class="num" data-c="c2">187</td><td class="num" data-c="c3">291</td><td class="num" data-c="c4">63</td><td class="num" data-c="c5">12</td><td class="num" data-c="c6">5</td><td class="num" data-c="c7">33</td><td class="num" data-c="c8">29</td><td class="num" data-c="c9">11</td><td class="num" data-c="c10">5</td></tr><tr class="has" data-name="長崎県" data-i="41" data-m="1" data-shop="0" data-ten="2825" data-all="18158" data-est="3674"><td>長崎県<span class="mlinks"><a href="area.html?pref=%E9%95%B7%E5%B4%8E%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">2,825</td><td class="num" data-c="all">18,158</td><td class="num" data-c="shr">16.2%</td><td class="num" data-c="est">3,674</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">2,648</td><td class="num" data-c="c1">266</td><td class="num" data-c="c2">69</td><td class="num" data-c="c3">18</td><td class="num" data-c="c4">30</td><td class="num" data-c="c5">5</td><td class="num" data-c="c6">0</td><td class="num" data-c="c7">1</td><td class="num" data-c="c8">29</td><td class="num" data-c="c9">4</td><td class="num" data-c="c10">21</td></tr><tr class="has" data-name="岩手県" data-i="2" data-m="2" data-shop="0" data-ten="2294" data-all="13173" data-est="2983"><td>岩手県<span class="mlinks"><a href="pref-iwate.html">くわしいページ</a><a href="area.html?pref=%E5%B2%A9%E6%89%8B%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">2,294</td><td class="num" data-c="all">13,173</td><td class="num" data-c="shr">18.3%</td><td class="num" data-c="est">2,983</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">1,939</td><td class="num" data-c="c1">28</td><td class="num" data-c="c2">190</td><td class="num" data-c="c3">105</td><td class="num" data-c="c4">32</td><td class="num" data-c="c5">1</td><td class="num" data-c="c6">6</td><td class="num" data-c="c7">10</td><td class="num" data-c="c8">5</td><td class="num" data-c="c9">1</td><td class="num" data-c="c10">5</td></tr><tr class="has" data-name="奈良県" data-i="28" data-m="1" data-shop="3" data-ten="2211" data-all="22625" data-est="2875"><td>奈良県<span class="mlinks"><a href="pref-nara.html">くわしいページ</a><a href="area.html?pref=%E5%A5%88%E8%89%AF%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">2,211</td><td class="num" data-c="all">22,625</td><td class="num" data-c="shr">10.2%</td><td class="num" data-c="est">2,875</td><td class="num" data-c="shop">3</td><td class="num" data-c="c0">1,639</td><td class="num" data-c="c1">578</td><td class="num" data-c="c2">281</td><td class="num" data-c="c3">97</td><td class="num" data-c="c4">68</td><td class="num" data-c="c5">24</td><td class="num" data-c="c6">26</td><td class="num" data-c="c7">22</td><td class="num" data-c="c8">26</td><td class="num" data-c="c9">20</td><td class="num" data-c="c10">8</td></tr><tr class="has" data-name="福井県" data-i="17" data-m="1" data-shop="0" data-ten="2141" data-all="22426" data-est="2784"><td>福井県<span class="mlinks"><a href="pref-fukui.html">くわしいページ</a><a href="area.html?pref=%E7%A6%8F%E4%BA%95%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">2,141</td><td class="num" data-c="all">22,426</td><td class="num" data-c="shr">10.0%</td><td class="num" data-c="est">2,784</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">1,773</td><td class="num" data-c="c1">79</td><td class="num" data-c="c2">230</td><td class="num" data-c="c3">46</td><td class="num" data-c="c4">63</td><td class="num" data-c="c5">3</td><td class="num" data-c="c6">5</td><td class="num" data-c="c7">8</td><td class="num" data-c="c8">5</td><td class="num" data-c="c9">4</td><td class="num" data-c="c10">4</td></tr><tr class="has" data-name="山梨県" data-i="18" data-m="2" data-shop="1" data-ten="1831" data-all="26191" data-est="2381"><td>山梨県<span class="mlinks"><a href="pref-yamanashi.html">くわしいページ</a><a href="area.html?pref=%E5%B1%B1%E6%A2%A8%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">1,831</td><td class="num" data-c="all">26,191</td><td class="num" data-c="shr">7.2%</td><td class="num" data-c="est">2,381</td><td class="num" data-c="shop">1</td><td class="num" data-c="c0">1,373</td><td class="num" data-c="c1">262</td><td class="num" data-c="c2">133</td><td class="num" data-c="c3">124</td><td class="num" data-c="c4">93</td><td class="num" data-c="c5">19</td><td class="num" data-c="c6">5</td><td class="num" data-c="c7">2</td><td class="num" data-c="c8">19</td><td class="num" data-c="c9">52</td><td class="num" data-c="c10">11</td></tr><tr class="has" data-name="徳島県" data-i="35" data-m="2" data-shop="4" data-ten="1768" data-all="10084" data-est="2299"><td>徳島県<span class="mlinks"><a href="pref-tokushima.html">くわしいページ</a><a href="area.html?pref=%E5%BE%B3%E5%B3%B6%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">1,768</td><td class="num" data-c="all">10,084</td><td class="num" data-c="shr">18.2%</td><td class="num" data-c="est">2,299</td><td class="num" data-c="shop">4</td><td class="num" data-c="c0">1,405</td><td class="num" data-c="c1">136</td><td class="num" data-c="c2">137</td><td class="num" data-c="c3">120</td><td class="num" data-c="c4">27</td><td class="num" data-c="c5">12</td><td class="num" data-c="c6">8</td><td class="num" data-c="c7">36</td><td class="num" data-c="c8">9</td><td class="num" data-c="c9">2</td><td class="num" data-c="c10">12</td></tr><tr class="has" data-name="青森県" data-i="1" data-m="1" data-shop="0" data-ten="1711" data-all="9713" data-est="2233"><td>青森県<span class="mlinks"><a href="pref-aomori.html">くわしいページ</a><a href="area.html?pref=%E9%9D%92%E6%A3%AE%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">1,711</td><td class="num" data-c="all">9,713</td><td class="num" data-c="shr">18.2%</td><td class="num" data-c="est">2,233</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">1,472</td><td class="num" data-c="c1">48</td><td class="num" data-c="c2">24</td><td class="num" data-c="c3">144</td><td class="num" data-c="c4">26</td><td class="num" data-c="c5">4</td><td class="num" data-c="c6">0</td><td class="num" data-c="c7">31</td><td class="num" data-c="c8">4</td><td class="num" data-c="c9">5</td><td class="num" data-c="c10">1</td></tr><tr class="has" data-name="高知県" data-i="38" data-m="1" data-shop="0" data-ten="1572" data-all="7668" data-est="2044"><td>高知県<span class="mlinks"><a href="area.html?pref=%E9%AB%98%E7%9F%A5%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">1,572</td><td class="num" data-c="all">7,668</td><td class="num" data-c="shr">21.4%</td><td class="num" data-c="est">2,044</td><td class="num z" data-c="shop">—</td><td class="num" data-c="c0">1,408</td><td class="num" data-c="c1">42</td><td class="num" data-c="c2">107</td><td class="num" data-c="c3">25</td><td class="num" data-c="c4">14</td><td class="num" data-c="c5">2</td><td class="num" data-c="c6">1</td><td class="num" data-c="c7">3</td><td class="num" data-c="c8">5</td><td class="num" data-c="c9">3</td><td class="num" data-c="c10">4</td></tr><tr class="has" data-name="和歌山県" data-i="29" data-m="2" data-shop="1" data-ten="1510" data-all="12065" data-est="1965"><td>和歌山県<span class="mlinks"><a href="pref-wakayama.html">くわしいページ</a><a href="area.html?pref=%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">1,510</td><td class="num" data-c="all">12,065</td><td class="num" data-c="shr">13.1%</td><td class="num" data-c="est">1,965</td><td class="num" data-c="shop">1</td><td class="num" data-c="c0">1,345</td><td class="num" data-c="c1">156</td><td class="num" data-c="c2">55</td><td class="num" data-c="c3">28</td><td class="num" data-c="c4">39</td><td class="num" data-c="c5">5</td><td class="num" data-c="c6">14</td><td class="num" data-c="c7">7</td><td class="num" data-c="c8">7</td><td class="num" data-c="c9">2</td><td class="num" data-c="c10">8</td></tr><tr class="has" data-name="島根県" data-i="31" data-m="2" data-shop="0" data-ten="1155" data-all="12531" data-est="1503"><td>島根県<span class="mlinks"><a href="pref-shimane.html">くわしいページ</a><a href="area.html?pref=%E5%B3%B6%E6%A0%B9%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">1,155</td><td class="num" data-c="all">12,531</td><td class="num" data-c="shr">9.7%</td><td class="num" data-c="est">1,503</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">790</td><td class="num" data-c="c1">21</td><td class="num" data-c="c2">212</td><td class="num" data-c="c3">98</td><td class="num" data-c="c4">23</td><td class="num" data-c="c5">2</td><td class="num" data-c="c6">1</td><td class="num" data-c="c7">23</td><td class="num" data-c="c8">2</td><td class="num" data-c="c9">2</td><td class="num" data-c="c10">2</td></tr><tr class="has" data-name="山形県" data-i="5" data-m="2" data-shop="0" data-ten="1148" data-all="11476" data-est="1493"><td>山形県<span class="mlinks"><a href="pref-yamagata.html">くわしいページ</a><a href="area.html?pref=%E5%B1%B1%E5%BD%A2%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">2</td><td class="num" data-c="ten">1,148</td><td class="num" data-c="all">11,476</td><td class="num" data-c="shr">10.3%</td><td class="num" data-c="est">1,493</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">861</td><td class="num" data-c="c1">21</td><td class="num" data-c="c2">110</td><td class="num" data-c="c3">107</td><td class="num" data-c="c4">38</td><td class="num" data-c="c5">5</td><td class="num" data-c="c6">4</td><td class="num" data-c="c7">0</td><td class="num" data-c="c8">16</td><td class="num" data-c="c9">3</td><td class="num" data-c="c10">4</td></tr><tr class="" data-name="秋田県" data-i="4" data-m="0" data-shop="0" data-ten="872" data-all="6519" data-est="1134"><td>秋田県<span class="mlinks"><a href="pref-akita.html">くわしいページ</a><a href="area.html?pref=%E7%A7%8B%E7%94%B0%E7%9C%8C">地域別</a></span></td><td class="num z" data-c="m">0</td><td class="num" data-c="ten">872</td><td class="num" data-c="all">6,519</td><td class="num" data-c="shr">13.8%</td><td class="num" data-c="est">1,134</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">687</td><td class="num" data-c="c1">123</td><td class="num" data-c="c2">25</td><td class="num" data-c="c3">64</td><td class="num" data-c="c4">48</td><td class="num" data-c="c5">2</td><td class="num" data-c="c6">15</td><td class="num" data-c="c7">18</td><td class="num" data-c="c8">1</td><td class="num" data-c="c9">7</td><td class="num" data-c="c10">5</td></tr><tr class="has" data-name="鳥取県" data-i="30" data-m="1" data-shop="0" data-ten="836" data-all="6760" data-est="1087"><td>鳥取県<span class="mlinks"><a href="pref-tottori.html">くわしいページ</a><a href="area.html?pref=%E9%B3%A5%E5%8F%96%E7%9C%8C">地域別</a></span></td><td class="num" data-c="m">1</td><td class="num" data-c="ten">836</td><td class="num" data-c="all">6,760</td><td class="num" data-c="shr">12.8%</td><td class="num" data-c="est">1,087</td><td class="num" data-c="shop">0</td><td class="num" data-c="c0">687</td><td class="num" data-c="c1">42</td><td class="num" data-c="c2">46</td><td class="num" data-c="c3">57</td><td class="num" data-c="c4">20</td><td class="num" data-c="c5">0</td><td class="num" data-c="c6">4</td><td class="num" data-c="c7">1</td><td class="num" data-c="c8">18</td><td class="num" data-c="c9">0</td><td class="num" data-c="c10">3</td></tr></tbody></table></div>
+  <p class="note">スマホでは、表を横に動かすと右の列が見えます（都道府県の名前の列は動きません）。</p>
+</div><p class="totop"><a href="#toc">↑ 目次へ戻る</a></p></div></details>
+<details class="chap" id="s4"><summary><h2><span class="no">4.</span>モスク・関連施設</h2><span class="chap-d">国籍・開設時期・宗派・運営・区域・食材店</span></summary><div class="chap-in"><h3 id="s4-1">中心の国籍ごとのモスクの数</h3><div class="card">
+  <p class="note">モスクの国籍は、そのモスクに集まる人の中心の国籍で、このサイトで確かめたもの（確かめられていないものは「不明」）。日本に住む人は、在留外国人統計（2025年末、47都道府県の合計）の、その国籍の人全体の数で、ムスリムだけの数ではありません。
+    スリランカ・ミャンマー・インド・ガーナは、ムスリムが少数派の国です。「—」は1つの国ではないもの（多国籍・不明・その他）と、日本の人です。</p>
+  <div class="tablewrap short"><table><thead><tr><th>中心の国籍（確認できたもの）</th><th class="num">モスクの数</th><th class="num">日本に住む人（国籍別）<br><small>2025年12月末</small></th></tr></thead><tbody><tr><td>多国籍</td><td class="num"><span class="cell"><span class="cbar tg" style="width:6.00rem"></span>67</span></td><td class="num"><span class="cell">—</span></td></tr><tr><td>不明</td><td class="num"><span class="cell"><span class="cbar tg" style="width:5.10rem"></span>57</span></td><td class="num"><span class="cell">—</span></td></tr><tr><td>パキスタン</td><td class="num"><span class="cell"><span class="cbar tg" style="width:3.85rem"></span>43</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.79rem"></span>34,845</span></td></tr><tr><td>インドネシア</td><td class="num"><span class="cell"><span class="cbar tg" style="width:3.58rem"></span>40</span></td><td class="num"><span class="cell"><span class="cbar" style="width:6.00rem"></span>265,537</span></td></tr><tr><td>バングラデシュ</td><td class="num"><span class="cell"><span class="cbar tg" style="width:2.87rem"></span>32</span></td><td class="num"><span class="cell"><span class="cbar" style="width:1.01rem"></span>44,848</span></td></tr><tr><td>スリランカ</td><td class="num"><span class="cell"><span class="cbar tg" style="width:1.07rem"></span>12</span></td><td class="num"><span class="cell"><span class="cbar" style="width:1.78rem"></span>78,913</span></td></tr><tr><td>トルコ</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.36rem"></span>4</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.18rem"></span>7,883</span></td></tr><tr><td>マレーシア</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.27rem"></span>3</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.28rem"></span>12,237</span></td></tr><tr><td>アフガニスタン</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.18rem"></span>2</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.16rem"></span>6,874</span></td></tr><tr><td>ミャンマー</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.18rem"></span>2</span></td><td class="num"><span class="cell"><span class="cbar" style="width:4.12rem"></span>182,394</span></td></tr><tr><td>インド</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.09rem"></span>1</span></td><td class="num"><span class="cell"><span class="cbar" style="width:1.33rem"></span>58,792</span></td></tr><tr><td>ガーナ</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.09rem"></span>1</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.08rem"></span>3,537</span></td></tr><tr><td>セネガル</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.09rem"></span>1</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.03rem"></span>1,213</span></td></tr><tr><td>日本</td><td class="num"><span class="cell"><span class="cbar tg" style="width:0.09rem"></span>1</span></td><td class="num"><span class="cell">—</span></td></tr></tbody></table></div>
+</div><h3 id="s4-2">開設時期</h3><div class="card">
+  <p class="note"><b>「開設」と「遅くとも」は混ぜずに数えています。</b>「開設」は、開設の時期が資料で分かる施設（「ごろ」などおおよその時期も入れ、その数を小さい字で出しています）。
+    「遅くとも」は、その時期に使われていたと資料で確認できたいちばん古い時期で、実際の開設はもっと前かもしれません。開設時期が分からない施設は32か所です（266か所のうち）。</p>
+  <div class="tablewrap short"><table><thead><tr><th>時期</th><th class="num">開設（資料で分かる）</th><th class="num">遅くとも（その時期の資料で確認）</th></tr></thead><tbody><tr><td>1999年まで</td><td class="num"><span class="cell"><span class="cbar tg" style="width:1.88rem"></span>15</span></td><td class="num"><span class="cell"><span class="cbar" style="width:0.00rem"></span>0</span></td></tr><tr><td>2000〜2009年</td><td class="num"><span class="cell"><span class="cbar tg" style="width:5.38rem"></span>43</span><small class="asof">うちおおよそ 4</small></td><td class="num"><span class="cell"><span class="cbar" style="width:0.00rem"></span>0</span></td></tr><tr><td>2010〜2014年</td><td class="num"><span class="cell"><span class="cbar tg" style="width:2.00rem"></span>16</span><small class="asof">うちおおよそ 1</small></td><td class="num"><span class="cell"><span class="cbar" style="width:0.75rem"></span>6</span></td></tr><tr><td>2015〜2019年</td><td class="num"><span class="cell"><span class="cbar tg" style="width:3.25rem"></span>26</span><small class="asof">うちおおよそ 4</small></td><td class="num"><span class="cell"><span class="cbar" style="width:2.25rem"></span>18</span></td></tr><tr><td>2020〜2021年</td><td class="num"><span class="cell"><span class="cbar tg" style="width:1.38rem"></span>11</span><small class="asof">うちおおよそ 1</small></td><td class="num"><span class="cell"><span class="cbar" style="width:0.88rem"></span>7</span></td></tr><tr><td>2022年以降</td><td class="num"><span class="cell"><span class="cbar tg" style="width:5.50rem"></span>44</span><small class="asof">うちおおよそ 5</small></td><td class="num"><span class="cell"><span class="cbar" style="width:6.00rem"></span>48</span></td></tr></tbody></table></div>
+  <p class="note">施設ごとの開設時期は、都道府県のくわしいページの「モスクの開設時期」と、モスクごとの詳しい情報にあります。</p>
+</div><h3 id="s4-3">運営団体・国籍・宗派・区域区分</h3><ul class="facts"><li><b class="h">中心の国籍</b>266か所のうち<b>209か所</b>で確認できました（多国籍 67か所・パキスタン系 43か所・インドネシア系 40か所・バングラデシュ系 32か所・スリランカ系 12か所・トルコ系 4か所・マレーシア系 3か所・アフガニスタン系 2か所・ミャンマー系 2か所・インド系 1か所・ガーナ系 1か所・セネガル系 1か所・日本系 1か所）。ほかの57か所は確かめられていません（不明）。国籍は、そのモスクに集まる人の中心の国籍で、運営団体の国籍ではありません。</li><li><b class="h">宗派</b>266か所のうち<b>121か所</b>で確認できました（スンニ派 115か所・シーア派 5か所・アフマディーヤ 1か所）。ほかの145か所は確かめられていません（不明）。</li><li><b class="h">運営団体</b>266か所のうち<b>221か所</b>で確認できました（団体の形：一般社団・財団法人 105か所・宗教法人 54か所・法人の登録は見当たらない 34か所・会社（株式会社など） 14か所・NPO法人 10か所・まだ分からない 3か所・法人（種類は名前からは分からない） 1か所）。ほかの45か所は確かめられていません（不明）。法人の形は、団体の名前（法人の登録名）から分けています。</li><li><b class="h">区域区分</b>市街化区域 150か所・市街化調整区域 66か所・区域区分なし（非線引き） 43か所・都市計画区域外 7か所。国土交通省「都市計画決定GISデータ」（令和7年度）と、地図の位置を照らし合わせた結果です。市街化調整区域にあるからといって、違法とは限りません。</li></ul><h3 id="s4-4">数に入れていない場所</h3><div class="card"><p>モスク・礼拝所の数（266か所）には、次の場所を入れていません：計画・建設中 9か所・状況確認中 24か所・閉鎖・移転 6か所・学校 9か所・墓地 8か所。どれも<a href="map.html">地図</a>と<a href="area.html">地域別のページ</a>で、それぞれ別の印・まとまりで見られます。</p><p class="note">いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</p></div><h3 id="s4-5">ハラール食材店</h3><div class="card">
+  <h4>ハラール食材店が多い都道府県（調べた36都道府県・上位10）</h4>
+  <p class="note"><b>Googleマップの公開登録情報から集めた店です。ハラールの認証を確かめた店ではありません。</b>調べた36都道府県で合わせて672店（2026年10月12日〜2026年10月16日に確認）。
+    まだ調べていないのは11県です（香川県・愛媛県・高知県・福岡県・佐賀県・長崎県・熊本県・大分県・宮崎県・鹿児島県・沖縄県）。店の一覧は、都道府県のくわしいページの「ハラール食材店一覧」にあります。</p>
+  <div class="bars"><div class="brow " title="東京都 99店"><span class="blab">東京都</span><span class="btrack"><span class="bar" style="width:100.0%"></span></span><span class="bval">99店</span></div><div class="brow " title="埼玉県 90店"><span class="blab">埼玉県</span><span class="btrack"><span class="bar" style="width:90.9%"></span></span><span class="bval">90店</span></div><div class="brow " title="愛知県 72店"><span class="blab">愛知県</span><span class="btrack"><span class="bar" style="width:72.7%"></span></span><span class="bval">72店</span></div><div class="brow " title="千葉県 69店"><span class="blab">千葉県</span><span class="btrack"><span class="bar" style="width:69.7%"></span></span><span class="bval">69店</span></div><div class="brow " title="神奈川県 52店"><span class="blab">神奈川県</span><span class="btrack"><span class="bar" style="width:52.5%"></span></span><span class="bval">52店</span></div><div class="brow " title="茨城県 48店"><span class="blab">茨城県</span><span class="btrack"><span class="bar" style="width:48.5%"></span></span><span class="bval">48店</span></div><div class="brow " title="大阪府 44店"><span class="blab">大阪府</span><span class="btrack"><span class="bar" style="width:44.4%"></span></span><span class="bval">44店</span></div><div class="brow " title="群馬県 43店"><span class="blab">群馬県</span><span class="btrack"><span class="bar" style="width:43.4%"></span></span><span class="bval">43店</span></div><div class="brow " title="静岡県 23店"><span class="blab">静岡県</span><span class="btrack"><span class="bar" style="width:23.2%"></span></span><span class="bval">23店</span></div><div class="brow " title="兵庫県 23店"><span class="blab">兵庫県</span><span class="btrack"><span class="bar" style="width:23.2%"></span></span><span class="bval">23店</span></div></div>
+</div><p class="totop"><a href="#toc">↑ 目次へ戻る</a></p></div></details>
+<details class="chap" id="s5"><summary><h2><span class="no">5.</span>出典・調査方法</h2><span class="chap-d">統計資料、集計基準、調査上の注意</span></summary><div class="chap-in"><h3 id="s5-1">統計資料と出典</h3><div class="card"><ol class="src">
+  <li>出入国在留管理庁「令和8年6月末における在留外国人数について」（2026年10月16日発表）の第4表「都道府県別 在留外国人数の推移」と第5表「都道府県別 国籍・地域別 在留外国人数（令和8年6月末）」。全国の合計は4,281,026人。第5表は、全国で多い20の国籍・地域だけ名前が出ていて、ほかは「その他」にまとめられています（対象10か国では、インドネシア・パキスタン・バングラデシュだけ）。このページでは、外国人全体の数と増え方、外国人全体の国籍・地域の上位10、名前が出ている国籍の「いちばん新しい数」に使っています。<a href="https://www.moj.go.jp/isa/publications/press/13_00070.html" target="_blank" rel="noopener">出入国在留管理庁の発表</a></li>
+  <li>出入国在留管理庁「在留外国人統計」2025年12月末（e-Stat で2026年7月10日公開の「在留外国人統計テーブルデータ（国籍・地域別 在留資格別 市区町村別）」）。都道府県別の数は、この表を都道府県ごとに足したものです（全国の合計は公表値の4,125,395人と一致）。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
+  <li>出入国在留管理庁「在留外国人統計」2016〜2025年の各年12月末（e-Stat。2016〜2020年は第4表「都道府県別 国籍・地域別 在留外国人」、2021〜2025年は「在留外国人統計テーブルデータ」を都道府県ごとに足したもの）。「アフリカの国（合計）」は、統計の地域の区分「アフリカ」の54か国の合計です。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
+  <li>出入国在留管理庁「在留外国人統計」2016〜2025年の各年12月末の、都道府県別・国籍・地域別の在留外国人数（e-Stat。2016〜2020年は第4表「都道府県別 国籍・地域別 在留外国人」、2021〜2025年は「在留外国人統計テーブルデータ」を都道府県ごとに足したもの）。各年・各都道府県で、国籍・地域の人数の合計が外国人全体の数と一致することを確かめています。期間の途中で名前が変わった国（マケドニア→北マケドニア、スワジランド→エスワティニ）は新しい名前にそろえました。2024年からの表で国籍・地域が「-」となっている人（全国で300人ほど）は、順位に入れていません。「中国」には台湾を含みません（台湾は別に数えています）。<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00250012&amp;tstat=000001018034" target="_blank" rel="noopener">e-Stat 在留外国人統計</a></li>
+  <li>店田廣文「日本のムスリム人口 2026年」Research Papers: Muslims in Japan No.31、多民族多世代社会研究所、2026年9月。表3「都道府県別・滞日ムスリム人口の推計」（在留外国人統計2025年12月末の主要10か国の人数による推計）。<a href="https://www.imemgs.com/wp-content/uploads/2026/09/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%A0%E3%82%B9%E3%83%AA%E3%83%A0%E4%BA%BA%E5%8F%A3-%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%96%E5%B9%B4-1.pdf" target="_blank" rel="noopener">PDF</a></li>
+  <li>モスク・礼拝所の数・国籍・宗派・運営・開設時期は、このサイトの地図・「モスク・施設を探す」・地域別のページ（同じ場所・同じ数え方）と、モスクごとに調べた内容によります（最終更新の時点）。</li>
+  <li>区域区分は、国土交通省「都市計画決定GISデータ」（令和7年度）と照らし合わせた結果です。</li>
+  <li>ハラール食材店は、Googleマップの検索（2026年10月12日〜2026年10月16日）で集めたものです（調べた36都道府県だけ）。</li>
+</ol></div><h3 id="s5-2">集計基準と注意事項</h3><div class="card"><ul class="plain">
+  <li><b>モスク・礼拝所の数</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。地図・「モスク・施設を探す」・地域別のページ・都道府県のくわしいページと同じ数え方です。</li>
+  <li><b>全国の数と、47都道府県の合計</b>：上のカード・上位10・対象10か国の表は、国の発表の全国の数です（住む都道府県が「未定・不詳」の人も入ります）。
+    推移のグラフと表、中心の国籍ごとの「日本に住む人」は、都道府県別の表を足した47都道府県の合計なので、全国の数より少しだけ少なくなります（2025年末で7,228人）。</li>
+  <li><b>時点</b>：外国人全体と外国人全体の国籍・地域の上位10は、国のいちばん新しい発表（2026年6月末、2026年10月16日）。この発表の表は全国で多い20の国籍・地域だけなので、対象10か国の合計・割合・都道府県のくらべ・研究者の推計は、すべての国籍がそろっている2025年12月末のままです（2026年6月末のくわしい表は2026年12月ごろの見込み）。
+    施設の数はこのページの最終更新の時点の掲載数、ハラール食材店は2026年10月12日〜2026年10月16日に確認した数です。</li>
+  <li><b>対象10か国</b>：研究者（店田廣文さん）がムスリム人口の推計に使う、人口100万人以上でムスリムが半分以上の国のうち、日本に住む人の多い10か国（インドネシア・パキスタン・バングラデシュ・アフガニスタン・イラン・マレーシア・トルコ・ウズベキスタン・エジプト・ナイジェリア）。人数は国籍で数えたもので、一人ひとりがムスリムかどうかは表しません。スリランカ・インドなどはムスリムが少数派の国です。</li>
+  <li><b>ムスリム人口（研究者推計）</b>：在留外国人統計（2025年12月末）の国籍別の人数をもとに、研究者が都道府県ごとに推計した数の合計で、数えた人数ではありません（2026年9月発表）。</li>
+  <li>このページは、特定の人や団体への抗議・迷惑行為のために作ったものではありません。</li>
+</ul></div><h3 id="s5-3">情報提供・訂正依頼</h3><div class="card"><p>このページの数字や内容の誤り・情報提供は、ご連絡ください。誤りのご指摘・削除のご希望・情報提供は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ4DvW3eASTXY2OnMTZaSNuvdp4npMC5MoNbLxKNSCL1-jQ/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお寄せください。</p></div><p class="totop"><a href="#toc">↑ 目次へ戻る</a></p></div></details>
+
+</div>
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  // 全角・半角、大文字・小文字、ひらがな・カタカナ、空白や「・」の違いは気にせず探す（地域別のページの検索と同じ）
+  var norm = function (s) {
+    return String(s || "").normalize("NFKC").toLowerCase()
+      .replace(/[\u3041-\u3096]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) + 0x60); })
+      .replace(/[\s\u30fb\uff65\u2010\uff0d-]/g, "");
+  };
+  var num = function (tr, k) { return Number(tr.getAttribute("data-" + k)) || 0; };
+
+  // ---- 章（1〜5）と目次の折りたたみ ----
+  // 見出しの行（summary）に開いているかを知らせる（読み上げ用）
+  $$("details.chap, details.toc").forEach(function (d) {
+    var s = d.querySelector("summary");
+    var sync = function () { s.setAttribute("aria-expanded", d.open ? "true" : "false"); };
+    d.addEventListener("toggle", sync);
+    sync();
+  });
+  // 目次・ページの中のリンク・アドレスの「#」で来たときは、その見出しを囲む章（と目次）を開いてから、その見出しへ移る
+  var openTo = function (id, smooth) {
+    var el = id && document.getElementById(id);
+    if (!el) return;
+    for (var d = el; d; d = d.parentElement) if (d.tagName === "DETAILS" && !d.open) d.open = true;
+    if (el.tagName === "DETAILS") el.open = true;
+    // アドレスの「#」で来たとき・戻る・進むは、なめらかにせずすぐ移り、章が開いて長さが変わったあとにもう一度合わせる
+    var go = function () { el.scrollIntoView({ block: "start", behavior: smooth ? "smooth" : "instant" }); };
+    go();
+    if (!smooth) { setTimeout(go, 150); setTimeout(go, 600); }
+  };
+  var fromHash = function () { openTo(decodeURIComponent(location.hash.slice(1)), false); };
+  window.addEventListener("hashchange", fromHash);
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = decodeURIComponent(a.getAttribute("href").slice(1));
+    if (!document.getElementById(id)) return;
+    ev.preventDefault();
+    if (location.hash.slice(1) !== encodeURIComponent(id) && decodeURIComponent(location.hash.slice(1)) !== id) history.pushState(null, "", "#" + encodeURIComponent(id));
+    openTo(id, true);
+  });
+  window.addEventListener("popstate", fromHash);  // 戻る・進む
+  if (location.hash) setTimeout(fromHash, 0);
+
+  // ---- グラフの点：タップ（PCではクリック）や、マウスを乗せたときに「年・国籍・人数」を出す ----
+  var tip = document.createElement("div");
+  tip.className = "ctip";
+  tip.hidden = true;
+  document.body.appendChild(tip);
+  var showTip = function (t, x, y) { tip.textContent = t; tip.style.left = x + "px"; tip.style.top = y + "px"; tip.hidden = false; };
+  document.addEventListener("click", function (ev) {
+    var c = ev.target.closest && ev.target.closest("[data-tip]");
+    if (!c) { tip.hidden = true; return; }
+    var r = c.getBoundingClientRect();
+    showTip(c.getAttribute("data-tip"), r.left + r.width / 2 + window.scrollX, r.top + window.scrollY);
+  });
+  document.addEventListener("mouseover", function (ev) {
+    var c = ev.target.closest && ev.target.closest("[data-tip]");
+    if (!c || !window.matchMedia("(hover: hover)").matches) return;
+    var r = c.getBoundingClientRect();
+    showTip(c.getAttribute("data-tip"), r.left + r.width / 2 + window.scrollX, r.top + window.scrollY);
+  });
+  document.addEventListener("mouseout", function (ev) { if (ev.target.closest && ev.target.closest("[data-tip]")) tip.hidden = true; });
+
+  // ---- 上位10か国・地域の推移の線グラフ（えらんだ国籍・地域だけを描く。縦の目盛りは表示している線に合わせる）----
+  var fmt = function (v) { return Number(v).toLocaleString("ja-JP"); };
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var niceStep = function (vmax) { var base = 1; for (;;) { for (var k of [1, 2, 5]) if (vmax / (base * k) <= 6) return base * k; base *= 10; } };
+  var drawTrend = function (box, D, show) {
+    var ser = D.series.filter(function (s, i) { return show[i]; });
+    if (!ser.length) { box.innerHTML = '<p class="note">国籍・地域を1つ以上えらんでください。</p>'; return; }
+    var W = 720, H = 320, ml = 64, mr = 190, mt = 12, mb = 28, ys = D.years, y0 = ys[0], y1 = ys[ys.length - 1];
+    // D.latest … 県・都の資料のもっと新しい数（白抜きの点と点線。国の統計の線とは別の数）
+    var L = D.latest, hasL = L && ser.some(function (s) { return s.lv != null; }), xe = hasL ? Math.max(y1, L.x) : y1;
+    var lastV = function (s) { return hasL && s.lv != null ? s.lv : s.v[s.v.length - 1]; };
+    var vmax = Math.max(1, Math.max.apply(null, ser.map(function (s) { return Math.max.apply(null, s.v.concat(hasL && s.lv != null ? [s.lv] : [])); })));
+    var step = niceStep(vmax), top = (Math.floor(vmax / step) + 1) * step;
+    var X = function (y) { return ml + (y - y0) / Math.max(1, xe - y0) * (W - ml - mr); };
+    var Y = function (v) { return H - mb - v / top * (H - mt - mb); };
+    var o = ['<svg class="chart-svg" viewBox="0 0 ' + W + " " + H + '" width="100%" role="img" aria-label="' + esc(D.title) + '">'];
+    for (var v = 0; v <= top; v += step)
+      o.push('<line x1="' + ml + '" x2="' + (W - mr) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '" class="grid"/>' +
+             '<text x="' + (ml - 8) + '" y="' + Y(v).toFixed(1) + '" dy="0.32em" text-anchor="end">' + fmt(v) + "</text>");
+    ys.forEach(function (y) { o.push('<text x="' + X(y).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + y + "</text>"); });
+    ser.forEach(function (s) {
+      o.push('<polyline points="' + s.v.map(function (v, i) { return X(ys[i]).toFixed(1) + "," + Y(v).toFixed(1); }).join(" ") +
+             '" fill="none" style="stroke:' + s.c + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"' + (s.d ? ' stroke-dasharray="6 4"' : "") + "/>");
+      s.v.forEach(function (v, i) {
+        var t = ys[i] + "年 " + s.k + " " + fmt(v) + "人";
+        o.push('<circle cx="' + X(ys[i]).toFixed(1) + '" cy="' + Y(v).toFixed(1) + '" r="4.5" style="fill:' + s.c + ';stroke:var(--card)" stroke-width="1.5" data-tip="' + esc(t) + '"><title>' + esc(t) + "</title></circle>");
+      });
+      if (hasL && s.lv != null) {
+        var t2 = L.tip + " " + s.k + " " + fmt(s.lv) + "人", lx = X(L.x).toFixed(1), ly = Y(s.lv).toFixed(1);
+        o.push('<line x1="' + X(y1).toFixed(1) + '" y1="' + Y(s.v[s.v.length - 1]).toFixed(1) + '" x2="' + lx + '" y2="' + ly + '" style="stroke:' + s.c + '" stroke-width="2" stroke-dasharray="4 3"/>' +
+               '<circle cx="' + lx + '" cy="' + ly + '" r="4.5" style="fill:var(--card);stroke:' + s.c + '" stroke-width="2.5" data-tip="' + esc(t2) + '"><title>' + esc(t2) + "</title></circle>");
+      }
+    });
+    // 線の右はしの名前（重ならないように下へずらし、下にはみ出したら下から上へ詰める）
+    var labs = ser.map(function (s) { return [Y(lastV(s)), s]; }).sort(function (a, b) { return a[0] - b[0]; }), pl = [];
+    labs.forEach(function (l) { pl.push(pl.length ? Math.max(l[0], pl[pl.length - 1] + 15) : l[0]); });
+    if (pl.length && pl[pl.length - 1] > H - mb - 4) { pl[pl.length - 1] = H - mb - 4; for (var i = pl.length - 2; i >= 0; i--) pl[i] = Math.min(pl[i], pl[i + 1] - 15); }
+    labs.forEach(function (l, i) {
+      var s = l[1], py = pl[i].toFixed(1);
+      o.push('<line x1="' + (X(xe) + 8).toFixed(1) + '" x2="' + (X(xe) + 18).toFixed(1) + '" y1="' + py + '" y2="' + py + '" style="stroke:' + s.c + '" stroke-width="3" stroke-linecap="round"' + (s.d ? ' stroke-dasharray="3 2"' : "") + "/>" +
+             '<text x="' + (X(xe) + 23).toFixed(1) + '" y="' + py + '" dy="0.32em" class="end">' + esc(s.k) + " " + fmt(lastV(s)) + "</text>");
+    });
+    o.push("</svg>");
+    box.innerHTML = o.join("");
+  };
+  $$(".t10").forEach(function (card) {
+    var D = JSON.parse(document.getElementById(card.getAttribute("data-src")).textContent);
+    var box = $(".t10chart", card), boxes = $$('.t10pick input[type="checkbox"]', card), btns = $$(".t10btns button", card);
+    var redraw = function () {
+      var show = boxes.map(function (b) { return b.checked; });
+      drawTrend(box, D, show);
+      var n = show.filter(Boolean).length, top5 = show.every(function (v, i) { return v === (i < 5); });
+      btns.forEach(function (b) { b.setAttribute("aria-pressed", (b.getAttribute("data-show") === "5" && top5) || (b.getAttribute("data-show") === "all" && n === show.length) ? "true" : "false"); });
+    };
+    boxes.forEach(function (b) { b.addEventListener("change", redraw); });
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var all = b.getAttribute("data-show") === "all";
+        boxes.forEach(function (x, i) { x.checked = all || i < 5; });
+        redraw();
+      });
+    });
+    redraw();
+  });
+
+  // 国籍別の表：人数の多い順／全国順位の順（合計と参考の行はいつも下）
+  $$(".sortbtns[data-for]").forEach(function (box) {
+    var tb = document.getElementById(box.getAttribute("data-for"));
+    if (!tb) return;
+    box.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-k]");
+      if (!b) return;
+      var k = b.getAttribute("data-k"), rows = $$("tr", tb);
+      rows.sort(function (a, c) {
+        return k === "rank" ? num(a, "rank") - num(c, "rank") || num(c, "n") - num(a, "n") : num(c, "n") - num(a, "n");
+      });
+      rows.forEach(function (r) { tb.appendChild(r); });
+      $$("button", box).forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    });
+  });
+
+  // 市区町村別の表：名前で探す・並べ替え・モスクがある所だけ・表示する列
+  var mt = document.getElementById("muni");
+  if (mt) {
+    var tb = $("tbody", mt), rows = $$("tr", tb), q = document.getElementById("mq"), srt = document.getElementById("ms"),
+        only = document.getElementById("monly"), cnt = document.getElementById("mcount");
+    rows.forEach(function (r) { r._n = norm(r.getAttribute("data-name")); });
+    var apply = function () {
+      var t = norm(q.value), k = srt.value, shown = 0;
+      rows.sort(function (a, c) {
+        if (k === "code") return num(a, "i") - num(c, "i");
+        return num(c, k) - num(a, k) || num(c, "ten") - num(a, "ten") || num(a, "i") - num(c, "i");
+      });
+      rows.forEach(function (r) {
+        var ok = (!t || r._n.indexOf(t) >= 0) && (!only.checked || num(r, "m") > 0);
+        r.hidden = !ok;
+        if (ok) shown++;
+        tb.appendChild(r);
+      });
+      var w = mt.getAttribute("data-word") || "市区町村";  // 東京都は「区市町村」
+      cnt.textContent = shown + w + "を表示しています（全" + rows.length + w + "）。";
+    };
+    q.addEventListener("input", apply);
+    srt.addEventListener("change", apply);
+    only.addEventListener("change", apply);
+    var picks = $$(".colpick input[data-c]");
+    picks.forEach(function (cb) {
+      var sync = function () { mt.classList.toggle("h-" + cb.getAttribute("data-c"), !cb.checked); };
+      cb.addEventListener("change", sync);
+      sync();
+    });
+    // 「基本表示に戻す」：足した列を全部外す（市区町村・モスク・礼拝所・ハラール食材店・対象10か国の人の4列に戻る）
+    var reset = document.getElementById("mreset");
+    if (reset) reset.addEventListener("click", function () {
+      picks.forEach(function (cb) { cb.checked = false; cb.dispatchEvent(new Event("change")); });
+    });
+    // 地域別のページから「?city=川口市」で来たときは、その市区町村を探した状態にして、行に色を付ける
+    var city = new URLSearchParams(location.search).get("city") || "";
+    if (city) q.value = city;
+    apply();
+    if (city) rows.forEach(function (r) { if (r.getAttribute("data-name") === city) r.classList.add("pick"); });
+  }
+
+  // ハラール食材店：市区町村のボタン・店名で探す（探すと全店の一覧が開く）
+  var hl = document.getElementById("halal-list");
+  if (hl) {
+    var hrows = $$("tbody tr", hl), hq = document.getElementById("hq"), det = document.getElementById("hl-all"),
+        hc = document.getElementById("hcount"), sel = "";
+    hrows.forEach(function (r) { r._n = norm(r.getAttribute("data-name") + " " + r.getAttribute("data-addr")); });
+    var happly = function (open) {
+      var t = norm(hq.value), n = 0;
+      hrows.forEach(function (r) {
+        var ok = (!sel || r.getAttribute("data-city") === sel) && (!t || r._n.indexOf(t) >= 0);
+        r.hidden = !ok;
+        if (ok) n++;
+      });
+      $$(".hchips button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-city") === sel ? "true" : "false"); });
+      if (open && (sel || t)) det.open = true;
+      hc.textContent = (sel ? sel + "の店" : "すべての店") + (t ? "のうち「" + hq.value.trim() + "」に当てはまる店" : "") + "：" + n + "店";
+    };
+    $(".hchips").addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-city]");
+      if (!b) return;
+      sel = b.getAttribute("data-city");
+      happly(true);
+    });
+    hq.addEventListener("input", function () { happly(true); });
+    happly(false);
+  }
+})();
+</script>
+</body>
+</html>
