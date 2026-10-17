@@ -680,7 +680,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 </style>
   <h1>地域別に見る</h1>
   <p class="lead">全国のモスク・関連施設、建設計画、寄付の募集、葬儀・墓地について、公開情報を出典付きで地域別に整理しています。</p>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月17日 21:34</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">266<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月17日 21:53</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">266<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -702,7 +702,8 @@ details.fe-more > .fe-rows{margin-top:6px}
   <section class="region solo" id="region" aria-label="地域を選んで施設を探す">
     <!-- ページの並び：1. 地域を選ぶ（都道府県・市区町村と、その地域の数）→ 2. 施設を探す（言葉・絞り込み）→ 3. 施設一覧
          → 4. 地図 → 5. 最近の動き → 注意書き（2026-10-14 ユーザー「選択→検索→一覧の順に」）。
-         2. 〜 5. は押すと開く章で、はじめは閉じる（2026-10-15 ユーザー「1. 地域を選ぶ以外は、たたむ」） -->
+         2. 〜 5. は押すと開く章で、はじめは閉じる（2026-10-15 ユーザー「1. 地域を選ぶ以外は、たたむ」）。
+         地域を選んだら 3. と 4. を開く（2026-10-17。openRegionChaps） -->
     <h2 class="rg-h2" id="pick">1. 地域を選ぶ</h2>
     <div class="rg-pick">
       <div class="rg-sel"><label for="rg-pref">都道府県</label>
@@ -1485,15 +1486,23 @@ function renderRegion() {
     : `<p class="empty">${rows.length ? "条件に当てはまるものはありません。" : "この地域で確認されている情報はありません。"}</p>`;
 }
 
+// 地域（都道府県・市区町村）を選んだら、3. 施設一覧と 4. 地図で見る の章を開く（2026-10-17 ユーザー「地域が選択されたら、施設一覧と地図で見るのアウトラインを開いて」）。
+// 「全国」に戻したときは、開いている章をそのままにする
+function openRegionChaps() {
+  if (!R.pref) return;
+  $("c-list").open = true;
+  $("c-map").open = true;
+}
 function setPref(pf) {
   R.pref = pf; R.city = ""; R.evAll = false;
   writeParams();
   renderRegion();
+  openRegionChaps();
 }
 $("rg-pref").options[0].text = "全国" + optCount(PLACES);
 PREF_ORDER.forEach(p => $("rg-pref").add(new Option(p + optCount(PREF_ROWS[p] || []), p)));
 $("rg-pref").onchange = e => setPref(e.target.value);
-$("rg-city").onchange = e => { R.city = e.target.value; writeParams(); renderRegion(); };
+$("rg-city").onchange = e => { R.city = e.target.value; writeParams(); renderRegion(); openRegionChaps(); };
 $("rg-q").addEventListener("input", e => { R.q = e.target.value; writeParams(); renderRegion(); });
 $("region").addEventListener("click", e => {
   const t = e.target.closest("button, a");
@@ -1514,7 +1523,7 @@ $("region").addEventListener("click", e => {
     if (!k) s.clear(); else s.has(k) ? s.delete(k) : s.add(k);
     writeParams(); renderRegion();
   } else if (t.dataset.city !== undefined) {
-    R.city = t.dataset.city; writeParams(); renderRegion();
+    R.city = t.dataset.city; writeParams(); renderRegion(); openRegionChaps();
   } else if (t.dataset.pref !== undefined) {
     setPref(t.dataset.pref);
     $("rg-area").scrollIntoView({behavior: "smooth", block: "start"});
@@ -1582,6 +1591,8 @@ window.addEventListener("hashchange", jumpToHash);
   renderRegion();
   // 言葉・絞り込みを付けて来たとき（葬儀・墓地のページの ?f=wash など）は、その結果が見えるよう 3. 施設一覧を開いておく
   if (R.q || anySel()) $("c-list").open = true;
+  // 地域を付けて来たとき（area.html?pref=〇〇県 など）も、地域を選んだときと同じく 3. と 4. を開いておく
+  openRegionChaps();
 })();
 
 jumpToHash();
