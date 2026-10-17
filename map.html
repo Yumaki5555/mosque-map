@@ -152,7 +152,7 @@ a{color:var(--accent)}
                        font: 700 13px/1.3 sans-serif; color: #1e3a5f; padding: 7px 9px; cursor: pointer; }
         .mp-home-ctl:hover { background: #eef4fb; }
 
-        /* ---- ページの組み立て（見出し → 1. 施設を探す → 2. 地図・3. 見方・4. 一覧 → 5. この地図について） ---- */
+        /* ---- ページの組み立て（見出し → 1. 施設を探す → 2. 地図・3. 一覧・4. 見方 → 5. この地図について） ---- */
         .mp-page { max-width: 1200px; margin: 16px auto 0; padding: 0 16px; line-height: 1.7;
                    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
         .mp-page :where(a) { color: var(--accent); }  /* リンクの色はほかのページと同じ。:where で弱くして、地図の中（吹き出し・ボタン）と白い文字のボタンは、それぞれの色のまま */
@@ -238,12 +238,18 @@ a{color:var(--accent)}
         .f-go:hover { background: var(--accent-soft); }
         .f-links { margin: 10px 0 0; font-size: 14px; }
         .f-links a { font-weight: 700; }
-        /* 2. 地図・3. 見方・4. 一覧（パソコンでは一覧を地図の横に並べる） */
+        /* 2. 地図・3. 施設一覧・4. 見方（パソコンでは一覧を地図の横に並べる。スマホでは 地図→一覧→見方 の順に縦に並ぶ）。
+           画面の幅が760px以上なら地図の横（2026-10-17 ユーザー「地図の横に表示して」。前は1000px以上だけで、
+           ノートパソコンの文字の拡大や、ウィンドウを小さめにしたときに、一覧が地図の下に回っていた）。1000px未満は一覧を少し細く */
         .mp-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 20px; }
-        @media (min-width: 1000px) {
-            .mp-layout { grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: "map list" "legend list"; }
+        @media (min-width: 760px) {
+            .mp-layout { grid-template-columns: minmax(0, 1fr) 280px; grid-template-areas: "map list" "legend list"; gap: 0 16px; }
             .mp-map-sec { grid-area: map; } .mp-legend-sec { grid-area: legend; } .mp-list-sec { grid-area: list; }
-            .mp-layout.list-closed { grid-template-columns: minmax(0, 1fr) 230px; }  /* たたんでも地図の横にボタンを残す */
+            .mp-layout.list-closed { grid-template-columns: minmax(0, 1fr) 200px; }  /* たたんでも地図の横にボタンを残す */
+        }
+        @media (min-width: 1000px) {
+            .mp-layout { grid-template-columns: minmax(0, 1fr) 340px; gap: 0 20px; }
+            .mp-layout.list-closed { grid-template-columns: minmax(0, 1fr) 230px; }
         }
         .mp-map-sec, .mp-legend-sec, .mp-list-sec { min-width: 0; margin-bottom: 26px; }
         .mp-map-sec .folium-map { height: var(--map-h) !important; border: 1px solid var(--line); border-radius: 10px; }
@@ -254,9 +260,8 @@ a{color:var(--accent)}
                   border: 1px solid var(--line); border-radius: 10px; }
         .mp-now b.n { font-size: 17px; }
         .mp-now .mp-now-a { font-weight: 700; white-space: nowrap; margin-left: 4px; }
-        /* 3. 地図の色・記号の見方 */
-        .lg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-        @media (max-width: 700px) { .lg-grid { grid-template-columns: minmax(0, 1fr); } }
+        /* 4. 地図の色・記号の見方（地図の下の幅に合わせて2列か1列。一覧が横にある狭めの画面でも詰まらないように） */
+        .lg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 10px; }
         .lg-box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; min-width: 0; }
         .lg-box h3 { font-size: 15px !important; color: var(--navy); }
         .lg-box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px;
@@ -268,7 +273,7 @@ a{color:var(--accent)}
         details.lg-more .in { padding: 0 16px 12px; font-size: 14px; line-height: 1.75; }
         details.lg-more ul { margin: 0; padding-left: 1.3em; }
         details.lg-more li { margin-bottom: 4px; }
-        /* 4. 施設一覧 */
+        /* 3. 施設一覧 */
         .fl-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px;
                      font-size: 16px; font-weight: 800; font-family: inherit; color: #fff; background: #1e3a5f; border: 0;
                      border-radius: 12px; padding: 12px 16px; cursor: pointer; text-align: left; }
@@ -280,7 +285,7 @@ a{color:var(--accent)}
         .fl-toggle[aria-expanded="false"] { background: #2f5d8a; box-shadow: 0 0 0 3px var(--accent-soft); }
         .fl-box { position: relative; border: 1px solid var(--line); border-radius: 12px; background: var(--card);
                   max-height: 65vh; overflow-y: auto; overscroll-behavior: contain; }
-        @media (min-width: 1000px) { .fl-box { max-height: calc(var(--map-h) - 150px); } }  /* 上の「範囲」のチェックと数の分だけ短く（地図の下の端にそろえる） */
+        @media (min-width: 760px) { .fl-box { max-height: calc(var(--map-h) - 150px); } }  /* 上の「範囲」のチェックと数の分だけ短く（地図の下の端にそろえる） */
         .fl-pref { position: sticky; top: 0; z-index: 1; background: var(--head-bg); font-size: 13px; font-weight: 800;
                    color: var(--navy); padding: 5px 12px; border-bottom: 1px solid var(--line); }
         .fl-pref span { font-weight: 400; color: var(--sub); margin-left: 4px; }
@@ -407,7 +412,7 @@ a{color:var(--accent)}
       
       <h1>全国モスク・礼拝所マップ</h1>
       <p class="mp-lead">全国のモスク・礼拝所の所在地と、都市計画の区域区分を地図で確認できます。施設名・地域・運営団体などで検索でき、寄付情報や関連施設も表示しています。</p>
-      <p class="mp-upd">最終更新 <b>2026年10月17日 21:33</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年10月17日 21:36</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">266<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>
@@ -415,7 +420,7 @@ a{color:var(--accent)}
         <details class="mp-more"><summary>掲載の内わけと数え方</summary>
           <ul class="mp-cnt m"><li><svg class='mk-s' viewBox='0 0 14 14' aria-hidden='true' style='display:inline-block;width:14px;height:14px;vertical-align:-2px;flex:none;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;fill:#7c3aed;stroke:rgba(0,0,0,.4);stroke-width:1.2'><path d='M7 .7 13.3 7 7 13.3.7 7z'/></svg>計画・建設中 <b>10</b>か所</li><li><svg class='mk-s' viewBox='0 0 14 14' aria-hidden='true' style='display:inline-block;width:14px;height:14px;vertical-align:-2px;flex:none;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;fill:#ffffff;stroke:#475569;stroke-width:1.2;stroke-dasharray:2 1.5'><path d='M7 12.8 13.1 1.8H.9z'/></svg>状況確認中 <b>26</b>か所</li><li><svg class='mk-s' viewBox='0 0 14 14' aria-hidden='true' style='display:inline-block;width:14px;height:14px;vertical-align:-2px;flex:none;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;fill:#111827;stroke:rgba(0,0,0,.4);stroke-width:1.2'><path d='M10.18 1.13 12.87 3.82 9.69 7.00 12.87 10.18 10.18 12.87 7.00 9.69 3.82 12.87 1.13 10.18 4.31 7.00 1.13 3.82 3.82 1.13 7.00 4.31z'/></svg>閉鎖・移転 <b>6</b>か所</li><li><svg class='mk-s' viewBox='0 0 14 14' aria-hidden='true' style='display:inline-block;width:14px;height:14px;vertical-align:-2px;flex:none;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;fill:#0f766e;stroke:rgba(0,0,0,.4);stroke-width:1.2'><path d='M7 1.2 13.1 12.2H.9z'/></svg>学校 <b>9</b>か所</li><li><svg class='mk-s' viewBox='0 0 14 14' aria-hidden='true' style='display:inline-block;width:14px;height:14px;vertical-align:-2px;flex:none;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;fill:#92400e;stroke:rgba(0,0,0,.4);stroke-width:1.2'><path d='M3 13.2V6.4A4 4 0 0 1 11 6.4V13.2z'/></svg>墓地 <b>8</b>か所</li><li><span class='mk yen' style='background:#d97706;color:#fff;'>¥</span>寄付の札 <b>124</b>か所（募集中あり46か所）</li><li><span class='mk sq' style='background:#db2777;box-shadow:0 0 0 1px #9d174d'></span>ハラール食材店 <b>689</b>店（調べた40都道府県）</li></ul>
           <ul>
-            <li>1か所は「モスク・礼拝所」「計画・建設中」「状況確認中」「閉鎖・移転」「学校」「墓地」のどれか1つにだけ数えています。重なりはないので、合わせると<b>325か所</b>です（「4. 施設一覧」の数と同じです）。このほか、寄付・計画の情報だけの場所が4か所あり、地図には「¥」「墓」の札だけで出しています。</li>
+            <li>1か所は「モスク・礼拝所」「計画・建設中」「状況確認中」「閉鎖・移転」「学校」「墓地」のどれか1つにだけ数えています。重なりはないので、合わせると<b>325か所</b>です（「3. 施設一覧」の数と同じです）。このほか、寄付・計画の情報だけの場所が4か所あり、地図には「¥」「墓」の札だけで出しています。</li>
             <li><b>区域区分で色分けしたモスク・礼拝所 266か所</b>：市街化区域 150か所・市街化調整区域 66か所・区域区分の指定なし（非線引き） 43か所・都市計画区域外 7か所（うち1か所は、県のデータの境目の近くで、区域の外と判定した場所）。</li>
             <li><b>区域区分の色分けの対象外</b>：計画・建設中、状況確認中、閉鎖・移転、学校、墓地は、区域区分では色分けせず、別の印で出しています。区域区分を照らし合わせた場所だけ、吹き出しに区域区分を書いています。</li>
             <li>照らし合わせるデータがなく区域区分を判定できなかったモスク・礼拝所は、今はありません（灰色の●は、都市計画区域の外と判定した場所です）。</li>
@@ -459,8 +464,19 @@ a{color:var(--accent)}
         
 
         </section>
+        <section class="mp-list-sec" aria-labelledby="list-h">
+          <h2 class="mp-h2" id="list-h">3. 施設一覧</h2>
+          <button type="button" class="fl-toggle" id="fl-toggle" aria-expanded="false" aria-controls="fl-wrap"><span class="t">施設一覧を表示（325か所）</span></button>
+          <p class="fl-hint" id="fl-hint">地図と同じ条件の施設を、ここに一覧で出せます。上のボタンを押すと開きます（名前を押すと、地図でその施設を開きます）。</p>
+          <div id="fl-wrap" hidden>
+            <p class="fl-note">「1. 施設を探す」と同じ条件の施設です（地図の印と同じ）。名前を押すと、地図でその施設を開きます。</p>
+            <label class="fl-view"><input type="checkbox" id="fl-view" checked><span>地図に映っている範囲の施設だけを一覧に出す<span class="s">地図を動かしたり拡大・縮小したりして止まると、少しあとに、その範囲の施設だけになります。条件を変えたときと「全国表示」を押したときは、条件に合う施設をすべて出します。</span></span></label>
+            <p class="fl-range" id="fl-range" aria-live="polite" hidden></p>
+            <div class="fl-box" id="fl-box"></div>
+          </div>
+        </section>
         <section class="mp-legend-sec" aria-labelledby="legend-h">
-          <h2 class="mp-h2" id="legend-h">3. 地図の色・記号の見方</h2>
+          <h2 class="mp-h2" id="legend-h">4. 地図の色・記号の見方</h2>
           
           <div class="lg-grid">
             <div class="lg-box">
@@ -509,17 +525,6 @@ a{color:var(--accent)}
               <li><b>ハラール食材店</b>：調べた40都道府県（北海道・青森県・岩手県・宮城県・秋田県・山形県・福島県・茨城県・栃木県・群馬県・埼玉県・千葉県・東京都・神奈川県・新潟県・富山県・石川県・福井県・山梨県・長野県・岐阜県・静岡県・愛知県・三重県・滋賀県・京都府・大阪府・兵庫県・奈良県・和歌山県・鳥取県・島根県・岡山県・広島県・山口県・徳島県・香川県・愛媛県・高知県・福岡県）の店だけです。</li>
             </ul></div>
           </details>
-        </section>
-        <section class="mp-list-sec" aria-labelledby="list-h">
-          <h2 class="mp-h2" id="list-h">4. 施設一覧</h2>
-          <button type="button" class="fl-toggle" id="fl-toggle" aria-expanded="false" aria-controls="fl-wrap"><span class="t">施設一覧を表示（325か所）</span></button>
-          <p class="fl-hint" id="fl-hint">地図と同じ条件の施設を、ここに一覧で出せます。上のボタンを押すと開きます（名前を押すと、地図でその施設を開きます）。</p>
-          <div id="fl-wrap" hidden>
-            <p class="fl-note">「1. 施設を探す」と同じ条件の施設です（地図の印と同じ）。名前を押すと、地図でその施設を開きます。</p>
-            <label class="fl-view"><input type="checkbox" id="fl-view" checked><span>地図に映っている範囲の施設だけを一覧に出す<span class="s">地図を動かしたり拡大・縮小したりして止まると、少しあとに、その範囲の施設だけになります。条件を変えたときと「全国表示」を押したときは、条件に合う施設をすべて出します。</span></span></label>
-            <p class="fl-range" id="fl-range" aria-live="polite" hidden></p>
-            <div class="fl-box" id="fl-box"></div>
-          </div>
         </section>
       </div>
       <section class="mp-about" aria-labelledby="about">
@@ -17800,7 +17805,7 @@ function textHit(ix, t) {
         });
     })();
 
-    // ---- 1. 施設を探す（名前・キーワード／都道府県・市区町村／系統）と 4. 施設一覧 ----
+    // ---- 1. 施設を探す（名前・キーワード／都道府県・市区町村／系統）と 3. 施設一覧 ----
     // 条件はすべてに当てはまるもの（AND）だけを出す。地図の印と施設一覧は同じ条件で出す。
     // 系統は、選んだ系統の施設を紫の太い輪で示し、「選んだ系統の施設だけを表示する」（はじめはチェックあり）ならほかの施設を隠す（2026-10-14 ユーザー）
     (function () {
@@ -18015,7 +18020,7 @@ function textHit(ix, t) {
             return order.map(function (k) { return k + " " + c[k] + "か所"; }).join("・");
         }
 
-        // ---- 4. 施設一覧（地図と同じ条件。都道府県ごと、北から）----
+        // ---- 3. 施設一覧（地図と同じ条件。都道府県ごと、北から）----
         var listOpen = false, curSel = null;
         function item(f) {
             var x = byFk[f.id], tags = "<span class='fl-tag'>" + esc(f.k) + "</span>";
@@ -18139,7 +18144,7 @@ function textHit(ix, t) {
             lastFit = "";
         }
 
-        // ---- 地図に映っている範囲の施設だけを一覧に出す（2026-10-16 ユーザー。「4. 施設一覧」のチェック、はじめは入れておく）----
+        // ---- 地図に映っている範囲の施設だけを一覧に出す（2026-10-16 ユーザー。「3. 施設一覧」のチェック、はじめは入れておく）----
         // 自分の手で地図を動かした・拡大縮小したとき（引っぱる・ホイール・2本指・ダブルクリック・＋−のボタン・キーボード・Shift で囲む）だけ、
         // 止まって 0.8 秒たったら、そのとき映っている範囲で一覧を絞る（続けて動かしている間は待つ）。
         // 一覧やほかのページから施設を開いたとき・吹き出しが開いて地図が少しずれたとき・条件に合わせて地図を寄せたときは、一覧の範囲を変えない
@@ -18338,7 +18343,7 @@ function textHit(ix, t) {
         onlyBox.disabled = !st.net;
         onlyBox.parentNode.classList.toggle("off", !st.net);
         if (box.value.trim()) { st.kw = box.value; st.terms = box.value.split(/[\s　]+/).map(norm).filter(Boolean); }
-        setList(window.matchMedia("(min-width: 1000px)").matches);  // パソコンでは一覧を地図の横に開いておく。スマホはたたむ
+        setList(window.matchMedia("(min-width: 760px)").matches);  // パソコンでは一覧を地図の横に開いておく（CSS と同じ760px）。スマホはたたむ
         apply();
         // 地図の最初の表示（全国を映す処理）が終わってから寄せる
         if (document.readyState === "complete") setTimeout(fromHash, 300);
