@@ -525,8 +525,14 @@ details.fp-more > .fp-list{margin-top:10px}
 .fp-tablewrap{overflow-x:auto}
 .fp-table th,.fp-table td:first-child{white-space:nowrap}
 /* 洗い清めの札の中の内わけ（確認済み・過去の記録だけ・場所が未確認。2026-10-20） */
+.tile-go{cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.tile-go:hover,.tile-go:focus-visible{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.08);outline:none}
+.tile-go .tile-arrow{float:right;color:var(--accent);font-weight:700}
+.tile .tl-rows a{display:block;line-height:1.7;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+details.fp-tocbox{margin:0 0 6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px}
+details.fp-tocbox > summary{cursor:pointer;font-weight:700;color:var(--accent)}
+details.fp-tocbox[open] > summary{margin-bottom:8px}
 .tile .tl-rows{display:block;margin:6px 0;padding:6px 0 0;border-top:1px dashed var(--line)}
-.tile .tl-rows span{display:block;line-height:1.7}
 .tile .tl-rows b{font-size:1.05em}
 /* スマホ：上の数の札は2列に（ひと目で全体が見えるように）。大項目の枠と見出しを少し詰める */
 @media (max-width:600px){
@@ -843,7 +849,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 }
 @media (max-width: 480px) { .site-purpose-note { padding: 10px 12px; } .site-purpose-sec { padding: 12px 14px; } }
 </style><div class="site-purpose-note" role="note" aria-label="このサイトの目的"><p>このサイトは、公開資料をもとに、日本のモスクや関連施設について知り、考えるための情報をまとめています。不安や敵意をあおることを目的としていません。掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。</p><p><a href="index.html#site-purpose">このサイトの目的と利用にあたって</a></p></div>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月20日 02:45</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">326<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く326か所すべてです（モスク・礼拝所 266か所、計画・建設中 12か所、状況確認中 27か所、閉鎖・移転 6か所、墓地 11か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月20日 02:54</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">調べた場所</div><div class="v">326<small>か所</small></div><div class=s>地域別のページに掲載している場所のうち、学校を除く326か所すべてです（モスク・礼拝所 266か所、計画・建設中 12か所、状況確認中 27か所、閉鎖・移転 6か所、墓地 11か所、寄付・計画の情報だけの場所 4か所）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
@@ -862,7 +868,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 }
 </style>
 
-  <div class="tiles fp-tiles"><div class='tile'><div class='k'>遺体の洗い清め</div><div class='v'>11か所</div><div class='s'>既存施設で、洗い清めの実施または洗い清めに使う場所・設備が確認できた数。<span class='tl-rows'><span>確認済みの施設 <b>11</b>か所</span><span>過去の記録だけがある施設 <b>3</b>か所</span><span>対応はあるが、場所が未確認 <b>8</b>か所</span></span>このほか計画が9か所</div></div><div class='tile'><div class='k'>葬儀の礼拝</div><div class='v'>27か所</div><div class='s'>モスクでの実施が確認できた数。このほか計画が2か所</div></div><div class='tile'><div class='k'>既存の土葬墓地</div><div class='v'>13か所</div><div class='s'>墓地ごとに1か所として集計（関係するモスク・団体は9か所）。このほか計画が8件</div></div></div>
+  <div class="tiles fp-tiles"><div class='tile tile-go' data-go='wash' role='link' tabindex='0' title='押すと下の一覧のこの項目へ移ります'><div class='k'>遺体の洗い清め<span class='tile-arrow' aria-hidden='true'>↓</span></div><div class='v'>11か所</div><div class='s'>既存施設で、洗い清めの実施または洗い清めに使う場所・設備が確認できた数。<span class='tl-rows'><a href='#wash-now'>確認済みの施設 <b>11</b>か所</a><a href='#wash-past'>過去の記録だけがある施設 <b>3</b>か所</a><a href='#wash-part'>対応はあるが、場所が未確認 <b>8</b>か所</a></span>このほか計画が9か所</div></div><div class='tile tile-go' data-go='prayer' role='link' tabindex='0' title='押すと下の一覧のこの項目へ移ります'><div class='k'>葬儀の礼拝<span class='tile-arrow' aria-hidden='true'>↓</span></div><div class='v'>27か所</div><div class='s'>モスクでの実施が確認できた数。このほか計画が2か所</div></div><div class='tile tile-go' data-go='grave' role='link' tabindex='0' title='押すと下の一覧のこの項目へ移ります'><div class='k'>既存の土葬墓地<span class='tile-arrow' aria-hidden='true'>↓</span></div><div class='v'>13か所</div><div class='s'>墓地ごとに1か所として集計（関係するモスク・団体は9か所）。このほか計画が8件</div></div></div>
   <div class="fp-caution">
     <b>この結果を読むときの注意</b>
     <ul>
@@ -874,7 +880,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     </ul>
     <p>1つの施設が複数の区分（例：既存施設と計画）に載ることがあります。各モスクの結果は、「<a href="mosque.html">モスク・施設を探す</a>」の詳しい情報と<a href="area.html">地域別のページ</a>でも確認できます。</p>
   </div>
-  <nav aria-label="目次"><ol class='fp-toc'><li><a class='fp-toc-h' href='#pick'><b>1. 地域・項目を選ぶ</b><span>都道府県・市区町村、項目・区分</span></a></li><li><a class='fp-toc-h' href='#find'><b>2. 施設を探す</b><span>名前・キーワード</span></a></li><li><a class='fp-toc-h' href='#list'><b>3. 調査結果の一覧</b><span>条件に当てはまるカード</span></a><ol class='fp-toc-sub'><li><a href='#wash'><span class='fp-no'>3-1</span>遺体の洗い清め（グスル）<span class=n>既存施設 11か所・計画 9か所</span></a><ol class='fp-toc-sub3'><li><a href='#wash-now'><span class='fp-no'>3-1-1</span>既存施設で確認できた事例<span class=n>11か所</span></a></li><li><a href='#wash-plan'><span class='fp-no'>3-1-2</span>洗い清めに関する設備計画<span class=n>9か所</span></a></li><li><a href='#wash-past'><span class='fp-no'>3-1-3</span>過去の記録だけがある施設<span class=n>3か所</span></a></li><li><a href='#wash-part'><span class='fp-no'>3-1-4</span>対応はあるが、場所は確認できていない施設<span class=n>8か所</span></a></li><li><a href='#wash-no'><span class='fp-no'>3-1-5</span>モスク内では行わない施設<span class=n>1か所</span></a></li><li><a href='#wash-arr'><span class='fp-no'>3-1-6</span>手配・紹介のみ確認できた施設<span class=n>4か所</span></a></li></ol></li><li><a href='#prayer'><span class='fp-no'>3-2</span>葬儀の礼拝（ジャナーザ）<span class=n>モスクでの実施 27か所・計画 2か所</span></a><ol class='fp-toc-sub3'><li><a href='#prayer-now'><span class='fp-no'>3-2-1</span>モスクでの実施が確認できた事例<span class=n>27か所</span></a></li><li><a href='#prayer-plan'><span class='fp-no'>3-2-2</span>葬儀の礼拝を行う計画<span class=n>2か所</span></a></li><li><a href='#prayer-past'><span class='fp-no'>3-2-3</span>過去の記録だけがある施設<span class=n>6か所</span></a></li><li><a href='#prayer-part'><span class='fp-no'>3-2-4</span>対応はあるが、場所は確認できていない施設<span class=n>4か所</span></a></li><li><a href='#prayer-no'><span class='fp-no'>3-2-5</span>新施設では行わないと説明している事例<span class=n>2か所</span></a></li><li><a href='#prayer-arr'><span class='fp-no'>3-2-6</span>手配・紹介のみ確認できた施設<span class=n>25か所</span></a></li></ol></li><li><a href='#grave'><span class='fp-no'>3-3</span>土葬墓地<span class=n>既存 13か所・計画 8件</span></a><ol class='fp-toc-sub3'><li><a href='#grave-now'><span class='fp-no'>3-3-1</span>既存の土葬墓地<span class=n>13か所</span></a></li><li><a href='#grave-plan'><span class='fp-no'>3-3-2</span>墓地の計画<span class=n>8件（進行中 2・予定地未定 2・進展なし 4）</span></a></li><li><a href='#grave-no'><span class='fp-no'>3-3-3</span>計画地では土葬しないと説明している施設<span class=n>2か所</span></a></li><li><a href='#grave-arr'><span class='fp-no'>3-3-4</span>墓地の紹介・埋葬の手配を行う施設・団体<span class=n>24か所</span></a></li></ol></li></ol></li><li><a class='fp-toc-h' href='#by-pref'><b>4. 都道府県別の調査結果</b><span>表（並べ替えができます）</span></a></li><li><a class='fp-toc-h' href='#how'><b>5. 調査方法と判定基準</b><span>押すと開きます</span></a><ol class='fp-toc-sub'><li><a href='#how-scope'><span class='fp-no'>5-1</span>調査対象と調査範囲</a></li><li><a href='#how-sources'><span class='fp-no'>5-2</span>調査に使用した資料</a></li><li><a href='#how-criteria'><span class='fp-no'>5-3</span>掲載・分類の判定基準</a></li><li><a href='#how-notes'><span class='fp-no'>5-4</span>調査結果の注意事項</a></li></ol></li></ol></nav>
+  <nav aria-label="目次"><details class="fp-tocbox"><summary>目次（押すと開きます）</summary><ol class='fp-toc'><li><a class='fp-toc-h' href='#pick'><b>1. 地域・項目を選ぶ</b><span>都道府県・市区町村、項目・区分</span></a></li><li><a class='fp-toc-h' href='#find'><b>2. 施設を探す</b><span>名前・キーワード</span></a></li><li><a class='fp-toc-h' href='#list'><b>3. 調査結果の一覧</b><span>条件に当てはまるカード</span></a><ol class='fp-toc-sub'><li><a href='#wash'><span class='fp-no'>3-1</span>遺体の洗い清め（グスル）<span class=n>既存施設 11か所・計画 9か所</span></a><ol class='fp-toc-sub3'><li><a href='#wash-now'><span class='fp-no'>3-1-1</span>既存施設で確認できた事例<span class=n>11か所</span></a></li><li><a href='#wash-plan'><span class='fp-no'>3-1-2</span>洗い清めに関する設備計画<span class=n>9か所</span></a></li><li><a href='#wash-past'><span class='fp-no'>3-1-3</span>過去の記録だけがある施設<span class=n>3か所</span></a></li><li><a href='#wash-part'><span class='fp-no'>3-1-4</span>対応はあるが、場所は確認できていない施設<span class=n>8か所</span></a></li><li><a href='#wash-no'><span class='fp-no'>3-1-5</span>モスク内では行わない施設<span class=n>1か所</span></a></li><li><a href='#wash-arr'><span class='fp-no'>3-1-6</span>手配・紹介のみ確認できた施設<span class=n>4か所</span></a></li></ol></li><li><a href='#prayer'><span class='fp-no'>3-2</span>葬儀の礼拝（ジャナーザ）<span class=n>モスクでの実施 27か所・計画 2か所</span></a><ol class='fp-toc-sub3'><li><a href='#prayer-now'><span class='fp-no'>3-2-1</span>モスクでの実施が確認できた事例<span class=n>27か所</span></a></li><li><a href='#prayer-plan'><span class='fp-no'>3-2-2</span>葬儀の礼拝を行う計画<span class=n>2か所</span></a></li><li><a href='#prayer-past'><span class='fp-no'>3-2-3</span>過去の記録だけがある施設<span class=n>6か所</span></a></li><li><a href='#prayer-part'><span class='fp-no'>3-2-4</span>対応はあるが、場所は確認できていない施設<span class=n>4か所</span></a></li><li><a href='#prayer-no'><span class='fp-no'>3-2-5</span>新施設では行わないと説明している事例<span class=n>2か所</span></a></li><li><a href='#prayer-arr'><span class='fp-no'>3-2-6</span>手配・紹介のみ確認できた施設<span class=n>25か所</span></a></li></ol></li><li><a href='#grave'><span class='fp-no'>3-3</span>土葬墓地<span class=n>既存 13か所・計画 8件</span></a><ol class='fp-toc-sub3'><li><a href='#grave-now'><span class='fp-no'>3-3-1</span>既存の土葬墓地<span class=n>13か所</span></a></li><li><a href='#grave-plan'><span class='fp-no'>3-3-2</span>墓地の計画<span class=n>8件（進行中 2・予定地未定 2・進展なし 4）</span></a></li><li><a href='#grave-no'><span class='fp-no'>3-3-3</span>計画地では土葬しないと説明している施設<span class=n>2か所</span></a></li><li><a href='#grave-arr'><span class='fp-no'>3-3-4</span>墓地の紹介・埋葬の手配を行う施設・団体<span class=n>24か所</span></a></li></ol></li></ol></li><li><a class='fp-toc-h' href='#by-pref'><b>4. 都道府県別の調査結果</b><span>表（並べ替えができます）</span></a></li><li><a class='fp-toc-h' href='#how'><b>5. 調査方法と判定基準</b><span>押すと開きます</span></a><ol class='fp-toc-sub'><li><a href='#how-scope'><span class='fp-no'>5-1</span>調査対象と調査範囲</a></li><li><a href='#how-sources'><span class='fp-no'>5-2</span>調査に使用した資料</a></li><li><a href='#how-criteria'><span class='fp-no'>5-3</span>掲載・分類の判定基準</a></li><li><a href='#how-notes'><span class='fp-no'>5-4</span>調査結果の注意事項</a></li></ol></li></ol></details></nav>
 
   <!-- ページの並び：1. 地域・項目を選ぶ → 2. 施設を探す → 3. 調査結果の一覧 → 4. 都道府県別 → 5. 調査方法
        （2026-10-14 ユーザー「葬儀・墓地のページも選択→検索→一覧の順に」。地域別のページと同じ形） -->
@@ -1039,6 +1045,20 @@ details.fe-more > .fe-rows{margin-top:6px}
     a.addEventListener("click", function () {
       var id = a.getAttribute("href").slice(1);
       setTimeout(function () { openFor(id); }, 0);
+    });
+  });
+  // 上の数の札：押すとその節へ（中の行のリンクは小見出しへ）。同じ場所へもう一度のときは hashchange が起きないので自分で開く
+  function goTo(id) {
+    if (decodeURIComponent(location.hash.slice(1)) === id) openFor(id); else location.hash = id;
+  }
+  document.querySelectorAll(".tile-go").forEach(function (el) {
+    el.addEventListener("click", function (ev) {
+      var a = ev.target.closest("a[href^='#']");
+      ev.preventDefault();
+      goTo(a ? a.getAttribute("href").slice(1) : el.dataset.go);
+    });
+    el.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); goTo(el.dataset.go); }
     });
   });
   document.querySelectorAll(".fp-foldbar button").forEach(function (b) {

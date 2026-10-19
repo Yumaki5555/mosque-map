@@ -525,8 +525,14 @@ details.fp-more > .fp-list{margin-top:10px}
 .fp-tablewrap{overflow-x:auto}
 .fp-table th,.fp-table td:first-child{white-space:nowrap}
 /* 洗い清めの札の中の内わけ（確認済み・過去の記録だけ・場所が未確認。2026-10-20） */
+.tile-go{cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.tile-go:hover,.tile-go:focus-visible{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.08);outline:none}
+.tile-go .tile-arrow{float:right;color:var(--accent);font-weight:700}
+.tile .tl-rows a{display:block;line-height:1.7;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+details.fp-tocbox{margin:0 0 6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px}
+details.fp-tocbox > summary{cursor:pointer;font-weight:700;color:var(--accent)}
+details.fp-tocbox[open] > summary{margin-bottom:8px}
 .tile .tl-rows{display:block;margin:6px 0;padding:6px 0 0;border-top:1px dashed var(--line)}
-.tile .tl-rows span{display:block;line-height:1.7}
 .tile .tl-rows b{font-size:1.05em}
 /* スマホ：上の数の札は2列に（ひと目で全体が見えるように）。大項目の枠と見出しを少し詰める */
 @media (max-width:600px){
@@ -843,7 +849,7 @@ details.fe-more > .fe-rows{margin-top:6px}
 }
 @media (max-width: 480px) { .site-purpose-note { padding: 10px 12px; } .site-purpose-sec { padding: 12px 14px; } }
 </style><div class="site-purpose-note" role="note" aria-label="このサイトの目的"><p>このサイトは、公開資料をもとに、日本のモスクや関連施設について知り、考えるための情報をまとめています。不安や敵意をあおることを目的としていません。掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。</p><p><a href="index.html#site-purpose">このサイトの目的と利用にあたって</a></p></div>
-  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月20日 02:45</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">266<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
+  <div class="pstat"><div><div class="k">最終更新</div><div class="v t">2026年10月20日 02:54</div><div class="s">このページの掲載数は、更新時点で確認できた情報をもとに集計しています。</div></div><div><div class="k">いま使われているモスク・礼拝所</div><div class="v">266<small>か所</small></div><div class=s>いま使われていると確認できた場所だけを数えています（地図・「モスク・施設を探す」と同じ数え方）。</div></div></div><style>
 .pstat { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0 0 18px;
          font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif; }
 .pstat > div { background: #fff; border: 1px solid #d5dbe3; border-top: 4px solid #1e3a5f; border-radius: 12px;
