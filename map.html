@@ -149,6 +149,10 @@ a{color:var(--accent)}
         .lc-grp-h { font-size: 13px; font-weight: 800; color: #1e3a5f; line-height: 1.5; }
         .lc-grp-s { font-size: 11.5px; color: #5b6474; line-height: 1.5; margin: 0 0 2px; }
         .leaflet-control-layers-overlays svg.lci { margin: 0 2px 0 3px; vertical-align: -1px; }
+        /* 「モスク・礼拝所（すべて）」のチェック（区域区分ごとの4つをまとめて出し入れ。2026-11-08） */
+        .leaflet-control-layers-overlays label.lc-mall { font-weight: 700; color: #1e3a5f; margin: 4px 0 3px; padding-bottom: 4px;
+                                                         border-bottom: 1px dashed #c9d3df; cursor: pointer; }
+        .lc-mall input { accent-color: #1e3a5f; }
         /* 左下の「全国表示」ボタン（条件はそのままで、地図だけを日本全体に戻す） */
         .mp-home-ctl { display: block; background: #fff; border: 2px solid rgba(0,0,0,.2); border-radius: 6px;
                        font: 700 13px/1.3 sans-serif; color: #1e3a5f; padding: 7px 9px; cursor: pointer; }
@@ -583,7 +587,7 @@ a{color:var(--accent)}
 }
 @media (max-width: 480px) { .site-purpose-note { padding: 10px 12px; } .site-purpose-sec { padding: 12px 14px; } }
 </style><div class="site-purpose-note" role="note" aria-label="このサイトの目的"><p>このサイトは、公開資料をもとに、日本のモスクや関連施設について知り、考えるための情報をまとめています。不安や敵意をあおることを目的としていません。掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。</p><p><a href="index.html#site-purpose">このサイトの目的と利用にあたって</a>　<a href="index.html#site-use">掲載情報を使うときは（免責事項）</a></p></div>
-      <p class="mp-upd">最終更新 <b>2026年11月8日 16:13</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年11月8日 16:41</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">268<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>
@@ -18192,9 +18196,44 @@ function textHit(ix, t) {
                 }
                 grp.appendChild(lb);
             });
+            addMall(list);
             return r;
         };
+        // 「モスク・礼拝所（すべて）」：区域区分ごとに分かれたモスク・礼拝所の層を、1つのチェックでまとめて出し入れする（2026-11-08 ユーザー）。
+        // 一部だけ出ているときは「－」の印（indeterminate）。1つずつのチェックを変えたときも、ほかの所で出し入れしたときも合わせる
+        function mallInputs() {
+            return (lc._layerControlInputs || []).filter(function (box) {
+                var o = lc._getLayer(box.layerId);
+                return o && /^モスク・礼拝所/.test(o.name);
+            });
+        }
+        function syncMall() {
+            var all = lc._overlaysList && lc._overlaysList.querySelector(".lc-mall input");
+            if (!all) return;
+            var ins = mallInputs(), n = ins.filter(function (b) { return b.checked; }).length;
+            all.checked = ins.length > 0 && n === ins.length;
+            all.indeterminate = n > 0 && n < ins.length;
+        }
+        function addMall(list) {
+            var ins = mallInputs();
+            if (!list || ins.length < 2) return;
+            var first = ins[0].closest("label"), row = document.createElement("label");
+            if (!first) return;
+            row.className = "lc-mall";
+            row.innerHTML = "<span><input type='checkbox'><span> モスク・礼拝所（すべて）</span></span>";
+            first.parentNode.insertBefore(row, first);
+            L.DomEvent.on(row.querySelector("input"), "click", function (e) {
+                L.DomEvent.stopPropagation(e);
+                var on = this.checked;
+                mallInputs().forEach(function (b) { b.checked = on; });
+                lc._onInputClick();
+                syncMall();
+            });
+            syncMall();
+        }
+        map.on("overlayadd overlayremove", syncMall);
         lc._update();
+        L.DomEvent.on(lc._overlaysList, "change", function () { setTimeout(syncMall, 0); });
         // 地図が隠れないよう、パソコンでもスマホでも最初はパネルをたたんでボタンにしておく。地図の何もないところを押しても閉じる
         lc.collapse();
         map.on("click", function () { lc.collapse(); });
@@ -18797,7 +18836,7 @@ function textHit(ix, t) {
 
 // ---- 「この地図を画像で保存」（公開の地図だけ。map_image_save.py。2026-11-08）----
 (function () {
-  var MAP = map_00000000000000000000000000000000, MAX_Z = 13, PAGE_URL = "https://yumaki5555.github.io/mosque-map/map.html";
+  var MAP = map_00000000000000000000000000000000, LC = layer_control_000000000000000000000000000005e2, MAX_Z = 13, PAGE_URL = "https://yumaki5555.github.io/mosque-map/map.html";
   var btn = document.getElementById("img-save"), note = document.getElementById("img-save-note");
   if (!btn || !note || !MAP || !document.createElement("canvas").toBlob) { var bar = document.getElementById("img-save-bar"); if (bar) bar.style.display = "none"; return; }
   var NOTE = note.textContent, busy = false;
@@ -18863,9 +18902,9 @@ function textHit(ix, t) {
       P.forEach(function (p) { s += p + ":" + cs.getPropertyValue(p) + ";"; });
       dst[i].setAttribute("style", s);
     }
-    var r = svg.getBoundingClientRect();
+    var r = svg.getBoundingClientRect();  // たたんだ一覧の中の見本は大きさ 0 なので 14 にする
     c.removeAttribute("style");
-    c.setAttribute("width", r.width); c.setAttribute("height", r.height);
+    c.setAttribute("width", r.width || 14); c.setAttribute("height", r.height || 14);
     var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(c));
     return new Promise(function (ok) { var im = new Image(); im.onload = function () { ok(im); }; im.onerror = function () { ok(null); }; im.src = url; });
   }
@@ -18875,9 +18914,10 @@ function textHit(ix, t) {
     ctx.arcTo(x + w, y, x + w, y + h, q); ctx.arcTo(x + w, y + h, x, y + h, q);
     ctx.arcTo(x, y + h, x, y, q); ctx.arcTo(x, y, x + w, y, q); ctx.closePath();
   }
-  function drawBox(ctx, el, base, a) {  // ¥・墓の札など、色の付いた小さな箱と文字
-    var cs = getComputedStyle(el), r = rel(el, base), bw = parseFloat(cs.borderTopWidth) || 0, q = cs.borderTopLeftRadius;
-    q = /%/.test(q) ? Math.min(r.w, r.h) * parseFloat(q) / 100 : (parseFloat(q) || 0);
+  function drawBox(ctx, el, base, a, at) {  // ¥・墓の札など、色の付いた小さな箱と文字（at があれば、その場所・大きさに描く＝凡例の見本）
+    var cs = getComputedStyle(el), r = at || rel(el, base), q = cs.borderTopLeftRadius;
+    var k = at ? at.w / (el.getBoundingClientRect().width || at.w) : 1, bw = (parseFloat(cs.borderTopWidth) || 0) * k;
+    q = /%/.test(q) ? Math.min(r.w, r.h) * parseFloat(q) / 100 : (parseFloat(q) || 0) * k;
     var bg = cs.backgroundColor, hasBg = bg && !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(bg);
     ctx.save(); ctx.globalAlpha = a;
     if (hasBg) {
@@ -18892,7 +18932,9 @@ function textHit(ix, t) {
       ctx.stroke(); ctx.setLineDash([]);
     }
     if (!el.children.length && el.textContent.trim()) {
-      ctx.fillStyle = cs.color; ctx.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      var fs = parseFloat(cs.fontSize) * k;
+      if (at) fs = Math.max(fs, 10.5);  // 凡例の小さな見本でも「墓」の字がつぶれないように
+      ctx.fillStyle = cs.color; ctx.font = cs.fontWeight + " " + fs + "px " + cs.fontFamily;
       ctx.textAlign = "center"; ctx.textBaseline = "middle";
       ctx.fillText(el.textContent.trim(), r.x + r.w / 2, r.y + r.h / 2 + 0.5);
     }
@@ -18915,6 +18957,52 @@ function textHit(ix, t) {
     return !s || /^なし/.test(s) ? "なし（全国のすべての施設）" : s;
   }
 
+  // 凡例：画像に映っている印の種類だけ（「地図に表示する情報」でチェックが入っていて、画像の範囲に1つ以上ある層）
+  var RINGS = [  // 輪は SVG の線の色で見分ける（地図のページの「4. 地図の色・記号の見方」と同じ言葉）
+    ["rgb(124, 45, 18)", "位置がおおよその場所（点線の大きな輪）", "#7c2d12", 1.5, [3, 2]],
+    ["rgb(109, 40, 217)", "選んだ系統の施設（紫の太い輪）", "#6d28d9", 2.5, null],
+    ["rgb(17, 24, 39)", "いま選んでいる施設（黒い二重の輪）", "#111827", 2, null]];
+  async function legendItems(box, base) {
+    var items = [], bounds = MAP.getBounds(), ins = (LC && LC._layerControlInputs) || [];
+    for (var i = 0; i < ins.length; i++) {
+      var inp = ins[i], obj = inp.checked && LC._getLayer(inp.layerId), lb = inp.closest("label");
+      if (!obj || !obj.overlay || !obj.layer.eachLayer || !lb) continue;
+      var seen = [];
+      obj.layer.eachLayer(function (m) { if (m.getLatLng && bounds.contains(m.getLatLng())) seen.push(m); });
+      if (!seen.length) continue;
+      var name = obj.name.replace(/\s*\(\d[^()]*\)\s*$/, "").replace(/^\s*¥\s*/, "").trim();  // 数（〇か所）は外す。画像の中の数ではないため
+      var svg = lb.querySelector("svg.lci");
+      if (svg) { var im = await svgImage(svg); if (im) items.push({img: im, t: name}); continue; }
+      var els = seen.map(function (m) { return m._icon && m._icon.querySelector(".don-icon"); }).filter(Boolean);
+      var plain = els.filter(function (e) { return !e.classList.contains("don-grave"); }),
+          grave = els.filter(function (e) { return e.classList.contains("don-grave"); });
+      if (plain.length) items.push({el: plain[0], t: name});
+      if (grave.length) items.push({el: grave[0], t: "土葬墓地の" + name});
+    }
+    var found = [];
+    box.querySelectorAll(".leaflet-overlay-pane path").forEach(function (p) {
+      var cs = getComputedStyle(p);
+      if (cs.fill !== "none") return;
+      RINGS.forEach(function (R, k) {
+        if (found[k] || cs.stroke !== R[0]) return;
+        var r = p.getBoundingClientRect();
+        if (r.right > base.left && r.left < base.right && r.bottom > base.top && r.top < base.bottom) found[k] = true;
+      });
+    });
+    RINGS.forEach(function (R, k) { if (found[k]) items.push({ring: R, t: R[1]}); });
+    return items;
+  }
+  function drawIcon(ctx, it, x, y, s) {
+    if (it.img) ctx.drawImage(it.img, x, y, s, s);
+    else if (it.el) drawBox(ctx, it.el, null, 1, {x: x - 2, y: y - 2, w: s + 4, h: s + 4});
+    else if (it.ring) {
+      ctx.save(); ctx.beginPath(); ctx.arc(x + s / 2, y + s / 2, s / 2 - 1, 0, Math.PI * 2);
+      ctx.lineWidth = it.ring[3]; ctx.strokeStyle = it.ring[2];
+      if (it.ring[4]) ctx.setLineDash(it.ring[4]);
+      ctx.stroke(); ctx.restore();
+    }
+  }
+
   async function make(tries) {  // 作っている途中で地図が動いたら、もう一度作る（2回まで）
     tries = tries || 0;
     if (!(await waitIdle(10000))) throw new Error("tiles");  // 背景のない絵は作らない
@@ -18933,23 +19021,38 @@ function textHit(ix, t) {
     var d = today(), FONT = "\"Hiragino Sans\", \"Yu Gothic\", \"Meiryo\", sans-serif";
     var cv = document.createElement("canvas"), ctx = cv.getContext("2d");
     cv.dateParts = d;
-    // 下の帯の文（先に測って、帯の高さを決める）
-    ctx.font = "13px " + FONT;
-    var pad = 12, maxW = W - pad * 2;
-    var lines = [
-      {t: "全国モスク・礼拝所マップ", b: 1},
-      {t: "画像を作った日：" + d[0] + "年" + d[1] + "月" + d[2] + "日", b: 1},
-      {t: "選んでいる条件：" + conditions()},
-      {t: "ページ：" + PAGE_URL},
-      {t: "この日の時点でページに載っていた情報です。最新の情報と出典は、ページで確かめてください。"},
-      {t: "背景の地図：© OpenStreetMap contributors"}
-    ];
-    var rows = [];
-    lines.forEach(function (ln) {
-      ctx.font = (ln.b ? "bold 14px " : "13px ") + FONT;
-      wrap(ctx, ln.t, maxW).forEach(function (s) { rows.push({t: s, b: ln.b}); });
-    });
-    var LH = 20, FH = pad * 2 + rows.length * LH;
+    // 下の帯（先に並べ方を決めて、帯の高さを出す）：題名・日付・条件 → 凡例 → アドレス・注意書き・地図の出典
+    var legend = await legendItems(box, base);
+    var pad = 12, maxW = W - pad * 2, LH = 20, IC = 14, GAP = 5, SP = 16, y = pad, lay = [];
+    function textRow(t, b) {
+      ctx.font = (b ? "bold 14px " : "13px ") + FONT;
+      wrap(ctx, t, maxW).forEach(function (s) { lay.push({t: s, b: b, x: pad, y: y}); y += LH; });
+    }
+    textRow("全国モスク・礼拝所マップ", 1);
+    textRow("画像を作った日：" + d[0] + "年" + d[1] + "月" + d[2] + "日", 1);
+    textRow("選んでいる条件：" + conditions());
+    if (legend.length) {
+      y += 4;
+      textRow("凡例（この画像に映っている印）", 1);
+      ctx.font = "13px " + FONT;
+      var x = pad;
+      legend.forEach(function (it) {
+        var w = IC + GAP + ctx.measureText(it.t).width;
+        if (x > pad && x + w > pad + maxW) { x = pad; y += LH; }
+        if (w > maxW) {  // 1行に入らない長い名前は折り返す
+          var ls = wrap(ctx, it.t, maxW - IC - GAP);
+          lay.push({it: it, lines: ls, x: pad, y: y}); y += LH * ls.length; x = pad;
+          return;
+        }
+        lay.push({it: it, lines: [it.t], x: x, y: y}); x += w + SP;
+      });
+      if (x > pad) y += LH;
+      y += 4;
+    }
+    textRow("ページ：" + PAGE_URL);
+    textRow("この日の時点でページに載っていた情報です。最新の情報と出典は、ページで確かめてください。");
+    textRow("背景の地図：© OpenStreetMap contributors");
+    var FH = y + pad;
     cv.width = W * S; cv.height = (H + FH) * S;
     ctx = cv.getContext("2d"); ctx.scale(S, S);
     ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, W, H + FH);
@@ -18996,10 +19099,16 @@ function textHit(ix, t) {
     ctx.fillStyle = "#ffffff"; ctx.fillRect(0, H, W, FH);
     ctx.fillStyle = "#c9ccd1"; ctx.fillRect(0, H, W, 1);
     ctx.textAlign = "left"; ctx.textBaseline = "middle";
-    rows.forEach(function (ln, k) {
+    lay.forEach(function (ln) {
+      if (ln.it) {
+        drawIcon(ctx, ln.it, ln.x, H + ln.y + (LH - IC) / 2, IC);
+        ctx.font = "13px " + FONT; ctx.fillStyle = "#333333"; ctx.textAlign = "left"; ctx.textBaseline = "middle";
+        ln.lines.forEach(function (s, k) { ctx.fillText(s, ln.x + IC + GAP, H + ln.y + LH * k + LH / 2); });
+        return;
+      }
       ctx.font = (ln.b ? "bold 14px " : "13px ") + FONT;
       ctx.fillStyle = ln.b ? "#111111" : "#333333";
-      ctx.fillText(ln.t, pad, H + pad + LH * k + LH / 2);
+      ctx.fillText(ln.t, ln.x, H + ln.y + LH / 2);
     });
     return cv;
   }
