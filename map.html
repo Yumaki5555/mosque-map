@@ -583,7 +583,7 @@ a{color:var(--accent)}
 }
 @media (max-width: 480px) { .site-purpose-note { padding: 10px 12px; } .site-purpose-sec { padding: 12px 14px; } }
 </style><div class="site-purpose-note" role="note" aria-label="このサイトの目的"><p>このサイトは、公開資料をもとに、日本のモスクや関連施設について知り、考えるための情報をまとめています。不安や敵意をあおることを目的としていません。掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。</p><p><a href="index.html#site-purpose">このサイトの目的と利用にあたって</a>　<a href="index.html#site-use">掲載情報を使うときは（免責事項）</a></p></div>
-      <p class="mp-upd">最終更新 <b>2026年11月6日 06:01</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
+      <p class="mp-upd">最終更新 <b>2026年11月8日 16:13</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p>
       
       <section class="mp-counts" aria-label="この地図に載せている場所の数">
         <div class="main"><span class="n">268<small>か所</small></span><span class="k">モスク・礼拝所</span><span class="s">いま使われていると確認できた場所です。●の色で区域区分を示しています。ほかの施設は●以外の形です。</span></div>
@@ -629,6 +629,9 @@ a{color:var(--accent)}
           <p class="mp-maptip">印を押すと、施設名・所在地・区域区分と、詳しい情報へのリンクが出ます。出す印は右上の<b>「地図に表示する情報」</b>で選べます。<button type="button" class="f-go" id="open-layers">地図に表示する情報を開く</button><br>左下の<b>「全国表示」</b>は、条件はそのままで地図だけを日本全体に戻します（条件を外すのは「条件をすべてクリア」）。</p>
           <p class="mp-now" id="mp-now"></p>
     
+          <p class="mp-maptip no-print" id="img-save-bar"><button type="button" class="f-go" id="img-save">この地図を画像で保存（PNG）</button>
+          <span id="img-save-note" role="status" aria-live="polite">画面に映っている範囲を、画像を作った日・ページのアドレス・地図の出典を書き込んで保存します。</span></p>
+
     
     
             <div class="folium-map" id="map_00000000000000000000000000000000" ></div>
@@ -785,6 +788,7 @@ a{color:var(--accent)}
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
+  "crossOrigin": true,
 }
 
             );
@@ -18790,5 +18794,240 @@ function textHit(ix, t) {
         if (document.readyState === "complete") setTimeout(jump, 300);
         else window.addEventListener("load", function () { setTimeout(jump, 300); });
     })();
+
+// ---- 「この地図を画像で保存」（公開の地図だけ。map_image_save.py。2026-11-08）----
+(function () {
+  var MAP = map_00000000000000000000000000000000, MAX_Z = 13, PAGE_URL = "https://yumaki5555.github.io/mosque-map/map.html";
+  var btn = document.getElementById("img-save"), note = document.getElementById("img-save-note");
+  if (!btn || !note || !MAP || !document.createElement("canvas").toBlob) { var bar = document.getElementById("img-save-bar"); if (bar) bar.style.display = "none"; return; }
+  var NOTE = note.textContent, busy = false;
+  function sync() {
+    var over = MAP.getZoom() > MAX_Z;
+    btn.disabled = over || busy;
+    if (!busy) note.textContent = over ? "拡大しすぎのときは保存できません。地図を少し縮めて、市や町が分かるくらいにしてください。" : NOTE;
+  }
+  MAP.on("zoomend", sync); sync();
+
+  function rel(el, base) { var r = el.getBoundingClientRect(); return {x: r.left - base.left, y: r.top - base.top, w: r.width, h: r.height}; }
+  function covered() {  // いまの拡大の段の背景の地図が、地図の枠をほぼ埋めているか（ページを開いた直後など、読み込み途中を絵にしない）
+    var box = MAP.getContainer(), base = box.getBoundingClientRect(), lv = null, area = 0, any = false;
+    MAP.eachLayer(function (l) {  // 段の番号は地図の拡大（小数のこともある）ではなく、タイルの段（_tileZoom）で引く
+      if (!(l instanceof L.GridLayer)) return;
+      any = true;
+      if (l._levels && l._levels[l._tileZoom]) lv = l._levels[l._tileZoom].el;
+    });
+    if (!any) return true;
+    if (!lv) return false;
+    lv.querySelectorAll("img.leaflet-tile").forEach(function (im) {
+      if (!im.complete || !im.naturalWidth) return;
+      var r = rel(im, base), x0 = Math.max(0, r.x), y0 = Math.max(0, r.y),
+          x1 = Math.min(base.width, r.x + r.w), y1 = Math.min(base.height, r.y + r.h);
+      if (x1 > x0 && y1 > y0) area += (x1 - x0) * (y1 - y0);
+    });
+    // 地図は横にはくり返すが、縦は北と南の端までしかない。大きく縮めたときは、世界のある高さの分だけを求める
+    var pb = MAP.getPixelBounds(), wb = MAP.getPixelWorldBounds(), h = base.height;
+    if (pb && wb) h = Math.min(h, Math.max(0, Math.min(pb.max.y, wb.max.y) - Math.max(pb.min.y, wb.min.y)));
+    return area >= base.width * h * 0.98;
+  }
+  var lastMove = Date.now();  // 地図が最後に動いた時刻（ページを開いた直後は、大きさ合わせ・全体表示で何度か動く）
+  MAP.on("move zoom moveend zoomend resize viewreset", function () { lastMove = Date.now(); });
+  function waitIdle(ms) {  // 動きが止まって、背景の地図の読み込みが終わるのを待つ（最長 ms。世界の端など地図のない所が映っているときは時間で進む）
+    try { MAP.invalidateSize(); } catch (e) {}  // 枠の大きさと地図の思っている大きさがずれていたら合わせる（同じなら何もしない）
+    return new Promise(function (ok) {
+      var t0 = Date.now();
+      (function chk() {
+        var loading = false;
+        MAP.eachLayer(function (l) { if (l instanceof L.GridLayer && l.isLoading && l.isLoading()) loading = true; });
+        var still = Date.now() - lastMove > 600, full = covered();
+        if (still && !MAP._animatingZoom && !loading && full) setTimeout(function () { ok(true); }, 150);
+        else if (Date.now() - t0 > ms) ok(full);  // 待っても背景の地図がそろわない（通信が遅いなど）
+        else setTimeout(chk, 150);
+      })();
+    });
+  }
+  function alphaOf(el, stop) {
+    var a = 1;
+    for (var e = el; e && e !== stop; e = e.parentElement) {
+      var cs = getComputedStyle(e);
+      if (cs.display === "none" || cs.visibility === "hidden") return 0;
+      a *= +cs.opacity;
+    }
+    return a;
+  }
+  function svgImage(svg) {  // 印の SVG を、見えている色・線のまま画像にする
+    var c = svg.cloneNode(true), src = svg.querySelectorAll("*"), dst = c.querySelectorAll("*");
+    var P = ["display", "visibility", "opacity", "fill", "fill-opacity", "fill-rule", "stroke", "stroke-opacity",
+             "stroke-width", "stroke-dasharray", "stroke-linecap", "stroke-linejoin"];
+    for (var i = 0; i < src.length; i++) {
+      var cs = getComputedStyle(src[i]), s = "";
+      P.forEach(function (p) { s += p + ":" + cs.getPropertyValue(p) + ";"; });
+      dst[i].setAttribute("style", s);
+    }
+    var r = svg.getBoundingClientRect();
+    c.removeAttribute("style");
+    c.setAttribute("width", r.width); c.setAttribute("height", r.height);
+    var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(c));
+    return new Promise(function (ok) { var im = new Image(); im.onload = function () { ok(im); }; im.onerror = function () { ok(null); }; im.src = url; });
+  }
+  function roundRect(ctx, x, y, w, h, q) {
+    q = Math.max(0, Math.min(q, w / 2, h / 2));
+    ctx.beginPath(); ctx.moveTo(x + q, y);
+    ctx.arcTo(x + w, y, x + w, y + h, q); ctx.arcTo(x + w, y + h, x, y + h, q);
+    ctx.arcTo(x, y + h, x, y, q); ctx.arcTo(x, y, x + w, y, q); ctx.closePath();
+  }
+  function drawBox(ctx, el, base, a) {  // ¥・墓の札など、色の付いた小さな箱と文字
+    var cs = getComputedStyle(el), r = rel(el, base), bw = parseFloat(cs.borderTopWidth) || 0, q = cs.borderTopLeftRadius;
+    q = /%/.test(q) ? Math.min(r.w, r.h) * parseFloat(q) / 100 : (parseFloat(q) || 0);
+    var bg = cs.backgroundColor, hasBg = bg && !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(bg);
+    ctx.save(); ctx.globalAlpha = a;
+    if (hasBg) {
+      if (cs.boxShadow && cs.boxShadow !== "none") { ctx.shadowColor = "rgba(0,0,0,.4)"; ctx.shadowBlur = 4; ctx.shadowOffsetY = 1; }
+      roundRect(ctx, r.x, r.y, r.w, r.h, q); ctx.fillStyle = bg; ctx.fill();
+      ctx.shadowColor = "transparent";
+    }
+    if (bw && cs.borderTopStyle !== "none" && cs.borderTopStyle !== "hidden") {
+      roundRect(ctx, r.x + bw / 2, r.y + bw / 2, r.w - bw, r.h - bw, q - bw / 2);
+      ctx.lineWidth = bw; ctx.strokeStyle = cs.borderTopColor;
+      if (cs.borderTopStyle === "dashed") ctx.setLineDash([bw * 2, bw * 1.5]);
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+    if (!el.children.length && el.textContent.trim()) {
+      ctx.fillStyle = cs.color; ctx.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.fillText(el.textContent.trim(), r.x + r.w / 2, r.y + r.h / 2 + 0.5);
+    }
+    ctx.restore();
+  }
+  function wrap(ctx, text, maxW) {  // 幅に入るように折り返す（日本語も URL も1文字ずつ測る）
+    var out = [], cur = "";
+    Array.from(text).forEach(function (ch) {
+      if (cur && ctx.measureText(cur + ch).width > maxW) { out.push(cur); cur = ch; } else cur += ch;
+    });
+    if (cur) out.push(cur);
+    return out;
+  }
+  function today() { var d = new Date(); return [d.getFullYear(), d.getMonth() + 1, d.getDate()]; }
+  function conditions() {
+    var box = document.getElementById("f-chips"); if (!box) return "なし";
+    var parts = [];
+    box.querySelectorAll(":scope > :not(.lbl)").forEach(function (e) { var t = e.textContent.replace(/[×✕]/g, "").trim(); if (t) parts.push(t); });
+    var s = parts.join("・");
+    return !s || /^なし/.test(s) ? "なし（全国のすべての施設）" : s;
+  }
+
+  async function make(tries) {  // 作っている途中で地図が動いたら、もう一度作る（2回まで）
+    tries = tries || 0;
+    if (!(await waitIdle(10000))) throw new Error("tiles");  // 背景のない絵は作らない
+    if (MAP.getZoom() > MAX_Z) throw new Error("zoom");
+    var moved = false, onMove = function () { moved = true; };
+    MAP.on("movestart zoomstart", onMove);
+    try { var cv = await draw(); } finally { MAP.off("movestart zoomstart", onMove); }
+    if (moved && tries < 2) return make(tries + 1);
+    if (MAP.getZoom() > MAX_Z) throw new Error("zoom");
+    return save(cv);
+  }
+
+  async function draw() {
+    var box = MAP.getContainer(), base = box.getBoundingClientRect(), W = Math.round(base.width), H = Math.round(base.height);
+    var S = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    var d = today(), FONT = "\"Hiragino Sans\", \"Yu Gothic\", \"Meiryo\", sans-serif";
+    var cv = document.createElement("canvas"), ctx = cv.getContext("2d");
+    cv.dateParts = d;
+    // 下の帯の文（先に測って、帯の高さを決める）
+    ctx.font = "13px " + FONT;
+    var pad = 12, maxW = W - pad * 2;
+    var lines = [
+      {t: "全国モスク・礼拝所マップ", b: 1},
+      {t: "画像を作った日：" + d[0] + "年" + d[1] + "月" + d[2] + "日", b: 1},
+      {t: "選んでいる条件：" + conditions()},
+      {t: "ページ：" + PAGE_URL},
+      {t: "この日の時点でページに載っていた情報です。最新の情報と出典は、ページで確かめてください。"},
+      {t: "背景の地図：© OpenStreetMap contributors"}
+    ];
+    var rows = [];
+    lines.forEach(function (ln) {
+      ctx.font = (ln.b ? "bold 14px " : "13px ") + FONT;
+      wrap(ctx, ln.t, maxW).forEach(function (s) { rows.push({t: s, b: ln.b}); });
+    });
+    var LH = 20, FH = pad * 2 + rows.length * LH;
+    cv.width = W * S; cv.height = (H + FH) * S;
+    ctx = cv.getContext("2d"); ctx.scale(S, S);
+    ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, W, H + FH);
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.clip();
+    // 1) 背景の地図（いまの拡大の段をいちばん上に。読み込み途中の所は前の段が下に見える）
+    var levels = Array.from(box.querySelectorAll(".leaflet-tile-pane .leaflet-tile-container"));
+    levels.sort(function (p, q) { return (+getComputedStyle(p).zIndex || 0) - (+getComputedStyle(q).zIndex || 0); });
+    levels.forEach(function (lv) {
+      lv.querySelectorAll("img.leaflet-tile").forEach(function (im) {
+        if (!im.complete || !im.naturalWidth) return;
+        var a = alphaOf(im, box); if (!a) return;
+        var r = rel(im, base);
+        ctx.globalAlpha = a; ctx.drawImage(im, r.x, r.y, r.w, r.h);
+      });
+    });
+    ctx.globalAlpha = 1;
+    // 2) 印・輪（SVG）
+    var overs = Array.from(box.querySelectorAll(".leaflet-overlay-pane > svg, .leaflet-overlay-pane > canvas"));
+    for (var i = 0; i < overs.length; i++) {
+      var el = overs[i], a = alphaOf(el, box); if (!a) continue;
+      var r = rel(el, base);
+      if (el.tagName.toLowerCase() === "canvas") { ctx.globalAlpha = a; ctx.drawImage(el, r.x, r.y, r.w, r.h); continue; }
+      var im = await svgImage(el);
+      if (im) { ctx.globalAlpha = a; ctx.drawImage(im, r.x, r.y, r.w, r.h); }
+    }
+    ctx.globalAlpha = 1;
+    // 3) ¥・墓の札など（HTML の印。重なりの順に）
+    var icons = Array.from(box.querySelectorAll(".leaflet-marker-pane > .leaflet-marker-icon"));
+    icons.sort(function (p, q) { return (+p.style.zIndex || 0) - (+q.style.zIndex || 0); });
+    for (var j = 0; j < icons.length; j++) {
+      var ic = icons[j], ia = alphaOf(ic, box); if (!ia) continue;
+      var stack = [ic];
+      while (stack.length) {
+        var e = stack.shift();
+        if (e.tagName.toLowerCase() === "img") continue;  // 外の画像は使わない（絵が保存できなくなるため）
+        if (e instanceof SVGSVGElement) { var si = await svgImage(e); if (si) { var sr = rel(e, base); ctx.globalAlpha = ia; ctx.drawImage(si, sr.x, sr.y, sr.w, sr.h); ctx.globalAlpha = 1; } continue; }
+        var ea = alphaOf(e, ic) * ia; if (!ea) continue;
+        drawBox(ctx, e, base, ea);
+        Array.from(e.children).forEach(function (c) { stack.push(c); });
+      }
+    }
+    ctx.restore();
+    // 4) 下の帯
+    ctx.fillStyle = "#ffffff"; ctx.fillRect(0, H, W, FH);
+    ctx.fillStyle = "#c9ccd1"; ctx.fillRect(0, H, W, 1);
+    ctx.textAlign = "left"; ctx.textBaseline = "middle";
+    rows.forEach(function (ln, k) {
+      ctx.font = (ln.b ? "bold 14px " : "13px ") + FONT;
+      ctx.fillStyle = ln.b ? "#111111" : "#333333";
+      ctx.fillText(ln.t, pad, H + pad + LH * k + LH / 2);
+    });
+    return cv;
+  }
+
+  async function save(cv) {
+    var d = cv.dateParts;
+    var blob = await new Promise(function (ok) { cv.toBlob(ok, "image/png"); });
+    if (!blob) throw new Error("blob");
+    var name ="mosque-map-" + d[0] + String(d[1]).padStart(2, "0") + String(d[2]).padStart(2, "0") + ".png";
+    var url = URL.createObjectURL(blob), link = document.createElement("a");
+    link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 30000);
+    return name;
+  }
+
+  btn.addEventListener("click", function () {
+    if (busy || MAP.getZoom() > MAX_Z) return;
+    busy = true; btn.disabled = true; note.textContent = "画像を作っています…";
+    make().then(function (name) {
+      busy = false; sync(); note.textContent = "保存しました（" + name + "）。画像を作った日・ページのアドレス・地図の出典が下に入っています。";
+    }).catch(function (err) {
+      busy = false; sync();
+      if (err && err.message === "tiles")
+        note.textContent = "背景の地図の読み込みが終わっていません。少し待ってから、もう一度押してください。";
+      else if (!(err && err.message === "zoom"))
+        note.textContent = "この端末では画像を作れませんでした。ページ上の「印刷・PDFで保存」をお使いください。";
+    });
+  });
+})();
 </script>
 </html>
