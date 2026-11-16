@@ -23,7 +23,6 @@
 :root{
   --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
   --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
-  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
   --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
   --warn:#b42318; --warn-soft:#fdecea;
 }
@@ -35,11 +34,9 @@
     --warn:#f2958c; --warn-soft:#3a1d1b;
   }
 }
-/* 暗い画面では、黒っぽい印（閉鎖・移転の✕など）が背景に溶けないよう、ページの中の小さな印に白いふちを付ける（地図の上の印・右上の一覧の印はそのまま） */
 @media screen and (prefers-color-scheme: dark){
   svg.mk-s,svg.zsh,svg.dot{filter:drop-shadow(0 0 1px rgba(255,255,255,.85))}
 }
-/* リンクの色（全ページ同じ。ボタン・札・メニューなど、自分の色を決めているリンクはそちらが優先。暗い画面でブラウザの濃い青のままにならないように） */
 a{color:var(--accent)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
@@ -111,7 +108,6 @@ details.year > .list{padding:0 12px 12px}
 .bar i.over{background:var(--over)}
 .meta{font-size:.8rem;color:var(--sub)}
 .note{font-size:.8rem;color:var(--sub);border-top:1px dashed var(--line);padding-top:6px}
-/* まとめたカードの中の寄付ページ一覧 */
 .pages{border:1px solid var(--line);border-radius:10px;padding:6px 10px;display:flex;flex-direction:column;gap:6px}
 .pages .h{font-size:.78rem;font-weight:700;color:var(--sub)}
 .pages .pg{border-top:1px dashed var(--line);padding-top:6px;font-size:.84rem}
@@ -120,7 +116,6 @@ details.year > .list{padding:0 12px 12px}
 .card a.map-link{display:inline-block;font-weight:700;padding:2px 10px;border-radius:8px;border:1px solid var(--accent);text-decoration:none}
 .card a.src-btn{display:inline-block;font-weight:700;background:var(--accent-soft);padding:2px 10px;border-radius:8px;text-decoration:none}
 .card a{color:var(--accent);font-size:.85rem}
-/* 目次（3つの区分へ飛ぶ） */
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .toc a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--text);font-weight:700;
   padding:8px 16px;border-radius:10px;border:1px solid var(--line);border-left-width:6px}
@@ -131,7 +126,6 @@ details.year > .list{padding:0 12px 12px}
 .toc a.extra,details.sec.extra{background:var(--extra-bg);border-left-color:var(--extra-line)}
 .sec-tools{display:flex;gap:8px;margin:0 0 12px}
 .sec-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
-/* 区分の箱（見出しを押すと開閉） */
 details.sec{border:1px solid var(--line);border-left:6px solid;border-radius:14px;padding:0 14px;margin-bottom:18px}
 details.sec > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:14px 2px}
 details.sec > summary::-webkit-details-marker{display:none}
@@ -143,7 +137,6 @@ details.sec.open .card{border-top:4px solid var(--open-line)}
 details.sec.done .card{border-top:4px solid var(--done-line)}
 details.sec.pend .card{border-top:4px solid var(--pend-line)}
 details.sec.extra .card{border-top:4px solid var(--extra-line)}
-/* 募集中・未確定は目立たせる：見出しを色の帯にして大きく */
 details.sec.feature{border-left-width:0;padding:0 14px 4px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 details.sec.feature > summary{margin:0 -14px 12px;padding:16px 18px;border-radius:14px 14px 0 0;color:var(--card)}
 details.sec.feature:not([open]) > summary{margin-bottom:4px;border-radius:14px}
@@ -157,7 +150,6 @@ details.sec.feature > summary .sum-sub{flex-basis:100%;font-size:.88rem;font-wei
 .toc a.open.big{background:var(--open-line)}
 .toc a.pend.big{background:var(--pend-line)}
 .toc a.big .n{color:var(--card);opacity:.9}
-/* 都道府県ごとの折りたたみ（見出しを押すと開閉。中のカードは左から右へ並べる） */
 details.pref{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px}
 details.pref > summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 14px;font-weight:700;font-size:1.1rem}
 details.pref > summary::-webkit-details-marker{display:none}
@@ -169,13 +161,11 @@ details.sec.open details.pref{border-left:5px solid var(--open-line)}
 details.sec.pend details.pref{border-left:5px solid var(--pend-line)}
 .pref-tools{display:flex;gap:8px;margin:0 0 10px}
 .pref-tools button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 14px;font-size:.85rem;cursor:pointer}
-/* カードの表に出すチラシ */
 .flyers{display:flex;gap:6px;flex-wrap:wrap}
 .flyers button{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;width:92px;position:relative}
 .flyers img{display:block;width:92px;height:116px;object-fit:cover;object-position:top}
 .flyers .lbl{font-size:.72rem;font-weight:700;color:var(--sub);width:100%}
 .tag.pref{background:var(--text);color:var(--card);font-weight:700}
-/* カードの「詳しい情報」 */
 details.more{border:1px solid var(--line);border-radius:10px;background:var(--bg)}
 details.more > summary{cursor:pointer;padding:6px 10px;font-size:.85rem;font-weight:700;color:var(--accent)}
 details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:8px}
@@ -193,22 +183,18 @@ details.more > .in{padding:2px 12px 10px;display:flex;flex-direction:column;gap:
 .vid .t{font-size:.84rem;font-weight:700;line-height:1.4}
 .vid .s{font-size:.72rem;color:var(--sub)}
 .more ul{margin:0;padding-left:1.2em;font-size:.85rem}
-/* 画像の拡大表示 */
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;padding:16px;cursor:zoom-out}
 #lb.on{display:flex}
-body:has(#lb.on) #to-top{display:none}  /* 拡大表示中は「上へ」ボタンを隠す */
+body:has(#lb.on) #to-top{display:none}   
 #lb img{max-width:100%;max-height:92vh;border-radius:6px}
 #lb .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#fff;font-size:.85rem}
 .notice{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:.85rem;color:var(--sub)}
 .notice ul{margin:6px 0 0;padding-left:1.2em}
-/* ---- 地域別に見る（area.html） ---- */
 .region{background:var(--card);border:2px solid var(--accent);border-radius:16px;padding:16px;margin:0 0 24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .rg-h{font-size:1.45rem;margin:0 0 4px}
 .rg-lead{font-size:.88rem;color:var(--sub);margin:0 0 12px}
-/* 見出し「1. 地域を選ぶ」〜「5. 最近の動き」（地図のページの見出しと同じ形） */
 .rg-h2{font-size:1.3rem;font-weight:800;line-height:1.4;margin:26px 0 10px;padding-left:10px;border-left:5px solid var(--accent);scroll-margin-top:8px}
 .region > .rg-h2:first-child{margin-top:0}
-/* 2. 〜 5. の章：はじめは閉じる。見出しの行のどこを押しても開閉（県のページの章と同じ ▶／▼。2026-10-15 ユーザー） */
 details.rg-chap{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-radius:12px;scroll-margin-top:8px}
 .rg-rank + details.rg-chap{margin-top:22px}
 details.rg-chap > summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1.3em 1fr;gap:2px 6px;align-items:baseline;padding:12px 14px;min-height:52px;border-radius:12px}
@@ -233,7 +219,6 @@ details.rg-chap ~ .rg-guides{margin-top:16px}
 .rg-sel select:disabled{border-color:var(--line);color:var(--sub);font-weight:400;font-size:.95rem}
 .rg-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 8px}
 .rg-area{font-size:1.55rem;font-weight:800;margin:0;line-height:1.3}
-/* 県を選んだときの2つの入口（この地域の施設一覧／県の人口・国籍・モスク統計）。県のくわしいページがない県は1つだけ */
 .rg-entry{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .rg-entry:empty{display:none}
 .rg-go{flex:1 1 260px;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:12px;text-decoration:none;line-height:1.4;border:2px solid var(--accent)}
@@ -244,7 +229,6 @@ details.rg-chap ~ .rg-guides{margin-top:16px}
 .rg-go.stat span{color:var(--sub)}
 .rg-go:hover{filter:brightness(1.08)}
 #list{scroll-margin-top:8px}
-/* 地域別のページの注意書き（A. 掲載対象・数え方／B. 情報の見方）。はじめは閉じる */
 .rg-guides{display:grid;gap:8px;margin:4px 0 6px}
 details.rg-guide{background:var(--bg);border:1px solid var(--line);border-radius:12px;scroll-margin-top:8px}
 details.rg-guide > summary{cursor:pointer;list-style:none;font-weight:800;color:var(--accent);padding:12px 14px;min-height:46px}
@@ -293,7 +277,6 @@ details.rg-guide li.rank-note:has(> span:empty){display:none}
 .rg-legend i.yen.grave{border-radius:3px}
 .rg-legend .tip{flex-basis:100%;margin-top:2px}
 @media (max-width:600px){#rg-map{height:300px}}
-/* 地図の中の印と「地図に表示する情報」（地図のページ map.html と同じ形・同じ色・同じ名前。make_outputs.py の EXTRA_CSS） */
 #rg-map .don-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 sans-serif;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
 #rg-map .don-grave{border-radius:5px;font-size:12px}
 #rg-map .don-open{background:#d97706}
@@ -317,7 +300,6 @@ details.rg-guide li.rank-note:has(> span:empty){display:none}
 .rg-sec{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;margin-bottom:14px}
 .rg-sec > .h{font-size:1.08rem;font-weight:800;margin:0 0 2px}
 .rg-sec > .sub{font-size:.78rem;color:var(--sub);margin:0 0 8px}
-/* 最近の動き（日付の見出し → 1件1行。押すと開く） */
 .ev-day > h5{font-size:.88rem;font-weight:800;color:var(--accent);margin:10px 0 5px;padding:0 0 2px 2px;border-bottom:2px solid var(--accent-soft)}
 details.ev-it{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;margin:0 0 5px}
 details.ev-it.asof{border-left-color:var(--open-line)}
@@ -362,7 +344,6 @@ details.ev-it .nm{font-weight:700;overflow-wrap:anywhere}
 .rg-fl{font-size:.88rem;font-weight:800;margin:4px 0 6px}
 label.rg-fl{display:block}
 .rg-fn{font-size:.75rem;color:var(--sub);margin:-4px 0 10px}
-/* 紙（印刷）には、探す・絞り込む・開け閉め・並べ替えの欄を出さない（入力欄とボタンは page_parts.PRINT_BAR で消すが、欄の見出しや説明が空のまま残るため。2026-10-19） */
 @media print{.dn-find,.rg-find,.rg-pick,.rg-fl,.rg-fn,.rg-chips,.rg-moref,.rg-fx,.fp-foldbar,.fp-sort{display:none!important}}
 .rcard .zd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
 .rg-count{font-size:.85rem;color:var(--sub);margin:0 0 8px}
@@ -388,7 +369,6 @@ label.rg-fl{display:block}
 .rc-links{display:flex;flex-wrap:wrap;gap:6px}
 .rc-links a{display:inline-block;padding:3px 12px;border-radius:8px;border:1px solid var(--accent);text-decoration:none;font-weight:700}
 .rc-old{color:var(--pend-line);font-weight:700}
-/* 一覧のアウトライン（都道府県 → 市区町村 → 1か所1行） */
 .ol-pref > h4{display:flex;align-items:baseline;gap:8px;font-size:1.1rem;margin:16px 0 4px;padding:6px 12px;border-radius:8px;background:var(--text);color:var(--card)}
 .ol-pref:first-child > h4{margin-top:4px}
 .ol-city > h5{display:flex;align-items:baseline;gap:8px;font-size:1rem;margin:12px 0 6px;padding:0 0 3px 2px;color:var(--accent);border-bottom:2px solid var(--accent-soft)}
@@ -406,8 +386,7 @@ details.ol-it[open] > summary::after{transform:rotate(180deg)}
 .ol-nm{font-weight:800;font-size:1rem;line-height:1.35}
 .ol-pl{font-size:.82rem;color:var(--sub)}
 .ol-cr{font-size:.66rem;color:var(--sub)}
-details.ol-it[open] .ol-cr{display:none}  /* 開いたら下の大きな写真に同じ表示が出る */
-/* モスク・礼拝所でない場所（閉鎖・移転、学校など）は、名前の上に地図と同じ色の札。閉鎖・移転は写真と名前を薄く */
+details.ol-it[open] .ol-cr{display:none}   
 .ol-cls{align-self:flex-start;font-size:.74rem;font-weight:800;color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:2px;box-shadow:0 0 0 1px var(--line)}
 details.ol-it.c-closed .ol-ph{filter:grayscale(1);opacity:.6}
 details.ol-it.c-closed .ol-nm{color:var(--sub)}
@@ -420,7 +399,6 @@ details.ol-it:not(.c-mosque)[open]{border-style:solid}
 .ol-fig a{color:var(--accent)}
 .ol-body .rcard{border:0;padding:0;background:transparent}
 .ol-body .rcard > h3,.ol-body .rc-loc{display:none}
-/* 葬儀・墓地（page_parts.py の FUNERAL_CSS） */
 .fu-sum{font-weight:400;color:var(--sub);margin-left:.6em;font-size:.8rem}
 
 .fu-sum { display: grid; gap: 6px; margin: 0 0 12px; }
@@ -456,22 +434,17 @@ details.ol-it:not(.c-mosque)[open]{border-style:solid}
 .fu-help .fu-guide-item { padding-top: 6px; }
 .fu .est { display: inline-block; font-size: 11px; font-weight: 700; color: #fff; background: #b45309; padding: 0 5px; border-radius: 4px; margin-right: 4px; }
 
-/* 地域別のページ（独立したページなので、枠を控えめに） */
 .region.solo{border-width:1px;box-shadow:none}
-/* 葬儀・墓地のページ（funeral.html） */
-/* 見出しの階層（2026-10-14）：H1 ページ名 → H2 番号つきの大項目（枠の上・左の太線） → H3 項目の中の分類（下線・H2より小さい） → H4 カードの施設名 */
 .fp-sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 18px;margin:30px 0 18px}
 .fp-sec h2{font-size:1.35rem;font-weight:800;line-height:1.4;margin:0;padding:2px 0 2px 12px;border-left:5px solid var(--accent);scroll-margin-top:12px}
 .fp-sec .sub{font-size:.85rem;color:var(--sub);margin:0 0 12px;line-height:1.75}
 .fp-h{font-size:1.02rem;font-weight:700;line-height:1.5;margin:0;scroll-margin-top:12px}
-/* 折りたためる見出し（大見出し＝fp-top、小見出し＝fp-grp）。見出しの左の三角が、開いているときは下向きになる */
 details.fp-fold > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px}
 details.fp-fold > summary::-webkit-details-marker{display:none}
 details.fp-fold > summary::before{content:"";flex:none;width:0;height:0;border-left:8px solid var(--accent);border-top:6px solid transparent;border-bottom:6px solid transparent;transition:transform .15s}
 details.fp-fold[open] > summary::before{transform:rotate(90deg)}
 details.fp-fold > summary > h2,details.fp-fold > summary > h3,details.fp-fold > summary > h4{flex:1;min-width:0}
 details.fp-fold > summary:hover h2,details.fp-fold > summary:hover h3,details.fp-fold > summary:hover h4{color:var(--accent)}
-/* 「3. 調査結果の一覧」の中の項目（H3：遺体の洗い清め・葬儀の礼拝・土葬墓地）と、絞り込みの結果の行 */
 .fp-sec > h2{margin-bottom:10px}
 .fp-topic{border-top:1px solid var(--line);margin-top:16px;padding-top:12px}
 .fp-th{font-size:1.15rem;font-weight:800}
@@ -484,7 +457,6 @@ details.fp-mid[open] > summary{margin-bottom:8px}
 .fp-toc-sub3{list-style:none;margin:2px 0 4px 2.6em;padding:0;display:flex;flex-wrap:wrap;gap:0 14px}
 .fp-toc-sub3 a{display:inline;font-size:.8rem}
 .fp-toc-sub3 .fp-no{min-width:0;font-weight:400}
-/* スマホでは目次の区分（3-1-1 など）を出さない（目次が長くなり「1. 地域・項目を選ぶ」が遠くなるため。区分は一覧の見出しで開ける） */
 @media (max-width:600px){.fp-toc-sub3{display:none}}
 details.fp-top[open] > summary{margin-bottom:10px}
 details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px solid var(--line)}
@@ -496,7 +468,6 @@ details.fp-grp > summary{margin:22px 0 6px;padding:0 0 5px;border-bottom:1px sol
 .fp-hsub{font-size:.82rem;color:var(--sub);margin:0 0 8px;line-height:1.7}
 .fp-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:10px;margin-top:8px}
 .fe{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere;min-width:0}
-/* 「1. 地域・項目を選ぶ」で外れたカードを隠す（上の display:flex が hidden より強く、全国のカードが出たままだった。2026-10-16 ユーザー指摘） */
 .fe[hidden]{display:none}
 .fe-name{font-size:1rem;font-weight:700;line-height:1.45;margin:0}
 .fe-loc{font-size:.8rem;color:var(--sub);margin:-2px 0 0}
@@ -525,7 +496,6 @@ details.fp-more > .fp-list{margin-top:10px}
 .fp-table tfoot td{font-weight:700;border-top:2px solid var(--line);border-bottom:0}
 .fp-tablewrap{overflow-x:auto}
 .fp-table th,.fp-table td:first-child{white-space:nowrap}
-/* 洗い清めの札の中の内わけ（確認済み・過去の記録だけ・場所が未確認。2026-10-20） */
 .tile-go{cursor:pointer;transition:border-color .15s,box-shadow .15s}
 .tile-go:hover,.tile-go:focus-visible{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.08);outline:none}
 .tile-go .tile-arrow{float:right;color:var(--accent);font-weight:700}
@@ -535,7 +505,6 @@ details.fp-tocbox > summary{cursor:pointer;font-weight:700;color:var(--accent)}
 details.fp-tocbox[open] > summary{margin-bottom:8px}
 .tile .tl-rows{display:block;margin:6px 0;padding:6px 0 0;border-top:1px dashed var(--line)}
 .tile .tl-rows b{font-size:1.05em}
-/* スマホ：上の数の札は2列に（ひと目で全体が見えるように）。大項目の枠と見出しを少し詰める */
 @media (max-width:600px){
   .fp-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .fp-tiles .tile{padding:10px 12px}
@@ -552,7 +521,6 @@ details.fp-tocbox[open] > summary{margin-bottom:8px}
 .fp-sort button{font:inherit;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--card);border:1px solid var(--accent);
   border-radius:999px;padding:3px 12px;cursor:pointer}
 .fp-sort button[aria-pressed="true"]{background:var(--accent);color:var(--card)}
-/* 目次（アウトライン。大項目「1.」〜「5.」の下に小見出し「1-1」…を入れ子で並べる。見出しと同じ文字・数を添える） */
 .fp-toc{list-style:none;margin:0 0 6px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:8px}
 .fp-toc > li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:8px 14px}
 .fp-toc a{text-decoration:none;color:var(--text)}
@@ -562,9 +530,7 @@ details.fp-tocbox[open] > summary{margin-bottom:8px}
 .fp-toc-sub{list-style:none;margin:6px 0 2px 2px;padding:0 0 0 12px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:3px}
 .fp-toc-sub a{display:block;font-size:.88rem;line-height:1.55}
 .fp-toc-sub .n{font-size:.8rem;color:var(--sub);margin-left:6px}
-/* 小見出しの番号（本文の H3 と目次で同じ形） */
 .fp-no{display:inline-block;min-width:2.3em;margin-right:6px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
-/* 冒頭の「この結果を読むときの注意」 */
 .fp-caution{font-size:.85rem;line-height:1.7;color:var(--text);background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pend-line);
   border-radius:10px;padding:10px 14px;margin:0 0 14px}
 .fp-caution ul{margin:4px 0 6px;padding-left:1.3em}
@@ -572,7 +538,6 @@ details.fp-tocbox[open] > summary{margin-bottom:8px}
 .fp-caution a{color:var(--accent)}
 .fp-count{font-size:.82rem;color:var(--sub);background:var(--bg);border-radius:10px;padding:8px 12px;margin:0 0 6px;line-height:1.7}
 .fp-count b{color:var(--text)}
-/* カード：施設名 → 地名 → 札 → 注意書き → 要点 → 根拠と出典（押すと開く） → リンク */
 .fe-chips,.fe-warns{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
 .fe-warn{display:inline-block;font-size:12px;font-weight:700;line-height:1.7;padding:0 9px;border-radius:999px;
   background:var(--pend-bg);color:var(--text);border:1px solid var(--pend-line)}
@@ -583,9 +548,7 @@ details.fe-more > summary{cursor:pointer;font-size:.8rem;font-weight:700;color:v
 details.fe-more > .fe-rows{margin-top:6px}
 .fu-chip.fu-plan{background:var(--card);border-color:var(--accent);color:var(--accent)}
 .fu-chip.fu-stop{background:var(--done-bg);border-color:var(--done-line);color:var(--sub)}
-/* 入口のページ（index.html） */
 .home-lead{font-size:1rem;margin:4px 0 16px}
-/* 一番上：最終更新（横長の1行）と、数の札（札ごとにそのページへのボタン） */
 .home-upd{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;background:var(--card);border:1px solid var(--line);
   border-left:5px solid var(--accent);border-radius:12px;padding:8px 16px;margin:0 0 10px}
 .home-upd .k{font-size:.9rem;font-weight:700;color:var(--accent)}
@@ -603,7 +566,6 @@ details.fe-more > .fe-rows{margin-top:6px}
   text-decoration:none;padding:8px 10px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,.12)}
 .hs-go:hover{filter:brightness(1.1)}
 @media (max-width:900px){.home-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-/* スマホ：札を1段ずつ横長にして、左に数・右にボタン（説明は各ページにあるので省き、4つとも最初の画面に収める） */
 @media (max-width:600px){
   .home-lead{font-size:.9rem;margin-bottom:12px}
   .home-upd{padding:6px 12px}
@@ -675,7 +637,6 @@ details.fe-more > .fe-rows{margin-top:6px}
 .site-nav a[aria-current="page"] { background: #fff; color: #1e3a5f; }
 .site-nav a.home { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
 .site-nav a.home svg { flex: 0 0 auto; }
-/* スマホでは6つが1段に収まるよう、「ホーム」は家の絵だけにして、すき間も詰める */
 @media (max-width: 480px) {
   .site-nav { gap: 2px; padding: 4px; }
   .site-nav a { font-size: 14px; padding: 7px 4px; }
@@ -683,8 +644,6 @@ details.fe-more > .fe-rows{margin-top:6px}
   .site-nav a.home span { display: none; }
 }
 @media (max-width: 370px) { .site-nav a { font-size: 13px; } }
-/* 「・」の入った名前は、幅が狭いときだけ「・」の後ろで2行にして、メニューを1段に収める
-   （長い「モスク・施設を探す」は600px以下で、「葬儀・墓地」はさらに狭い370px以下で） */
 .site-nav a.long span, .site-nav a.split span { white-space: nowrap; }
 @media (min-width: 481px) and (max-width: 600px) { .site-nav a { padding: 8px 8px; } }
 @media (max-width: 600px) {
@@ -736,14 +695,10 @@ details.fe-more > .fe-rows{margin-top:6px}
   #prt-dlg .prt-acts button.prt-cancel, #prt-dlg .prt-tip { color: #9aa3b2; border-color: #2e343e; }
 }
 @media print {
-  /* 紙の余白：上下20mm・左右18mm（2026-10-19 ユーザー「余白ギリギリじゃない？」。最初の12mmでは紙の端まで文字が詰まって見えた） */
   @page { margin: 20mm 18mm; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  /* 紙の下の端に1〜2行だけ残ったり、次の紙の頭に1〜2行だけ送られたりしないように */
   p, li, dd { orphans: 3; widows: 3; }
   html, body { background: #fff !important; }
-  /* 紙に出さないもの：メニュー・このボタン・上へ・共有・検索欄・開け閉めや並べ替えのボタン・表示項目の選び・地図の拡大縮小と右上の一覧（地図の著作権の表示は残す）。
-     ボタンでも中身のあるもの（寄付のページの写真・地図のページの施設一覧の名前 .fl-item）は紙に出す */
   .prt-bar, #prt-dlg, .site-nav, #to-top, .xbtn, a[href*="/intent/tweet"], a[href*="/intent/post"], [role="search"], .colpick, .no-print,
   input, select, textarea, button:not(:has(img)):not(.fl-item),
   .leaflet-control-zoom, .leaflet-control-layers { display: none !important; }
@@ -753,11 +708,8 @@ details.fe-more > .fe-rows{margin-top:6px}
   .prt-head .prt-site { font-size: 12px; font-weight: 700; color: #1e3a5f; }
   .prt-head .prt-title { font-size: 17px; font-weight: 800; }
   .prt-head .prt-meta { font-size: 11px; color: #5b6474; overflow-wrap: anywhere; }
-  /* 見出しのすぐあとで紙が切れない・写真や表の行の途中で切れにくくする（長い箇条書きや項目の表まで切らないようにすると、紙の途中に大きな空白ができる） */
   h1, h2, h3, h4, h5, summary { break-after: avoid; }
   img, figure, tr { break-inside: avoid; }
-  /* 地図（Leaflet）は紙の幅に合わせて描き直せないので、画面と同じ高さにし、横は画面で見えていた真ん中を出す（片寄って切れないように）。
-     画面での大きさは、印刷の前に下の JS が --prt-w・--prt-h に入れる */
   html .leaflet-container[style*="--prt-w"] { height: var(--prt-h) !important; break-inside: avoid; }
   html .leaflet-container[style*="--prt-w"] > .leaflet-map-pane { left: calc((100% - var(--prt-w)) / 2); }
 }
@@ -768,7 +720,7 @@ details.fe-more > .fe-rows{margin-top:6px}
   if (!btn || btn.dataset.ready) return;
   btn.dataset.ready = "1";
   function fillHead() {
-    document.querySelectorAll(".leaflet-container").forEach(function (m) {  // 地図の画面での大きさ（上の @media print で使う）
+    document.querySelectorAll(".leaflet-container").forEach(function (m) {  
       if (!m.offsetWidth) return;
       m.style.setProperty("--prt-w", m.offsetWidth + "px");
       m.style.setProperty("--prt-h", m.offsetHeight + "px");
@@ -780,8 +732,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     head.querySelector(".prt-meta").textContent = "印刷した日：" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" +
       (url ? "　ページのアドレス：" + url + "（最新の情報はこのアドレスでご確認ください）" : "");
   }
-  window.addEventListener("beforeprint", fillHead);  // Ctrl+P などで印刷したときも、紙の上に題名と日付を出す
-  // 閉じている見出し（開くと紙に出るもの）。操作の部品の中・隠れている所（絞り込みで外れたカードなど）は数えない
+  window.addEventListener("beforeprint", fillHead);  
   function shown(el) {
     for (var e = el; e && e !== document.body; e = e.parentElement) {
       if (e.tagName !== "DETAILS" || e === el) {
@@ -807,8 +758,6 @@ details.fe-more > .fe-rows{margin-top:6px}
   function go(all) {
     fillHead();
     if (!all) { window.print(); return; }
-    // html に prt-all を付ける（ページごとに、動かして見る箱＝地図のページの施設一覧なども、紙では全部出すため）。
-    // 中に見出しがある見出しもあるので、閉じているものがなくなるまで開く（寄付のカードの中身・小さな地図は開いたときに作られる）
     root.classList.add("prt-all");
     for (var i = 0, list; i < 6 && (list = closedOnes()).length; i++) {
       list.forEach(function (d) { d.open = true; opened.push(d); });
@@ -826,7 +775,7 @@ details.fe-more > .fe-rows{margin-top:6px}
   });
   dlg.addEventListener("click", function (ev) {
     var b = ev.target.closest("button[data-prt]");
-    if (ev.target === dlg) { dlg.close(); return; }  // 窓の外を押したらやめる
+    if (ev.target === dlg) { dlg.close(); return; }  
     if (!b) return;
     dlg.close();
     if (b.dataset.prt) setTimeout(function () { go(b.dataset.prt === "all"); }, 50);
@@ -867,7 +816,6 @@ details.fe-more > .fe-rows{margin-top:6px}
 .pstat .v small { font-size: 15px; font-weight: 700; margin-left: 2px; }
 .pstat .v.t { font-size: 21px; padding-top: 4px; }
 .pstat .s { font-size: 13px; color: #555; line-height: 1.6; margin-top: 3px; }
-/* 暗い画面では、ページの共通の色（SITE_COLORS_CSS）に合わせる。共通の色がないページでは札が透明になり、文字はページの色のまま読める（2026-10-14） */
 @media screen and (prefers-color-scheme: dark) {
   .pstat > div { background: var(--card); border-color: var(--line); border-top-color: var(--accent); }
   .pstat .k { color: var(--accent); }
@@ -890,8 +838,6 @@ details.fe-more > .fe-rows{margin-top:6px}
   </div>
   <nav aria-label="目次"><details class="fp-tocbox"><summary>目次（押すと開きます）</summary><ol class='fp-toc'><li><a class='fp-toc-h' href='#pick'><b>1. 地域・項目を選ぶ</b><span>都道府県・市区町村、項目・区分</span></a></li><li><a class='fp-toc-h' href='#find'><b>2. 施設を探す</b><span>名前・キーワード</span></a></li><li><a class='fp-toc-h' href='#list'><b>3. 調査結果の一覧</b><span>条件に当てはまるカード</span></a><ol class='fp-toc-sub'><li><a href='#wash'><span class='fp-no'>3-1</span>遺体の洗い清め（グスル）<span class=n>既存施設 11か所（このほか計画 9か所）</span></a><ol class='fp-toc-sub3'><li><a href='#wash-now'><span class='fp-no'>3-1-1</span>既存施設で確認できた事例<span class=n>11か所</span></a></li><li><a href='#wash-plan'><span class='fp-no'>3-1-2</span>洗い清めに関する設備計画<span class=n>9か所</span></a></li><li><a href='#wash-past'><span class='fp-no'>3-1-3</span>過去の記録だけがある施設<span class=n>3か所</span></a></li><li><a href='#wash-part'><span class='fp-no'>3-1-4</span>対応はあるが、場所は確認できていない施設<span class=n>8か所</span></a></li><li><a href='#wash-no'><span class='fp-no'>3-1-5</span>モスク内では行わない施設<span class=n>1か所</span></a></li><li><a href='#wash-arr'><span class='fp-no'>3-1-6</span>手配・紹介のみ確認できた施設<span class=n>4か所</span></a></li></ol></li><li><a href='#prayer'><span class='fp-no'>3-2</span>葬儀の礼拝（ジャナーザ）<span class=n>既存施設 28か所（このほか計画 2か所）</span></a><ol class='fp-toc-sub3'><li><a href='#prayer-now'><span class='fp-no'>3-2-1</span>モスクでの実施が確認できた事例<span class=n>28か所</span></a></li><li><a href='#prayer-plan'><span class='fp-no'>3-2-2</span>葬儀の礼拝を行う計画<span class=n>2か所</span></a></li><li><a href='#prayer-past'><span class='fp-no'>3-2-3</span>過去の記録だけがある施設<span class=n>6か所</span></a></li><li><a href='#prayer-part'><span class='fp-no'>3-2-4</span>対応はあるが、場所は確認できていない施設<span class=n>4か所</span></a></li><li><a href='#prayer-no'><span class='fp-no'>3-2-5</span>新施設では行わないと説明している事例<span class=n>2か所</span></a></li><li><a href='#prayer-arr'><span class='fp-no'>3-2-6</span>手配・紹介のみ確認できた施設<span class=n>24か所</span></a></li></ol></li><li><a href='#grave'><span class='fp-no'>3-3</span>土葬墓地<span class=n>既存の墓地 13か所（このほか計画 8件）</span></a><ol class='fp-toc-sub3'><li><a href='#grave-now'><span class='fp-no'>3-3-1</span>既存の土葬墓地<span class=n>13か所</span></a></li><li><a href='#grave-plan'><span class='fp-no'>3-3-2</span>墓地の計画<span class=n>8件（進行中 2・予定地未定 2・進展なし 4）</span></a></li><li><a href='#grave-no'><span class='fp-no'>3-3-3</span>計画地では土葬しないと説明している施設<span class=n>2か所</span></a></li><li><a href='#grave-arr'><span class='fp-no'>3-3-4</span>墓地の紹介・埋葬の手配を行う施設・団体<span class=n>24か所</span></a></li></ol></li></ol></li><li><a class='fp-toc-h' href='#by-pref'><b>4. 都道府県別の調査結果</b><span>表（並べ替えができます）</span></a></li><li><a class='fp-toc-h' href='#ban'><b>5. 土葬を禁止している自治体</b><span>区域全体で禁止 124自治体（このほか一部だけ 10自治体）</span></a><ol class='fp-toc-sub'><li><a href='#ban-all'><span class='fp-no'>5-1</span>区域全体で土葬を禁止している自治体<span class=n>124自治体</span></a></li><li><a href='#ban-part'><span class='fp-no'>5-2</span>一部の地域・一部の墓地だけ土葬を禁止している自治体<span class=n>10自治体</span></a></li><li><a href='#ban-can'><span class='fp-no'>5-3</span>土葬を禁止する地域を定めることができるとしている自治体<span class=n>2自治体</span></a></li><li><a href='#ban-how'><span class='fp-no'>5-4</span>調べ方と読むときの注意</a></li></ol></li><li><a class='fp-toc-h' href='#how'><b>6. 調査方法と判定基準</b><span>押すと開きます</span></a><ol class='fp-toc-sub'><li><a href='#how-scope'><span class='fp-no'>6-1</span>調査対象と調査範囲</a></li><li><a href='#how-sources'><span class='fp-no'>6-2</span>調査に使用した資料</a></li><li><a href='#how-criteria'><span class='fp-no'>6-3</span>掲載・分類の判定基準</a></li><li><a href='#how-notes'><span class='fp-no'>6-4</span>調査結果の注意事項</a></li></ol></li></ol></details></nav>
 
-  <!-- ページの並び：1. 地域・項目を選ぶ → 2. 施設を探す → 3. 調査結果の一覧 → 4. 都道府県別 → 5. 土葬を禁止している自治体（2026-10-26） → 6. 調査方法
-       （2026-10-14 ユーザー「葬儀・墓地のページも選択→検索→一覧の順に」。地域別のページと同じ形） -->
   <section class="fp-sec" aria-labelledby="pick"><h2 id="pick">1. 地域・項目を選ぶ</h2>
     <p class="sub">都道府県・市区町村と、項目・区分を選ぶと、「3. 調査結果の一覧」をその条件に当てはまるカードだけにします。都道府県・市区町村の欄には、カードがある所だけを出しています（ほかの都道府県の調査結果は「4. 都道府県別の調査結果」にあります）。</p>
     <div class="rg-pick">
@@ -1065,8 +1011,6 @@ details.fe-more > .fe-rows{margin-top:6px}
   </div>
 </div>
 <script>
-// 目次や外のページから、閉じた見出し（#how-scope など）へ来たときは、その見出しと外側の見出しを開いてから表示する
-// 「見出しだけ表示」＝大見出しは開き、小見出しは閉じる（アウトラインだけが見える）
 (function () {
   function openFor(id) {
     var t = id && document.getElementById(id);
@@ -1083,7 +1027,6 @@ details.fe-more > .fe-rows{margin-top:6px}
       setTimeout(function () { openFor(id); }, 0);
     });
   });
-  // 上の数の札：押すとその節へ（中の行のリンクは小見出しへ）。同じ場所へもう一度のときは hashchange が起きないので自分で開く
   function goTo(id) {
     if (decodeURIComponent(location.hash.slice(1)) === id) openFor(id); else location.hash = id;
   }
@@ -1111,7 +1054,6 @@ details.fe-more > .fe-rows{margin-top:6px}
   const PREF_ORDER = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"];
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"})[c]);
-  // 全角・半角、大文字・小文字、ひらがな・カタカナ、空白や「・」の違いは気にせず探す（地域別のページと同じ）
   const norm = s => String(s ?? "").normalize("NFKC").toLowerCase()
     .replace(/[ぁ-ゖ]/g, c => String.fromCharCode(c.charCodeAt(0) + 0x60)).replace(/[\s・･‐－-]/g, "");
   const NO_CITY = "（市区町村不明）";
@@ -1126,7 +1068,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     const h = d.querySelector(".fp-h"), n = h.querySelector(".n"), orig = n ? n.textContent : "";
     const g = {el: d, n, orig, unit: /^\d+件/.test(orig) ? "件" : "か所", cards: []};
     let kind = h.id.split("-")[1];
-    if (kind === "other") kind = "now";  // 「そのほかの墓地の情報」は墓地の「あり」
+    if (kind === "other") kind = "now";  
     d.querySelectorAll("article.fe").forEach(a => {
       const pf = a.dataset.pf || "", c = {el: a, g, t, item: t.item, kind, pf, ct: pf ? (a.dataset.ct || NO_CITY) : "", ix: norm(a.textContent)};
       c.key = a.querySelector(".fe-name").textContent + "|" + c.pf + "|" + c.ct;
@@ -1135,7 +1077,7 @@ details.fe-more > .fe-rows{margin-top:6px}
     groups.push(g);
   }));
   const S = {pref: "", city: "", q: "", sel: {item: new Set(), kind: new Set()}};
-  const places = cs => new Set(cs.map(c => c.key)).size;  // 施設の数（同じ施設のカードが2枚あっても1つ）
+  const places = cs => new Set(cs.map(c => c.key)).size;  
   const pass = (c, terms, skip) => (!S.pref || c.pf === S.pref) && (!S.city || c.ct === S.city) &&
     terms.every(t => c.ix.includes(t)) && ["item", "kind"].every(k => k === skip || !S.sel[k].size || S.sel[k].has(c[k]));
   const prefSel = $("fp-pref"), citySel = $("fp-city");
@@ -1151,7 +1093,6 @@ details.fe-more > .fe-rows{margin-top:6px}
       .map(ct => `<option value="${esc(ct)}">${esc(ct)}（${places(by[ct])}か所）</option>`).join("");
     citySel.value = S.city;
   }
-  // ボタンの数は、ほかの条件に当てはまるもののうち、そのボタンに当てはまる施設の数
   const chipRow = (k, terms) => {
     const base = cards.filter(c => pass(c, terms, k));
     return `<button type="button" class="chip${S.sel[k].size ? "" : " on"}" data-g="${k}" data-k="">すべて<span>${places(base)}</span></button>` +
@@ -1190,15 +1131,14 @@ details.fe-more > .fe-rows{margin-top:6px}
       t.el.hidden = active && !cs.length;
       if (t.n) t.n.textContent = active ? `当てはまる施設 ${places(cs)}か所` : t.orig;
       if (active) t.d.open = cs.length > 0;
-      t.tallies.forEach(p => { p.hidden = active; });  // 全国の内わけは、条件を選んでいるときは隠す
+      t.tallies.forEach(p => { p.hidden = active; });  
     });
-    if (wasActive && !active) document.querySelectorAll(".fp-topic details").forEach(d => { d.open = false; });  // はじめの閉じた形に戻す
+    if (wasActive && !active) document.querySelectorAll(".fp-topic details").forEach(d => { d.open = false; });  
     wasActive = active;
     const hits = [...hit], per = ROWS.item.map(([v, label]) => [label, places(hits.filter(c => c.item === v))]);
     const area = S.pref ? S.pref + (S.city ? " " + S.city : "") : "全国";
     let h;
     if (!active) {
-      // 選ぶ欄の「全国（○か所）」は、このページのカードに載っている施設の数（調べた場所のうち、当てはまる資料が見つかった所）
       h = `<b>このページのカードに載っている施設</b>：全国 <b class="n">${places(cards)}</b>か所（${per.map(([l, n]) => `${l} ${n}`).join("・")}。` +
         "各項目の「手配・紹介のみ」なども含みます）。項目・区分の見出しを押すと開きます。1. と 2. で条件を選ぶと、当てはまるカードだけを開いて表示します。";
     } else if (!hits.length) {
@@ -1227,7 +1167,6 @@ details.fe-more > .fe-rows{margin-top:6px}
     }
     render();
   });
-  // アドレスの ?pref=東京都&item=wash など（ほかのページから条件を付けて来たとき）
   const ps = new URLSearchParams(location.search);
   const pf = ps.get("pref") || "";
   if ([...prefSel.options].some(o => o.value === pf)) { S.pref = pf; S.city = ps.get("city") || ""; }

@@ -24,7 +24,6 @@
 :root{
   --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
   --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
-  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
   --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
   --warn:#b42318; --warn-soft:#fdecea;
 }
@@ -36,11 +35,9 @@
     --warn:#f2958c; --warn-soft:#3a1d1b;
   }
 }
-/* 暗い画面では、黒っぽい印（閉鎖・移転の✕など）が背景に溶けないよう、ページの中の小さな印に白いふちを付ける（地図の上の印・右上の一覧の印はそのまま） */
 @media screen and (prefers-color-scheme: dark){
   svg.mk-s,svg.zsh,svg.dot{filter:drop-shadow(0 0 1px rgba(255,255,255,.85))}
 }
-/* リンクの色（全ページ同じ。ボタン・札・メニューなど、自分の色を決めているリンクはそちらが優先。暗い画面でブラウザの濃い青のままにならないように） */
 a{color:var(--accent)}
 
 body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.8;
@@ -95,7 +92,6 @@ ul.plain li { margin: 6px 0; }
 .site-nav a[aria-current="page"] { background: #fff; color: #1e3a5f; }
 .site-nav a.home { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
 .site-nav a.home svg { flex: 0 0 auto; }
-/* スマホでは6つが1段に収まるよう、「ホーム」は家の絵だけにして、すき間も詰める */
 @media (max-width: 480px) {
   .site-nav { gap: 2px; padding: 4px; }
   .site-nav a { font-size: 14px; padding: 7px 4px; }
@@ -103,8 +99,6 @@ ul.plain li { margin: 6px 0; }
   .site-nav a.home span { display: none; }
 }
 @media (max-width: 370px) { .site-nav a { font-size: 13px; } }
-/* 「・」の入った名前は、幅が狭いときだけ「・」の後ろで2行にして、メニューを1段に収める
-   （長い「モスク・施設を探す」は600px以下で、「葬儀・墓地」はさらに狭い370px以下で） */
 .site-nav a.long span, .site-nav a.split span { white-space: nowrap; }
 @media (min-width: 481px) and (max-width: 600px) { .site-nav a { padding: 8px 8px; } }
 @media (max-width: 600px) {
@@ -156,14 +150,10 @@ ul.plain li { margin: 6px 0; }
   #prt-dlg .prt-acts button.prt-cancel, #prt-dlg .prt-tip { color: #9aa3b2; border-color: #2e343e; }
 }
 @media print {
-  /* 紙の余白：上下20mm・左右18mm（2026-10-19 ユーザー「余白ギリギリじゃない？」。最初の12mmでは紙の端まで文字が詰まって見えた） */
   @page { margin: 20mm 18mm; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  /* 紙の下の端に1〜2行だけ残ったり、次の紙の頭に1〜2行だけ送られたりしないように */
   p, li, dd { orphans: 3; widows: 3; }
   html, body { background: #fff !important; }
-  /* 紙に出さないもの：メニュー・このボタン・上へ・共有・検索欄・開け閉めや並べ替えのボタン・表示項目の選び・地図の拡大縮小と右上の一覧（地図の著作権の表示は残す）。
-     ボタンでも中身のあるもの（寄付のページの写真・地図のページの施設一覧の名前 .fl-item）は紙に出す */
   .prt-bar, #prt-dlg, .site-nav, #to-top, .xbtn, a[href*="/intent/tweet"], a[href*="/intent/post"], [role="search"], .colpick, .no-print,
   input, select, textarea, button:not(:has(img)):not(.fl-item),
   .leaflet-control-zoom, .leaflet-control-layers { display: none !important; }
@@ -173,11 +163,8 @@ ul.plain li { margin: 6px 0; }
   .prt-head .prt-site { font-size: 12px; font-weight: 700; color: #1e3a5f; }
   .prt-head .prt-title { font-size: 17px; font-weight: 800; }
   .prt-head .prt-meta { font-size: 11px; color: #5b6474; overflow-wrap: anywhere; }
-  /* 見出しのすぐあとで紙が切れない・写真や表の行の途中で切れにくくする（長い箇条書きや項目の表まで切らないようにすると、紙の途中に大きな空白ができる） */
   h1, h2, h3, h4, h5, summary { break-after: avoid; }
   img, figure, tr { break-inside: avoid; }
-  /* 地図（Leaflet）は紙の幅に合わせて描き直せないので、画面と同じ高さにし、横は画面で見えていた真ん中を出す（片寄って切れないように）。
-     画面での大きさは、印刷の前に下の JS が --prt-w・--prt-h に入れる */
   html .leaflet-container[style*="--prt-w"] { height: var(--prt-h) !important; break-inside: avoid; }
   html .leaflet-container[style*="--prt-w"] > .leaflet-map-pane { left: calc((100% - var(--prt-w)) / 2); }
 }
@@ -188,7 +175,7 @@ ul.plain li { margin: 6px 0; }
   if (!btn || btn.dataset.ready) return;
   btn.dataset.ready = "1";
   function fillHead() {
-    document.querySelectorAll(".leaflet-container").forEach(function (m) {  // 地図の画面での大きさ（上の @media print で使う）
+    document.querySelectorAll(".leaflet-container").forEach(function (m) {  
       if (!m.offsetWidth) return;
       m.style.setProperty("--prt-w", m.offsetWidth + "px");
       m.style.setProperty("--prt-h", m.offsetHeight + "px");
@@ -200,8 +187,7 @@ ul.plain li { margin: 6px 0; }
     head.querySelector(".prt-meta").textContent = "印刷した日：" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" +
       (url ? "　ページのアドレス：" + url + "（最新の情報はこのアドレスでご確認ください）" : "");
   }
-  window.addEventListener("beforeprint", fillHead);  // Ctrl+P などで印刷したときも、紙の上に題名と日付を出す
-  // 閉じている見出し（開くと紙に出るもの）。操作の部品の中・隠れている所（絞り込みで外れたカードなど）は数えない
+  window.addEventListener("beforeprint", fillHead);  
   function shown(el) {
     for (var e = el; e && e !== document.body; e = e.parentElement) {
       if (e.tagName !== "DETAILS" || e === el) {
@@ -227,8 +213,6 @@ ul.plain li { margin: 6px 0; }
   function go(all) {
     fillHead();
     if (!all) { window.print(); return; }
-    // html に prt-all を付ける（ページごとに、動かして見る箱＝地図のページの施設一覧なども、紙では全部出すため）。
-    // 中に見出しがある見出しもあるので、閉じているものがなくなるまで開く（寄付のカードの中身・小さな地図は開いたときに作られる）
     root.classList.add("prt-all");
     for (var i = 0, list; i < 6 && (list = closedOnes()).length; i++) {
       list.forEach(function (d) { d.open = true; opened.push(d); });
@@ -246,7 +230,7 @@ ul.plain li { margin: 6px 0; }
   });
   dlg.addEventListener("click", function (ev) {
     var b = ev.target.closest("button[data-prt]");
-    if (ev.target === dlg) { dlg.close(); return; }  // 窓の外を押したらやめる
+    if (ev.target === dlg) { dlg.close(); return; }  
     if (!b) return;
     dlg.close();
     if (b.dataset.prt) setTimeout(function () { go(b.dataset.prt === "all"); }, 50);
@@ -289,7 +273,6 @@ ul.plain li { margin: 6px 0; }
 .pstat .v small { font-size: 15px; font-weight: 700; margin-left: 2px; }
 .pstat .v.t { font-size: 21px; padding-top: 4px; }
 .pstat .s { font-size: 13px; color: #555; line-height: 1.6; margin-top: 3px; }
-/* 暗い画面では、ページの共通の色（SITE_COLORS_CSS）に合わせる。共通の色がないページでは札が透明になり、文字はページの色のまま読める（2026-10-14） */
 @media screen and (prefers-color-scheme: dark) {
   .pstat > div { background: var(--card); border-color: var(--line); border-top-color: var(--accent); }
   .pstat .k { color: var(--accent); }
@@ -306,7 +289,6 @@ ul.plain li { margin: 6px 0; }
 <section id="about"><h2>2. このページについて</h2><ul class='plain'><li><b>載せた大学</b>：大学自身のサイト（大学のドメインのページ・大学が置いたPDF）に、誰でも見られる形で、礼拝に使える部屋の案内があった大学だけです（2026年10月19日に確認）。「静かな部屋」でも、礼拝に使えると書かれていない部屋は入れていません。キリスト教の大学のチャペル（礼拝堂）だけの大学も入れていません。</li><li><b>載っていない大学</b>：礼拝室がないとは限りません。学内向けのページだけに案内がある、部屋はあるが公式ページに書かれていない、などの大学は載せていません。</li><li><b>調べるきっかけにした資料</b>：<a href='https://www.studyinjapan.go.jp/ja/' target='_blank' rel='noopener'>日本留学情報サイト（Study in Japan）</a>の学校検索、岩崎真紀（2025）「日本における大学の礼拝スペースからみる信教の自由と政教分離」（国際宗教研究所『現代宗教2025』）、このサイトのモスクの調べ。これらは手がかりとして使い、このページの内容は、それぞれの大学の公式ページで確かめたことだけです。</li><li><b>書いていないこと</b>：部屋の場所（建物・階）や開いている時間、使うときの手続きは載せていません。使い方は、それぞれの大学の案内をご覧ください。</li><li>大学の礼拝室は、このサイトのモスク・礼拝所の数には入れていません。地図にも出していません。</li><li>大学の案内は変わることがあります。誤りのご指摘・削除のご希望・情報提供は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ4DvW3eASTXY2OnMTZaSNuvdp4npMC5MoNbLxKNSCL1-jQ/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお寄せください。フォームに書いていただいた返信先（メールアドレスなど）は、お返事のためだけに使い、公開しません。</li><li>掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。<a href="index.html#site-purpose">このサイトの目的と利用にあたって</a>　掲載している数は、ページの最終更新の時点で分かった数です。使う前に出典を確かめてください（<a href="index.html#site-use">掲載情報を使うときは（免責事項）</a>）。</li></ul></section>
 </div>
 <script>
-// 都道府県へ移るボタン：そこを開く
 document.querySelectorAll(".jump a").forEach(function (a) {
   a.addEventListener("click", function () {
     var el = document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1)));
@@ -317,7 +299,6 @@ document.querySelectorAll(".jump a").forEach(function (a) {
   var el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (el && el.tagName === "DETAILS") el.open = true;
 })();
-// このページの中を探す（言葉を含む大学だけを出す。空白で区切ると、そのすべてを含む大学だけ）
 (function () {
   var box = document.getElementById("q"), qn = document.getElementById("qn"), timer = null;
   var cards = Array.prototype.slice.call(document.querySelectorAll(".u"));

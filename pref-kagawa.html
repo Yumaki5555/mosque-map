@@ -23,7 +23,6 @@
 :root{
   --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --sub:#5b6474; --line:#dfe3ea;
   --accent:#2f5d8a; --accent-soft:#e3ecf5; --bar:#2f5d8a; --bar-bg:#e6e9ef; --over:#6a4c93;
-  /* 区分ごとの色（同じ明るさの薄い色で分ける）: 募集中=青 / 終了=灰 / 未確定=黄土 */
   --open-bg:#eaf2fb; --open-line:#2f6fb0; --done-bg:#eff1f4; --done-line:#7a8494; --pend-bg:#fbf3e3; --pend-line:#b7791f; --extra-bg:#f3eff9; --extra-line:#7e5bb5;
   --warn:#b42318; --warn-soft:#fdecea;
 }
@@ -35,18 +34,15 @@
     --warn:#f2958c; --warn-soft:#3a1d1b;
   }
 }
-/* 暗い画面では、黒っぽい印（閉鎖・移転の✕など）が背景に溶けないよう、ページの中の小さな印に白いふちを付ける（地図の上の印・右上の一覧の印はそのまま） */
 @media screen and (prefers-color-scheme: dark){
   svg.mk-s,svg.zsh,svg.dot{filter:drop-shadow(0 0 1px rgba(255,255,255,.85))}
 }
-/* リンクの色（全ページ同じ。ボタン・札・メニューなど、自分の色を決めているリンクはそちらが優先。暗い画面でブラウザの濃い青のままにならないように） */
 a{color:var(--accent)}
 
-/* 県のページだけの色。--tg＝この県・強調の棒、--jp＝ほかの棒、--ref＝全国・参考、--pick＝地域別から選んで来た行、--th＝表の見出し、--c0〜7＝国籍などの色 */
 :root{
   --tg:#1e3a5f; --jp:#b9c3cf; --ref:#8a8f98; --pick:#fff3c4; --th:#eef2f7;
   --c0:#2a78d6; --c1:#eb6834; --c2:#1baf7a; --c3:#eda100; --c4:#e87ba4; --c5:#008300; --c6:#4a3aa7; --c7:#e34948; --cg:#8a8f98;
-  --c8:#6b7280; --c9:#8a5a2b;  /* 9位・10位（色が足りないので、線は点線にして見分ける） */
+  --c8:#6b7280; --c9:#8a5a2b;   
 }
 @media screen and (prefers-color-scheme: dark){
   :root{
@@ -61,17 +57,14 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Kaku 
 .wrap{max-width:1080px;margin:0 auto;padding:24px 16px 48px}
 a{color:var(--accent);overflow-wrap:anywhere}
 summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
-/* ページの上：地域別に戻る ＞ 〇〇県の施設一覧 */
 .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:.88rem;margin:0 0 8px}
 .crumbs .sep,.crumbs .here{color:var(--sub)}
 h1{font-size:1.6rem;line-height:1.35;margin:0 0 4px}
 .lead{color:var(--sub);margin:0 0 16px;font-size:.95rem;max-width:62em}
 .title-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:0 0 6px}
 .title-row h1{margin:0}
-/* X の共有ボタン（地域別のページの「この地域の情報を共有（X）」と同じ色） */
 .xbtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:12px;background:var(--text);color:var(--card);font-size:.9rem;font-weight:800;text-decoration:none;white-space:nowrap}
 .xbtn:hover{filter:brightness(1.15)}
-/* 地域別・地図・このページの一覧へのボタン（地域別のページで県を選んだときの2つの入口と同じ形） */
 .golinks{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
 .go{flex:1 1 220px;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:12px;text-decoration:none;line-height:1.4;border:2px solid var(--accent);background:var(--card);color:var(--accent)}
 .go b{font-size:1rem}
@@ -79,14 +72,13 @@ h1{font-size:1.6rem;line-height:1.35;margin:0 0 4px}
 .go.main{background:var(--accent);color:var(--card)}
 .go.main span{color:var(--card)}
 .go:hover{filter:brightness(1.08)}
-/* 最終更新の帯と、主な数のカード（入口・地域別などの上の札と同じ形） */
 .updbar{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--ref);border-radius:12px;padding:6px 14px;margin:0 0 10px}
 .updbar b{color:var(--accent);font-size:.88rem}
 .updbar .t{font-size:1.05rem;font-weight:800;font-variant-numeric:tabular-nums}
 .updbar .s{font-size:.8rem;color:var(--sub)}
-.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 8px}  /* 4枚：広い画面は4つ、中くらいは2つずつ、スマホは1つずつ */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 8px}   
 @media (min-width:1000px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px} .kpi{padding:8px 10px} .kpi .k{font-size:.8rem} .kpi .v{font-size:1.35rem!important} .kpi .v small{font-size:.8rem} .kpi .r{font-size:.75rem;margin:0} .kpi .tm{font-size:.7rem}}  /* スマホは2つずつ（下へのスクロールを減らす） */
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px} .kpi{padding:8px 10px} .kpi .k{font-size:.8rem} .kpi .v{font-size:1.35rem!important} .kpi .v small{font-size:.8rem} .kpi .r{font-size:.75rem;margin:0} .kpi .tm{font-size:.7rem}}   
 .kpi{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--tg);border-radius:12px;padding:10px 14px;min-width:0}
 .kpi .k{font-size:.88rem;font-weight:700;color:var(--accent);line-height:1.45}
 .kpi .v{font-size:1.75rem;font-weight:800;line-height:1.3;font-variant-numeric:tabular-nums}
@@ -98,7 +90,6 @@ h1{font-size:1.6rem;line-height:1.35;margin:0 0 4px}
 .kpi dd{margin:0;overflow-wrap:anywhere}
 .kpi-note{font-size:.82rem;color:var(--sub);margin:0 0 14px;max-width:62em}
 .kpi-note b{color:var(--text)}
-/* 目次（はじめは閉じる。開閉の印は文字の ▶／▼） */
 .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 16px;margin:0 0 8px}
 .toc > summary{cursor:pointer;list-style:none;display:block;font-weight:800;font-size:1rem;color:var(--accent);padding:12px 0}
 .toc > summary::-webkit-details-marker{display:none}
@@ -110,7 +101,6 @@ h1{font-size:1.6rem;line-height:1.35;margin:0 0 4px}
 .toc li > a:hover{text-decoration:underline}
 .toc .subs{display:block;font-size:.8rem;color:var(--sub)}
 .toc .subs a{color:var(--sub)}
-/* ほかの折りたたみ（詳しい数値を見る・表示する国籍・項目を選ぶ・店の一覧を見る）も同じ ▶／▼ の印。はじめに開くか閉じるかはそれぞれのまま */
 details.more > summary,.colpick > summary{cursor:pointer;list-style:none;display:block;font-weight:700;font-size:.92rem;color:var(--accent);padding:6px 0}
 details.more > summary::-webkit-details-marker,.colpick > summary::-webkit-details-marker{display:none}
 details.more > summary::before,.colpick > summary::before{content:"▶ ";font-size:.8em}
@@ -127,7 +117,6 @@ details.cityn > summary small.vs{display:inline;margin-left:.5em}
 .lpt .hollow{display:inline-block;width:10px;height:10px;border-radius:50%;border:2.5px solid var(--sub);background:var(--card);flex:none}
 details.cityn > summary{font-weight:400;color:var(--text);padding:8px 0}
 details.cityn > summary b{color:var(--accent)}
-/* 章（h2）と節（h3）。葬儀・墓地のページの章の見出しと同じ形 */
 section.sec{margin-top:36px;scroll-margin-top:12px}
 h2{font-size:1.35rem;font-weight:800;line-height:1.4;margin:0 0 12px;padding:2px 0 2px 12px;border-left:5px solid var(--accent);scroll-margin-top:12px}
 h2 .no{margin-right:6px}
@@ -147,7 +136,6 @@ h4{font-size:1rem;margin:0;line-height:1.45}
 @media (min-width:561px){.sum-table td:nth-child(n+2){white-space:nowrap}}
 .meta,.note{font-size:.82rem;color:var(--sub);margin:0}
 .note b{color:var(--text)}
-/* 全国順位の札（地域別のページの札と同じ形。3つずつ並べる） */
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 @media (max-width:700px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
@@ -156,7 +144,6 @@ h4{font-size:1rem;margin:0;line-height:1.45}
 .tile .v small{font-size:.9rem;font-weight:700;margin-left:2px}
 .tile .s{font-size:.8rem;color:var(--sub)}
 .tile .s b{color:var(--text);font-size:.95rem}
-/* 研究者の推計の札（数えた数ではないので、点線で分ける 2026-10-15） */
 .tile.ref{background:transparent;border-style:dashed}
 .tile .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:6px}
 .dist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
@@ -165,7 +152,6 @@ h4{font-size:1rem;margin:0;line-height:1.45}
 .dist .bx{display:inline-block;height:10px;background:var(--tg);border-radius:0 3px 3px 0;margin-right:6px}
 .grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:8px}
-/* 横棒のグラフ */
 .bars{display:flex;flex-direction:column;gap:2px}
 .brow{max-width:860px;display:grid;grid-template-columns:minmax(84px,30%) 1fr auto;gap:8px;align-items:center;font-size:.82rem;padding:2px 0}
 .blab{overflow-wrap:anywhere;line-height:1.35}
@@ -183,12 +169,9 @@ h4{font-size:1rem;margin:0;line-height:1.45}
 .chart-svg text{fill:var(--sub);font-size:12px;font-family:inherit}
 .chart-svg text.end{font-weight:700;font-size:12.5px;fill:var(--text)}
 .chart-svg line.grid{stroke:var(--line);stroke-width:1}
-/* 表（見出しの文字は地域別のページの表と同じ小さめの灰色） */
 .tablewrap{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:10px}
 .tablewrap.short{max-height:none}
-.tablewrap td:first-child,.tablewrap th:first-child{min-width:7.5em}  /* スマホで国籍・市区町村の名前が1字ずつ折り返されないように */
-/* 紙（印刷）では表の箱を動かせないので、縦は全部の行を出し、横に長い表は列を紙の幅に等しく分けて文字を折り返す（2026-10-19）。
-   表が紙からはみ出すと、ブラウザがページ全体を縮めて印刷してしまうため */
+.tablewrap td:first-child,.tablewrap th:first-child{min-width:7.5em}   
 @media print{
   .tablewrap{max-height:none;overflow:visible}
   .tablewrap table{table-layout:fixed;font-size:.66rem}
@@ -213,7 +196,6 @@ tr.refhead td{background:var(--bg);font-size:.75rem;color:var(--sub);padding:4px
 .nw{white-space:nowrap}
 .mlinks{display:block;font-size:.75rem;white-space:nowrap}
 .mlinks a{margin-right:8px}
-/* 表の上の操作（検索・並べ替え・絞り込み・列の選択）。ボタンは地域別のページの絞り込みボタンと同じ形 */
 .tctl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.88rem}
 .tctl input[type=search]{flex:1 1 220px;max-width:360px;font-size:.95rem;padding:7px 10px;border:1px solid var(--sub);border-radius:8px;background:var(--card);color:var(--text)}
 .tctl select{font-size:.88rem;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);max-width:100%}
@@ -228,12 +210,10 @@ tr.refhead td{background:var(--bg);font-size:.75rem;color:var(--sub);padding:4px
 .sortbtns button[aria-pressed=true],.hchips button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--card)}
 .hchips{display:flex;flex-wrap:wrap;gap:6px}
 .hchips button span{margin-left:6px;font-variant-numeric:tabular-nums;opacity:.8}
-/* 市区町村の表：いちばん左の列はスマホで横に動かしても見えるように */
 .muni th:first-child,.muni td:first-child{position:sticky;left:0;background:var(--card);z-index:1;box-shadow:1px 0 0 var(--line)}
 .muni th:first-child{z-index:2;background:var(--th)}
 .muni tr.has td:first-child{background:var(--accent-soft)}
 .muni tr.pick td:first-child{background:var(--pick)}
-/* 開設時期の年表 */
 .tl{display:grid;grid-template-columns:minmax(120px,min(42%,360px)) 1fr;gap:4px 10px;align-items:center;font-size:.82rem}
 .tl-lab{overflow-wrap:anywhere;line-height:1.35}
 .tl-track{position:relative;height:30px;border-left:1px solid var(--sub)}
@@ -251,12 +231,10 @@ tr.refhead td{background:var(--bg);font-size:.75rem;color:var(--sub);padding:4px
 .facts{margin:0;padding:0;list-style:none;display:grid;gap:8px}
 .facts li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:.9rem}
 .facts li b.h{display:block;color:var(--accent);font-size:.95rem}
-/* 出典・調査方法（地域別のページの「このページについて」と同じ大きさ） */
 .src{margin:0;padding-left:1.4em;font-size:.85rem}
 .src li{margin-bottom:6px}
 .plain{margin:0;padding-left:1.3em;font-size:.88rem}
 .plain li{margin-bottom:4px}
-/* 章（1〜5）：はじめは閉じる。見出しの行のどこを押しても開閉（2026-10-14 ユーザー） */
 details.chap{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;scroll-margin-top:12px}
 details.chap > summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1.3em 1fr;gap:2px 6px;align-items:baseline;padding:14px 16px;min-height:52px;border-radius:12px}
 details.chap > summary::-webkit-details-marker{display:none}
@@ -268,15 +246,12 @@ details.chap > summary h2{margin:0;padding:0;border:0;font-size:1.25rem}
 .chap-d{grid-column:2;font-size:.85rem;color:var(--sub);line-height:1.5}
 .chap-in{padding:2px 16px 16px}
 .chap-in > h3:first-child{margin-top:14px}
-/* 主な数のカード（数・順位・時点だけ。くわしい決め方は5章） */
 .kpi .tm{font-size:.78rem;color:var(--sub);line-height:1.5}
 .kpi-note a{white-space:nowrap}
-/* 目的別のボタン（四角いボタン。ほかのページのボタンと同じ形） */
 .jump{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;margin:0 0 14px}
 .jump a{display:flex;align-items:center;gap:6px;min-height:46px;padding:8px 12px;border:2px solid var(--accent);border-radius:12px;background:var(--card);color:var(--accent);font-weight:800;text-decoration:none;line-height:1.35}
 .jump a.in{background:var(--accent);color:var(--card)}
 .jump a:hover{filter:brightness(1.08)}
-/* 外国人全体の国籍・地域別トップ10（横棒） */
 .rank10{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .rank10 li{display:grid;grid-template-columns:1.6em minmax(6.5em,11em) 1fr auto;gap:4px 8px;align-items:center;font-size:.88rem}
 .rank10 .rk{color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
@@ -286,7 +261,6 @@ details.chap > summary h2{margin:0;padding:0;border:0;font-size:1.25rem}
 .rank10 .val{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
 .rank10 .val small{color:var(--sub);margin-left:4px}
 @media (max-width:560px){.rank10 li{grid-template-columns:1.6em 1fr auto;grid-template-areas:"rk nm val" ". tr tr"} .rank10 .rk{grid-area:rk} .rank10 .nm{grid-area:nm} .rank10 .val{grid-area:val} .rank10 .tr{grid-area:tr}}
-/* 上位10か国・地域の推移：表示する国籍・地域を選ぶ */
 .t10btns{display:flex;flex-wrap:wrap;gap:6px}
 .t10btns button{font:inherit;font-size:.88rem;font-weight:700;min-height:40px;padding:6px 14px;border-radius:12px;border:2px solid var(--accent);background:var(--card);color:var(--accent);cursor:pointer}
 .t10btns button[aria-pressed=true]{background:var(--accent);color:var(--card)}
@@ -296,10 +270,8 @@ details.chap > summary h2{margin:0;padding:0;border:0;font-size:1.25rem}
 .t10pick label{display:inline-flex;align-items:center;gap:5px;font-size:.88rem;min-height:32px}
 .t10pick input{width:18px;height:18px;accent-color:var(--accent)}
 .t10chart{min-height:200px}
-/* 点をタップ（PCではクリック）したときの吹き出し */
 .ctip{position:absolute;z-index:20;pointer-events:none;background:var(--text);color:var(--card);font-size:.82rem;font-weight:700;line-height:1.4;padding:5px 9px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap;transform:translate(-50%,calc(-100% - 10px))}
 .chart-svg [data-tip]{cursor:pointer}
-/* 市区町村の表：0 と「—」を見分ける・表示項目の追加 */
 td.z{color:var(--sub)}
 .colpick .tools{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
 .colpick .tools button{font:inherit;font-size:.85rem;font-weight:700;min-height:36px;padding:4px 12px;border-radius:12px;border:2px solid var(--accent);background:var(--card);color:var(--accent);cursor:pointer}
@@ -325,7 +297,6 @@ td.z{color:var(--sub)}
 .site-nav a[aria-current="page"] { background: #fff; color: #1e3a5f; }
 .site-nav a.home { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
 .site-nav a.home svg { flex: 0 0 auto; }
-/* スマホでは6つが1段に収まるよう、「ホーム」は家の絵だけにして、すき間も詰める */
 @media (max-width: 480px) {
   .site-nav { gap: 2px; padding: 4px; }
   .site-nav a { font-size: 14px; padding: 7px 4px; }
@@ -333,8 +304,6 @@ td.z{color:var(--sub)}
   .site-nav a.home span { display: none; }
 }
 @media (max-width: 370px) { .site-nav a { font-size: 13px; } }
-/* 「・」の入った名前は、幅が狭いときだけ「・」の後ろで2行にして、メニューを1段に収める
-   （長い「モスク・施設を探す」は600px以下で、「葬儀・墓地」はさらに狭い370px以下で） */
 .site-nav a.long span, .site-nav a.split span { white-space: nowrap; }
 @media (min-width: 481px) and (max-width: 600px) { .site-nav a { padding: 8px 8px; } }
 @media (max-width: 600px) {
@@ -386,14 +355,10 @@ td.z{color:var(--sub)}
   #prt-dlg .prt-acts button.prt-cancel, #prt-dlg .prt-tip { color: #9aa3b2; border-color: #2e343e; }
 }
 @media print {
-  /* 紙の余白：上下20mm・左右18mm（2026-10-19 ユーザー「余白ギリギリじゃない？」。最初の12mmでは紙の端まで文字が詰まって見えた） */
   @page { margin: 20mm 18mm; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  /* 紙の下の端に1〜2行だけ残ったり、次の紙の頭に1〜2行だけ送られたりしないように */
   p, li, dd { orphans: 3; widows: 3; }
   html, body { background: #fff !important; }
-  /* 紙に出さないもの：メニュー・このボタン・上へ・共有・検索欄・開け閉めや並べ替えのボタン・表示項目の選び・地図の拡大縮小と右上の一覧（地図の著作権の表示は残す）。
-     ボタンでも中身のあるもの（寄付のページの写真・地図のページの施設一覧の名前 .fl-item）は紙に出す */
   .prt-bar, #prt-dlg, .site-nav, #to-top, .xbtn, a[href*="/intent/tweet"], a[href*="/intent/post"], [role="search"], .colpick, .no-print,
   input, select, textarea, button:not(:has(img)):not(.fl-item),
   .leaflet-control-zoom, .leaflet-control-layers { display: none !important; }
@@ -403,11 +368,8 @@ td.z{color:var(--sub)}
   .prt-head .prt-site { font-size: 12px; font-weight: 700; color: #1e3a5f; }
   .prt-head .prt-title { font-size: 17px; font-weight: 800; }
   .prt-head .prt-meta { font-size: 11px; color: #5b6474; overflow-wrap: anywhere; }
-  /* 見出しのすぐあとで紙が切れない・写真や表の行の途中で切れにくくする（長い箇条書きや項目の表まで切らないようにすると、紙の途中に大きな空白ができる） */
   h1, h2, h3, h4, h5, summary { break-after: avoid; }
   img, figure, tr { break-inside: avoid; }
-  /* 地図（Leaflet）は紙の幅に合わせて描き直せないので、画面と同じ高さにし、横は画面で見えていた真ん中を出す（片寄って切れないように）。
-     画面での大きさは、印刷の前に下の JS が --prt-w・--prt-h に入れる */
   html .leaflet-container[style*="--prt-w"] { height: var(--prt-h) !important; break-inside: avoid; }
   html .leaflet-container[style*="--prt-w"] > .leaflet-map-pane { left: calc((100% - var(--prt-w)) / 2); }
 }
@@ -418,7 +380,7 @@ td.z{color:var(--sub)}
   if (!btn || btn.dataset.ready) return;
   btn.dataset.ready = "1";
   function fillHead() {
-    document.querySelectorAll(".leaflet-container").forEach(function (m) {  // 地図の画面での大きさ（上の @media print で使う）
+    document.querySelectorAll(".leaflet-container").forEach(function (m) {  
       if (!m.offsetWidth) return;
       m.style.setProperty("--prt-w", m.offsetWidth + "px");
       m.style.setProperty("--prt-h", m.offsetHeight + "px");
@@ -430,8 +392,7 @@ td.z{color:var(--sub)}
     head.querySelector(".prt-meta").textContent = "印刷した日：" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" +
       (url ? "　ページのアドレス：" + url + "（最新の情報はこのアドレスでご確認ください）" : "");
   }
-  window.addEventListener("beforeprint", fillHead);  // Ctrl+P などで印刷したときも、紙の上に題名と日付を出す
-  // 閉じている見出し（開くと紙に出るもの）。操作の部品の中・隠れている所（絞り込みで外れたカードなど）は数えない
+  window.addEventListener("beforeprint", fillHead);  
   function shown(el) {
     for (var e = el; e && e !== document.body; e = e.parentElement) {
       if (e.tagName !== "DETAILS" || e === el) {
@@ -457,8 +418,6 @@ td.z{color:var(--sub)}
   function go(all) {
     fillHead();
     if (!all) { window.print(); return; }
-    // html に prt-all を付ける（ページごとに、動かして見る箱＝地図のページの施設一覧なども、紙では全部出すため）。
-    // 中に見出しがある見出しもあるので、閉じているものがなくなるまで開く（寄付のカードの中身・小さな地図は開いたときに作られる）
     root.classList.add("prt-all");
     for (var i = 0, list; i < 6 && (list = closedOnes()).length; i++) {
       list.forEach(function (d) { d.open = true; opened.push(d); });
@@ -476,7 +435,7 @@ td.z{color:var(--sub)}
   });
   dlg.addEventListener("click", function (ev) {
     var b = ev.target.closest("button[data-prt]");
-    if (ev.target === dlg) { dlg.close(); return; }  // 窓の外を押したらやめる
+    if (ev.target === dlg) { dlg.close(); return; }  
     if (!b) return;
     dlg.close();
     if (b.dataset.prt) setTimeout(function () { go(b.dataset.prt === "all"); }, 50);
@@ -809,7 +768,6 @@ td.z{color:var(--sub)}
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  // 全角・半角、大文字・小文字、ひらがな・カタカナ、空白や「・」の違いは気にせず探す（地域別のページの検索と同じ）
   var norm = function (s) {
     return String(s || "").normalize("NFKC").toLowerCase()
       .replace(/[\u3041-\u3096]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) + 0x60); })
@@ -817,21 +775,17 @@ td.z{color:var(--sub)}
   };
   var num = function (tr, k) { return Number(tr.getAttribute("data-" + k)) || 0; };
 
-  // ---- 章（1〜5）と目次の折りたたみ ----
-  // 見出しの行（summary）に開いているかを知らせる（読み上げ用）
   $$("details.chap, details.toc").forEach(function (d) {
     var s = d.querySelector("summary");
     var sync = function () { s.setAttribute("aria-expanded", d.open ? "true" : "false"); };
     d.addEventListener("toggle", sync);
     sync();
   });
-  // 目次・ページの中のリンク・アドレスの「#」で来たときは、その見出しを囲む章（と目次）を開いてから、その見出しへ移る
   var openTo = function (id, smooth) {
     var el = id && document.getElementById(id);
     if (!el) return;
     for (var d = el; d; d = d.parentElement) if (d.tagName === "DETAILS" && !d.open) d.open = true;
     if (el.tagName === "DETAILS") el.open = true;
-    // アドレスの「#」で来たとき・戻る・進むは、なめらかにせずすぐ移り、章が開いて長さが変わったあとにもう一度合わせる
     var go = function () { el.scrollIntoView({ block: "start", behavior: smooth ? "smooth" : "instant" }); };
     go();
     if (!smooth) { setTimeout(go, 150); setTimeout(go, 600); }
@@ -847,10 +801,9 @@ td.z{color:var(--sub)}
     if (location.hash.slice(1) !== encodeURIComponent(id) && decodeURIComponent(location.hash.slice(1)) !== id) history.pushState(null, "", "#" + encodeURIComponent(id));
     openTo(id, true);
   });
-  window.addEventListener("popstate", fromHash);  // 戻る・進む
+  window.addEventListener("popstate", fromHash);  
   if (location.hash) setTimeout(fromHash, 0);
 
-  // ---- グラフの点：タップ（PCではクリック）や、マウスを乗せたときに「年・国籍・人数」を出す ----
   var tip = document.createElement("div");
   tip.className = "ctip";
   tip.hidden = true;
@@ -870,7 +823,6 @@ td.z{color:var(--sub)}
   });
   document.addEventListener("mouseout", function (ev) { if (ev.target.closest && ev.target.closest("[data-tip]")) tip.hidden = true; });
 
-  // ---- 上位10か国・地域の推移の線グラフ（えらんだ国籍・地域だけを描く。縦の目盛りは表示している線に合わせる）----
   var fmt = function (v) { return Number(v).toLocaleString("ja-JP"); };
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var niceStep = function (vmax) { var base = 1; for (;;) { for (var k of [1, 2, 5]) if (vmax / (base * k) <= 6) return base * k; base *= 10; } };
@@ -878,7 +830,6 @@ td.z{color:var(--sub)}
     var ser = D.series.filter(function (s, i) { return show[i]; });
     if (!ser.length) { box.innerHTML = '<p class="note">国籍・地域を1つ以上えらんでください。</p>'; return; }
     var W = 720, H = 320, ml = 64, mr = 190, mt = 12, mb = 28, ys = D.years, y0 = ys[0], y1 = ys[ys.length - 1];
-    // D.latest … 県・都の資料のもっと新しい数（白抜きの点と点線。国の統計の線とは別の数）
     var L = D.latest, hasL = L && ser.some(function (s) { return s.lv != null; }), xe = hasL ? Math.max(y1, L.x) : y1;
     var lastV = function (s) { return hasL && s.lv != null ? s.lv : s.v[s.v.length - 1]; };
     var vmax = Math.max(1, Math.max.apply(null, ser.map(function (s) { return Math.max.apply(null, s.v.concat(hasL && s.lv != null ? [s.lv] : [])); })));
@@ -903,7 +854,6 @@ td.z{color:var(--sub)}
                '<circle cx="' + lx + '" cy="' + ly + '" r="4.5" style="fill:var(--card);stroke:' + s.c + '" stroke-width="2.5" data-tip="' + esc(t2) + '"><title>' + esc(t2) + "</title></circle>");
       }
     });
-    // 線の右はしの名前（重ならないように下へずらし、下にはみ出したら下から上へ詰める）
     var labs = ser.map(function (s) { return [Y(lastV(s)), s]; }).sort(function (a, b) { return a[0] - b[0]; }), pl = [];
     labs.forEach(function (l) { pl.push(pl.length ? Math.max(l[0], pl[pl.length - 1] + 15) : l[0]); });
     if (pl.length && pl[pl.length - 1] > H - mb - 4) { pl[pl.length - 1] = H - mb - 4; for (var i = pl.length - 2; i >= 0; i--) pl[i] = Math.min(pl[i], pl[i + 1] - 15); }
@@ -935,7 +885,6 @@ td.z{color:var(--sub)}
     redraw();
   });
 
-  // 国籍別の表：人数の多い順／全国順位の順（合計と参考の行はいつも下）
   $$(".sortbtns[data-for]").forEach(function (box) {
     var tb = document.getElementById(box.getAttribute("data-for"));
     if (!tb) return;
@@ -951,7 +900,6 @@ td.z{color:var(--sub)}
     });
   });
 
-  // 市区町村別の表：名前で探す・並べ替え・モスクがある所だけ・表示する列
   var mt = document.getElementById("muni");
   if (mt) {
     var tb = $("tbody", mt), rows = $$("tr", tb), q = document.getElementById("mq"), srt = document.getElementById("ms"),
@@ -969,7 +917,7 @@ td.z{color:var(--sub)}
         if (ok) shown++;
         tb.appendChild(r);
       });
-      var w = mt.getAttribute("data-word") || "市区町村";  // 東京都は「区市町村」
+      var w = mt.getAttribute("data-word") || "市区町村";  
       cnt.textContent = shown + w + "を表示しています（全" + rows.length + w + "）。";
     };
     q.addEventListener("input", apply);
@@ -981,12 +929,10 @@ td.z{color:var(--sub)}
       cb.addEventListener("change", sync);
       sync();
     });
-    // 「基本表示に戻す」：足した列を全部外す（市区町村・モスク・礼拝所・対象10か国の人の3列に戻る）
     var reset = document.getElementById("mreset");
     if (reset) reset.addEventListener("click", function () {
       picks.forEach(function (cb) { cb.checked = false; cb.dispatchEvent(new Event("change")); });
     });
-    // 地域別のページから「?city=川口市」で来たときは、その市区町村を探した状態にして、行に色を付ける
     var city = new URLSearchParams(location.search).get("city") || "";
     if (city) q.value = city;
     apply();
