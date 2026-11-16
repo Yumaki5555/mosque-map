@@ -548,7 +548,7 @@ a{color:var(--accent)}
 }
 @media (max-width: 480px) { .site-purpose-note { padding: 10px 12px; } .site-purpose-sec { padding: 12px 14px; } }
 </style><div class="site-purpose-note" role="note" aria-label="このサイトの目的"><p>このサイトは、公開資料をもとに、日本のモスクや関連施設について知り、考えるための情報をまとめています。不安や敵意をあおることを目的としていません。掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。</p><p><a href="index.html#site-purpose">このサイトの目的と利用にあたって</a>　<a href="index.html#site-use">掲載情報を使うときは（免責事項）</a></p></div>
-    <p class='ls-upd'>最終更新 <b>2026年11月16日 14:01</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p><details class='fold ls-more'><summary>掲載数：<b>モスク・礼拝所 268か所</b>（いま使われているもの）／この一覧に載せている場所 322か所<span class='ls-more-t'>（数え方を見る）</span></summary><ul><li><b>モスク・礼拝所 268か所</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</li><li><b>この一覧に載せている場所 322か所</b>：内わけは、モスク・礼拝所 268か所、計画・建設中 2か所、状況確認中 27か所、閉鎖・移転 5か所、学校 9か所、墓地 11か所です。1か所は、このどれか1つにだけ数えています。</li><li>建物がまだない計画地や、寄付・計画の情報だけの場所は、この一覧には入れていません。<a href='map.html'>地図</a>・<a href='area.html'>地域別のページ</a>で見られます。</li></ul></details>
+    <p class='ls-upd'>最終更新 <b>2026年11月16日 14:21</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p><details class='fold ls-more'><summary>掲載数：<b>モスク・礼拝所 268か所</b>（いま使われているもの）／この一覧に載せている場所 322か所<span class='ls-more-t'>（数え方を見る）</span></summary><ul><li><b>モスク・礼拝所 268か所</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</li><li><b>この一覧に載せている場所 322か所</b>：内わけは、モスク・礼拝所 268か所、計画・建設中 2か所、状況確認中 27か所、閉鎖・移転 5か所、学校 9か所、墓地 11か所です。1か所は、このどれか1つにだけ数えています。</li><li>建物がまだない計画地や、寄付・計画の情報だけの場所は、この一覧には入れていません。<a href='map.html'>地図</a>・<a href='area.html'>地域別のページ</a>で見られます。</li></ul></details>
     <section class="find" role="search" aria-label="モスク・施設を探す">
       <div class="f-row">
         <div>
@@ -701,7 +701,7 @@ var CLASS_JA = {"mosque": "モスク・礼拝所", "plan": "計画・建設中",
 var CLASS_NOTES = {"plan": "モスクを建てる計画や、土地・建物を買う途中の場所です。位置はおおよそのものがあります。", "unknown": "モスク・礼拝所として使われていた、または登録されていた場所で、今も使われているかを確かめられていないものです（Googleマップの登録が消えたなど）。モスク・礼拝所の数には入れていません。", "closed": "閉じた、またはほかの場所へ移ったモスク・礼拝所です。", "school": "イスラームの教えも学ぶ学校・保育園などです。モスクではないので、モスク・礼拝所の数には入れていません。", "cemetery": "ムスリムの墓地（土葬ができる墓地）です。"}, CLASS_BADGE = {"plan": "#7c3aed", "unknown": "#475569", "closed": "#111827", "school": "#0f766e", "cemetery": "#92400e", "mosque": "#1e3a5f"};  // 数え方ごとの説明と札の色
 var RN_GROUPS = [["hist", "あゆみ・これからの計画"], ["place", "建物・規模・場所"], ["org", "運営・団体・法人"], ["act", "礼拝・活動・集まる人"], ["fu", "葬儀・墓地"], ["gov", "議会・行政・報道"], ["src", "資料・地図サイト・SNSでの確かめ"], ["etc", "名前・近くの場所・そのほか"]];  // 「調査で判明したこと」の大きなまとまり（[目印, 名前]。この順に並べる）
 // 公開ページの「調査で判明したこと」（d.rn）は別のファイル（mosque_notes.json）。施設の詳しい情報を開くときに読む（2026-10-14）。
-// 自分用のページは "" で、文章はページの中にある
+// NOTES_URL が "" のときは、文章はページの中にある
 var NOTES_URL = "mosque_notes.json?v=4fedaa3a8d39", NOTES_OK = !NOTES_URL, NOTES_FAIL = false, notesWait = null;
 function withNotes(cb) {
   if (NOTES_OK) { cb(); return; }
@@ -1180,7 +1180,7 @@ function chapters(d) {
   // 3. 国籍・宗派
   var b3 = kv([["主な国籍・出身", feat(d, "国籍")], ["宗派", feat(d, "宗派")]]) +
     "<p class='note'>運営している人や利用者の出身国・宗派です。公式サイト・報道・法人の登録名などで確かめられたものだけを載せています" +
-    (PRIVATE ? "（自分用は「推定」も表示）" : "") + "。確かめられていない項目は「まだ確かめられていません」としています（「いない」「ない」という意味ではありません）。</p>";
+    "。確かめられていない項目は「まだ確かめられていません」としています（「いない」「ない」という意味ではありません）。</p>";
   cs.push(["feat", "国籍・宗派", "国籍：" + (d.ov.na || "まだ確かめられていません") + "／宗派：" + (d.ov.se || "まだ確かめられていません"), b3]);
 
   // 4. 系統・関連施設
@@ -1284,7 +1284,7 @@ function sourceChapter(d, cs) {
     "<dt>まだ確かめられていません・不明</dt><dd>調べたものの、資料で確かめられていない項目です。</dd>" +
     "<dt>調べた範囲では見つかっていません・見つからず</dt><dd>調べた資料には書かれていなかった項目です。「ない」「行っていない」という意味ではありません。</dd>" +
     "<dt>まだ調べていません</dt><dd>その項目は、まだ調べていません。</dd>" +
-    (PRIVATE ? "<dt>推定（札）</dt><dd>資料から推し量ったもので、確かめられてはいないものです（自分用だけに表示）。</dd>" : "") +
+    
     "<dt>おおよその位置</dt><dd>地図のピンが正確な所在地ではない場所です。点線の注意を付けています。</dd></dl>" +
     "<h3>注意</h3><p>区域区分は国土交通省「都市計画決定GISデータ」（令和7年度）と照らし合わせた結果で、内容の正しさを保証するものではありません。市街化調整区域にあるからといって、違法とは限りません。" +
     "掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください（<a href='index.html#site-purpose'>このサイトの目的と利用にあたって</a>）。誤りのご指摘・情報提供は、ページのいちばん下のフォームからお寄せください。</p>";
@@ -1357,18 +1357,7 @@ function showDetail(d) {
          return "<details class='fold ch' data-ch='" + c[0] + "'><summary><h2 class='ch-h'>" + (i + 1) + ". " + esc(c[1]) + "</h2>" +
                 "<span class='ch-s'>" + esc(c[2]) + "</span></summary><div class='ch-body'>" + c[3] + "</div></details>";
        }).join("");
-  // 自分用
-  if (d.memo && d.memo.length) h += "<div class='card priv'><h2>調べかけのメモ（自分用）</h2>" + kv(d.memo.map(function (r) { return [r[0], esc(r[1])]; })) + "</div>";
-  if (d.yd) h += "<div class='card priv'><h2>周辺3kmの中古車ヤード候補（自分用）</h2>" + (d.yd.length ?
-       "<ul class='links'>" + d.yd.map(function (y) {
-         return "<li>" + esc(y[0]) + " <span class='host'>" + y[1] + "km" + (y[2] ? "" : "・名前からは断定しにくい") + "</span> " + ext(y[3], "出典") + "</li>";
-       }).join("") + "</ul><p class='note'>OpenStreetMapに登録された名前だけから機械的に拾ったものです（未確認）。</p>" :
-       "<span class='empty'>なし</span>") + "</div>";
-  if (d.ya) h += "<div class='card priv'><h2>航空写真のヤード候補・約600m（自分用）</h2>" + (d.ya.length ?
-       "<ul class='links'>" + d.ya.map(function (y) {
-         return "<li>" + esc(y[0]) + " <span class='host'>約" + y[1] + "m" + (y[2] ? "" : "・ほかの置き場の可能性も") + "</span> " + esc(y[3]) + " " + ext(y[4], "航空写真") + "</li>";
-       }).join("") + "</ul><p class='note'>航空写真で車・スクラップなどがぎっしり並ぶ置き場を拾ったものです。何の置き場か・だれの置き場かは確かめていません。</p>" :
-       "<span class='empty'>なし（大都市の中心の市街地にあるモスクは見ていません）</span>") + "</div>";
+  
   detailView.innerHTML = h;
   // 1章（場所・建物）を開いたときに、小さな地図を作る（はじめは作らない＝軽くする）
   var ch1 = detailView.querySelector("details.ch[data-ch='place']");
