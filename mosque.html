@@ -522,7 +522,7 @@ a{color:var(--accent)}
 }
 @media (max-width: 480px) { .site-purpose-note { padding: 10px 12px; } .site-purpose-sec { padding: 12px 14px; } }
 </style><div class="site-purpose-note" role="note" aria-label="このサイトの目的"><p>このサイトは、公開資料をもとに、日本のモスクや関連施設について知り、考えるための情報をまとめています。不安や敵意をあおることを目的としていません。掲載情報を、差別・誹謗中傷・嫌がらせに利用しないでください。</p><p><a href="index.html#site-purpose">このサイトの目的と利用にあたって</a>　<a href="index.html#site-use">掲載情報を使うときは（免責事項）</a></p></div>
-    <p class='ls-upd'>最終更新 <b>2026年11月19日 01:50</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p><details class='fold ls-more'><summary>掲載数：<b>モスク・礼拝所 268か所</b>（いま使われているもの）／この一覧に載せている場所 323か所<span class='ls-more-t'>（数え方を見る）</span></summary><ul><li><b>モスク・礼拝所 268か所</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</li><li><b>この一覧に載せている場所 323か所</b>：内わけは、モスク・礼拝所 268か所、計画・建設中 3か所、状況確認中 27か所、閉鎖・移転 5か所、学校 9か所、墓地 11か所です。1か所は、このどれか1つにだけ数えています。</li><li>建物がまだない計画地や、寄付・計画の情報だけの場所は、この一覧には入れていません。<a href='map.html'>地図</a>・<a href='area.html'>地域別のページ</a>で見られます。</li></ul></details>
+    <p class='ls-upd'>最終更新 <b>2026年11月19日 12:32</b>　掲載数は、更新時点で確認できた情報をもとに集計しています。</p><details class='fold ls-more'><summary>掲載数：<b>モスク・礼拝所 268か所</b>（いま使われているもの）／この一覧に載せている場所 323か所<span class='ls-more-t'>（数え方を見る）</span></summary><ul><li><b>モスク・礼拝所 268か所</b>：いま使われていると確認できたモスク・礼拝所の数です（状況確認中の場所、閉鎖・移転した場所、学校、墓地は入れていません）。</li><li><b>この一覧に載せている場所 323か所</b>：内わけは、モスク・礼拝所 268か所、計画・建設中 3か所、状況確認中 27か所、閉鎖・移転 5か所、学校 9か所、墓地 11か所です。1か所は、このどれか1つにだけ数えています。</li><li>建物がまだない計画地や、寄付・計画の情報だけの場所は、この一覧には入れていません。<a href='map.html'>地図</a>・<a href='area.html'>地域別のページ</a>で見られます。</li></ul></details>
     <section class="find" role="search" aria-label="モスク・施設を探す">
       <div class="f-row">
         <div>
@@ -668,7 +668,7 @@ var LEGALS = [["rel", "宗教法人"], ["assoc", "一般社団・財団法人"],
 var CLASS_JA = {"mosque": "モスク・礼拝所", "plan": "計画・建設中", "unknown": "状況確認中", "closed": "閉鎖・移転", "school": "学校", "cemetery": "墓地", "other": "寄付・計画の情報だけの場所"};  
 var CLASS_NOTES = {"plan": "モスクを建てる計画や、土地・建物を買う途中の場所です。位置はおおよそのものがあります。", "unknown": "モスク・礼拝所として使われていた、または登録されていた場所で、今も使われているかを確かめられていないものです（Googleマップの登録が消えたなど）。モスク・礼拝所の数には入れていません。", "closed": "閉じた、またはほかの場所へ移ったモスク・礼拝所です。", "school": "イスラームの教えも学ぶ学校・保育園などです。モスクではないので、モスク・礼拝所の数には入れていません。", "cemetery": "ムスリムの墓地（土葬ができる墓地）です。"}, CLASS_BADGE = {"plan": "#7c3aed", "unknown": "#475569", "closed": "#111827", "school": "#0f766e", "cemetery": "#92400e", "mosque": "#1e3a5f"};  
 var RN_GROUPS = [["hist", "あゆみ・これからの計画"], ["place", "建物・規模・場所"], ["org", "運営・団体・法人"], ["act", "礼拝・活動・集まる人"], ["fu", "葬儀・墓地"], ["gov", "議会・行政・報道"], ["src", "資料・地図サイト・SNSでの確かめ"], ["etc", "名前・近くの場所・そのほか"]];  
-var NOTES_URL = "mosque_notes.json?v=6fae85dfbeae", NOTES_OK = !NOTES_URL, NOTES_FAIL = false, notesWait = null;
+var NOTES_URL = "mosque_notes.json?v=6de37eb51b4b", NOTES_OK = !NOTES_URL, NOTES_FAIL = false, notesWait = null;
 function withNotes(cb) {
   if (NOTES_OK) { cb(); return; }
   if (!notesWait) {
